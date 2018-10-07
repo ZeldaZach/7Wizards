@@ -1,0 +1,26 @@
+<% link_title = @button_name.nil? ? tg(:cancel) : @button_name %>
+<%= javascript_include_tag "http://api.recaptcha.net/js/recaptcha_ajax.js"  %>
+<%= javascript_tag "Recaptcha.create('#{ENV['RECAPTCHA_PUBLIC_KEY']}', 'recaptcha_image', {theme:'custom',custom_theme_widget:'recaptcha_widget'});"%>
+
+<span style="text-align: left !important;width: 100%; margin-bottom: 20px; color:#777777;">
+  <%= t(:activate_account_description, :email => @user.email) %>
+</span>
+
+<div id="recaptcha_widget">
+  <%form_ajax_tag :url => account_path(:action => :do_sent_confirmation) do%>
+    <div class="recaptcha_fild">
+      <span class="recapcha_text"><%= tg :recapcha_title %></span>
+      <%= text_field_tag "recaptcha_response_field", nil, :class => "text"%>
+    </div>
+
+    <div id="recaptcha_image"></div>
+    <span class="capcha_reload">
+      <%= link_to image_design_tag("recaptcha.png"),"javascript:Recaptcha.reload()" %>
+    </span>
+    <div class="bottom_popap" style="clear: both;">
+      <%= submit_tag t(:resent_activation), :class =>"small_submit", :name => nil%>
+      <%= link_to link_title, "javascript:void(0)", :id => "close_btn",:class=>"close_button", :onclick => "javascript: dialog.close()"%>
+    </div>
+
+  <%end%>
+</div>

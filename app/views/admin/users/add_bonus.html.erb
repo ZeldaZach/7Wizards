@@ -1,0 +1,33 @@
+<h1><%= t :title%></h1>
+
+<p>
+  <%= tf(User, :name) + " : " + link_to(@user.name, :action => :show, :id => @user.id) %>
+</p>
+
+<%
+  header = %w(active a_level)
+%>
+
+<p>
+  <% header.each do |a| %>
+    <b><%= tf @user, a %></b>: <%=h @user[a] %><br />
+  <% end %>
+</p>
+
+<p>
+  You can give money or staff. You can't give both. If you enter both values only money will be added!
+</p>
+
+<% form_tag :action => :process_add_bonus, :id => @user.id do %>
+
+  <%= label_tag :money, tf(@user, :a_money) %>, max 50000: <br />
+  <%= text_field_tag :money, '0' %><br />
+
+  <%= label_tag :staff, tf(@user, :a_staff) %>, max 600: <br />
+  <%= text_field_tag :staff, '0' %><br />
+
+  <%= label_tag :reason, t(:reason) %>:<br />
+  <%= text_area_tag :reason, '', :rows => 5, :columns => 20 %><br />
+
+  <%= submit_tag tg(:save) %>
+<% end %>

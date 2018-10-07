@@ -1,0 +1,126 @@
+a1:
+  name: Flood Ring
+  level: 1
+  price: 180
+  sell_price: 40
+  protection: 5
+  power: 2
+a2:
+  name: Wave Ring
+  level: 3
+  price: 720
+  sell_price: 200
+  protection: 8
+  power: 4
+a3:
+  name: Dew Ring
+  level: 5
+  price: 5500
+  sell_price: 1295
+  protection: 10
+  power: 8
+a4:
+  name: Swamp Ring
+  level: 7
+  price: 9000
+  sell_price: 2400
+  protection: 20
+  power: 10
+a5:
+  name: Naga Ring
+  level: 9
+  price: 10300
+  sell_price: 2600
+  protection: 25
+  power: 15
+a6:
+  name: Ice ring
+  level: 11
+  price: 14200
+  sell_price: 3600
+  protection: 30
+  power: 21
+a7:
+  name: Hail Ring
+  level: 13
+  price: 20000
+  sell_price: 5000
+  protection: 60
+  power: 6
+  skill: 21
+a8:
+  name: Avalanche Ring
+  level: 15
+  price: 28000
+  sell_price: 7000
+  protection: 45
+  power: 20
+  weight: 65
+  skill: 30
+a9:
+  name: Tide Ring
+  level: 18
+  price: 36000
+  sell_price: 9000
+  protection: 75
+  power: 50
+a10:
+  name: Surge Ring
+  level: 20
+  price: 46100
+  sell_price: 11550
+  protection: 65
+  power: 25
+  dexterity: 125
+  weight: 100
+#a11:
+#  name: Шипованные доспехи
+#  level: 24
+#  price: 62200
+#  sell_price: 15550
+#  protection: 40
+#  power: 25
+#  skill: 65
+#  weight: 125
+#a12:
+#  name: Клибанион
+#  level: 27
+#  price: 83000
+#  sell_price: 21000
+#  protection: 187
+#  power: 50
+#a13:
+#  name: Хауберк
+#  level: 28
+#  price: 110000
+#  sell_price: 27000
+#  protection: 50
+#  power: 50
+#  skill: 87
+#a14:
+#  name: Грандгард
+#  level: 30
+#  price: 132000
+#  sell_price: 33000
+#  protection: 50
+#  power: 50
+#  dexterity: 200
+#  skill: 25
+#  weight: 125
+#a15:
+#  name: Плакарт
+#  level: 32
+#  price: 165000
+#  sell_price: 41000
+#  protection: 62
+#  power: 75
+#  dexterity: 125
+#  skill: 50
+#a16:
+#  name: Юшман
+#  level: 36
+#  price: 205000
+#  sell_price: 51000
+#  protection: 125
+#  power: 100
+#  weight: 125

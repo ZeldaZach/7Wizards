@@ -1,0 +1,21 @@
+ <div class="additional_info_block" >
+<div class="quick_links">
+  <h2 class="block_header special"><%= t(:title) %></h2>
+    <div class="image_design_pages" >
+    <%= image_design_tag("home_hall_gory.jpg") %>
+  </div>
+</div>
+
+<div class="quick_links">
+  <h2 class="block_header"><%=  t(:menu)%></h2>
+  <ul class="navigate">
+    <li><%= link_to_ajax tv(:top_wizards), :url => respect_path %></li>
+    <li><%= link_to_ajax tv(:top_clans), :url => respect_path(:action => :clans) %></li>
+    <li><%= link_to_ajax tv(:top_vote), :url => respect_path(:action => :vote) %></li>
+  </ul>
+  <div class="clear"></div>
+</div>
+   <div class="additional_info_bg"></div>
+      <div class="additional_info_bottom"></div>
+      <div class="additional_info_top"></div>
+ </div>

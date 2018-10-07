@@ -1,0 +1,31 @@
+<%if @dialog_callback_url %>
+  <%= t("request_desription_#{@relation.kind}") %>
+
+  <div class="bottom_popap" style="text-align: center; margin-top: 10px;"> <%= link_to tg(:ok), "javascript:void(0)", :id => "close_btn",:class=>"close_button", :onclick => "javascript: dialog.close()"%></div>
+<%else%>
+  <ul>
+    <% form_ajax_for(@relation, :url => {:action => 'process_add', :id => @relation.relative_id }) do |f| %>
+      <%= f.hidden_field :kind %>
+      <li>
+        <%= f.error_messages %>
+      </li>
+
+      <% if @relation.kind == Relation::KIND_FRIEND %>
+        <li>
+          <%= f.text_area :request_message, :rows => 4,:class =>"text", :style=>"width: 430px; margin-bottom:0", :onkeypress=>"return wizards.imposeMaxLength(event, this, 56);" %>
+        </li>
+      <%elsif @relation.kind == Relation::KIND_BOOKMARK%>
+        <%= f.text_area :message, :rows => 4, :class =>"text", :style=>"width: 430px; margin-bottom:0", :onkeypress=>"return wizards.imposeMaxLength(event, this, 56);" %>
+      <%elsif @relation.kind == Relation::KIND_IGNORE%>
+        <%= t :request_are_you_sure, :name => @relation.relative.name %>
+      <% end %>
+      <li>
+        <div class="bottom_popap block_user">
+          <%= submit_tag tg(:add), :class =>"close_button" %>
+          <%= link_to tg(:cancel), "javascript:void(0)", :id => "close_btn",:class=>"close_button", :onclick => "javascript: dialog.close()"%>
+        </div>
+      </li>
+    <% end %>
+
+  </ul>
+<%end%>

@@ -1,0 +1,16 @@
+<div id="columns_narrow_wide">
+
+  <div id="col_left">
+    <ul class="rounded">
+      <%= render :partial => "partial_navigate" %>
+    </ul>
+  </div>
+
+  <div id="col_right" >
+    <ul class="rounded train_blocks blue_buttons">
+      <% yield %>
+    </ul>
+  </div>
+
+</div>
+<div class="clear"></div>

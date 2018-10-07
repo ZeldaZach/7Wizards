@@ -1,0 +1,96 @@
+ <div class="additional_info_block" >
+<% if !@user.has_pet? %>
+  <div class="quick_links">
+    <div class="clan_name_header"><h2><%= tv(:buy_pet) %></h2></div>
+    <div class="image_design_pages" ><%= image_design_tag("home_zoo.jpg") %></div>
+  </div>
+<% end %>
+
+<% if @user.has_pet? %>
+  <div class="pet_ava quick_links">
+    <ul class="progress_blok">
+      <li>
+        <h2><%= pet_name(@user.pet_kind) %></h2>
+      </li>
+      <li>
+        <div class="progressbar">
+          <%= image_design_tag("progress_bar_l.png") %>
+          <%= image_design_tag("progress_bar_middle.png", {:class => "progress", :height => 11, :width => (@user.pet_health.to_f / @user.max_pet_health * 245).to_i}) %>
+        </div>
+        <span> <%= tf(User, :a_health) %>: <%= @user.pet_health %> / <%=  @user.max_pet_health%></span>
+      </li>
+    </ul>
+    <% if @user.pet_active? %>
+      <%= pet_image(@user, true, "_open")%>
+    <% elsif @user.pet_is_dead?%>
+      <%= pet_image(@user, true, "_dead")%>
+    <%else%>
+      <%= pet_image(@user, true, "_close")%>
+    <% end %>
+  </div>
+
+  <div class="quick_links">
+    <h2 class="block_header"><%= tg(:actions) %></h2>
+    <ul class="navigate">
+      <% if @user.pet_is_dead? %>
+        <li>
+          <%= link_to_ajax tv(:pet_resurrect), :url => pet_path(:action => :process_buy) %>
+        </li>
+      <% else %>
+        <% if @user.pet_active? %>
+          <li>
+            <%= link_to_ajax t(:pet_put_in_cage), :url => pet_path(:action => :activate, :value => :f) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to_ajax t(:pet_put_out_of_cage), :url => pet_path(:action => :activate, :value => :t) %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="quick_links">
+    <h2 class="block_header"><%= t(:pet_status_title) %></h2>
+    <ul class="information">
+      <% if @user.pet_is_dead? %>
+        <li>
+          <%= t(:description_dead, :price => tps(GameProperties::PET_BUY_PRICE_STAFF)) %>
+        </li>
+      <% else %>
+        <% if @user.pet_active? %>
+          <li>
+            <%= t(:description_active, :health => @user.pet_health, :price => tps(GameProperties::PET_BUY_PRICE_STAFF)) %>
+          </li>
+        <% else %>
+          <li>
+            <%= t(:description_not_active, :health => @user.pet_health, :price => tps(GameProperties::PET_BUY_PRICE_STAFF)) %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="quick_links">
+    <h2 class="block_header"><%= tf(FightLog, :fight_user_information) %></h2>
+    <ul class="information">
+      <li><%= tf(User, :a_health) %>: <%= @user.pet_health %></li>
+      <li><%= tf(User, :max_health) %>: <%= @user.max_pet_health %></li>
+      <li><%= tf(User, :health_hour_regeneration) %>: <%= @user.pet_health_hour_regeneration %></li>
+      <li><%= tf(User, :s_kill_pets) %>: <%= @user.s_kill_pets%>, <span class="green"><%= t(:pet_skill_bonus, :bonus => @user.pet_kill_skill_bonus) %></span> </li>
+      <%if @pet_power_used > 0 %>
+        <li><%= t(:pet_used_pet_power, :power => @pet_power_used) %></li>
+      <%end%>
+    </ul>
+  </div>
+<% end %>
+
+<div class="pet_ava quick_links">
+  <h2 class="block_header"><%= t(:information) %></h2>
+  <p class="information"><%= t(:description, :amount => 3) %></p>
+</div>
+   <div class="additional_info_bg"></div>
+      <div class="additional_info_bottom"></div>
+      <div class="additional_info_top"></div>
+ </div>
+

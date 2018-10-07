@@ -1,0 +1,66 @@
+<div id="columns_narrow_wide">
+
+  <div id="col_left">
+    <%= render :partial => "partial_navigate" %>
+  </div>
+
+  <div id="col_right" >
+    <div class="main_col_content" id="clan_donate">
+      <div class="quick_links solid_form">
+        <% on_war = @clan.on_war? %>
+        <h1 class="category_title_shop"><%= t(:clan_title) %> </h1>
+
+        <p><%= t :clan_donate_description %></p>
+
+        <div>
+          <% form_ajax_tag :url => {:action => :process_donate} do %>
+            <% if !on_war %>
+              <%= label_tag :money, tf(Clan, :a_money) %>
+              <%= text_field_tag :money, 0, :class => "text login_pass_input"%>
+            <% end %>
+            <%= label_tag :staff2, tf(Clan, :a_staff2) %>
+            <%= text_field_tag :staff2, 0, :class => "text login_pass_input"%>
+            <%= submit_tag t(:clan_donate), :class => "small_submit", :name => nil %>
+          <% end %>
+        </div>
+
+      </div>
+      <div class="quick_links">
+        <h1 class="category_title_shop"><%= t(:clan_donation_history) %> </h1>
+
+
+        <table class="content_up table" >
+          <thead>
+            <tr class="tableWidth">
+              <th scope="col" ></th>
+              <th scope="col" ><%= tf(User, :name) %></th>
+              <th scope="col" ><%= tg(:date_title) %></th>
+              <th scope="col" ><%= t(:clan_donation) %></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @last_donates.each_with_index do |m, index| %>
+              <tr>
+                <td class="index_cell"><%= paginate_index(@page, index) %></td>
+                <td><%= user_link m.author %></td>
+                <td><%= d m.created_at %></td>
+                <td><%= m.g_title self %></td>
+              </tr>
+            <% end %>
+
+          </tbody>
+        </table>
+
+
+      </div>
+      <div class="clear"></div>
+      <%= paginate @last_donates %>
+ <div class="clear"></div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+
+</div>
+<div class="clear"></div>

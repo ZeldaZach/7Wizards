@@ -1,0 +1,121 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "menu" %>
+  </div>
+
+  <div id="col_right">
+    <div class="main_col_content" id="shop">
+      <div style="z-index: 2; position: relative;">
+        <h1 class="category_title_shop"><%=  tf UserItem, "category_#{@category}" %> </h1>
+        <div class="under_title_text"><%= t "category_description_#{@category}" %></div>
+        <table class="content_up table">
+          <tr>
+            <th></th>
+            <th><%= tv :item %></th>
+            <th style="text-align: center"><%= tg(:price) %></th>
+            <th></th>
+          </tr>
+          <% @items.each do |item|  %>
+
+            <%
+            price = item.get_price @user
+            sell_price = item.get_sell_price @user
+            description = item.description(@user)
+          %>
+
+            <tr>
+              <td><%= user_item_image_tag item %></td>
+              <td class="col_desc">
+                <ul>
+                  <li><b><%= item.title %></b></li>
+
+                  <% if item.acts_like?(:level_item) %>
+
+                    <% next_description = item.respond_to?(:next_description) ? item.next_description(@user) : nil %>
+                    <% current_level = item.get_level(@user) %>
+                    <% max_level = item.get_max_level %>
+
+                    <% if current_level == 0 %>
+                      <li><%= next_description %></li>
+                      <% if item.respond_to?(:requirements) %>
+                        <li>
+                          <%= t :requirements, :value => item.requirements %>
+                        </li>
+                      <%else%>
+                        <li><%= description %></li>
+                      <% end %>
+                    <% else %>
+                      <li><%= description %></li>
+                      <% unless next_description.blank? %>
+                        <li>
+                          <%= t :next_description, :value => item.next_description(@user) %>
+                        </li>
+                      <% end %>
+                      <% if max_level > 1 %>
+                        <li><%= t :level_of, :level => current_level, :max => max_level %></li>
+                      <% end %>
+                    <% end %>
+                  <% else %>
+                    <li><%= description %></li>
+                  <% end %>
+
+                  <% if item.required_level >= 1 %>
+                    <li>
+                      <%= t :required_level, :level => item.required_level %>
+                    </li>
+                  <% end %>
+                </ul>
+
+              </td>
+              <td class="price">
+                <% if price.has_money_price? %>
+                  <%= price_tag(:price => price.price) %><br/>
+                <% end %>
+
+                <% if price.has_staff_price? %>
+                  <%= price_tag(:price_staff => price.price_staff) %><br/>
+                <% end %>
+
+                <% if item.can_sell?(@user).allow? %>
+                  <b> <%= price_tag(:price => sell_price.price) %></b>
+                <% end %>
+              </td>
+              <td class="little_button">
+                <table class="table_little_buttons" >
+                  <tr>
+                    <td>
+                      <% if item.button_buy?(@user) %>
+                        <%= link_to_ajax tg(:buy), :url => shop_path(:action => :buy, :item => item.key, :page => @page) %>
+                      <%end%>
+                      
+                      <% if item.button_extend?(@user) %>
+                        <%= link_to_ajax tg(:extend), :url => shop_path(:action => :extend, :item => item.key) %>
+                      <% end %>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <% if item.can_sell?(@user).allow? %>
+                        <%= link_to_ajax tg(:sell), :url => shop_path(:action => :sell, :item => item.key, :page => @page) %>
+                      <% end %>
+                    </td>
+                  </tr>
+                </table>
+
+              </td>
+            </tr>
+          <% end %>
+        </table>
+        <div class="clear"></div>
+        <%= paginate @items, :params => {:category => @category} %>
+        <div class="clear"></div>
+        <%= link_to_top tg(:scroll_top)%>
+      </div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+
+  </div>
+  <div class="clear"></div>
+</div>

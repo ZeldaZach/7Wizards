@@ -1,0 +1,12 @@
+<% link_title = @button_name.nil? ? tg(:cancel) : @button_name %>
+<%= t(:description, :email => @user.email) %>
+
+<% form_ajax_tag(:update => :dialog_content,:url => wizards_path(:action => :do_change_email)) do%>
+  <table class="popap_form" style="margin-top: 10px;">
+    <tr>
+      <td><label><%=  tf(User, :email) %></label></td>
+      <td> <%= text_field_tag :email, "" %></td>
+    </tr>
+  </table>
+  <div class="bottom_popap"><%= submit_tag("Change",:class =>"small_submit") %> <%= link_to link_title, "javascript:void(0)", :id => "close_btn",:class=>"close_button", :onclick => "javascript: dialog.close()"%> </div>
+<%end%>

@@ -1,0 +1,21 @@
+<h1><%= t :title%></h1>
+
+<p>
+  <strong><%= tf(@message, :position) %></strong>:<br />
+  <%= @message.position %>
+</p>
+<p>
+  <strong><%= tf(@message, :title) %></strong>:<br />
+  <%= @message.title %>
+</p>
+<p>
+  <strong><%= tf(@message, :body) %></strong>:<br />
+  <%= @message.body %>
+</p>
+<p>
+  <strong><%= tf(@message, :published) %></strong>:
+  <%= @message.published %>
+</p>
+
+<%= link_to tg(:edit), edit_admin_news_path(@message) %> |
+<%= link_to tg(:back), admin_news_index_path %>

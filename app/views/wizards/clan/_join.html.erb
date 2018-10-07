@@ -1,0 +1,28 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+
+    <%= render :partial => "partial_navigate" %>
+
+  </div>
+  <div id="col_right" >
+    <div class="main_col_content" id="join_request">
+      <div class="visibl">
+      <h1 class="category_title_shop"><%= t(:clan_join_request) %></h1>
+      <div class="quick_links">
+        <% form_ajax_tag(:url =>clan_path(:action => 'join_request_send', :id => @clan.id)) do %>
+          <span class="join_message">
+            <%= text_area_tag :message, '', :class => "top_border", :rows => 5  %>
+          </span>
+          <span class="join_submitt"><%= submit_tag tg(:send) %></span>
+        <% end %>
+
+        <div class="clear"></div>
+      </div>
+    </div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>

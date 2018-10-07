@@ -1,0 +1,5 @@
+<h1><%= t :title%></h1>
+
+<%= render :partial => 'form', :locals => { :action => 'create', :message => @message } %>
+
+<%= link_to tg(:back), admin_news_index_path %>

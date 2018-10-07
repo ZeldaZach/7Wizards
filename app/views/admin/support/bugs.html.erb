@@ -1,0 +1,27 @@
+<h1><%= t :title%></h1>
+
+<table border="1">
+  <tr>
+    <th><%= tf Message, :created_at %></th>
+    <th><%= tf Message, :user %></th>
+    <th><%= tf Message, :category %></th>
+    <th><%= tf Message, :Q %></th>
+    <th></th>
+  </tr>
+  <% for message in @messages %>
+    <tr>
+      <td width="100"><%= d message.created_at %></td>
+      <td><%= link_to message.user.name, admin_user_path(message.user) %></td>
+      <td width="100"><%= message.extra %></td>
+      <td>
+        <%= link_to t(:not_a_bug), {:action => :not_a_bug, :id => message.id, :page => @page, :mode => @mode, :answer => true}, :confirm => 'Не баг ?' %><br />
+        <%= link_to t(:answer), :action => :answer, :id => message.id, :page => @page, :mode => @mode %><br />
+        <%= link_to t(:no_answer), {:action => :reply, :id => message.id, :page => @page, :mode => @mode, :ignore => true}, :confirm => 'Оставить без ответа ?' %><br />
+        <%= link_to tg(:destroy), {:action => :delete_message, :id => message.id, :page => @page, :mode => @mode, :answer => true}, :confirm => 'Удалить ?' %><br />
+      </td>
+      <td><%= message.message %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @messages %><br />

@@ -1,0 +1,18 @@
+server {
+    listen 80;
+    server_name *.7wizards.com;
+
+    if ($http_host ~* ^par([^.]+?)\.(7wizards\.(ru|com|local))) {
+            set $partner $1;
+            set $domain  $2;
+          rewrite ^(.*)$ http://www.$domain$1?partner=$partner;
+  }
+
+    if ($http_host ~* ^rf([^.]+?)(\.([^.]*?))?(\.([^.]*?))?\.(7wizards\.(ru|com|local))$) {
+       set $src    $1;
+       set $cid    $3;
+       set $kw     $5;
+       set $domain $6;
+       rewrite ^(.*)$ http://www.$domain$1?src=$src&cid=$cid&kw=$kw;
+    }
+}

@@ -1,0 +1,13 @@
+<div class="rounded corners">
+  <h2><%= t :title %></h2>
+
+  <div>
+    <%= t :description %>
+  </div>
+
+  <ul>
+    <li><strong><%= t :end_date %></strong>: <%= d @user.holiday_end_time %></li>
+    <li><strong><%= t :remain %></strong>: <%= (@user.holiday_end_time - Time.now).seconds_to_full_time %></li>
+  </ul>
+
+</div>

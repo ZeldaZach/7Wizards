@@ -1,0 +1,29 @@
+development:
+  host: xxx
+  security_code: xxx
+  payment_url: xxx
+  portal_api_url: xxx
+  payment_api_url: xxx
+  project_id: 565
+  partner_id: 1105
+  login_url: xxx
+
+test:
+  host: xxx
+  security_code: xxx
+  payment_url: xxx
+  portal_api_url: xxx
+  payment_api_url: xxx
+  project_id: 746
+  partner_id: 1105
+  login_url: xxx
+
+production:
+  host: xxx
+  security_code: xxx
+  payment_url: xxx
+  portal_api_url: xxx
+  payment_api_url: xxx
+  project_id: 565
+  partner_id: 1105
+  login_url: xxx

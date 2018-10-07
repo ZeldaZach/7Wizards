@@ -1,0 +1,29 @@
+<div class="additional_info_block" >
+  <%= render :partial => "wizards/profile/user_avatar", :locals => {:user => @user} %>
+
+
+  <div class="quick_links">
+    <h2 class="block_header"><%= tg(:actions) %></h2>
+    <ul class="navigate">
+
+      <%if @user.confirmed_email && !@user.hi5? && !@user.bigpoint? %>
+
+        <% AdyenConfig.products.each do |value|  %>
+          <li><%= render :partial=>'membership', :locals => {:is_menu => true,
+              :name_level => "#{user_name(@user)} (Level: #{@user.a_level})",
+              :gold => value["gold"],
+              :payment_amount => value["cost"],
+              :formid => "adform#{value[:key]}",
+              :merchanreference => value[:key],
+              :product => value["description"],
+              :skin => user_image(@user)}%></li>
+        <%end%>
+      <%end%>
+
+      <li style="padding-left: 44px;"><%= link_to_ajax t(:statistics), :url => buygold_path(:action => :payments_log) %></li>
+    </ul>
+  </div>
+  <div class="additional_info_bg"></div>
+  <div class="additional_info_bottom"></div>
+  <div class="additional_info_top"></div>
+</div>

@@ -1,0 +1,53 @@
+<div id="columns_narrow_wide">
+
+  <div id="col_left">
+
+    <%= render :partial => "partial_navigate"%>
+
+  </div>
+
+  <div id="col_right">
+    <div class="main_col_content" id="clans_details" >
+      <div class="quick_links">
+        <h1 class="category_title_shop"><%= tf Clan, :description %></h1>
+        <p>
+          <% if !@clan.description.blank? %>
+            <%= h @clan.description %>
+          <% end %>
+        </p>
+      </div>
+
+      <div class="quick_links">
+        <h1 class="category_title_shop"><%= tv(:clan_information) %></h1>
+        <ul>
+          <li>
+            <%= tf Clan, :name %>: <%= clan_name @clan %>
+          </li>
+          <li>
+    <%= tf Clan, :creator %>: <span class="clan_color"><%= user_link @clan.creator %></span></li>
+          <li>
+            <% if @clan.active? %>
+              <% if @clan.creator != @clan.owner %>
+                <%= tf Clan, :owner %>
+               <span class="clan_color"> <%= user_link @clan.owner %></span>
+              <% end %>
+            </li>
+            <li><%= tf Clan, :rating %>: <%= @clan.rating %></li>
+            <li><%= tf Clan, :users %>: <%= @clan.user_count %></li>
+            <li><%= tf Clan, :free_places %>: <%= @clan.free_places %></li>
+            <li><%= tf Clan, :a_money %>: <%= @clan.a_money %></li>
+            <li><%= tf Clan, :a_staff2 %>: <%=  @clan.a_staff2 %></li>
+            <li><%= tf Clan, :war_status %>: <%= @clan.on_war? ? "<span class='red'>#{tf(Clan, :war_status_war)}</span>" : tf(Clan, :war_status_piece) %></li>
+          <% else %>
+            <li><%= tf Clan, :status %>: <%= t(:clan_no_active) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+
+</div>
+<div class="clear"></div>

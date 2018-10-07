@@ -1,0 +1,41 @@
+<% new_count = proc { |count| count && count > 0 ? "(#{count})" : "" } %>
+<%
+  @category = @controller.action_name
+  if @category == "user_messages"
+    @category << @kind.to_s
+  end
+%>
+<% selected = proc { |category| category == @category ? "class='selected'" : "" } %>
+
+
+<div class="additional_info_block" >
+  <%= render :partial => "wizards/profile/user_avatar", :locals => {:user => @user} %>
+  <div id="messages_menu" class="quick_links">
+    <h2 class="block_header"><%= t :menu %></h2>
+    <%
+      menus = []
+      menus << "<li class='new_message'><b>#{link_to_ajax(t(:new_message), :url => mail_path(:action => :new_message))}</b></li>"
+      if @user.clan
+        menus << "<li class='new_message'><b>#{link_to_ajax(t(:new_clan_message), :url => mail_path(:action => :new_clan_message))}</b></li> "
+      end
+
+      menus << "<li #{selected.call("user_messages1")}>#{link_to_ajax t(:menu_incoming, :count => new_count.call(@new_incoming)), :url => mail_path(:action => :user_messages, :kind => Message::MESSAGE_FROM, :id => nil) }</li>"
+      menus << "<li #{selected.call("user_messages2")}>#{link_to_ajax t(:menu_send_message), :url => mail_path(:action => :user_messages, :kind => Message::MESSAGE_TO, :id => nil)}</li>"
+      menus << "<li #{selected.call("friend_requests")}>#{link_to_ajax t(:menu_friend_requests, :count => new_count.call(@new_friens)), :url => mail_path(:action => :friend_requests)}</li>"
+      menus << "<li #{selected.call("notifications")}>#{link_to_ajax t(:menu_events, :count => new_count.call(@new_events)), :url => mail_path(:action => :notifications, :id => nil)}</li>"
+      menus << "<li #{selected.call("fight_logs")}>#{link_to_ajax t(:menu_fight_logs, :count => new_count.call(@new_fights)), :url => mail_path(:action => :fight_logs, :id => nil)}</li>"
+      if @user.clan
+        menus << "<li #{selected.call("clan_messages")}>#{link_to_ajax t(:menu_clan_messages, :count => new_count.call(@new_history)), :url => mail_path(:action => :clan_messages) }</li>"
+      end
+    %>
+
+
+    <ul class="navigate">
+        <%= menus.join("") %>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <div class="additional_info_bg"></div>
+  <div class="additional_info_bottom"></div>
+  <div class="additional_info_top"></div>
+</div>

@@ -1,0 +1,407 @@
+production:
+  male1:
+    price: 0
+    price_staff: 0
+    level: 1
+    clothes:
+      armleft:
+        count: 3
+        color: 0xe0e9ff
+      armright:
+        count: 4
+        color: 0xe0e9ff
+      boots:
+        count: 3
+        color: 0xa44b24
+      hair:
+        count: 4
+        color: 0x8b4909
+      top:
+        count: 10
+        color: 0xdee1f0
+      middle:
+        count: 2
+        color: 0xdee1f0
+      wings:
+        by_names: ['simple', 'dark', 'skelet']
+        color: 0xe3e8f9
+      face:
+        count: 4
+        color: 0xc8e4f9
+      fon:
+        by_names: ['mountains', 'vulcan']
+        color: 0xFFFFFF
+  male2:
+    price: 0
+    price_staff: 300
+    level: 7
+    clothes:
+      armleft:
+        count: 2
+        color: 0xe0e9ff
+      armright:
+        count: 4
+        color: 0xe0e9ff
+      boots:
+        count: 3
+        color: 0xa44b24
+      hair:
+        count: 4
+        color: 0x8b4909
+      top:
+        count: 3
+        color: 0xdee1f0
+      middle:
+        count: 3
+        color: 0xdee1f0
+      face:
+        count: 4
+        color: 0xc8e4f9
+      wings:
+        by_names: ['simple', 'dark', 'skelet', 'betman', 'fly']
+        color: 0xe3e8f9
+      fon:
+        by_names: ['mountains', 'vulcan', 'liana', 'stone']
+        color: 0xFFFFFF
+  male3:
+    price: 0
+    price_staff: 1000
+    level: 10
+    clothes:
+      armleft:
+        count: 4
+        color: 0xe0e9ff
+      armright:
+        count: 6
+        color: 0xe0e9ff
+      boots:
+        count: 4
+        color: 0xa44b24
+      hair:
+        count: 8
+        color: 0x8b4909
+      pants:
+        count: 4
+        color: 0xdee1f0
+      top:
+        count: 7
+        color: 0xdee1f0
+      face:
+        count: 3
+        color: 0xc8e4f9
+      wings:
+        by_names: ['simple', 'dark', 'skelet', 'betman', 'fly']
+        color: 0xe3e8f9
+      fon:
+        by_names: ['mountains', 'vulcan', 'liana', 'stone']
+        color: 0xFFFFFF
+  male4:
+    price: 0
+    price_staff: 1800
+    level: 10
+    clothes:
+      armleft:
+        count: 5
+        color: 0xe0e9ff
+      armright:
+        count: 2
+        color: 0xe0e9ff
+      boots:
+        count: 4
+        color: 0xa44b24
+      hair:
+        count: 5
+        color: 0x8b4909
+      pants:
+        count: 4
+        color: 0xdee1f0
+      raincoat:
+        count: 2
+        color: 0xdee1f0
+      top:
+        count: 5
+        color: 0xdee1f0
+      face:
+        count: 5
+        color: 0xc8e4f9
+      topbig:
+        count: 3
+        color: 0xc8e4f9
+      wings:
+        by_names: ['vampire1', 'vampire2', 'vampire3', 'vampire4']
+        color: 0xe3e8f9
+      fon:
+        by_names: ['mountains', 'vulcan', 'liana', 'stone']
+        color: 0xFFFFFF
+
+test:
+  male1:
+    price: 0
+    price_staff: 0
+    level: 1
+    clothes:
+      armleft:
+        count: 3
+        color: 0xe0e9ff
+      armright:
+        count: 4
+        color: 0xe0e9ff
+      boots:
+        count: 3
+        color: 0xa44b24
+      hair:
+        count: 4
+        color: 0x8b4909
+      top:
+        count: 10
+        color: 0xdee1f0
+      middle:
+        count: 2
+        color: 0xdee1f0
+      wings:
+        by_names: ['simple', 'dark', 'skelet']
+        color: 0xe3e8f9
+      face:
+        count: 4
+        color: 0xc8e4f9
+      fon:
+        by_names: ['mountains', 'vulcan', 'liana', 'stone']
+        color: 0xFFFFFF
+  male2:
+    price: 0
+    price_staff: 300
+    level: 7
+    clothes:
+      armleft:
+        count: 2
+        color: 0xe0e9ff
+      armright:
+        count: 4
+        color: 0xe0e9ff
+      boots:
+        count: 3
+        color: 0xa44b24
+      hair:
+        count: 4
+        color: 0x8b4909
+      top:
+        count: 3
+        color: 0xdee1f0
+      middle:
+        count: 3
+        color: 0xdee1f0
+      face:
+        count: 4
+        color: 0xc8e4f9
+      wings:
+        by_names: ['simple', 'dark', 'skelet', 'betman', 'fly']
+        color: 0xe3e8f9
+      fon:
+        by_names: ['mountains', 'vulcan', 'liana', 'stone']
+        color: 0xFFFFFF
+  male3:
+    price: 0
+    price_staff: 1000
+    level: 10
+    clothes:
+      armleft:
+        count: 4
+        color: 0xe0e9ff
+      armright:
+        count: 6
+        color: 0xe0e9ff
+      boots:
+        count: 4
+        color: 0xa44b24
+      hair:
+        count: 8
+        color: 0x8b4909
+      pants:
+        count: 4
+        color: 0xdee1f0
+      top:
+        count: 7
+        color: 0xdee1f0
+      face:
+        count: 3
+        color: 0xc8e4f9
+      wings:
+        by_names: ['simple', 'dark', 'skelet', 'betman', 'fly']
+        color: 0xe3e8f9
+      fon:
+        by_names: ['mountains', 'vulcan', 'liana', 'stone']
+        color: 0xFFFFFF
+  male4:
+    price: 0
+    price_staff: 1800
+    level: 10
+    clothes:
+      armleft:
+        count: 5
+        color: 0xe0e9ff
+      armright:
+        count: 2
+        color: 0xe0e9ff
+      boots:
+        count: 4
+        color: 0xa44b24
+      hair:
+        count: 5
+        color: 0x8b4909
+      pants:
+        count: 4
+        color: 0xdee1f0
+      raincoat:
+        count: 2
+        color: 0xdee1f0
+      top:
+        count: 5
+        color: 0xdee1f0
+      face:
+        count: 5
+        color: 0xc8e4f9
+      topbig:
+        count: 3
+        color: 0xc8e4f9
+      wings:
+        by_names: ['vampire1', 'vampire2', 'vampire3', 'vampire4']
+        color: 0xe3e8f9
+      fon:
+        by_names: ['mountains', 'vulcan', 'liana', 'stone']
+        color: 0xFFFFFF
+
+development:
+  male1:
+    price: 0
+    price_staff: 0
+    level: 1
+    clothes:
+      armleft:
+        count: 3
+        color: 0xe0e9ff
+      armright:
+        count: 4
+        color: 0xe0e9ff
+      boots:
+        count: 3
+        color: 0xa44b24
+      hair:
+        count: 4
+        color: 0x8b4909
+      top:
+        count: 10
+        color: 0xdee1f0
+      middle:
+        count: 2
+        color: 0xdee1f0
+      wings:
+        by_names: ['simple', 'dark', 'skelet']
+        color: 0xe3e8f9
+      face:
+        count: 4
+        color: 0xc8e4f9
+      fon:
+        by_names: ['mountains', 'vulcan', 'liana', 'stone']
+        color: 0xFFFFFF
+  male2:
+    price: 0
+    price_staff: 300
+    level: 7
+    clothes:
+      armleft:
+        count: 2
+        color: 0xe0e9ff
+      armright:
+        count: 4
+        color: 0xe0e9ff
+      boots:
+        count: 3
+        color: 0xa44b24
+      hair:
+        count: 4
+        color: 0x8b4909
+      top:
+        count: 3
+        color: 0xdee1f0
+      middle:
+        count: 3
+        color: 0xdee1f0
+      face:
+        count: 4
+        color: 0xc8e4f9
+      wings:
+        by_names: ['simple', 'dark', 'skelet', 'betman', 'fly']
+        color: 0xe3e8f9
+      fon:
+        by_names: ['mountains', 'vulcan', 'liana', 'stone']
+        color: 0xFFFFFF
+  male3:
+    price: 0
+    price_staff: 1000
+    level: 10
+    clothes:
+      armleft:
+        count: 4
+        color: 0xe0e9ff
+      armright:
+        count: 6
+        color: 0xe0e9ff
+      boots:
+        count: 4
+        color: 0xa44b24
+      hair:
+        count: 8
+        color: 0x8b4909
+      pants:
+        count: 4
+        color: 0xdee1f0
+      top:
+        count: 7
+        color: 0xdee1f0
+      face:
+        count: 3
+        color: 0xc8e4f9
+      wings:
+        by_names: ['simple', 'dark', 'skelet', 'betman', 'fly']
+        color: 0xe3e8f9
+      fon:
+        by_names: ['mountains', 'vulcan', 'liana', 'stone']
+        color: 0xFFFFFF
+  male4:
+    price: 0
+    price_staff: 1800
+    level: 10
+    clothes:
+      armleft:
+        count: 5
+        color: 0xe0e9ff
+      armright:
+        count: 2
+        color: 0xe0e9ff
+      boots:
+        count: 4
+        color: 0xa44b24
+      hair:
+        count: 5
+        color: 0x8b4909
+      pants:
+        count: 4
+        color: 0xdee1f0
+      raincoat:
+        count: 2
+        color: 0xdee1f0
+      top:
+        count: 5
+        color: 0xdee1f0
+      face:
+        count: 5
+        color: 0xc8e4f9
+      topbig:
+        count: 3
+        color: 0xc8e4f9
+      wings:
+        by_names: ['vampire1', 'vampire2', 'vampire3', 'vampire4']
+        color: 0xe3e8f9
+      fon:
+        by_names: ['mountains', 'vulcan', 'liana', 'stone']
+        color: 0xFFFFFF

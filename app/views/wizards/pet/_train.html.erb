@@ -1,0 +1,97 @@
+<div id="train" class="visibl">
+  <%if user.pet_is_dead?%>
+    <div class="quick_links">
+      <h1 class="category_title_shop"><%= t(:pet_status) %></h1>
+      <ul class="blue_buttons" style="text-align: center">
+        <li><%= t(:pet_dead_description, :gold => GameProperties::PET_REANIMATE_PRICE_STAFF) %></li>
+        <li style="margin-top: 10px;"><%= link_to_ajax tv(:pet_resurrect), :url => pet_path(:action => :process_buy)%></li>
+      </ul>
+    </div>
+  <%end%>
+
+  <div class="quick_links">
+    <h1 class="category_title_shop"><%= t(:pet_train_title) %></h1>
+    <table class="table">
+      <tr>
+        <th></th>
+        <th><%= tg(:description) %></th>
+        <th style="text-align: center;"><%= tg(:price) %></th>
+        <th></th>
+      </tr>
+      <% %w(power protection dexterity skill weight).each do |item| %>
+        <tr>
+          <td> <%= user_attribute_image_tag item %></td>
+          <td>
+            <table class="table_little_buttons">
+              <tr>
+                <td>
+                  <div class="progressbar">
+                    <%= image_design_tag("progress_bar_l.png") %>
+                    <%= image_design_tag("progress_bar_middle.png", {:class => "progress",:height=>"11px", :width => (user["pet_#{item}"].to_f / max_value * 245).to_i}) %>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="train_desc">
+                  <br/> <strong><%= tf User, "a_#{item}" %>:</strong>
+                  <%= tf User, "pet_#{item}_description" %><br />
+                  <b> <%= t(:current_level, :level => user["pet_#{item}"]) %></b>
+                </td>
+              </tr>
+            </table>
+          </td>
+          <td class="price"><%= price_tag(:price => prices["pet_#{item}".to_sym]) %></td>
+          <td class="little_button">
+            <%unless user.pet_is_dead?%>
+              <%= link_to_ajax tg(:upgrade), pet_path(:action => :process_train, :a => item) %>
+            <%end%>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <div class="clear" style="height: 15px;"></div>
+  <div>
+    <h1 class="category_title_shop"><%= t :pet_power_ups %></h1>
+    <div class="equipment_slot profile_main">
+
+      <% for power_up in @power_ups %>
+        <ul class="information_tips_block equipment_block clean no_scroll">
+
+          <%active = power_up.is_active? @user%>
+
+          <%if active %>
+            <li class="image_block">
+              <%= game_item_image_tag(power_up) %>
+            </li>
+          <%else%>
+            <li class="image_block grey_img">
+              <%= game_item_image_tag(power_up) %>
+            </li>
+
+          <%end%>
+
+          <li class="tips">
+            <ul>
+              <li><b class="hint_titel"><%= power_up.title(@user) %></b></li>
+              <li><%= power_up.description(@user) %></li>
+
+              <% if active %>
+                <li><%= tg :expire_date, :date => d(power_up.get_expire_date(@user)) %></li>
+              <%end%>
+
+            </ul>
+          </li>
+        </ul>
+      <% end %>
+
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <%if @pet_potions.size > 0 %>
+    <%= render :partial => "pet_potions", :locals => {:potions => @pet_potions} %>
+  <%end%>
+</div>
+
+

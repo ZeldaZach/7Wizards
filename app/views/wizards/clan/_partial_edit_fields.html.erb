@@ -1,0 +1,46 @@
+<div class="quick_links">
+  <h1 class="category_title_shop"><%= tv(:clan_information) %></h1>
+  <ul>
+    <li class="clan_edit_form">
+      <%= f.label :name, tf(Clan, :name) %>
+      <%= f.text_field :name, :class => "text edit_clan_name" %>
+    </li>
+
+    <li class="clan_edit_form">
+      <%= f.label :description, tf(Clan, :description) %>
+      <%= f.text_area :description, :class => "top_border"%>
+    </li>
+  </ul>
+  <div class="clear"></div>
+</div>
+
+<div class="quick_links">
+  <h1 class="category_title_shop"><%= t(:clan_choise_logo_front) %></h1>
+  <ul>
+    <li>
+      <%= f.hidden_field(:avatar)%>
+    </li>
+    <li>
+      <% available_clan_images.each do |image| %>
+        <%= link_to image_tag(clan_image_url(image), :width => 115, :class => "logo"),
+          "javascript: void(0)", :class=>"active_always", :onclick => "clan.changeFrontLogo('#{image}', 'clan_avatar', 'clan_front_logo', '#{clan_image_url(image)}')" %>
+      <% end %>
+    </li>
+  </ul>
+  <div class="clear"></div>
+</div>
+<div class="quick_links">
+  <h1 class="category_title_shop"><%= t(:clan_choise_logo_back) %></h1>
+  <ul>
+    <li>
+
+      <% available_clan_images.each do |image| %>
+        <%= link_to image_tag(clan_image_url(image, true), :width => 115, :class => "logo"),
+          "javascript: void(0)", :class=>"active_always", :onclick => "clan.changeBackLogo('#{image}','clan_avatar', 'clan_back_logo', '#{clan_image_url(image, true)}')" %>
+      <% end %>
+    </li>
+  </ul>
+
+  <div class="clear"></div>
+</div>
+

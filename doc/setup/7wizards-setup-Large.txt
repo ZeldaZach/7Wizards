@@ -1,0 +1,217 @@
+# Ubuntu 8.05 
+ami-cf8d61a6
+
+EC2 Instance: i-39f99553
+
+ari-6cbb5905
+
+#CONNECT
+ sh -i wizards_key.pem ubuntu@x.x.x.x
+
+#MYSQL CONNECTIOM
+ 
+#START ALL SERVICES
+#nginx, god, memcached, redis, orbited, morbid
+sudo /etc/init.d/startup.sh
+ 
+#SYSTEM Update 
+sudo apt-get update
+
+#Prerequisite packages
+ sudo apt-get install build-essential libssl-dev libreadline5-dev zlib1g-dev unzip
+ aptitude install libmysql-ruby mysql-client-5.1
+ 
+#INSTALL GIT
+ sudo apt-get install git git-core
+ 
+#INSTALL REE 
+#from http://www.rubyenterpriseedition.com/download.html
+ 
+ cd /tmp
+ wget http://rubyforge.org/frs/download.php/71096/ruby-enterprise-1.8.7-2010.02.tar.gz
+ tar xzvf ruby-enterprise-1.8.7-2010.02.tar.gz
+ cd /ruby-enterprise-1.8.7-2010.02
+ ./installer
+ 
+ * /opt/ruby-enterprise-1.8.7-2010.02/bin/ruby /opt/ruby-enterprise-1.8.7-2010.02/bin/gem install mysql
+ * /opt/ruby-enterprise-1.8.7-2010.02/bin/ruby /opt/ruby-enterprise-1.8.7-2010.02/bin/gem install sqlite3-ruby
+ * /opt/ruby-enterprise-1.8.7-2010.02/bin/ruby /opt/ruby-enterprise-1.8.7-2010.02/bin/gem install pg
+ 
+ sudo ln -s /opt/ruby-enterprise-1.8.7-2010.02/bin/ruby /usr/local/bin/ruby
+ sudo ln -s /opt/ruby-enterprise-1.8.7-2010.02/bin/ri /usr/local/bin/ri
+ sudo ln -s /opt/ruby-enterprise-1.8.7-2010.02/bin/rdoc /usr/local/bin/rdoc
+ sudo ln -s /opt/ruby-enterprise-1.8.7-2010.02/bin/irb /usr/local/bin/irb
+ sudo ln -s /opt/ruby-enterprise-1.8.7-2010.02/bin/ruby /usr/bin/ruby
+ sudo ln -s /opt/ruby-enterprise-1.8.7-2010.02/bin/gem /usr/bin/gem
+ sudo ln -s /opt/ruby-enterprise-1.8.7-2010.02/bin/rake /usr/bin/rake
+ 
+ #REQUIRED GEM
+ sudo apt-get install libmysqlclient15-dev
+ sudo gem install mysql
+ 
+#Rails
+#rails has been integrated in project v=2.3.3
+
+#INSTALL NGIXG + PASSENGER
+ cd /opt
+ wget http://rubyforge.org/frs/download.php/71376/passenger-2.2.15.tar.gz
+ tar xzvf passenger-2.2.15.tar.gz
+ cd /opt/passenger-2.2.15/bin
+ ./passenger-install-nginx-module
+ 
+ #GEMS FOR PROJECT
+ sudo gem install capistrano
+ sudo gem install geminstaller
+ sudo gem install rack -v=1.0.1
+ sudo gem install stomp
+ sudo gem install json
+ sudo gem install adyen
+ sudo gem install whenever -v=0.4.1
+ sudo gem install god
+
+ #LIB XML
+ sudo apt-get install libxml2-dev
+ sudo gem install libxml-ruby
+ 
+#ADD DEPLOY USER 
+ 
+ sudo useradd deploy
+ sudo mkdir /home/deploy/.ssh
+ sudo cp /home/ubuntu/.ssh/* /home/deploy/.ssh
+ sudo chown -R deploy /home/deploy/.ssh/
+ sudo passwd deploy
+ sudo usermod -a -G admin ubuntu
+ sudo usermod -a -G admin deploy
+ sudo chmod 755 -R /var/www/
+ sudo chown deploy:admin -R /var/www
+ 
+  #IF cap COMMAND DOES NOT WORK
+ #CHECK EXECUTABLE DIRECTORY
+ 
+ gem environment
+ 
+ #ADD END OF FILE  /etc/profile
+ #EXECUTABLE DIRECTORY: /opt/ruby-enterprise-1.8.7-2010.02/bin
+ 
+ export PATH=$PATH:/opt/ruby-enterprise-1.8.7-2010.02/bin
+ 
+ #setup capistrano
+ cd /var/www/7wizards
+ cap deploy:setup
+ 
+ #INSTALL REDIS
+  cd /tmp
+  wget http://redis.googlecode.com/files/redis-1.2.6.tar.gz
+  tar xzvf redis-1.2.6.tar.gz
+  cd redis-1.2.6
+  make
+ 
+  sudo cp redis-server /usr/bin 
+  sudo cp redis-cli /usr/bin
+  
+#CONFIGURE CHAT SERVER ORBITED
+#REQUIRED PACKAGES
+    orbited-0.7.10.tar.bz2
+    orbited_static.tar.bz2
+    rabbitmq-server-1.7.2.tar.bz2
+
+#FROM http://fuglyatblogging.wordpress.com/2008/10/08/http-push-aka-comet-with-orbited-and-rails/
+#Orbited + dependencies
+ sudo apt-get install python2.5-dev
+ sudo apt-get install python-twisted
+ 
+ wget http://peak.telecommunity.com/dist/ez_setup.py
+ sudo python ez_setup.py setuptools
+ sudo easy_install orbited
+
+#CONFIGURATION FILE LOCATED IN PROJECT CONFIG
+#http://bitbucket.org/desmaj/orbited/raw/a1dd89703956/daemon/orbited.cfg
+#Verify the Installation Works 
+#To make sure the installation was successful, run this simple test:
+#Enter your Python interpreter:
+ 
+ python
+
+#See whether Orbited loads:
+
+ import orbited
+#If you don't see an error, the installation worked!
+ 
+#Post-Installation Notes 
+  sudo easy_install python-cjson
+#OR
+ sudo easy_install simplejson
+
+
+#Star ?Em up!
+ sudo orbited ?config=/path/to/your/orbited.cfg
+ sudo morbid
+
+
+sudo apt-get install devscripts devscripts-el cdbs debhelper libqt4-dev erlang-base erlang-nox erlang-dev erlang-src make python pgp
+                     dpkg-dev dpkg-dev-el dh-make
+#biuild rabbitmq-server_1.7.2
+#untar rabbitmq-server_1.7.2
+
+#GENERATE KEY
+sudo gpg --cert-digest-algo=SHA256 --default-preference-list="h10 h8 h9 h11 s9 s8 s7 s3 z2 z3 z1 z0" --gen-key
+
+#EXAMPLE
+#gpg: /home/ubuntu/.gnupg/trustdb.gpg: trustdb created
+#gpg: key 6AC50723 marked as ultimately trusted
+
+#Required erl version R13B01
+
+cd rabbitmq-server_1.7.2
+sudo debuild -k6AC50723 -d -us -uc
+
+#BUILD ORBITED
+install debuild from souruse if need
+https://launchpadlibrarian.net/19535943/debhelper_7.0.13ubuntu1%7Ehardy1.tar.gz
+https://launchpad.net/ubuntu/maverick/+source/debhelper
+
+
+#INSTALL JAVA ANT
+ sudo apt-get install openjdk-6-jre
+ sudo apt-get install ant
+ 
+#LOG ROTATION
+	sudo nano /etc/logrotate.d/wizards
+#ADD NEXT CONTENT
+	/var/www/7wizards/shared/log/*.log {
+        daily
+        rotate 10
+        dateext
+        delaycompress
+        missingok
+        notifempty
+}
+#INSTALL Postfix SMTP 
+ sudo aptitude install postfix sasl2-bin
+
+#CONFIG MEMCACHED
+ sudo apt-get install memcached
+
+#add startup 
+update-rc.d startup.sh defaults
+
+#CONFIG BACKUP
+#http://flurdy.com/docs/ec2/backup/
+#EXAMPLE 
+./s3cmd.rb put wizards-backup:wizards_bkp /tmp/wizards_backup_restore.tar.gz
+./s3cmd.rb get wizards-backup:wizards_bkp /tmp/wizards_backup_restore.tar.gz
+
+sudo nano /etc/crontab
+#ADD 
+30 11 * * * root /bin/s3backup.sh
+
+#install scout
+sudo gem install scout;sudo mkdir -p /home/daemon/.scout/; sudo touch /home/daemon/.scout/last_run.log; sudo chmod 666 /home/daemon/.scout/last_run.log; 
+sudo chown -R daemon.daemon /home/daemon/; 
+
+echo "* * * * * daemon `which scout` d346d494-17be-42d2-84d0-2f7db316df36 -d /home/daemon/.scout/client_history.yaml -v > /home/daemon/.scout/last_run.log 2>&1" | sudo tee /etc/cron.d/scout
+* * * * * daemon /opt/ruby-enterprise-1.8.7-2010.02/bin/scout d346d494-17be-42d2-84d0-2f7db316df36 -d /home/daemon/.scout/client_history.yaml -v > /home/daemon/.scout/last_run.log 2>&1
+
+sudo gem install request-log-analyzer
+sudo gem install redis
+sudo apt-get install sysstat

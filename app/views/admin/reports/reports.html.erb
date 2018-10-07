@@ -1,0 +1,35 @@
+<h1>Content of file : <%= @name %></h1>
+
+<%
+  reports = %w(top_users buy_gold_days buy_gold_month buy_gold_top_users last_spend_money active_users
+    spend_money_today spend_money_yesterday spend_money_2_days_ago spend_money_current_week spend_money_previous_week
+    spend_money_2_weeks_ago spend_money_current_month
+    spend_money_previous_month spend_money_2_months_ago spend_money_all
+    disabled_users payment_users_by_level total_active_users_by_level last_bonuses
+    attributes_by_level )
+
+  options = '<option value="">Select</option>'
+  reports.each { |r| options += "<option>#{r}</option>" }
+%>
+
+<% form_tag :action => 'reports' do %>
+  <%= select_tag :name, options %>
+  <%= submit_tag :open %>
+<% end %>
+
+<%
+  reports_p = %w(partner_payments partner_users_by_level partner_users_by_week_activity partner_registration_all partner_registration_today partner_registration_yesterday
+  partner_registration_2_days_ago partner_registration_current_week partner_registration_previous_week
+  partner_registration_2_weeks_ago partner_registration_current_month partner_registration_previous_month
+  partner_registration_2_months_ago)
+
+  options_p = '<option value="">Select partner report</option>'
+  reports_p.each { |r| options_p += "<option>#{r}</option>" }
+%>
+
+<% form_tag :action => 'reports' do %>
+  <%= select_tag :name, options_p %>
+  <%= submit_tag :open %>
+<% end %>
+
+<%= @content %>

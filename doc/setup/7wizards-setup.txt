@@ -1,0 +1,198 @@
+# Ubuntu 8.04
+
+#ssh connection
+ ssh -i wizards_key.pem ubuntu@x.x.x.x
+
+#MYSQL CONNECTIOM
+
+ #START ALL SERVICES (nginx, orbited, morbid, redis)
+ sudo /etc/init.d/startup.sh
+
+#SYSTEM Update 
+sudo apt-get update
+
+#Prerequisite packages
+ sudo apt-get install build-essential libssl-dev libreadline5-dev zlib1g-dev unzip
+ aptitude install libmysql-ruby mysql-client-5.1
+ 
+ 
+#INSTALL GIT
+ sudo apt-get install git git-core
+
+ 
+#INSTALL REE 
+#from http://www.rubyenterpriseedition.com/download.html
+ 
+ cd /tmp
+ wget http://rubyforge.org/frs/download.php/71096/ruby-enterprise-1.8.7-2010.02.tar.gz
+ tar xzvf ruby-enterprise-1.8.7-2010.02.tar.gz
+ cd /ruby-enterprise-1.8.7-2010.02
+ ./installer
+ 
+sudo rm /usr/local/bin/ruby
+sudo rm /usr/local/bin/ri
+sudo rm /usr/local/bin/rdoc
+sudo rm /usr/local/bin/irb
+sudo rm /usr/bin/ruby
+
+sudo ln -s /opt/ruby-enterprise/bin/ruby /usr/local/bin/ruby
+sudo ln -s /opt/ruby-enterprise/bin/ri /usr/local/bin/ri
+sudo ln -s /opt/ruby-enterprise/bin/rdoc /usr/local/bin/rdoc
+sudo ln -s /opt/ruby-enterprise/bin/irb /usr/local/bin/irb
+sudo ln -s /opt/ruby-enterprise/bin/ruby /usr/bin/ruby
+sudo ln -s /opt/ruby-enterprise/bin/gem /usr/bin/gem
+sudo ln -s /opt/ruby-enterprise/bin/rake /usr/bin/rake
+
+#REQUIRED GEM
+ sudo apt-get install libmysqlclient-dev
+ sudo gem install mysql
+ 
+#Rails
+#rails has been integrated in project v=2.3.3
+
+#INSTALL NGIXG + PASSENGER
+ cd /opt
+ wget http://rubyforge.org/frs/download.php/71376/passenger-2.2.15.tar.gz
+ tar xzvf passenger-2.2.15
+ cd /opt/passenger-2.2.15/bin
+ ./passenger-install-nginx-module
+ 
+#  http://oilq.org/fr/node/5891
+#  nginx path prefix: "/usr/local/nginx-0.7.67"
+#  nginx binary file: "/usr/local/nginx-0.7.67/sbin/nginx"
+#  nginx configuration prefix: "/usr/local/nginx-0.7.67/conf"
+#  nginx configuration file: "/usr/local/nginx-0.7.67/conf/nginx.conf"
+#  nginx pid file: "/usr/local/nginx-0.7.67/logs/nginx.pid"
+#  nginx error log file: "/usr/local/nginx-0.7.67/logs/error.log"
+#  nginx http access log file: "/usr/local/nginx-0.7.67/logs/access.log"
+#  nginx http client request body temporary files: "client_body_temp"
+#  nginx http proxy temporary files: "proxy_temp"
+#  nginx http fastcgi temporary files: "fastcgi_temp"
+
+ 
+#FOR START STOP NGINX, USE SCRIPT 
+#FROM http://code.google.com/p/nginx-init-ubuntu/
+ 
+
+ #CHECKOUT PROJECT
+ ssh-keygen -t rsa -C "ubuntu@7wizards.com"
+ sudo mkdir /var/www/7wizards
+ cd /var/www/7wizards
+ sudo chown -R ubuntu /var/www
+ git clone git@kavalok.unfuddle.com:kavalok/gt.git wizards
+
+
+ #GEMS FOR PROJECT
+ sudo gem install capistrano
+ sudo gem install geminstaller
+ sudo gem install rack -v=1.0.1
+ sudo gem install stomp
+ sudo gem install json
+ sudo gem install adyen
+ #LIB XML
+ sudo apt-get install libxml2-dev
+ sudo gem install libxml-ruby
+ 
+ #IF cap COMMAND DOES NOT WORK
+ #CHECK EXECUTABLE DIRECTORY
+ 
+ gem environment
+ 
+ #ADD END OF FILE  /etc/profile
+ #EXECUTABLE DIRECTORY: /opt/ruby-enterprise/bin
+ 
+ export PATH=$PATH:/opt/ruby-enterprise/bin
+ 
+ #setup capistrano
+ cd /var/www/7wizards
+ cap deploy:setup
+ 
+ #ADD DEPLOY USER 
+ 
+ sudo useradd deploy
+ sudo mkdir /home/deploy/.ssh
+ sudo cp /home/ubuntu/.ssh/* /home/deploy/.ssh
+ sudo chown -R deploy /home/deploy/.ssh/
+ 
+ #INSTALL REDIS
+  cd /tmp
+  wget http://redis.googlecode.com/files/redis-1.2.6.tar.gz
+  tar xzvf redis-1.2.6.tar.gz
+  cd redis-1.2.6
+  make
+ 
+  sudo cp redis-server /usr/bin 
+  sudo cp redis-cli /usr/bin
+  
+#CONFIGURE CHAT SERVER ORBITED
+#FROM http://fuglyatblogging.wordpress.com/2008/10/08/http-push-aka-comet-with-orbited-and-rails/
+#Orbited + dependencies
+ sudo apt-get install python2.5-dev
+ sudo apt-get install python-twisted
+ 
+ wget http://peak.telecommunity.com/dist/ez_setup.py
+ sudo python ez_setup.py setuptools
+ sudo easy_install orbited
+
+#CONFIGURATION FILE LOCATED IN PROJECT CONFIG
+#http://bitbucket.org/desmaj/orbited/raw/a1dd89703956/daemon/orbited.cfg
+#Verify the Installation Works 
+#To make sure the installation was successful, run this simple test:
+#Enter your Python interpreter:
+ 
+ python
+
+#See whether Orbited loads:
+
+ import orbited
+#If you don't see an error, the installation worked!
+ 
+#Post-Installation Notes 
+  easy_install python-cjson
+#OR
+ easy_install simplejson
+
+#STOMP Server
+ sudo easy_install morbid
+
+#Star ‘Em up!
+ sudo orbited –config=/path/to/your/orbited.cfg
+ sudo morbid
+  
+
+#INSTALL JAVA ANT
+ sudo apt-get install openjdk-6-jre
+ sudo apt-get insatll ant
+ 
+#LOG ROTATION
+	sudo nano /etc/logrotate.d/wizards
+#ADD NEXT CONTENT
+	/var/www/7wizards/shared/log/*.log {
+        daily
+        rotate 6
+        compress
+        delaycompress
+        missingok
+        notifempty
+	}
+
+#INSTALL Postfix SMTP 
+ sudo aptitude install postfix sasl2-bin
+ 
+
+
+
+  
+  
+  
+ 
+ 
+ 
+ 
+
+
+
+ 
+ 
+ 
+ 

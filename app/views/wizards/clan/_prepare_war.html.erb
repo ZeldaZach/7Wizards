@@ -1,0 +1,18 @@
+<% if @error_message %>
+  <%= t :can_not_start %>:<br />
+  <%= @error_message %>
+<% else %>
+  <%= t :start_conformation %>
+  <% if @warning_message %>
+    <br /><br />
+    <%= tg :warning %>:<br />
+    <%= @warning_message %>
+  <% end %>
+<% end %>
+
+<div class="bottom_popap">
+  <% unless @error_message %>
+    <%= link_to_ajax t(:start_war), { :url => clan_path(drid(:action => :start_war, :opponent_clan_id => @opponent_clan)) }, :class => "small_submit" %>
+  <% end %>
+  <%= link_to tg(:close), "javascript:void(0)", :id => "close_btn", :class=>"close_button", :onclick => "javascript: dialog.close()"%>
+</div>

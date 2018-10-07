@@ -1,0 +1,91 @@
+c01: 
+  name: Bat Claws
+  level: 1
+  price: 100
+  hours: 240
+c02: 
+  name: Toad
+  level: 2
+  price: 100
+  hours: 240
+c03: 
+  name: Triffid's sprout
+  level: 5
+  price: 1000
+  dexterity: -5
+  hours: 72
+c31: 
+  name: Vulture Talon
+  level: 12
+  price: 3000
+  dexterity_percent: -10
+  hours: 72
+c04: 
+  name: Demon's Hoof
+  level: 6
+  price: 1500
+  skill: -5
+  hours: 72
+c41: 
+  name: Devil's Keys
+  level: 13
+  price: 3500
+  skill_percent: -10
+  hours: 72
+c05: 
+  name: Damned Axe
+  level: 7
+  price: 2000
+  power: -5
+  hours: 72
+c51: 
+  name: Scissors of Fate
+  level: 14
+  price: 4000
+  power_percent: -10
+  hours: 72
+c06:
+  name: Evil Skull
+  description: The opponent's pet will be sent to the cage and locked there
+  level: 9
+  price: 2500
+  hours: 1
+  class: ShopCursePetCage
+c07:
+  name: Beast Scraps
+  description: The income from meditation will be 0 with the 20% possibility
+  percent: 20
+  hours: 72
+  level: 10
+  price: 2500
+  class: ShopCursePatrol
+c08:
+  name: Killing Trap
+  description: The pet heart cage will be disabled with the 5% possibility
+  percent: 5
+  hours: 72
+  level: 15
+  price: 4500
+  class: ShopCurseAntiPet
+c09:
+  name: Bubbling Bile
+  description: The opponent won't be able to receive gifts
+  hours: 72
+  level: 8
+  price: 2500
+  class: ShopCurseAntiGift
+c11:
+  name: Fiend's Horn
+  description: Power crystal and defence powder will be disabled
+  hours: 1
+  level: 11
+  price: 3000
+  class: ShopCurseAntiHousePowerProtection
+c12:
+  name: Witch Bag
+  description: "All battle stats: -10%"
+  percent: -10
+  hours: 24
+  level: 18
+  price: 5000
+  class: ShopCurseFightParameters

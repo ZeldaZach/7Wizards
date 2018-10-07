@@ -1,0 +1,53 @@
+development:
+  postmarkapp:
+    domain: 
+    user_name: 
+    password: 
+    address: localhost
+    port: 25
+    authentication:
+    tls: false
+  gmail:
+    domain: 
+    user_name:
+    password:
+    address: localhost
+    port: 25
+    authentication:
+    tls: false
+
+test:
+  postmarkapp:
+    domain: 
+    user_name:
+    password:
+    address: localhost
+    port: 25
+    authentication:
+    tls: false
+  gmail:
+    domain: 
+    user_name:
+    password:
+    address: localhost
+    port: 25
+    authentication:
+    tls: false
+    
+production:
+  postmarkapp:
+    domain: 
+    user_name: xxx
+    password: xxx
+    address: smtp.postmarkapp.com
+    port: 25
+    authentication: :plain
+    tls: true
+  gmail:
+    domain: 
+    user_name: 
+    password: 
+    address: smtp.gmail.com
+    port: 25
+    authentication: :plain
+    enable_starttls_auto: true

@@ -1,0 +1,40 @@
+<fieldset style="padding-bottom: 1px;" id="recaptcha_widget">
+  <dl class="field">
+    <div style="float: left" class="small_login"><%= tg :recapcha_title %></div>
+
+    <div style="float: left"> <%= text_field_tag "recaptcha_response_field", nil, :class => "text"%></div>
+
+    <div style="float: left" id="recaptcha_image"></div>
+    <div style="float: left"> <%= link_to image_design_tag("recaptcha.png"),"javascript:Recaptcha.reload()" %></div>
+
+  </dl>
+</fieldset>
+
+<!--
+
+<div id="recaptcha_widget">
+
+  <div class="recaptcha_fild">
+
+    <span><%= tg :recapcha_title %></span>
+<%= text_field_tag "recaptcha_response_field", nil, :class => "text"%>
+  </div>
+
+  <div id="recaptcha_image"></div>
+  <span class="capcha_reload">
+<%= link_to image_design_tag("recaptcha.png"),"javascript:Recaptcha.reload()" %>
+  </span>
+
+</div>
+-->
+
+<script type="text/javascript" src="http://api.recaptcha.net/challenge?k=<%= ENV['RECAPTCHA_PUBLIC_KEY'] %>"></script>
+
+<noscript>
+  <iframe src="http://api.recaptcha.net/noscript?k=<%= ENV['RECAPTCHA_PUBLIC_KEY'] %>" height="300" width="500" frameborder="0"></iframe>
+  <%= text_field_tag "recaptcha_challenge_field", nil%>
+  <%= hidden_field_tag "recaptcha_response_field", "manual_challenge" %>
+</noscript>
+
+
+

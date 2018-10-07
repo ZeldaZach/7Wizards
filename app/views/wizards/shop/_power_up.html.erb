@@ -1,0 +1,31 @@
+<div id="columns_narrow_wide">
+
+  <div id="col_left">
+    <%= render :partial => "menu" %>
+  </div>
+
+  <div id="col_right">
+    <div class="main_col_content" id="shop">
+      <div class="visibl">
+      <h1  class="category_title_shop"><%= (tf UserItem, :category_power_up)%></h1>
+       <div class="under_title_text"><%= t "category_description_powerup" %></div>
+      <table class="content_up table">
+        <tr>
+          <th ></th>
+          <th><%= tv(:item) %></th>
+          <th style="text-align: center"><%= tg(:price) %></th>
+          <th></th>
+        </tr>
+        <% AllGameItems.power_up.each do |item| %>
+          <%= render :partial => item.renderer, :locals => { :user => @user, :item => item } %>
+        <% end %>
+      </table>
+      <%= link_to_top tg(:scroll_top)%>
+    </div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

@@ -1,0 +1,26 @@
+<h1><%= t :title%></h1>
+
+<p>
+  <% form_tag(:action => 'history') do %>
+    <%= label_tag :name, tf(User, :name) %>: <%= text_field_tag :name, @user_name %>
+    <%= submit_tag tg(:find) %>
+  <% end %>
+</p>
+  
+<% for message in @messages %>
+  <% if Message::SUPPORT_Q.member?(message.kind) %>
+    <br />
+    <%= message.user.name %>, <%= d message.created_at %><br />
+    <%=h "Q: " + message.message %>
+  <% end %>
+  <% if Message::SUPPORT_A.include?(message.kind) %>
+    <%=h "A: " + message.message %>
+  <% end %>
+  | <%= link_to tg(:edit), :action => :edit_message, :id => message.id %>
+  | <%= link_to tg(:destroy), {:action => :delete_message, :id => message.id}, :confirm => 'Уверен ?' %>
+  <br />
+<% end %>
+
+<p>
+  <%= paginate @messages %>
+</p>

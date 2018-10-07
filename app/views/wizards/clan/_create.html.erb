@@ -1,0 +1,25 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <ul>
+      <%= render :partial => "partial_navigate" %>
+    </ul>
+    <%#*<div class="rounded">%>
+      <%#= render :partial => "navigation/quick_links" %>
+    <%#*</div>%>
+  </div>
+  <div id="col_right" >
+    <div class="main_col_content" id="clan_edit">
+      <% form_ajax_for @clan, :url => { :action => :process_create } do |f| %>
+        <%= render :partial => "partial_edit_fields", :locals => { :f => f } %>
+        <%= f.submit tg(:save) %>
+      <% end %>
+      
+     <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>
+

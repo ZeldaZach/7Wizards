@@ -1,0 +1,36 @@
+EdgesoftNoCookie
+================
+
+Version: 1.1
+Rails version: 1.x
+Author: Long On
+Bugs: long.on@edgesoft.ca
+
+(c) Copyright 2006-2008 Edgesoft Consulting Inc.
+
+
+This plugin provides no-cookie session support for Rails applications.
+The latest documentation is available at
+http://FATdrive.tv/article/trakb/595-Rails+No-Cookie+Session+Support+Plugin
+http://fatdrive.tv/article/show/595-Rails+No-Cookie+Session+Support+Plugin
+
+For the impatient,
+
+1. Drop the distribution file in the ../vendor/plugins directory.
+2. Expand the file.
+3. Start or restart Webrick.
+4. Include the module as a Mixin, for example
+
+module ApplicationHelper
+
+  include EdgesoftNoCookie
+  ...
+end
+
+class ApplicationController < ActionController::Base
+
+  include EdgesoftNoCookie
+  ...
+end
+
+5. Test, test and more test

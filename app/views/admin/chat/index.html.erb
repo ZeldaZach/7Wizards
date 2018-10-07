@@ -1,0 +1,48 @@
+
+<% form_tag(:action => 'index') do %>
+    <%= hidden_field_tag :user_id, @user_id %>
+  <p>
+    <%= label_tag :name, tf(User, :name) %>: <%= text_field_tag :name, @user_name %>
+  </p>
+  <% if @rooms %>
+    <p>
+      <%=@user.name%> <%= label_tag :name, tf(Chat, :room) %>:
+      <%= select_tag "room",
+        options_for_select( proc {
+          o = [["Default Public", GameProperties::CHAT_PUBLIC_NAME]]; @rooms.each { |r| o << [r.room, r.room]}; o
+        }.call(), @room) %>
+    </p>
+  <%end%>
+  <p>
+    <%= submit_tag tg(:find) %>
+  </p>
+<% end %>
+
+<%= paginate @messages, :params => {:room => @room,:user_id => @user_id, :simple_link => true} %><br />
+
+<table border="1">
+  <tr>
+    <th><%= link_to tf(User, :name), admin_chat_path(:action => :index, :order => "n", :asc => @asc, :name => @name, :room => @room, :user_id => @user_id)%></th>
+    <th><%= tf(Chat, :message) %></th>
+    <th><%= link_to tf(Chat, :created_at), admin_chat_path(:action => :index, :order => "d", :asc => @asc, :name => @name, :room => @room, :user_id => @user_id)%></th>
+    <th><%= link_to tf(Chat, :report), admin_chat_path(:action => :index, :order => "r", :asc => @asc, :name => @name, :room => @room, :user_id => @user_id)%></th>
+    <th><%= link_to tf(Chat, :last_reporter), admin_chat_path(:action => :index, :order => "lr", :asc => @asc, :name => @name, :room => @room, :user_id => @user_id)%></th>
+  </tr>
+  <% @messages.each do |chat| %>
+    <%if chat.user%>
+      <tr <%if chat.report > 0%> style="background-color: red"<%end%>>
+        <td><%= link_to chat.user.name, admin_users_path(:action => :show, :id => chat.user) %></td>
+        <td><%= chat.message %></td>
+        <td><%= d chat.created_at %></td>
+        <td><%= chat.report %></td>
+        <td>
+          <%if chat.last_reporter%>
+            <%= link_to chat.last_reporter.name, admin_users_path(:action => :show, :id => chat.last_reporter) %>
+          <%end%>
+        </td>
+      </tr>
+    <%end%>
+  <%end%>
+</table>
+
+<%= paginate @messages, :params => {:room => @room, :user_id => @user_id, :simple_link => true} %><br />

@@ -1,0 +1,191 @@
+<div id="columns_narrow_wide">
+  <div id="col_left" style="width: 265px;margin-right:20px;">
+    <div id="login" class="login_form">
+      <% form_tag :action => :process_login do %>
+        <h2 class="block_header"><%= tf(User, :name) %></h2>
+        <%= link_to(tv(:restore), restore_path, :class=>"restor_button")  %>
+
+        <div class="input_login_page login_input"><%= text_field_tag :login, "", :class => "input_login", :id=>"visitor_login", :tabindex => 1%></div>
+        <%= submit_tag "", :class => "enter_button", :tabindex => 3 %>
+        <div class="clear"></div>
+
+        <div class="input_login_page pass_input">
+          <%= password_field_tag :password, "", :class => "input_login", :id=>"visitor_password", :tabindex => 2%></div>
+        <a id="check_box_link" href="javascript: void(0)" class="remember_check" onclick="javascript: wizards.login.remember_click()"></a>
+        <%= check_box_tag(:remember_me, :remember_me, false, :tabindex => 4)%> <%= tv(:remember) %>
+
+        <span <%if flash[:notice] && !flash[:notice].empty? %> class="login_error" <%end%>>
+          <%= flash[:notice] %>&nbsp;
+        </span>
+        <div style="text-align: right; padding-right: 13px">
+          <%= link_to image_design_tag("fconnect.png"), "javascript: void(0)", :onclick => "javascript: fb_login()" %>
+        </div>
+      <%end%>
+      <div class="border_top"></div>
+      <div class="border_bottom" ></div>
+    </div>
+    <div class="clear"></div>
+    <div class="additional_info_block" >
+      <div class="quick_links login_tips login_tips">
+        <h2 class="block_header"><%= t(:info_7wizards_title) %></h2>
+        <%= t(:info_7wizards_list) %>
+      </div>
+      <div class="quick_links login_tips">
+        <h2 class="block_header"><%= t(:info_7wizards_what_can_do_title) %></h2>
+        <%= t(:info_7wizards_what_can_do_list) %>
+      </div>
+      <div class="clear"></div>
+      <div id="messages_menu" class="quick_links">
+        <dl class="visitor_rating">
+          <dt>The Best Heroes</dt>
+          <dd>
+            <table class="table">
+              <tbody>
+                <tr>
+                  <th style="width: 10%"></th>
+                  <th style="width: 35%; text-align: left;padding-left: 9px;"><%= tf(User, :name) %></th>
+                  <th style="width: 15%"><%= tf(User, :a_level) %></th>
+                  <th style="width: 20%;"><%= tf(User, :a_reputation) %></th>
+                </tr>
+                <% @top_users.each_with_index do |user, index|  %>
+                  <tr>
+                    <td style="text-align: center;"><%= index + 1%></td>
+                    <td><div class="name_char"><%= link_to user_name(user), :action => :profile, :name => user.name %></div></td>
+                    <td class="level"><%= user.a_level %></td>
+                    <td class="level"><%= user.a_reputation %></td>
+                  </tr>
+                <%end%>
+              </tbody></table>
+          </dd>
+        </dl>
+
+        <div class="clear"></div>
+      </div>
+
+      <div class="visitor_block_bg additional_info_bg"></div>
+      <div class="visitor_block_bottom additional_info_bottom"></div>
+      <div class="visitor_block_top additional_info_top"></div>
+    </div>
+  </div>
+  <div id="col_right" class="registration_block" >
+    <div class="registration_form" id="registr_form">
+      <% form_for(@user, :url => {:action => 'process_register'}, :html => {:onsubmit => "javascript: clear_holder()"}) do |f| %>
+        <%= hidden_field_tag :referral_name, @referral_name %>
+        <%if @user.errors.full_messages.length > 0 %>
+          <span id="registr_error"><%= @user.errors.full_messages.first %></span>
+        <%end%>
+
+        <fieldset class="inline top_set">
+          <dl class="field">
+            <dt><%= f.label :name, tg(:login) %></dt>
+            <dd class="">
+              <div class="input_data">
+                <%= f.text_field :name, :class => "text"  %>
+              </div>
+              <div class="ico login_ico"></div>
+            </dd>
+          </dl>
+          <dl class="field">
+            <dt><%= f.label :email, tg(:email)%></dt>
+            <dd class="">
+              <div class="input_data">
+                <%= f.text_field :email, :class => "text" %>
+              </div>
+              <div class="ico email_ico"></div>
+            </dd>
+          </dl>
+        </fieldset>
+
+        <fieldset class="inline">
+          <dl class="field">
+            <dt><%= f.label :password, "#{tf(User, :password)}:" %></dt>
+            <dd class="">
+              <div class="input_data">
+                <%= f.password_field :password, :class => "text" %>
+              </div>
+              <div class="ico password_ico"></div>
+            </dd>
+          </dl>
+          <dl class="field">
+            <dt><%= f.label :confirm_password, "#{tf(User, :confirm_password)}:" %></dt>
+            <dd class="">
+              <div class="input_data">
+                <%= f.password_field :password_confirmation, :class => "text" %>
+              </div>
+              <div class="ico retype_password_ico"></div>
+            </dd>
+          </dl>
+        </fieldset>
+        <span class="req_fields"><span class="star">*</span><%= t(:register_required_title) %></span>
+        <p class="hint">
+          <%= t(:register_explain) %>
+        </p>
+
+        <fieldset class="gender">
+          <dl class="field gender_select">
+            <dd class="sex">
+              <div class="gender_bar">
+                <span><%= f.label :gender, tf(User, :gender) %></span>
+                <%= f.radio_button :gender, 'm', :class => "radio" %> <%= tf(User, :gender_male) %>
+                <%= f.radio_button :gender, 'f', :class => "radio" %> <%= tf(User, :gender_female) %>
+              </div>
+            </dd>
+          </dl>
+
+        </fieldset>
+        <%= f.submit("", :class=>"ok_button") %>
+        <label class="i_agree" for="i_agree"><%= t(:agreement, :terms_url => game_url(:terms), :rules_url => game_url(:rules)) %></label>
+      <%end%>
+    </div>
+    <div class="clear"></div>
+    <div class="main_col_content visitor_bg">
+      <div class="visibl screenshots">
+        <h1 class="category_title_shop category_title_visitor">Game screenshots</h1>
+        <div class="rozmezhuvach"></div>
+        <div class="previews">
+          <%= link_to_ajax image_design_tag("visitor_preview_1.gif"), :url => visitor_path(:action => :preview)%>
+          <%= link_to_ajax image_design_tag("visitor_preview_2.gif"), :url => visitor_path(:action => :preview)%>
+          <%= link_to_ajax image_design_tag("visitor_preview_3.gif"), :url => visitor_path(:action => :preview)%>
+          <%= link_to_ajax image_design_tag("visitor_preview_4.gif"), :url => visitor_path(:action => :preview)%>
+        </div>
+        <div class="rozmezhuvach"></div>
+      </div>
+      <div class="main_col_bg main_col_bg_visitor"></div>
+      <div class="main_col_border_bottom main_col_border_bottom_visitor"></div>
+      <div class="main_col_border_top main_col_border_top_visitor"></div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  var user_name     = new InputHolder("user_name", "Enter unique username");
+  var user_email    = new InputHolder("user_email", "Unique valid e-mail");
+
+  function clear_holder() {
+    user_name.clear();
+    user_email.clear();
+  }
+
+</script>
+
+<script type="text/javascript">
+
+  init_facebook('<%= FacebookConfig.facebook_app_id %>', function() {});
+
+  function fb_login() {
+    FB.login(function(response) {
+      if (response.session) {
+        if (response.perms) {
+          // user is logged in and granted some permissions.
+          // perms is a comma separated list of granted permissions
+          window.location.reload();
+        } else {
+          // user is logged in, but did not grant any permissions
+           FB.logout(function(response) {})
+        }
+      } else {
+        // user is not logged in
+      }
+    }, {perms:'publish_stream, email, offline_access'});
+  }
+  
+</script>

@@ -1,0 +1,40 @@
+= Adyen
+
+Package to simplify including the Adyen payments services into a Ruby on Rails application.
+
+Adyen integration relies on three modes of communication between Adyen, your server and
+your client/customer:
+
+* Client-to-Adyen communication using forms and redirects.
+* Adyen-to-server communications using notifications.
+* Server-to-Adyen communication using SOAP services.
+
+This library aims to ease the implementation of all these modes into your application.
+Moreover, it provides matchers, assertions and mocks to make it easier to implement an
+automated test suite to assert the integration is working correctly.
+
+== Installation
+
+Add the following line to your <tt>environment.rb</tt> and run <tt>rake gems:install</tt>
+to make the Adyen functionality available in your Rails project:
+
+    config.gem 'adyen', :source => 'http://gemcutter.org
+
+You can also install it as a Rails plugin (*deprecated*):
+
+    script/plugin install git://github.com/wvanbergen/adyen.git
+
+== Usage
+
+See the project wiki on http://wiki.github.com/wvanbergen/adyen to get started. Complete
+RDoc documentation for the project can be found on http://rdoc.info/projects/wvanbergen/adyen.
+
+* For more information about Adyen, see http://www.adyen.com
+* For more information about integrating Adyen, see their manuals at
+  http://support.adyen.com/links/documentation
+
+== About
+
+This package is written by Michel Barbosa and Willem van Bergen for Floorplanner.com, and
+made public under the MIT license (see LICENSE). It comes without warranty of any kind, so
+use at your own risk.

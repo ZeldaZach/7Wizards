@@ -1,0 +1,18 @@
+<%  if current_user.confirmed_email %>
+  <%submit_title = defined?(is_menu) ? tv("buy_gold_#{merchanreference}_title") : t(:buy)%>
+  <form action="<%= AdyenConfig.url %>" id="<%= formid %>" class="payment_form">
+      <%= Adyen::Form.hidden_fields(
+        :merchant_account   => AdyenConfig.merchant_account,
+        :skin_code          => AdyenConfig.skin_code,
+        :shared_secret      => AdyenConfig.shared_secret,
+        :ship_before_date   => 3.days.since,
+        :session_validity   => 10.minutes.since,
+        :currency_code      => AdyenConfig.currency_code,
+        :merchant_reference => "#{merchanreference}-#{current_user.id}",
+        :country_code       => AdyenConfig.country_code,
+        :payment_amount     => payment_amount.to_s,
+        :order_data_raw     => "#{AdyenConfig.order_data(product)};#{skin};#{name_level}",
+        :shopper_locale     => 'en') %>
+      <%= submit_tag(submit_title) %>
+  </form>
+<%end%>

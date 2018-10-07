@@ -1,0 +1,4 @@
+<%if (flash[:notice] && !flash[:notice].empty?) || (flash[:info] && !flash[:info].empty?)%>
+  <script type="text/javascript">wizards.onNoticeScroll()</script>
+  <div class='rounded' style="background-color: <%if flash[:info].nil?%>red<%else%>#69b4fc<%end%>" ><%= flash[:notice] || flash[:info] %></div>
+<%end%>

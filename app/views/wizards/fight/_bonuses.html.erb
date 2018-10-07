@@ -1,0 +1,73 @@
+<%
+  def a_label(name, &block)
+    r = capture(&block)
+    if !r.blank?
+        concat "#{t("attribute_#{name}".to_sym)}: #{r[0..r.rindex(",")-1]} <br/>"
+    else
+      ''
+    end
+  end
+
+  def a_value(user, property, name)
+    r = ''
+    if user.respond_to?(property)
+      value = user.send(property)
+      if value && value != 0
+        r += '<span>'
+        r += tf(User, "a_#{name}") + ' '
+        r += value > 0 ? "+#{value}, " : "#{value}, "
+        r += '</span>'
+      end
+    end
+    r
+  end
+%>
+
+<% res = collect_content do %>
+  <% a_label :items do %>
+    <%= a_value user_a, 'items_power', 'power' %>
+    <%= a_value user_a, 'items_protection', 'protection' %>
+    <%= a_value user_a, 'items_dexterity', 'dexterity' %>
+    <%= a_value user_a, 'items_skill', 'skill' %>
+    <%= a_value user_a, 'items_weight', 'weight' %>
+  <% end %>
+  <% a_label :gifts do %>
+    <%= a_value user_a, 'gifts_power_all', 'power' %>
+    <%= a_value user_a, 'gifts_protection_all', 'protection' %>
+    <%= a_value user_a, 'gifts_dexterity', 'dexterity' %>
+    <%= a_value user_a, 'gifts_skill', 'skill' %>
+    <%= a_value user_a, 'gifts_weight', 'weight' %>
+  <% end %>
+  <% a_label :curses do %>
+    <%= a_value user_a, 'curses_power_all', 'power' %>
+    <%= a_value user_a, 'curses_protection_all', 'protection' %>
+    <%= a_value user_a, 'curses_dexterity', 'dexterity' %>
+    <%= a_value user_a, 'curses_skill', 'skill' %>
+    <%= a_value user_a, 'curses_weight', 'weight' %>
+  <% end %>
+  <% if !user_a.dragon? && !user_a.monster? %>
+    <% a_label :power_up do %>
+      <%= a_value user_a, 'game_power', 'power' %>
+      <%= a_value user_a, 'game_protection', 'protection' %>
+    <% end %>
+    <% a_label :fence do %>
+      <%= a_value user_a, 'game_fence_protection', 'protection' %>
+    <% end %>
+    <% a_label :clan do %>
+      <%= a_value user_a, 'clan_power', 'power' %>
+      <%= a_value user_a, 'clan_protection', 'protection' %>
+    <% end %>
+    <%# a_label :clan_strategy do %>
+    <%#= a_value user_a.clan_strategy_power, 'power' %>
+    <%#= a_value user_a.clan_strategy_protection, 'protection' %>
+    <%#= a_value user_a.clan_strategy_dexterity, 'dexterity' %>
+    <%#= a_value user_a.clan_strategy_skill, 'skill' %>
+    <%# end %>
+  <% end %>
+<% end %>
+
+<% unless res.blank? %>
+  <p>
+    <%= res %>
+  </p>
+<% end %>

@@ -1,0 +1,13 @@
+<tr class="hi5_buy_gold">
+  <td colspan="4"> <%= image_design_tag("gold_g3.png") %>
+    <b>2 coins = 1 gold</b>
+
+    <% form_ajax_tag(:url => buygold_path(:action => :do_buy_hi5))do   %>
+      <%= text_field_tag :gold, "10"%> Gold
+     
+            <%= submit_tag "Change", :class=>"save_button"  %>
+         
+    <%end%>
+
+  </td>
+</tr>

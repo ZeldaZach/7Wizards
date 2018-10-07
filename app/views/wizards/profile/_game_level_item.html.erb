@@ -1,0 +1,44 @@
+<%
+  item_level = item.get_level(user)
+  item_max_level = item.get_max_level
+  price = item.get_price(user)
+%>
+<tr>
+  <td> <%= game_item_image_tag item %> </td>
+  <td>
+    <table class="table_little_buttons">
+      <tr>
+        <td>
+          <div class="progressbar">
+            <%= image_design_tag("progress_bar_l.png") %>
+            <%= image_design_tag("progress_bar_middle.png", {:class => "progress",:height=>"11px", :width => (item_level.to_f / item_max_level.to_f) * 268}) %>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td class="train_desc">
+         <br/> <b> <%= item.title user %></b>: <%= item.description user %><br/>
+         <b> <%= item.current_level_description(user) %></b><br/>
+          
+          <%= item.next_level_description(user) %><br/>
+          <%= tv :item_from_max, :level => item_level, :max => item_max_level %>
+        </td>
+      </tr>
+    </table>
+  </td>
+  <td class="price">
+    <b><% if price.has_money_price? %>
+      <%= price_tag(:price => price.price) %>
+    <% end %>
+
+    <% if price.has_staff_price? %>
+      <%= price_tag(:price_staff => price.price_staff) %>
+    <% end %></b>
+    </td>
+  <td class="little_button">
+    <% if item_level < item_max_level %>
+      <%= link_to_ajax tg(:upgrade), profile_path(:action => "extend", :g => item.key) %>
+    <% end %>
+  </td>
+</tr>
+

@@ -1,0 +1,17 @@
+<html>
+<head>
+  <title><%= t :title%></title>
+</head>
+<body>
+  <p style="color: green"><%= flash[:notice] %></p>
+  <% if admin? %>
+    <%= link_to tg(:home), '/admin' %> | <%= link_to tg(:exit), '/logout' %> <br />
+  <% end %>
+  <p>
+    <%= yield  %>
+  </p>
+  <% if admin? %>
+    <%= link_to tg(:home), '/admin' %> | <%= link_to tg(:exit), '/logout' %> <br />
+  <% end %>
+</body>
+</html>

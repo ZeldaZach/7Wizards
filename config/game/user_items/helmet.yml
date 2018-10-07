@@ -1,0 +1,95 @@
+h1:
+  name: Tornado Ring
+  level: 3
+  price: 400
+  sell_price: 105
+  protection: 8
+h2:
+  name: Vortex Ring
+  level: 5
+  price: 1350
+  sell_price: 375
+  protection: 12
+h3:
+  name: Aeolus Ring
+  level: 7
+  price: 3380
+  sell_price: 920
+  protection: 18
+h4:
+  name: Wind Scream Ring
+  level: 9
+  price: 4200
+  sell_price: 1200
+  protection: 20
+  power: 4
+h5:
+  name: Hurricane Ring
+  level: 12
+  price: 6350
+  sell_price: 1600
+  protection: 24
+  power: 8
+h6:
+  name: Gale Ring
+  level: 15
+  price: 9950
+  sell_price: 2500
+  protection: 35
+  power: 18
+h7:
+  name: Blizzard Ring
+  level: 19
+  price: 14030
+  sell_price: 3510
+  protection: 45
+  power: 25
+h8:
+  name: Storm Ring
+  level: 22
+  price: 23150
+  sell_price: 5800
+  protection: 50
+  power: 30
+h9:
+  name: Typhoon Ring
+  level: 25
+  price: 40400
+  sell_price: 10100
+  protection: 60
+  power: 45
+h10:
+  name: Thunder Ring
+  level: 28
+  price: 58000
+  sell_price: 14500
+  protection: 62
+  power: 56
+#h11:
+#  name: Морион
+#  level: 31
+#  price: 87000
+#  sell_price: 22000
+#  protection: 85
+#  power: 65
+#h12:
+#  name: Клапвизор
+#  level: 34
+#  price: 131000
+#  sell_price: 33000
+#  protection: 103
+#  power: 83
+#h13:
+#  name: Бацинет
+#  level: 37
+#  price: 183000
+#  sell_price: 46000
+#  protection: 120
+#  power: 98
+#h14:
+#  name: Армет
+#  level: 40
+#  price: 251000
+#  sell_price: 63000
+#  protection: 126
+#  power: 123

@@ -1,0 +1,54 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "partial_navigate" %>
+  </div>
+
+  <div id="col_right" >
+    <div class="main_col_content" id="clan_requests">
+      <div class="quick_links">
+        <h1 class="category_title_shop"><%= t(:clan_title) %></h1>
+        <p><%= t :description, :max => GameProperties::CLAN_MAX_JOINS_PER_MONTH, :amount => @clan.s_month_joins %></p>
+        <div class="bes_search">
+          <table class="content_up table" cellpadding="0" cellspacing="0"  >
+            <thead>
+              <tr class="tableWidth">
+                 <th scope="col" >#</th>
+                <th scope="col" ><%= tf(User, :name) %></th>
+                <th scope="col" ><%= tf(User, :a_level) %></th>
+                <th scope="col" ><%= tg(:message_title) %></th>
+                <th scope="col" ><%= tg(:date_title) %></th>
+                <th scope="col" ><%= tg(:actions) %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @messages.each_with_index do |message, index| %>
+                <tr>
+                 <td class="index_cell"><%= paginate_index(@page, index) %></td>
+                 <td><%= user_link message.author %></td>
+              	 <td><%= message.author.a_level %></td>
+              	 <td><%= h message.title %></td>
+                 <td><%= d message.created_at %></td>
+                  <td>
+                    <% if !@on_war %>
+                      <%= link_to_ajax tg(:allow), :url => clan_path(:action => :process_join, :a => 'join', :id => message.author) %>
+                      <%= link_to_ajax tg(:deny), :url => clan_path(:action => :process_join, :a => 'deny', :id => message.author) %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+              
+            </tbody>
+          </table>
+
+          <%= paginate @messages %>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+
+    </div>
+  </div>
+</div>
+<div class="clear"></div>

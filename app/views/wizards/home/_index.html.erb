@@ -1,0 +1,336 @@
+
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <div class="additional_info_block" >
+      <%= render :partial => "wizards/profile/user_avatar", :locals => {:user => @user} %>
+
+      <div class="clear"></div>
+      <%if @user.hi5?%>
+        <div class="quick_links">
+          <h2 class="block_header"><%= tg :invite_a_friend %></h2>
+          <ul class="navigate">
+            <li><%= link_to "Invite friends", "javascript: void(0)", :onclick => "hi5.Api.inviteFriends();" %></li>
+
+          </ul>
+        </div>
+      <%elsif !@user.bigpoint? %>
+
+        <div class="quick_links">
+          <h2 class="block_header"><%= tg :invite_a_friend %></h2>
+          <table class="navigate_invitation">
+
+            <%= tg :invite_a_friend_description,
+
+              :link => "http://#{current_host}/p/#{@user.name}",
+
+              :percent => GameProperties::REFERENCE_BONUS_PAYMENTS_PERCENT,
+              :staff => GameProperties::REFERENCE_BONUS_STAFF,
+              :level => GameProperties::REFERENCE_BONUS_LEVEL %>
+
+          </table>
+
+          <div class="addthis_toolbox addthis_default_style adds_buttons">
+            <%= link_to "Share", "http://www.addthis.com/bookmark.php?v=250&amp;username=7wizards", :class => "addthis_button_compact" %>
+            <span class="addthis_separator">|</span>
+            <%= link_to "", "", :class => "addthis_button_facebook" %>
+            <%= link_to "", "", :class => "addthis_button_twitter" %>
+            <%= link_to "", "", :class => "addthis_button_googlebuzz" %>
+            <%= link_to "", "", :class => "addthis_button_email" %>
+            <span class="addthis_separator"> </span>
+            <%= link_to "", "", :class => "addthis_button_facebook_like" %>
+          </div>
+          <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
+
+          <table style="font-size:11px;margin-left:10px;width:257px;">
+
+            <%= tg :invite_a_friend_bonus_description %>
+          </table>
+
+        </div>
+      <%end%>
+
+      <div class="additional_info_bg"></div>
+      <div class="additional_info_bottom"></div>
+      <div class="additional_info_top"></div>
+    </div>
+  </div>
+
+  <div id="col_right" >
+
+    <div class="main_col_content">
+
+      <ul class="blue_buttons home_bubles content_up">
+        <%unless @user.tutorial_done %>
+          <li class="thin">
+            <h1 class="category_title_shop"><%= t :tutorial %></h1>
+
+            <%= image_design_tag("home_magician.jpg") %>
+
+            <div id="tutorial_content" class="home_content">
+              <%= render :partial => "wizards/home/tutorial" %>
+            </div>
+
+          </li>
+        <%end%>
+
+        <li class="meditation thin">
+          <h1 class="category_title_shop"><%= t :meditation %></h1>
+
+          <%= image_design_tag("home_meditation.jpg") %>
+
+          <div id="meditation_content" class="home_content">
+            <%= render :partial => "wizards/home/meditation" %>
+          </div>
+
+        </li>
+
+        <li class="thin">
+          <h1 class="category_title_shop"><%= t :daily_bonus %></h1>
+          <%= image_design_tag("home_bonus.jpg") %>
+
+          <div id="dailybonus_content" class="home_content">
+            <%= render :partial => "wizards/home/dailybonus" %>
+          </div>
+
+        </li>
+        <li class="thin">
+          <h1 class="category_title_shop"><%= t :dragon %></h1>
+
+          <%= image_design_tag("dragon_fight.jpg") %>
+          <div class="home_content">
+            <p>
+              <%= t(:dragon_description) %>
+              <%if @active_dragon %>
+                <br/>
+                <b><span class="red"><%= t :dragon_active_description %></span></b>
+              <%end%>
+            </p>
+            <%if @active_dragon %>
+              <%= link_to_ajax t(:home_dragon_beat), :url => dragon_path(:action => :index) %>
+            <%elsif @last_planner %>
+              <%= link_to_ajax(t(:home_last_dragon), :url => dragon_path(:action => :dragon_history))%>
+            <%end%>
+          </div>
+        </li>
+
+        <li class="thin">
+          <h1 class="category_title_shop"><%= t :arena %></h1>
+
+          <%= image_design_tag("home_arena.jpg") %>
+          <div class="home_content">
+            <p>
+              <%= t :arena_description %>
+            </p>
+            <%= link_to_ajax t(:home_fight), :url => fight_path(:action => "index") %>
+          </div>
+
+        </li>
+
+        <li class="thin">
+          <h1 class="category_title_shop"><%= t :clans %><br/></h1>
+          <%= image_design_tag("home_clans.jpg") %>
+          <div class="home_content">
+
+            <%if current_user.on_war?%>
+              <p class="red"><b><%= t(:war_has_started) %></b></p>
+            <%else%>
+              <p><%= t :clans_description %></p>
+            <%end%>
+
+            <% clan_url = current_user.on_war? ?  clan_path(:action => :wars) : clan_path(:action => :details)%>
+            <%= link_to_ajax t(:home_your_clan), :url => clan_url %>
+          </div>
+
+        </li>
+
+        <li class="thin">
+          <h1 class="category_title_shop"><%= t :half_of_gory %></h1>
+
+          <%= image_design_tag("home_hall_gory.jpg") %>
+          <div class="home_content">
+            <p>
+              <%= t :half_of_gory_description %>
+            </p>
+            <%= link_to_ajax t(:home_best_of_best), :url => respect_path %>
+          </div>
+
+        </li>
+
+        <li class="thin">
+          <h1 class="category_title_shop"><%= t :shop %></h1>
+
+          <%= image_design_tag("home_shop.jpg") %>
+          <div class="home_content">
+            <p>
+              <%= t :shop_description %>
+            </p>
+            <%= link_to_ajax t(:home_buy_stuff), :url => shop_path(:action => "index") %>
+          </div>
+
+        </li>
+        <li class="thin">
+          <h1 class="category_title_shop"><%= t :zoo %></h1>
+
+          <%= image_design_tag("home_zoo.jpg") %>
+
+          <div class="home_content">
+            <p>
+              <%= t(:zoo_description) %>
+            </p>
+            <%= link_to_ajax t(:home_buy_pet), :url => pet_path %>
+          </div>
+
+        </li>
+        <!--
+          <li class="thin">
+            <h1 class="category_title_shop"><%= t :games %></h1>
+
+            <%= image_design_tag("gameofday.jpg") %>
+            <div class="home_content">
+              <p>
+                <%= t :games_description %>
+              </p>
+              <%= link_to_ajax("Play now ", :url => games_path(:action => :index)) %>
+            </div>
+          </li>
+        <li>
+
+        <%= image_design_tag("home_port.jpg") %>
+          <h2><%= t :port %></h2>
+          <p>
+        <%= t :port_description %>
+          </p>
+        <%= link_to "Go sailing", "#" %>
+
+          <div class="clear"></div>
+        </li>
+
+        <li>
+
+        <%= image_design_tag("cristal_miners.jpg") %>
+
+          <h2><%= t :crystals %></h2>
+          <p>
+        <%= t(:crystals_description) %>
+          </p>
+        <%= link_to "Find crystals!", "#" %>
+
+          <div class="clear"></div>
+        </li> -->
+        <!--
+        <li>
+
+        <%= image_design_tag("excange.jpg") %>
+
+          <h2><%= t :exchange %></h2>
+          <p>
+        <%= t(:exchange_description) %>
+          </p>
+        <%= link_to "Exchage gold", "#" %>
+
+          <div class="clear"></div>
+        </li> -->
+        <!--
+        <li>
+
+        <%= image_design_tag("gost_and_demons.jpg") %>
+
+          <h2><%= t :zombie %></h2>
+          <p>
+        <%= t(:zombie_description) %>
+          </p>
+        <%= link_to "Fight", "#" %>
+          <div class="clear"></div>
+        </li> -->
+        <!--
+        <li>
+
+        <%= image_design_tag("kuznets.jpg") %>
+
+          <h2><%= t :hammersmith %></h2>
+          <p>
+        <%= t(:hammersmith_description) %>
+          </p>
+        <%= link_to "Upgrade", "#" %>
+
+          <div class="clear"></div>
+        </li> -->
+        <!--
+        <li>
+
+        <%= image_design_tag("mariage.jpg") %>
+
+          <h2><%= t :marriage %></h2>
+          <p>
+        <%= t(:marriage_description) %>
+          </p>
+        <%= link_to "Marriage", "#" %>
+
+          <div class="clear"></div>
+        </li> -->
+        <!--
+        <li>
+
+        <%= image_design_tag("PARTY_CLUB_AFISHA.jpg") %>
+
+          <h2><%= t :parties %></h2>
+          <p>
+        <%= t(:parties_description) %>
+          </p>
+        <%= link_to "learn more", "#" %>
+
+          <div class="clear"></div>
+        </li> -->
+        <!--
+        <li>
+
+        <%= image_design_tag("quest.jpg") %>
+
+          <h2><%= t :quests %></h2>
+          <p>
+        <%= t(:quests_description) %>
+          </p>
+        <%= link_to "Start quest", "#" %>
+
+          <div class="clear"></div>
+        </li> -->
+        <!--
+        <li>
+
+        <%= image_design_tag("ToRGovlea_.jpg") %>
+
+          <h2><%= t :trade %></h2>
+          <p>
+        <%= t(:trade_description) %>
+          </p>
+        <%= link_to "Start trade", "#" %>
+
+          <div class="clear"></div>
+        </li> -->
+        <!--
+              <li>
+
+        <%= image_design_tag("turnirs.jpg") %>
+
+                <h2><%= t :tournament %></h2>
+                <p>
+        <%= t(:tournament_description) %>
+                </p>
+        <%= link_to "Start Tournament", "#" %>
+
+                <div class="clear"></div>
+              </li> -->
+        <%= link_to_top tg(:scroll_top)%>
+      </ul>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+
+  </div>
+</div>
+<div class="clear"></div>
+
+<script type="text/javascript">
+  wizards.addThisInit();
+</script>

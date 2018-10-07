@@ -1,0 +1,71 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "menu" %>
+  </div>
+  <div id="col_right">
+    <div class="main_col_content" id="friends_main">
+      <div class="quick_links">
+        <h1 class="category_title_shop"><%= t("title_#{@kind}") %></h1>
+
+        <div class="bes_search avatal_imag_list">
+
+          <% form_ajax_tag :url => relation_path( :kind => @kind ) do %>
+            <%= select_custom_tag(:order_best, options_for_select([[tg(:by_fame), "f"],
+                  [tg(:by_level), "l"], [tg(:by_mana_won), "m"], [tg(:by_damage), "d"],
+                  [tg(:by_girls), "gf"], [tg(:by_boys), "gm"], [tg(:by_online), "o"]], @order)) %>
+            <%= submit_tag tg(:search), :name => nil, :class => "small_submit", :id => :best_submit%>
+            <%= text_field_custom_tag :user_name, @user_name, {:class => "text login_pass_input"}, relation_path( :kind => @kind )  %>
+          <% end %>
+
+          <div class="equipment_slot avatars_list">
+            <% @relations.each do |relation| %>
+              <ul class="gifts  information_tips_block avatar_litt_block">
+                <li class="li_avas" style="z-index: 2">
+                  <%= user_image(relation, false, :link => true, :height => 111, :width => 104) %>
+                  <span  style="width: 10px; height: 10px;padding-top:4px;">
+                    <%= is_online_by_time_image_tag(relation.last_activity_time.to_time) %>
+                  </span>
+                  <span class="user_name"> <%= user_name(relation)%> </span>
+                  <ul class="no_padding">
+                    <li class="tips tips_avatar" >
+                      <ul class="no_padding">
+                        <li><b class="hint_titel"><%= user_name(relation) %></b></li>
+                        <li><%= tf(User, :a_level) %>: <%= relation.a_level %></li>
+                        <%if @kind == Relation::KIND_FRIEND%>
+                          <li><%= tf(User, :a_reputation) %>: <%= relation.a_reputation %></li>
+                        <%elsif @kind == Relation::KIND_BOOKMARK%>
+                          <li> <%= tf(Relation, :message) %>: <%= relation.message %></li>
+                        <%end%>
+                        <li><%= tf(User, :s_loot_money) %>: <%= relation.s_loot_money %></li>
+                        <li><%= tf(User, :s_total_damage) %>: <%= relation.s_total_damage %></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            <%end%>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="clear"></div>
+        <%= paginate(@relations, {:params =>{:kind=>@kind, :user_name => @user_name, :order_best => @order}})%>
+        <div class="clear"></div>
+        <%= link_to_top tg(:scroll_top)%>
+      </div>
+
+      <div class="clear"></div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+
+  </div>
+</div>
+<div class="clear"></div>
+
+<script type="text/javascript">
+  Element.observe('order_best', 'change', function(){
+    $('best_submit').click();
+  });
+  wizards.controls.init();
+</script>

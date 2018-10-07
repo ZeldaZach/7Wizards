@@ -1,0 +1,19 @@
+<div id="columns_narrow_wide" >
+  <div id="col_left">
+    <%= render :partial => "partial_navigate" %>
+  </div>
+
+  <div id="col_right" >
+    <div class="main_col_content">
+    <% if @user.has_pet? %>
+      <%= render :partial => "train", :locals => {:user => @user, :prices => @prices, :max_value => @max_value} %>
+    <%else%>
+      <%= render :partial => "buy" %>
+    <%end%>
+    <div class="main_col_bg"></div>
+  <div class="main_col_border_bottom"></div>
+  <div class="main_col_border_top"></div>
+    </div>
+  </div>
+</div>
+<div class="clear"></div

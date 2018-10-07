@@ -1,0 +1,42 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "partial_navigate" %>
+  </div>
+
+  <div id="col_right" >
+    <div class="main_col_content" id="clan_requests">
+      <div class="quick_links">
+        <h1 class="category_title_shop">Wars history</h1>
+        <div class="bes_search">
+          <table class="content_up table" cellpadding="0" cellspacing="0"  >
+            <thead>
+              <tr class="tableWidth">
+                <th scope="col" >#</th>
+                <th scope="col" ></th>
+                <th scope="col"><%= tf ClanWar, :created_at %></th>
+                <th scope="col"><%= tf ClanWar, :finished_at %></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @clan_wars.each_with_index do |war, index| %>
+                <tr>
+                  <td class="index_cell"><%= index + 1 %></td>
+                  <td><%= link_to_ajax "#{war.clan.name} VS #{war.opponent_clan.name}", clan_path(:action => :war_history, :id => war)%></td>
+                  <td><%= d war.started_at %></td>
+                  <td><%= d war.finished_at %></td>
+                </tr>
+              <% end %>
+
+            </tbody>
+          </table>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+
+    </div>
+  </div>
+</div>
+<div class="clear"></div>

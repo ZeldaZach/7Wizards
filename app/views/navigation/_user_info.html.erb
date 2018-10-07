@@ -1,0 +1,107 @@
+<%  user = current_user%>
+<div id="info_wraper">
+  <span class="header_name">
+    <%= image_design_tag("top_user.png") %><%= tf(User, :name) %>:
+    <b><%= user.name %> </b>
+
+    <%= image_design_tag("top_level.png") %><%= tf(User, :a_level) %>:
+    <b><%= user.a_level %></b>
+  </span>
+  <span class="header_icons">
+
+    <span class="img_drop_dow">
+      <%= image_design_tag("top_timer.png") %>
+      <span id="top_timer" class="top_timer"><%= time_top_panel[:seconds].seconds_to_full_time %></span>
+      <p><%= t(:timer_description) %></p>
+    </span>
+
+    <span class="img_drop_dow">
+      <%= image_design_tag("top_health.png") %>
+      <span class="top_timer"> <%= user.a_health %> </span>
+      <p><%= t(:health_description, :health => user.a_health, :max_health => user.max_health) %></p>
+    </span>
+
+    <% if user.has_pet? %>
+      <span class="img_drop_dow">
+        <%if user.pet_is_dead?%>
+          <%= image_design_tag("menu_pet_dead.png") %>
+        <%elsif !user.pet_active?%>
+          <%= image_design_tag("menu_pet_disable.png") %>
+        <%else%>
+          <%= image_design_tag("top_pet.png") %>
+        <%end%>
+        <%= user.pet_health %>
+        <p><%= t(:pet_health_description, :health => user.pet_health, :max_health => user.max_pet_health) %></p>
+      </span>
+    <%end%>
+
+    <span class="img_drop_dow">
+      <%= image_design_tag("top_mana.png") %>
+      <span class="top_timer"><%= user.a_money %></span>
+      <p><%= t(:money_description) %></p>
+    </span>
+
+    <span class="img_drop_dow">
+      <%= image_design_tag("top_cristal.png") %> <%= user.a_staff2 %>
+      <p><%= t(:staff2_description) %></p>
+    </span>
+
+    <span class="img_drop_dow">
+      <%= image_design_tag("top_gold.png") %>
+      <span class="top_timer"><%= user.a_staff %></span>
+      <p><%= t(:staff_description) %></p>
+    </span>
+
+    <span class="img_drop_dow" >
+      <%= image_design_tag("top_count.png") %>
+      <span class="top_timer"><%= user.e_fights_count %> / <%= user.max_fights_count %></span>
+      <p><%= t(:fights_description) %></p>
+    </span>
+
+    <span class="img_drop_dow" >
+      <%= image_design_tag("top_clock.png") %>
+      <span id="wizards_timer" class="top_timer"><%= d(Time.now, :medium) %></span>
+      <p><%= t(:wizards_timer) %></p>
+    </span>
+
+  </span>
+  <span class="drop_dawn">
+    <span >
+      <span class="account_tag"><%= t(:account) %> <%= image_design_tag("dropdawn_ico.png", :class=>"down_flag") %></span>
+      <ul class="account_menu">
+
+        <li><%= link_to t(:logout), {:action => :logout}, :id => "logout", :class => "active_always"%></li>
+        
+        <%if !user.bigpoint? && !user.hi5? && !user.facebook?%>
+
+          <li><%= link_to_ajax(t(:change_password), :url => account_path(:action => :change_password)) %></li>
+          <li><%= confirm_link(t(:delete_account), t(:delete_confirm_description), :url => account_path(:action => :do_delete_account)) %></li>
+
+          <%unless user.confirmed_email %>
+            <li><%= link_to_ajax(t(:activate_account), :url => account_path(:action => :activate_account)) %></li>
+          <%end%>
+        <%end%>
+
+        <li><%= link_to t(:help), game_url(:blog_faq), :target => "blank", :class => "active_always"%></li>
+      </ul>
+    </span>
+  </span>
+</div>
+
+<%= wizards_javascript %>
+<%= timers_javascript %>
+
+<%if current_user.facebook?%>
+  <script type="text/javascript">
+    init_facebook('<%= FacebookConfig.facebook_app_id %>', function() {});
+    
+    $('logout').observe('click', function(ev) {
+        ev.stop();
+        FB.logout(function(response) {});
+        setTimeout(function(){window.location = urlHelper.logout(); }, 1000);
+    })
+
+  </script>
+<%end%>
+
+<%= javascript_tag("new WizardsClock('wizards_timer', #{Time.now.to_i*1000})")%>

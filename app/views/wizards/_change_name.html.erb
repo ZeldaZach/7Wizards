@@ -1,0 +1,23 @@
+<% form_ajax_for(@user, :url => wizards_path(:action => :do_change_name)) do |f|%>
+  <table class="bigpoint_konfirm">
+    <tr>
+      <td><%= t :description %></td>
+    </tr>
+    <tr >
+      <td align="center" style="padding-top: 10px"> <%=  tf(User, :name) %>: <%= text_field_tag :name, "#{@name}" %></td>
+    </tr>
+      <tr>
+        <td style="text-align: left; padding-left: 104px">
+            <%=  tf(User, :gender) %>:
+          
+            <%= f.radio_button :gender, 'm', :class => "radio" %> <%= tf(User, :gender_male) %>
+            <%= f.radio_button :gender, 'f', :class => "radio" %> <%= tf(User, :gender_female) %>
+        </td>
+      </tr>
+    <tr>
+      <td>
+        <%= f.submit("OK") %>
+      </td>
+    </tr>
+  </table>
+<%end%>

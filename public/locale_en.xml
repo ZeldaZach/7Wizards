@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flash>
+    <dressup>
+        <body>Body color</body>
+        <face>Face</face>
+        <hair>Hair</hair>
+        <top>Tops</top>
+        <topbig>Coat</topbig>
+        <middle>Bottoms</middle>
+        <boots>Shoes</boots>
+        <armleft>Secondary weapon</armleft>
+        <armright>Primary weapon</armright>
+        <necklace>Accessories</necklace>
+        <pants>Pants</pants>
+        <wings>Wings</wings>
+        <fon>Background</fon>
+        
+        <save>Save</save>
+        <cancel>Cancel</cancel>
+        <undress>Undress</undress>
+        <buy>Buy</buy>
+    </dressup>
+    <fight>
+        <attack>Fight!</attack>
+    </fight>
+</flash>

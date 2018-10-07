@@ -1,0 +1,93 @@
+g01:
+  name: Sorcerer's Bow
+  level: 1
+  price: 100
+  hours: 168
+g02:
+  name: Magic Flower
+  level: 2
+  price: 100
+  hours: 168
+g03:
+  name: Energy Drink
+  level: 5
+  price: 1000
+  dexterity: 5
+  hours: 48
+g31:
+  name: Enchanted Feathers
+  level: 12
+  price: 3000
+  dexterity_percent: 20
+  hours: 48
+g04:
+  name: Golden Chest
+  level: 6
+  price: 1500
+  skill: 5
+  hours: 48
+g41:
+  name: Charming Lily
+  level: 13
+  price: 3500
+  skill_percent: 20
+  hours: 48
+g05:
+  name: Power Glove
+  level: 7
+  price: 2000
+  power: 5
+  hours: 48
+g51:
+  name: Book of Power
+  level: 14
+  price: 4000
+  power_percent: 20
+  hours: 48
+g06:
+  name: Envelope of Wealth
+  description: "Income from meditation: +20%"
+  percent: 20
+  level: 8
+  price: 2500
+  hours: 48
+  class: ShopGiftPatrol
+#g7:
+#  name: Скарабей
+#  description: "Доход от монстров в плавании: +20%"
+#  percent: 20
+#  level: 9
+#  price_staff2: 10
+#  hours: 72
+#  class: ShopGiftQuestFight
+#g8:
+#  name: Книга знаний
+#  description: "Доход от работы на участке: +20%"
+#  percent: 20
+#  level: 8
+#  price: 3000
+#  hours: 48
+#  class: ShopGiftFarm
+g09:
+  name: Royal Crown
+  description: "Power crystal and defence powder: +20%"
+  percent: 20
+  level: 9
+  price: 2500
+  hours: 48
+  class: ShopGiftHousePowerProtection
+g10:
+  name: Blessing Powder
+  description: "The amount of mana robbed on the arena will be increased by 50%"
+  percent: 50
+  level: 10
+  price: 2500
+  hours: 48
+  class: ShopGiftLootMoney
+g11:
+  name: Ancient Guard
+  description: Immortality during the war
+  level: 11
+  price: 3000
+  hours: 2
+  class: ShopGiftWarHidden

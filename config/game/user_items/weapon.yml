@@ -1,0 +1,217 @@
+w1:
+  name: Lava Ring
+  level: 2
+  price: 50
+  sell_price: 15
+  power: 2
+w2:
+  name: Phoenix Ring
+  level: 3
+  price: 85
+  sell_price: 40
+  power: 3
+w3:
+  name: Inferno ring
+  level: 4
+  price: 142
+  sell_price: 52
+  power: 4
+w4:
+  name: Ash Ring
+  level: 5
+  price: 243
+  sell_price: 70
+  power: 6
+w5:
+  name: Fire Ball Ring
+  level: 6
+  price: 385
+  sell_price: 95
+  power: 8
+w6:
+  name: Solar Ring
+  level: 7
+  price: 620
+  sell_price: 160
+  power: 10
+  dexterity: 4
+w7:
+  name: Salamander Ring
+  level: 8
+  price: 810
+  sell_price: 210
+  power: 10
+  dexterity: 8
+w8:
+  name: Dragon Ring
+  level: 9
+  price: 1220
+  sell_price: 320
+  power: 12
+  dexterity: 8
+w9:
+  name: Blaze Ring
+  level: 10
+  price: 1370
+  sell_price: 350
+  power: 14
+  skill: 6
+w10:
+  name: Blast Ring
+  level: 12
+  price: 2230
+  sell_price: 570
+  power: 18
+  skill: 10
+w11:
+  name: Flare ring
+  level: 14
+  price: 2620
+  sell_price: 720
+  power: 20
+  dexterity: 8
+  weight: 2
+w12:
+  name: Volcano Ring
+  level: 16
+  price: 3050
+  sell_price: 900
+  power: 21
+  dexterity: 15
+  weight: 8
+  skill: 10
+w13:
+  name: Magma Ring
+  level: 18
+  price: 3550
+  sell_price: 1150
+  power: 22
+  dexterity: 20
+  weight: 30
+  skill: 6
+w14:
+  name: Lizard Ring
+  level: 20
+  price: 4150
+  sell_price: 1300
+  power: 24
+  dexterity: 25
+  skill: 6
+w15: 
+  name: Ember Ring
+  level: 22
+  price: 4800
+  sell_price: 1480
+  power: 26
+  dexterity: 23
+  skill: 20
+#w16:
+#  name: Железный цеп 
+#  level: 24
+#  price: 5590
+#  sell_price: 1400
+#  power: 25
+#  dexterity: 100
+#  weight: 25
+#w17:
+#  name: Стальной молот(дворучний)
+#  level: 26
+#  price: 11710
+#  sell_price: 2940
+#  power: 58
+#  dexterity: 20
+#  weight: 50
+#w18:
+#  name: Булава
+#  level: 28
+#  price: 13540
+#  sell_price: 3320
+#  power: 30
+#  dexterity: 40
+#  skill: 20
+#w19:
+#  name: Трезубец
+#  level: 30
+#  price: 20210
+#  sell_price: 5060
+#  power: 35
+#  dexterity: 35
+#  weight: 40
+#  skill: 15
+#w20:
+#  name: Лабрис(дворучний)
+#  level: 33
+#  price: 35000
+#  sell_price: 9000
+#  power: 62
+#  dexterity: 40
+#  weight: 20
+#  skill: 15
+#w21:
+#  name: Чекан
+#  level: 36
+#  price: 29500
+#  sell_price: 7500
+#  power: 37
+#  dexterity: 35
+#  weight: 20
+#  skill: 22
+#w22:
+#  name: Бастард
+#  level: 39
+#  price: 37000
+#  sell_price: 9500
+#  power: 50
+#  dexterity: 110
+#w23:
+#  name: Сагарис
+#  level: 42
+#  price: 41000
+#  sell_price: 10000
+#  power: 75
+#w24:
+#  name: Бродэкс(дворучний)
+#  level: 45
+#  price: 76000
+#  sell_price: 19000
+#  power: 112
+#w25:
+#  name: Меч Сигурда
+#  level: 47
+#  price: 55000
+#  sell_price: 14000
+#  power: 56
+#  weight: 20
+#  skill: 32
+#w26:
+#  name: Акинак
+#  level: 48
+#  price: 78000
+#  sell_price: 20000
+#  power: 62
+#  dexterity: 100
+#  weight: 50
+#w27:
+#  name: Кистень(дворучний)
+#  level: 50
+#  price: 135000
+#  sell_price: 34000
+#  power: 100
+#  dexterity: 25
+#  weight: 125
+#w28:
+#  name: Ангон
+#  level: 53
+#  price: 110000
+#  sell_price: 28000
+#  power: 50
+#  dexterity: 100
+#  skill: 43
+#w29:
+#  name: Клеймор
+#  level: 55
+#  price: 146000
+#  sell_price: 37000
+#  power: 75
+#  dexterity: 75
+#  skill: 25

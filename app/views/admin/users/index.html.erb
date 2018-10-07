@@ -1,0 +1,38 @@
+<h1><%= t :title%></h1>
+
+<% form_tag(:action => 'index') do %>
+  <p>
+    <%= label_tag :name, tf(User, :name) %>: <%= text_field_tag :name, @user_name %>
+  </p>
+  <p>
+    <%= submit_tag tg(:find) %>
+  </p>
+<% end %>
+
+<%= paginate @users, :params => {:name => @user_name, :simple_link => true} %><br />
+
+<table>
+  <tr>
+    <th><%= tf User, :name %></th>
+    <th><%= tf User, :a_level %></th>
+    <th><%= tf User, :a_reputation %></th>
+    <th><%= tf User, :active %></th>
+    <th><%= tf User, :gender %></th>
+    <th><%= tf User, :a_money %></th>
+    <th><%= tf User, :a_staff %></th>
+  </tr>
+<% for user in @users %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.a_level %></td>
+    <td><%= user.a_reputation %></td>
+    <td><%= user.active %></td>
+    <td><%= user.gender %></td>
+    <td><%= user.a_money %></td>
+    <td><%= user.a_staff %></td>
+    <td><%= link_to tg(:show), :action => :show, :id => user %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= paginate @users, :params => {:name => @user_name, :simple_link => true} %><br />

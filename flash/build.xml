@@ -1,0 +1,129 @@
+
+<project name="build-flash" default="run">
+
+    <property file="build.properties"/>
+
+    <property name="compc" value="sdk/bin/compc"/>
+    <property name="mxmlc" value="sdk/bin/mxmlc"/>
+    <property name="optimizer" value="sdk/bin/optimizer"/>
+
+    <target name="run" depends="create-dir">
+        <antcall target="build-flash-core"/>
+        <antcall target="build-application">
+            <param name="project.name" value="Dressup"/>
+        </antcall>
+        <antcall target="build-application">
+            <param name="project.name" value="Fight"/>
+        </antcall>
+        <antcall target="build-application">
+            <param name="project.name" value="Profile"/>
+        </antcall>
+        <antcall target="copy-applications"/>
+        <antcall target="copy-persons"/>
+        <antcall target="copy-clothes"/>
+        <antcall target="clean"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${output.dir}"/>
+    </target>
+
+    <target name="create-dir" depends="clean">
+        <mkdir dir="${flash.output.dir}"/>
+    </target>
+
+    <target name="copy-persons">
+        <copy todir="${resources.persons.dir}">
+            <fileset dir="fla/persons" includes="*.swf"/>
+        </copy>
+    </target>
+
+    <target name="copy-clothes">
+        <copy todir="${resources.clothes.dir}">
+            <fileset dir="fla/clothes" includes="**/*.swf"/>
+            <mapper type="flatten"/>
+        </copy>
+    </target>
+
+    <target name="build-flash-core">
+        <antcall target="build-swc">
+            <param name="output.swc"  value="flash_core/flash_core.swc"/>
+            <param name="source.dir" value="flash_core/src"/>
+            <param name="library.dir" value="flash_core/flash-lib"/>
+        </antcall>
+<!--
+        <antcall target="optimize-swc">
+            <param name="swc-dir"  value="fla/persons"/>
+            <param name="swc-name" value="female1"/>
+        </antcall>
+-->
+    </target>
+
+    <target name="build-application">
+        <echo>Build Project ${project.name}</echo>
+        <antcall target="build-swf">
+            <param name="project.dir" value="${project.name}"/>
+            <param name="output.file"  value="applications/${project.name}.swf"/>
+            <param name="input.file" value="${project.name}.as"/>
+            <param name="library.path" value="${project.name}/flash-lib"/>
+            <param name="external.library.path" value="${flash.output.dir}/flash_core/flash_core.swc"/>
+        </antcall>
+
+    </target>
+
+    <target name="build-swf">
+        <exec executable="${mxmlc}" failonerror="true">
+            <arg line="-compiler.library-path+=${library.path}
+                 -include-libraries+=${external.library.path}
+                 -output ${flash.output.dir}/${output.file}
+                 ${project.dir}/src/${input.file}
+                 -debug=false
+                 -runtime-shared-library-path
+                 -compiler.optimize=true"/>
+        </exec>
+    </target>
+
+    <target name="build-swc">
+        <exec executable="${compc}" failonerror="true">
+            <arg line="-source-path ${source.dir}
+                 -output ${flash.output.dir}/${output.swc}
+                 -debug
+                 -include-sources ${source.dir}
+                 -compiler.library-path ${library.dir}
+                 -compiler.library-path ${flex.sdk}/frameworks/libs
+                 -compiler.library-path ${flex.sdk}/frameworks/locale/en_US
+                 -compiler.external-library-path ${flash.output.dir}
+                 -compiler.external-library-path ${flex.sdk.player}" />
+        </exec>
+    </target>
+
+    <target name="optimize-swc">
+        <unzip src="${swc-dir}/${swc-name}.swc" dest="${swc-dir}" overwrite="true">
+            <patternset>
+                <include name="library.swf"/>
+            </patternset>
+            <mapper type="glob" from="library.swf" to="${swc-name}.library.swf"/>
+        </unzip>
+
+        <exec executable="${optimizer}" failonerror="true">
+            <arg line="+flexlib ${flex.sdk}/frameworks
+                 --keep-as3-metadata='Bindable,Managed,ChangeEvent,NonCommittingChangeEvent,Transient,Style'
+                 -input=${swc-dir}/${swc-name}.library.swf
+                 -output=${swc-dir}/${swc-name}.swf" />
+        </exec>
+        <delete file="${swc-dir}/${swc-name}.library.swf"/>
+    </target>
+
+    <target name="copy-applications">
+        <antcall target="copy-resources">
+            <param name="projects.output.dir" value="${flash.deploy.dir}" />
+            <param name="projects.src.dir" value="${flash.output.dir}/applications"/>
+        </antcall>
+    </target>
+
+    <target name="copy-resources">
+        <copy todir="${projects.output.dir}" failonerror="true">
+            <fileset dir="${projects.src.dir}" excludes="**/*.fla"/>
+        </copy>
+    </target>
+</project>

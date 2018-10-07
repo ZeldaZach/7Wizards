@@ -1,0 +1,10 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "menu" %>
+  </div>
+
+  <div id="col_right">
+    <%= render :partial => "requests", :locals => {:relations => @relations, :callback_url => relation_path(:action => :friend_requests)} %>
+  </div>
+</div>
+<div class="clear"></div>

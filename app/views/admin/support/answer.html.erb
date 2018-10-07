@@ -1,0 +1,47 @@
+<h1><%= t :title%></h1>
+
+<% form_tag :action => 'reply' do %>
+  <%= hidden_field_tag 'id', @message.id %>
+  <%= hidden_field_tag 'page', @page %>
+  <%= hidden_field_tag 'mode', @mode %>
+  <%= hidden_field_tag 'category', @category %>
+
+  <%= tf Message, :user %>: <%= h @message.user.name %><br />
+  <%= tf User, :a_level %>: <%= h @message.user.a_level %><br />
+  <%= tf Message, :created_at %>: <%= d @message.created_at %><br />
+  <%= tf Message, :category %>: <%= @message.category_label %><br />
+  <%= t(:question) %>: <%= @message.message %><br /><br />
+  <br />
+  <%= label_tag :extra, t(:question_kind) %>:<br />
+  <%= categories_select_tag :extra, @message.extra %><br /><br />
+  <%= label_tag :question, t(:question) %>:<br />
+  <%= text_area_tag :question, @message.message, :rows => 5, :cols => 85  %><br /><br />
+  <%= label_tag :message, t(:message) %>:<br />
+  <%= text_area_tag :message, nil, :rows => 5, :cols => 85  %>
+  <br />
+  <%= label_tag :public, t(:public) %>: <%=  check_box_tag :pub_checkbox, Message::SUPPORT_Q_PUBLIC, false %>
+  <br /><br />
+  <%= submit_tag t(:send) %>
+<% end %>
+<br />
+
+<%= link_to tg(:cancel), :action => 'details', :id => @message.user_id %>
+<%= link_to tg(:back), admin_support_index_path %>
+
+<h2><%= t :last_questions%></h2>
+
+<% for message in @messages %>
+  <% if Message::SUPPORT_Q.member?(message.kind) %>
+    <br />
+    <%=h "Q: " + message.message %> <small>(<%= d message.created_at %>)</small>
+  <% end %>
+  <% if Message::SUPPORT_A.include?(message.kind) %>
+    <%=h "A: " + message.message %> <small>(<%= d message.updated_at %>)</small>
+  <% end %>
+  <% if Message::MESSAGE_FROM_ADMIN == message.kind %>
+    <strong>Administrator</strong> <small>(<%= d message.created_at %>)</small><br/>
+    <%= message.message %>
+  <% end %>
+  <br />
+<% end %>
+

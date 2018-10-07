@@ -1,0 +1,35 @@
+<h1><%= t :title%></h1>
+
+<p>
+  <% form_tag do %>
+    <%= hidden_field_tag 'mode', @mode %>
+    <%= label_tag :category, tf(Message, :category) %>:
+    <%= categories_select_tag :category, @category %>
+    <%= submit_tag tg(:find) %>
+  <% end %>
+</p>
+
+<table border="1">
+  <tr>
+    <th><%= tf Message, :created_at %></th>
+    <th><%= tf Message, :user %></th>
+    <th><%= tf Message, :category %></th>
+    <th><%= tf Message, :Q %></th>
+    <th></th>
+  </tr>
+  <% for message in @messages %>
+    <tr>
+      <td><%= d message.created_at %></td>
+      <td><%= link_to message.user.name, admin_user_path(message.user) %></td>
+      <td><%= message.extra %></td>
+      <td>
+        <%= link_to t(:answer), :action => :answer, :id => message.id, :page => @page, :mode => @mode, :category => @category %><br />
+        <%= link_to t(:no_answer), {:action => :reply, :id => message.id, :page => @page, :mode => @mode, :category => @category, :ignore => true}, :confirm => 'Оставить без ответа ?' %><br />
+        <%= link_to tg(:destroy), {:action => :delete_message, :id => message.id, :page => @page, :mode => @mode, :category => @category, :answer => true}, :confirm => 'Удалить ?' %><br />
+      </td>
+      <td><%= message.message %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @messages %><br />

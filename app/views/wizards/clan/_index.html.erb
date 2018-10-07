@@ -1,0 +1,79 @@
+<div id="columns_narrow_wide">
+
+  <div id="col_left" >
+    <div class="additional_info_block" >
+      <div class="quick_links">
+        <h2 class="block_header special"><%= t(:clan_list) %></h2>
+        <div class="image_design_pages" ><img alt="" src="/images/design/home_clans.jpg"/></div>
+      </div>
+
+      <div class="quick_links">
+        <h2 class="block_header"><%= tg(:actions) %></h2>
+        <ul class="navigate">
+          <% if @user.clan %>
+            <li><%= link_to_ajax t(:clan_my), :url => clan_path(:action => :details) %></li>
+          <% else %>
+            <li><%= link_to_ajax t(:clan_create), :url => clan_path(:action => :create) %></li>
+          <% end %>
+        </ul>
+
+
+      </div>
+      <div class="additional_info_bg"></div>
+      <div class="additional_info_bottom"></div>
+      <div class="additional_info_top"></div>
+    </div>
+  </div>
+
+  <div id="col_right" >
+    <div class="main_col_content" id="hall_glory">
+      <div class="visibl">
+        <h1 class="category_title_shop"><%= t(:clan_search) %></h1>
+        <div class="quick_links solid_form " style="margin-top: 10px !important">
+
+          <% form_ajax_tag(:url => clan_path(:action => :index, :a => "o"), :method => :get, :html => {:style => "float: left; padding-left: 20px;  width: 291px !important"}) do %>
+            <%= label_tag :owner_name, t(:by_leader) %>
+            <%= text_field_tag :owner_name, @owner_name, :class => "text login_pass_input" %>
+            <%= submit_tag tg(:search), :class => "small_submit search_otstup", :name => nil %>
+          <% end %>
+          <% form_ajax_tag(:url => clan_path(:action => :index, :a => "n"), :method => :get, :html => {:style => "float: left; padding-left: 20px; width: 291px !important"}) do %>
+            <%= label_tag :clan_name, tg(:by_name) %>
+            <%= text_field_tag :clan_name, @clan_name, :class => "text login_pass_input" %>
+            <%= submit_tag tg(:search), :class => "small_submit", :name => nil %>
+          <%end%>
+
+          <div class="equipment_slot avatars_list" style="margin-left: 20px">
+            <% @clans.each do |clan| %>
+              <ul class="gifts  information_tips_block clan_litt_block">
+                <li class="li_avas li_clan">
+                  <%= clan_image(clan, {:id => "clan_front_logo",:link => true, :height => 105, :width => 105}, {:id => "clan_back_logo", :height => 105, :width => 105}) %>
+                  <span class="clan_name"><%= clan.name %></span>
+                  <ul class="no_padding">
+                    <li class="tips tips_clanz" >
+                      <ul class="no_padding">
+                        <li><b class="hint_titel"><%= clan_link(clan) %> <%= clan_info(clan) %></b></li>
+
+                        <li><%= tf(Clan, :rating) %>: <%= clan.rating %></li>
+                        <li><%= tf(Clan, :owner) %>: <%= user_link(clan.owner) %></li>
+                        <li><%= tf(User, :a_reputation) %>: <%= clan.all_reputation %></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            <%end%>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="clear"></div>
+        <%= paginate(@clans, :params=>{:owner_name => @owner_name, :clan_name => @clan_name}) %>
+        <div class="clear"></div>
+      </div>
+
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top" ></div>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>

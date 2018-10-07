@@ -1,0 +1,35 @@
+<h1><%= t :title%></h1>
+
+<p>
+  <%= tf(User, :name) + " : " + link_to(@user.name, :action => :show, :id => @user.id) %>
+</p>
+
+<% form_tag :action => 'send_message' do %>
+  <%= hidden_field_tag 'id', @user.id %>
+  <%= hidden_field_tag 'page', @page %>
+  <%= label_tag :message, tf(Message, :message) %>:<br />
+  <%= text_area_tag :message, nil, :rows => 5, :cols => 85  %>
+  <br /><br />
+  <%= submit_tag tg(:send) %>
+<% end %>
+
+<br />
+
+<% for message in @messages %>
+  <% if Message::SUPPORT_Q.member?(message.kind) %>
+    <br />
+    <%=h "Q: " + message.message %> <small>(<%= d message.created_at %>)</small>
+  <% end %>
+  <% if Message::SUPPORT_A.include?(message.kind) %>
+    <%=h "A: " + message.message %> <small>(<%= d message.updated_at %>)</small>
+  <% end %>
+  <% if Message::MESSAGE_FROM_ADMIN == message.kind %>
+    <strong>Administrator</strong> <small>(<%= d message.created_at %>)</small><br/>
+    <%= message.message %>
+  <% end %>
+  <br />
+<% end %>
+
+<p>
+  <%= paginate @messages %>
+</p>

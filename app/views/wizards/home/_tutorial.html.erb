@@ -1,0 +1,24 @@
+<% is_done = @task && @task.has?(@user)%>
+<% is_last = @task && @task.name == TutorialLastTask::NAME%>
+<% if(AbstractTutorial.is_started?(@user) && !@description.blank?)%>
+  <p>
+    <%= @description %>
+    <%if is_done %>
+      <br/>
+      <br/>
+      <%= @task.done_description %>
+    <%end%>
+  </p>
+
+  <% if is_last %>
+    <%= link_to_ajax t(:home_get_gift), :url => home_path(:action => :receive_gift, :force_ajax => true) %>
+  <%elsif @task.nil? || is_done%>
+    <%= link_to_ajax t(:home_get_task), :url => home_path(:action => :get_task, :force_ajax => true) %>
+  <%end%>
+
+<%else%>
+  <p>
+    <%= t :tutorial_description %>
+  </p>
+  <%= link_to_ajax t(:home_get_task), :url => home_path(:action => :start_tutorial, :force_ajax => true) %>
+<%end%>

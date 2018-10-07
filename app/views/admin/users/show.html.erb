@@ -1,0 +1,37 @@
+<h1><%= t :title%></h1>
+
+
+<%= link_to tg(:back), admin_users_path %> |
+<%= link_to t(:edit), :action => :edit, :id => @user.id %> |
+<%= link_to t(:avatars), :action => :avatars, :id => @user.id %> |
+<%= link_to t(:chat_rooms), admin_chat_path(:action => :index, :user_id => @user.id) %> |
+<%= link_to t(:payments), :action => :payments, :id => @user.id %> |
+
+<!--
+<%= link_to t(:support), :action => :support, :id => @user.id %> |
+<%= link_to t(:messages), :action => :messages, :id => @user.id %> |
+-->
+<%= link_to t(:ban), :action => :ban, :id => @user.id %> |
+<%= link_to t(:login_as), :action => :login_as, :id => @user.id %> |
+<%= link_to t(:add_bonus), :action => :add_bonus, :id => @user.id %>
+
+<%
+  header = %w(id name active a_level is_admin is_moderator comments description attacker_message
+    s_wins_count s_loot_money s_loses_count s_lost_money)
+  ignore = header
+%>
+
+<p>
+  <% header.each do |a| %>
+    <b><%= tf @user, a %></b>: <%=h @user[a] %><br />
+  <% end %>
+</p>
+
+<p>
+  <% @user.attribute_names.each do |a| %>
+    <% if !ignore.include?(a) %>
+      <b><%= a %></b>: <%=h @user[a] %><br />
+    <% end %>
+  <% end %>
+</p>
+

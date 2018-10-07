@@ -1,0 +1,46 @@
+am_amethyst: # Крит-Камень
+  name: Amethyst of strength
+  description: The probability to make a critical strike is increased by {{percent}}%
+  next_description: The probability to make a critical strike will rise by {{percent}}%
+  requirements: The skill level must be at least 50
+  required_skill: 50
+  initial_percent: 1
+  level_percent: 0.5
+  price_staff: 50
+  max_level: 99
+  class: AmuletKakdams
+
+am_moonstone: # Фермстень
+  name: Moonstone
+  description: The amount of mana received from meditationis increased by {{percent}}%
+  next_description: The amount of mana received from meditation will rise by {{percent}}%
+  requirements: At least 100 hours of meditation
+  required_meditation_hours: 100
+  initial_percent: 5
+  level_percent: 2.5
+  price_staff: 250
+  max_level: 99
+  class: AmuletStahanka
+
+am_emerald: # Неогенез
+  name: Emerald of life
+  description: The renewal rate for health points is increased by {{percent}}%
+  next_description: The renewal rate for health points will rise by {{percent}}%
+  requirements: Your inventory must contain aqua vitae potion
+  initial_percent: 4
+  level_percent: 1
+  price_staff: 30
+  max_level: 95
+  class: AmuletRegenec
+
+am_hessonite: # Неваляш
+  name: Hessonite
+  next_description: The probability to evade a strike will rise by {{percent}}%
+  description: The probability to evade a strike is increased by {{percent}}%
+  requirements: The dexterity level must be at least 50.
+  required_dexterity: 50
+  initial_percent: 1
+  level_percent: 0.5
+  price_staff: 150
+  max_level: 99
+  class: AmuletPups

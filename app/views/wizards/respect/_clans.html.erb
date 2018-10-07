@@ -1,0 +1,61 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "menu" %>
+  </div>
+
+  <div id="col_right" >
+    <div class="main_col_content" id="hall_glory">
+      <div class="visibl">
+        <h1 class="category_title_shop"><%= tv(:top_clans) %></h1>
+        <div class="bes_search avatal_imag_list">
+
+          <% form_ajax_tag(:url => respect_path(:action => :clans)) do %>
+            <%= select_custom_tag(:order_best, options_for_select([[tg(:by_fame), "f"], [tg(:by_name), "n"]], @order)) %>
+            <%= submit_tag tg(:search), :name => nil, :class => "small_submit", :id => :best_submit %>
+            <%= text_field_custom_tag :name, @name, {:class => "text login_pass_input"}, respect_path(:action => :clans) %>
+          <%end%>
+
+          <div class="equipment_slot avatars_list">
+            <% @clans.each do |clan| %>
+              <ul class="gifts  information_tips_block clan_litt_block">
+                <li class="li_avas li_clan">
+                  <%= clan_image(clan, {:id => "clan_front_logo",:link => true, :height => 105, :width => 105}, {:id => "clan_back_logo", :height => 105, :width => 105}) %>
+                  <span class="clan_name"><%= clan.name %></span>
+                  <ul class="no_padding">
+                    <li class="tips tips_clanz" >
+                      <ul class="no_padding">
+                        <li><b class="hint_titel"><%= clan_link(clan) %> <%= clan_info(clan) %></b></li>
+
+                        <li><%= tf(Clan, :rating) %>: <%= clan.rating %></li>
+                        <li><%= tf(Clan, :owner) %>: <%= user_link(clan.owner) %></li>
+                        <li><%= tf(User, :a_reputation) %>: <%= clan.all_reputation %></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            <%end%>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="clear"></div>
+        <%= paginate(@clans, :params=>{:name => @name, :order_best => @order}) %>
+        <div class="clear"></div>
+      </div>
+
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top" ></div>
+    </div>
+  </div>
+
+</div>
+<div class="clear"></div>
+<script type="text/javascript">
+  Element.observe('order_best', 'change', function(){
+    $('best_submit').click();
+  });
+  wizards.controls.init();
+</script>
+
+

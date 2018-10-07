@@ -1,0 +1,25 @@
+<% form_ajax_for(@user, :url => bigpoint_path(:action => :do_bigpoint_confirm)) do |f|%>
+  <table class="bigpoint_konfirm">
+    <tr>
+      <td colspan="2"><%= t :description %></td>
+    </tr>
+    <tr>
+      <td><b><label><%=  tf(User, :name) %></label></b></td>
+      <td> <%= text_field_tag :name, "#{@user.bp_name}" %></td>
+    </tr>
+    <tr>
+      <td>
+        <b><%= f.label :gender, tf(User, :gender) %></b>
+      </td>
+      <td style="text-align: left">
+        <%= f.radio_button :gender, 'm', :class => "radio" %> <%= tf(User, :gender_male) %>
+        <%= f.radio_button :gender, 'f', :class => "radio" %> <%= tf(User, :gender_female) %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <%= f.submit("OK") %>
+      </td>
+    </tr>
+  </table>
+<%end%>

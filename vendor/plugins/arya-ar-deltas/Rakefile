@@ -1,0 +1,15 @@
+require 'rubygems'
+require 'rake'
+require 'echoe'
+
+Echoe.new('ar-deltas', '0.6') do |p|
+  p.description    = "ActiveRecord extension to allow for updating numerical attributes using deltas."
+  p.url            = "https://github.com/arya/ar-deltas/"
+  p.author         = "Arya Asemanfar"
+  p.email          = "aryaasemanfar@gmail.com"
+  p.ignore_pattern = ["tmp/*", "script/*", 'test/*']
+  p.runtime_dependencies = ["activerecord"]
+  p.development_dependencies = ["shoulda"]
+end
+
+Dir["#{File.dirname(__FILE__)}/tasks/*.rake"].sort.each { |ext| load ext }

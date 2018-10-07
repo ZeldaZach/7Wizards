@@ -1,0 +1,16 @@
+<div class="guru_popap">
+<%if @achivement%>
+  <%= game_item_image_tag(@achivement) %>
+  <%= t :description, :level => @achivement.get_level(current_user), :name => @achivement.title, :bonus => @achivement.bonus_staff(@achivement.get_level(current_user)) %>
+  
+  <%if current_user.hi5?%>
+    <%= link_to_ajax "Publish", {:url => wizards_path(:action => :hi5_publish_achivement)}, :onclick => "dialog.close()"%>
+  <%elsif current_user.facebook?%>
+   <%= link_to_ajax "Publish", {:url => wizards_path(:action => :facebook_publish)}, :onclick => "dialog.close()"%>
+  <%end%>
+  
+<%end%>
+  <div class="bottom_popap">
+   <%= link_to_ajax(tg(:ok), {:url => wizards_path(:action => :accept_achivement)}, :class => "close_button", :onclick => "dialog.close()")%>
+  </div>
+</div>

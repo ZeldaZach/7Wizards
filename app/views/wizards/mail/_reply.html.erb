@@ -1,0 +1,26 @@
+<% link_title = @button_name.nil? ? tg(:cancel) : @button_name %>
+<% form_ajax_tag :url => mail_path(:action => :new_message_process) do |f|  %>
+  <%= hidden_field_tag :message_id, @message_id %>
+  <table style="width: 100%" class="popap_type">
+    <tr>
+      <td style="text-align: left"><label><%= tf(Message, :to)%>:</label></td>
+      <td style="text-align: left; width: 100px;">
+        <%= hidden_field_tag  :recipient_id, @id, :id => "user_message_recipient_id"%>
+        <%= @name %>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><label><%= tf(Message, :title)%>:</label></td>
+      <td><%= text_field_tag :title, @title, {:style =>"width:335px; float:right", :class => "text", :onkeypress=>"return wizards.imposeMaxLength(event, this, 140);"} %></td>
+    </tr>
+    <tr>
+      <td colspan="2"><%= text_area_tag :message_from, @reply_message, {:style =>"width:426px; margin-top:10px;", :cols => 40, :rows => 2, :disabled => "disabled"} %></td>
+    </tr>
+    <tr>
+      <td colspan="2"><%= text_area_tag :message, @message, {:style =>"width:426px", :cols => 40, :rows => 4, :onkeypress=>"return wizards.imposeMaxLength(event, this, 1000);"} %></td>
+    </tr>
+  </table>
+  <div class="bottom_popap"><%= submit_tag tg(:send), :class =>"small_submit", :name => nil%><%= link_to link_title, "javascript:void(0)", :id => "close_btn",:class=>"close_button", :onclick => "javascript: dialog.close()"%> </div>
+<%end%>
+
+<%=  javascript_tag("$('message').focus();")%>

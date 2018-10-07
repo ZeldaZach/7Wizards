@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<flexLibProperties version="1">
+  <includeClasses>
+    <classEntry path="com.wizards.utils.SynchUrlLoader"/>
+    <classEntry path="com.wizards.locale.ResourceBundle"/>
+    <classEntry path="com.wizards.controls.MovieButton"/>
+    <classEntry path="com.wizards.models.PetModel"/>
+    <classEntry path="com.wizards.utils.NameRequirement"/>
+    <classEntry path="com.wizards.dto.CallBackDTO"/>
+    <classEntry path="com.wizards.utils.TaskCounter"/>
+    <classEntry path="com.wizards.models.PersonModel"/>
+    <classEntry path="com.wizards.gui.AbstractView"/>
+    <classEntry path="com.wizards.dto.PersonDTO"/>
+    <classEntry path="com.wizards.loaders.BaseLoader"/>
+    <classEntry path="com.wizards.errors.IllegalArgumentError"/>
+    <classEntry path="com.wizards.services.WebService"/>
+    <classEntry path="com.wizards.events.ResourceLoadEvent"/>
+    <classEntry path="com.wizards.loaders.LoaderView"/>
+    <classEntry path="com.wizards.utils.GraphUtils"/>
+    <classEntry path="com.wizards.controls.Box"/>
+    <classEntry path="com.wizards.dto.IDTO"/>
+    <classEntry path="com.wizards.services.ProfileService"/>
+    <classEntry path="com.wizards.events.DressupEvent"/>
+    <classEntry path="com.wizards.models.DefaultModelsFactory"/>
+    <classEntry path="com.wizards.controls.ColorPicker"/>
+    <classEntry path="com.wizards.models.DragonModel"/>
+    <classEntry path="com.wizards.loaders.FullLoaderView"/>
+    <classEntry path="com.wizards.dto.IPerson"/>
+    <classEntry path="com.wizards.utils.Strings"/>
+    <classEntry path="com.wizards.utils.SpriteDecorator"/>
+    <classEntry path="com.wizards.utils.ClassLoader"/>
+    <classEntry path="com.wizards.events.CallbackEvent"/>
+    <classEntry path="com.wizards.models.PetModelFactory"/>
+    <classEntry path="com.wizards.locale.Localization"/>
+    <classEntry path="com.wizards.controls.ExtendedButton"/>
+    <classEntry path="com.wizards.utils.URLHelper"/>
+    <classEntry path="com.wizards.loaders.ILoaderView"/>
+    <classEntry path="com.wizards.services.JSON"/>
+    <classEntry path="com.wizards.services.LocalizationService"/>
+    <classEntry path="com.wizards.controls.HBox"/>
+    <classEntry path="com.wizards.models.IModelsFactory"/>
+    <classEntry path="com.wizards.gui.SingleWindow"/>
+    <classEntry path="com.wizards.Global"/>
+    <classEntry path="com.wizards.utils.ObjectUtils"/>
+    <classEntry path="com.wizards.controls.VBox"/>
+  </includeClasses>
+  <includeResources/>
+  <namespaceManifests/>
+</flexLibProperties>

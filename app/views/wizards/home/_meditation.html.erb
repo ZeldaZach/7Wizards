@@ -1,0 +1,23 @@
+<% if @user.meditating? %>
+  <p>
+    <%= t :meditating, :money => @receive_money, :remain => (@user.meditation_finished_at - Time.now).seconds_to_full_time %><br/>
+  </p>
+
+  <%= confirm_link(tg(:cancel), "Are you sure?", {:url => home_path(:action => :cancel_meditation, :force_ajax => true)}) %>
+
+<% else %>
+  <% form_ajax_tag(:url => home_path(:action => :process_meditation, :force_ajax => true)) do %>
+
+    <p><%= t :description %>
+      <%= select_custom_tag "time",
+        options_for_select( proc { o = [[t(:select_time), 0]]; @meditate_times_to_go.each { |t| o << [t[:display], t[:time]]}; o }.call()) %>
+    </p>
+
+    <%= submit_tag "", :style => "position: absolute; top: -1000px", :id=>"meditate_form", :name => nil %>
+  <% end %>
+
+  <script type="text/javascript">
+    Event.observe($("time"), 'change', function(){$('meditate_form').click();});
+  </script>
+<% end %>
+

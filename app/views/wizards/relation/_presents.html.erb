@@ -1,0 +1,24 @@
+<div class="presents_sending">
+  <% @presents.each do |present| %>
+    <ul class="information_tips_block equipment_block clean no_scroll">
+      <li class="image_block">
+        <%= link_to_ajax user_item_image_tag(present), :url => relation_path(drid(:action => :send_present, :id => @relative, :present => present.key, :type => @type)) %>
+      </li>
+      <li class="tips" id="presents_tips">
+        <ul>
+          <li><b class="hint_titel"><%= present.title %></b></li>
+          <li><%= present.description %></li>
+        </ul>
+      </li>
+    </ul>
+  <% end %>
+  <% blank_count(@presents, 3).times do %>
+    <ul class="information_tips_block equipment_block clean no_scroll">
+      <li>
+        <%= image_design_tag("curse_blank.jpg") %>
+      </li>
+    </ul>
+  <% end %>
+</div>
+
+<div class="bottom_popap presents_bottom"><%= link_to tg(:cancel), "javascript:void(0)", :id => "close_btn",:class=>"close_button", :onclick => "javascript: dialog.close()"%></div>

@@ -1,0 +1,275 @@
+<%
+user = current_user
+
+%>
+
+<%if @show_flash%>
+  <%=  swf_object(rewrite_asset_path('/flash/Profile.swf'), 'flash_content', :width => 633, :height => 537,
+    :params => {:allowScriptAccess => "always"},
+    :callback => "flash_callback",
+    :flash_vars => {:version => rails_asset_id('/flash/Profile.swf'), :user_id => @user.id, :base_url => "/", :debug => !GameProperties::PROD}) %>
+  <% loadind =  "javascript: wizards.onScrollTop(); " %>
+<%else%>
+  <%  loadind = ""%>
+<%end%>
+
+<div id="columns_narrow_wide" >
+
+  <div id="col_left">
+    <div class="additional_info_block" >
+      <%= render :partial => "wizards/profile/user_avatar", :locals => {:user => @user} %>
+
+      <div class="quick_links">
+        <h2 class="block_header"><%= tg(:actions) %></h2>
+        <ul class="navigate">
+          <% if user_is_me? @user %>
+            <li><%= link_to_ajax t(:profile_dress_up), :url => profile_path(:action => "dressup") %></li>
+            <li><%= link_to_ajax t(:profile_train), :url => profile_path(:action => "train") %></li>
+            <li><%= link_to_ajax t(:profile_equipment), :url => profile_path(:action => "equipment") %></li>
+          <% else %>
+            <li>
+              <%= link_to_ajax(t(:send_message), :loading => loadind, :url => mail_path(:action => :new_message, :recipient_id => @user.id))%>
+            </li>
+            <li><%= link_to_ajax t(:attack), :url => fight_path(:action => :find_id, :id => @user.id) %></li>
+
+            <% if user.is_active_friend? @user %>
+              <li><%= link_to_ajax(t(:profile_send_gift), :loading => loadind, :url => relation_path(:action => :gifts, :id => @user.id))%></li>
+              <li><%= confirm_link t(:profile_remove_fiends),
+                  t(:remove_from_friend_confirmation, :user_name => @user.name),
+                  :url => relation_path(:action => :delete, :id => @user.id, :kind => Relation::KIND_FRIEND, :profile => true) %></li>
+            <%else%>
+              <li><%= link_to_ajax(t(:profile_send_curse), :loading => loadind, :url => relation_path(:action => :curses, :id => @user.id))%></li>
+              <li>
+                <%= link_to_ajax(t(:profile_send_friend_request), :loading => loadind, :url => relation_path(:action => :add, :id => @user.id, :kind => Relation::KIND_FRIEND))%>
+              </li>
+            <% end %>
+
+            <% if user.is_bookmark_list? @user %>
+              <li><%= confirm_link t(:profile_remove_from_flag),
+                  t(:remove_from_flag_confirmation, :user_name => @user.name),
+                  :url => relation_path(:action => :delete, :id => @user.id, :kind => Relation::KIND_BOOKMARK, :profile => true) %></li>
+            <%else%>
+              <li><%= link_to_ajax(t(:profile_flag_user), :loading => loadind, :url => relation_path(:action => :add, :id => @user.id, :kind => Relation::KIND_BOOKMARK))%></li>
+            <% end %>
+
+            <% if user.is_ignore_list? @user %>
+              <li><%= confirm_link t(:profile_remove_from_ignore),
+                  t(:remove_from_ignore_confirmation, :user_name => @user.name),
+                  :url => relation_path(:action => :delete, :id => @user.id, :kind => Relation::KIND_IGNORE, :profile => true) %></li>
+            <%else%>
+              <li><%= link_to_ajax(t(:profile_ignore_user), :loading => loadind, :url => relation_path(:action => :add, :id => @user.id, :kind => Relation::KIND_IGNORE))%></li>
+            <% end %>
+
+          <%end%>
+          <li><%= link_to_ajax (!@show_flash ? t(:show_big_avatar):t(:hide_big_avatar)), :url => profile_path(:action => :index, :id => @user, :show_flash => !@show_flash)%></li>
+        
+        </ul>
+      </div>
+
+      <div class="quick_links" >
+        <h2 class="block_header"><%= tf(FightLog, :fight_user_attributes) %></h2>
+        <ul class="information">
+          <li><%= tf(User, :status) %>: <%= is_online_image_tag(@user, :style => "margin-bottom: 2px") %></li>
+          <%if user_is_me? @user %>
+            <li><%= tf(User, :a_power) %>: <%= @user_a.full_power_label %></li>
+            <li><%= tf(User, :a_dexterity) %>: <%= @user_a.full_dexterity_label %></li>
+            <li><%= tf(User, :a_protection) %>: <%= @user_a.full_protection_label %></li>
+            <li><%= tf(User, :a_skill) %>: <%= @user_a.full_skill_label %></li>
+            <li><%= tf(User, :a_weight) %>: <%= @user_a.full_weight_label %></li>
+          <%else%>
+            <li><%= tf(User, :a_power) %>: <%= @user.a_power %>+?</li>
+            <li><%= tf(User, :a_dexterity) %>: <%= @user.a_dexterity%>+?</li>
+            <li><%= tf(User, :a_protection) %>: <%= @user.a_protection %>+?</li>
+            <li><%= tf(User, :a_skill) %>: <%= @user.a_skill %>+?</li>
+            <li><%= tf(User, :a_weight) %>: <%= @user.a_weight %>+?</li>
+          <%end%>
+        </ul>
+      </div>
+      <div class="clear"></div>
+      <div class="quick_links">
+        <h2 class="block_header"><%= tf(FightLog, :fight_user_information) %></h2>
+        <ul class="information">
+          <li><%= tf(User, :rating) %>: <%= @user.rating %></li>
+          <li><%= tf(User, :a_reputation) %>: <%= @user.a_reputation %></li>
+          <% if user_is_me? @user %>
+            <li><%= tf(User, :a_health) %>: <%= @user.a_health %></li>
+            <li><%= tf(User, :max_health) %>: <%= @user.max_health %></li>
+            <li><%= tf(User, :health_hour_regeneration) %>: <%= @user.health_hour_regeneration %></li>
+          <%end%>
+          <%if @user.clan %>
+            <li><%= tf(User, :clan) %>: <b class="clan_name_in_stats"><%= link_to_ajax(@user.clan.name, :url => clan_path(:action => :details, :id => @user.clan.id)) %></b></li>
+          <%end%>
+          <li><%= tf(User, :e_fights_count) %>: <%= @user.s_wins_count + @user.s_loses_count %> </li>
+          <li><%= tf(User, :s_wins_count) %>: <%= @user.s_wins_count %></li>
+          <li><%= tf(User, :s_loot_money) %>: <%= @user.s_loot_money %></li>
+          <li><%= tf(User, :s_lost_money) %>: <%= @user.s_lost_money %></li>
+          <li><%= tf(User, :s_total_damage) %>: <%= @user.s_total_damage %></li>
+          <li><%= tf(User, :s_lost_protection) %>: <%= @user.s_lost_protection %></li>
+          <li><%= tf(User, :s_meditation_minutes) %>: <%= @user.s_meditation_minutes %></li>
+          <li><%= tf(User, :s_friends_count) %>: <%= @friends_count %></li>
+          <li><%= tf(User, :s_vote) %>: <%= @user.s_vote %></li>
+          <li><%= tf(User, :created_days) %>: <%= @user.created_days %></li>
+        </ul>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="additional_info_bg"></div>
+      <div class="additional_info_bottom"></div>
+      <div class="additional_info_top"></div>
+    </div>
+  </div>
+
+  <div id="col_right">
+
+    <div class="main_col_content">
+      <div class="visibl">
+        <div class="blue_buttons">
+          <h1 class="category_title_shop"><%= tf(User, :description) %> </h1>
+          <div class="bes_search">
+            <% if user_is_me? @user %>
+              <% form_ajax_for @user, :url => profile_path(:action => :update_message) do |f|  %>
+                <%= f.hidden_field(:attacker_message)%>
+                <%= f.text_area(:description, :size => "75x5", :onkeypress=>"return wizards.imposeMaxLength(event, this, 1010);")%>
+                <%= submit_tag tg(:save), :class=>"save_button"  %>
+              <%end%>
+            <%else%>
+              <p style="width: 600px;margin: auto;overflow-x:hidden; text-align: center;"><%= @user.description.blank? ? tf(User, :default_description) : @user.description %></p>
+            <%end%>
+            <div class="clear"></div>
+          </div>
+        </div>
+
+        <% if user_is_me? @user %>
+          <div class="blue_buttons">
+            <h1 class="category_title_shop"><%= tf(User, :attacker_message) %></h1>
+            <div class="bes_search">
+              <% form_ajax_for @user, :url => profile_path(:action => :update_message) do |f|  %>
+                <%= f.hidden_field(:description)%>
+                <%= f.text_area(:attacker_message, :size => "75x5", :onkeypress=>"return wizards.imposeMaxLength(event, this, 139);")%>
+                <%= submit_tag tg(:save), :class=>"save_button"  %>
+              <%end%>
+              <div class="clear"></div>
+            </div>
+          </div>
+        <%end%>
+        <div style="margin-left: 11px;">
+        <div id="flash_content" style=" text-align: center; display: none; ">
+          <p>
+            <%= link_to image_tag("http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif", :alt=>"Get Adobe Flash player"), "http://www.adobe.com/go/getflashplayer" %>
+          </p>
+        </div>
+          </div>
+        <h1 class="category_title_shop"><%= (tf UserItem, "category_achivements") %></h1>
+        <div class="equipment_slot profile_main">
+          <% for achivement in @achivements %>
+            <ul class="information_tips_block equipment_block clean no_scroll">
+
+              <%if achivement.is_active(@user)%>
+                <li class="image_block">
+                  <span><%= achivement.get_level(@user) %></span>
+                  <%= game_item_image_tag(achivement) %>
+                </li>
+              <%else%>
+                <li class="image_block grey_img">
+                  <%= game_item_image_tag(achivement) %>
+                </li>
+
+              <%end%>
+
+              <li class="tips">
+                <ul>
+                  <li><b class="hint_titel"><%= achivement.title %></b></li>
+                  <li><%= achivement.description(@user) %></li>
+
+                  <% if achivement.get_max_level > 1 %>
+                    <li><%= tv(:item_from_max, :level => achivement.get_level(@user), :max => achivement.get_max_level)%></li>
+                  <%end%>
+
+                  <%unless achivement.reached_max?(user)%>
+                    <li><%= tv(:in_progress, :level => achivement.in_progress_description(@user)) %></li>
+                  <%end%>
+
+                </ul>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+        <div class="clear"></div>
+        <h1 class="category_title_shop"><%= (tf UserItem, "category_gift") %></h1>
+        <div class="equipment_slot profile_main">
+          <% for gift in @used_gifts %>
+            <ul class="information_tips_block equipment_block clean no_scroll">
+              <li class="image_block">
+                <%= user_item_image_tag(gift) %>
+              </li>
+              <li class="tips">
+                <ul>
+                  <li><b class="hint_titel"><%= gift.title %></b></li>
+                  <li><%= gift.description %></li>
+                  <li><%= tf(Message, :from) %>: <%= user_link(gift.bought_by) %></li>
+                </ul>
+              </li>
+            </ul>
+          <% end %>
+          <% blank_count(@used_gifts, 5).times do %>
+            <ul class="gifts  information_tips_block">
+              <li>
+                <%= image_design_tag("gift_blank.jpg") %>
+              </li>
+            </ul>
+          <% end %>
+        </div>
+        <div class="clear"></div>
+
+        <div class="quick_links" >
+          <h1 class="category_title_shop"><%= (tf UserItem, "category_curse") %></h1>
+          <div class="equipment_slot profile_main">
+            <% for curse in @used_curses %>
+              <ul class="information_tips_block equipment_block clean no_scroll">
+
+                <li class="image_block">
+                  <%= user_item_image_tag(curse) %>
+                </li>
+                <li class="tips">
+                  <ul>
+                    <li><b class="hint_titel"><%= curse.title %></b></li>
+                    <li><%= curse.description %></li>
+                    <li><%= tf(Message, :from) %>: <%= user_link(curse.bought_by) %></li>
+                    <% if user_is_me?(@user) %>
+                      <li class="little_button"><%= link_to_ajax t(:cancel_curse), relation_path(:action => :cancel_curse, :id => curse) %></li>
+                    <% end %>
+
+                  </ul>
+                </li>
+              </ul>
+            <% end %>
+
+            <% blank_count(@used_curses, 5).times do %>
+              <ul class="gifts  information_tips_block">
+                <li>
+                  <%= image_design_tag("curse_blank.jpg") %>
+                </li>
+              </ul>
+            <% end %>
+
+          </div>
+          <!-- dissolve all button -->
+          <% if user_is_me?(@user) && !@used_curses.empty? %>
+            <div class="blue_buttons disolve_all" >  <%= link_to_ajax t(:cancel_all_curses), relation_path(:action => :cancel_curse) %></div>
+          <% end %>
+          <div class="clear"></div>
+
+
+
+          <%= link_to_top tg(:scroll_top)%>
+        </div>
+      </div>
+
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

@@ -1,0 +1,1804 @@
+en:
+  models:
+    user:
+      relation_message_friend_referral: You registered as his friend.
+      relation_request_message_friend_referral: It's {{name}}, just registered as your friend. Please accept.
+      default_attacker_message: "How dare you challenge me?"
+    message:
+      try_fight: "{{name}} attempted to fight you"
+      done_task: "Task is accomplished"
+#      pet_title: "Pet's status is changed"
+#      pet_activate: "You released your pet from its cage"
+#      pet_deactivate: "Your put your pet into its cage"
+      deactivate_pet_curse: "Your pet sent to cage"
+      receive_gift_title: "You received a gift"
+      receive_gift_message: "You received a gift {{present_name}} from {{user_name}}"
+      receive_curse_title: "You received a curse"
+      receive_curse_message: "You received a curse {{present_name}} from {{user_name}}"
+      
+      present_potion_used: "You've dissolved the curse {{name}}"
+      present_potion_all_used: "You've dissolved all curses"
+
+      reference_bonus: "You received {{staff}} for purchases made by invited wizards <br/><ul>{{message}}</ul>"
+      reference_bonus_title: "You received {{staff}} for purchases made by invited wizards"
+      reference_bonus_user: "<li>Purchases by {{name}}: {{staff}}</li>"
+      reference_riched_level_bonus_title: You received reference bonus {{staff}}
+      reference_riched_level_bonus: Invited wizard {{name}} reached {{level}} level. You received {{staff}} for this
+
+      meditation_content: "Meditation completed! You received {{money}} mana"
+      meditation_experience: " and your experience increased by {{experience}}"
+      meditation_curse: "Your income from meditation is lost, because the curse Beast Scraps has worked"
+      meditation_curse_experience: " but your experience increased by {{experience}}"
+      meditation_nirvana: Meditation completed! You have reached the state of nirvana and you get {{money}} mana
+
+      bonus_reason_message_money: "You received {{money}}"
+      bonus_reason_message_staff: "You received {{staff}}! Reason: {{reason}}"
+      message_from_admin: "Message from admin"
+      payment_processed_tile: "Payment successful"
+      payment_refused_title: "Payment refused"
+      payment_processed: "You make a payment on 7wizards. Transaction was successful. You bougth {{amount}} GOLD"
+      payment_refused: "You tried to make a payment on 7wizards.com. Transaction was not successful, please check your payment details and try again"
+
+      you_strike_win: You attacked {{name}}, you won {{money}} mana
+      you_strike_lose: You attacked {{name}}, you lost {{money}} mana
+
+      you_striked_win: "{{name}} attacked you, you won {{money}} mana"
+      you_striked_lose: "{{name}} attacked you, you lost {{money}} mana"
+      
+      you_strike_dragon_win: You've attacked a Dragon and won the battle
+      you_strike_dragon_lose: You've attacked a Dragon and lost the battle
+
+      you_kill_pet: " and you killed {{name}} pet"
+      your_pet_killed: " and your pet was killed"
+      
+      you_strike_dragon_win: You've attacked a Dragon and won the battle
+      you_strike_dragon_lose: You've attacked a Dragon and lost the battle
+
+      dragon_killed:  The level {{level}} dragon has been defeated. You dealt {{damage}} damage to him and bagged {{money}}
+      dragon_killed_by_you: You've dealt the final blow to the level {{level}} dragon. You made {{damage}} damage and bagged {{money}}
+      dragon_killed_by_you_and_bonus: You struck the final blow to a very powerful level {{level}} dragon. You dealt {{damage}} damage and bagged {{money}} , plus {{staff2}} extra gold
+      dragon_left: The level {{level}} dragon has fled, but you managed to deal {{damage}} damage to him.
+
+      you_reached_new_level: "You reached level {{level}}"
+      you_stored_max_mana: "You have collected the maximum amount of mana possible for you level. Spend your mana by training your skills or buying some items."
+      you_stored_max_mana_title: "Your mind generated maximum mana."
+      message_from_guru: "You have chosen to not accept my guidance at this time. Come back when you are ready so that I can prepare you for your journey ahead! I will be awaiting your return."
+      achivement_new_level: "You've reached level {{level}} of {{name}} achievement and get {{bonus}} bonus gold"
+
+      fight_kill_pet_curse: Your pet died in battle, because the pet heart cage was disabled by the Killing Trap curse.
+    clan_message:
+      message_from: From [[relation_path_{{id}}_{{name}}]]
+      message: Message
+      donate_both: Donated {{money}} and {{staff2}} to treasury
+      donate_money: Donated {{money}} to treasury
+      donate_staff2: Donated {{staff2}} to treasury
+      clan_created: "A clan {{name}} is set up"
+      user_joined: "[[relation_path_{{id}}_{{name}}]] Joined the clan"
+      user_kicked: "Leader has kicked out of the clan [[relation_path_{{id}}_{{name}}]] "
+      user_leave: "[[relation_path_{{id}}_{{name}}]]  Left the clan"
+      war_started: Your clan declared a war against clan [[clan_path_{{clan_id}}_{{clan_name}}]]
+      war_started_opponent: Clan [[clan_path_{{clan_id}}_{{clan_name}}]] declared a war against your clan
+      war_union_started_message: Friendly clan [[clan_path_{{clan_id}}_{{clan_name}}]] declared war against [[clan_path_{{opponent_clan_id}}_{{opponent_clan_name}}]]. The war breaks out in {{minutes}} minutes.
+      war_union_attacked_message: A clan [[clan_path_{{clan_id}}_{{clan_name}}]] has declared a war against your ally [[clan_path_{{opponent_clan_id}}_{{opponent_clan_name}}]]. The war breaks out in {{minutes}} minutes.
+      war_finished_win: "Clan [[clan_path_{{clan_id}}_{{clan_name}}]] lost. Your clan won {{money}} and {{staff2}}."
+      war_finished_lose: "Clan [[clan_path_{{clan_id}}_{{clan_name}}]] won. Your clan lost {{money}} and {{staff2}}."
+      war_with_opponent_without_altar_message: "Your clan has attacked the clan [[clan_path_{{clan_id}}_{{clan_name}}]] without altar and each of you will lose 1 point of your fame. The war breaks out in {{minutes}} minutes"
+      war_started_by_your_clan_message: "Your leader declared war against clan [[clan_path_{{clan_id}}_{{clan_name}}]]. The war breaks out in {{minutes}} minutes."
+      war_started_message: "A clan [[clan_path_{{clan_id}}_{{clan_name}}]] declared war against your clan. The war breaks out in {{minutes}} minutes.<br /><a href=\"[[war_path]]{{war_id}}\">Go to war</a>"
+      union_approved_by_clan: "Your clan has accepted an offer of alliance from a clan [[clan_path_{{clan_id}}_{{clan_name}}]]."
+      union_approved: "Offer of alliance from a clan [[clan_path_{{clan_id}}_{{clan_name}}]] was accepted."
+      union_killed_by_clan: "Your clan broke off an alliance with a clan [[clan_path_{{clan_id}}_{{clan_name}}]]."
+      union_killed: "Clan [[clan_path_{{clan_id}}_{{clan_name}}]] broke off an alliance with your clan."
+
+    chat:
+      main_room_title: "{{user_name}} room"
+    clan_war:
+      finish_reason_winner_protection: Your clan destroyed opponent's clan defense
+      finish_reason_winner_time: The war time is up and your clan has more defense left.
+      finish_reason_winner_parameters: Opponent's clan has no members able to fight.
+      finish_reason_loser_protection: "You clan defense is destroyed."
+      finish_reason_loser_time: "The time is up and opponent's clan has more defense left."
+      finish_reason_loser_parameters: "Your clan has no members able to fight."
+    dragon:
+      dragon_description: "The level {{level}} dragon has entered our realm. Try to defeat him!"
+      double_health_dragon: "Victory! The wizards have slain the dragon, now try to slay the level {{level}} enduring dragon with x2 health. The brave wizard that deals the final blow will receive an extra bonus!"
+      double_power_dragon: "Victory! The wizards have slain the dragon, now try to slay the level {{level}} mega  dragon with x2 power. The brave wizard that deals the final blow will receive an extra bonus!"
+      new_dragon: "Victory! The wizards have slain the dragon, now try to slay the level {{level}} dragon."
+
+  mailer:
+    notifier:
+      new_account: "7Wizards New account"
+      registration: "7Wizards Registration data"
+      restore_password: "7Wizards Registration data"
+      payment_succesful: "Payment successful"
+      payment_refused: "Payment was not successful"
+      
+  views:
+    layouts:
+      application:
+        reload: "Reload"
+        admin_logged_in_as: "Admin logged in as"
+        adjust: "Adjust"
+        logout_as: "Go back to admin console"
+      admin:
+        title: Admin console
+
+    admin:
+      index:
+        title: Admin console
+        users: Users
+        news: News
+        public_chat: Public Chat
+        support: Users support
+        support_top_paid: Top paid users support
+        support_moder: Mods support
+        support_bugs: Bugs
+        config_files: Configuration
+        reports: Reports
+        history: Questions history
+      users:
+        index:
+          title: "Users list"
+          user_name: Search by name
+        edit:
+          title: "Change characteristics"
+        show:
+          title: Details
+          ban: Ban
+          login_as: Log in as
+          add_bonus: Give a bonus to
+          edit: Edit
+          support: Questions
+          chat_rooms: Chat rooms
+          messages: Messages
+          payments: Payments
+          avatars: Avatars
+        ban:
+          title: Ban
+          ban_history: Ban history
+        add_bonus:
+          title: Give a bonus
+          reason: Reason
+        support:
+          title: Questions
+        chat:
+          title: Chat
+        messages:
+          title: Messages
+        payments:
+          title: Payments
+        avatars:
+          title: Avatars
+          reset_avatar: Reset avatar
+      news:
+        index:
+          title: News
+        edit:
+          title: Edit news
+        show:
+          title: Piece of news
+        new:
+          title: Create a piece of news
+      support:
+        index:
+         title: "Support: unanswered questions"
+         answer: Reply
+         no_answer: Unanswered
+        bugs:
+         title: "Support: unanswered questions"
+         answer: Reply
+         no_answer: Unanswered
+         not_a_bug: Not a bug
+        answer:
+          title: "Support: Reply"
+          message: Reply
+          send: Send
+          question: Question
+          public: Submit to FAQ
+          last_questions: Latest questions
+          question_kind: Question type
+        history:
+          title: Questions history
+        edit_message:
+          title: Edit question / reply
+      events:
+        index:
+          title: Events
+          events: Draft
+          history: History
+        show:
+          title: Event
+          add_items: Add event part
+          activate: Activate
+        show_activate:
+          title: Activate
+          silent: Without a message
+          hours: For how long?
+          activate: Activate
+        new:
+          title: New event
+        edit:
+          title: Edit event
+        new_item:
+          title: Add event part
+      chat:
+        index:
+          chat: Chat
+          reported_users: Reported users
+
+    visitor:
+      globals:
+        restore: "Restore password"
+        log_in: "Log in"
+        register_facebook: "Register with Facebook account"
+        connect_facebook: "Connect 7Wizards and Facebook accounts"
+        blog: "Blog"
+        remember: "Remember me"
+
+      na_active:
+        title: Your hero is banned
+        reason: Reason
+        default_reason: You were banned by administrator.
+        end_date: Banned till
+        end_date_never: Forever
+        banned_by_moderator: Blocked by moderator
+        banned_by_admin: Blocked by administrator
+      na_holiday:
+        title: You are on a vacation
+#        description: "Ð•ÑÐ»Ð¸ Ð²Ñ€ÐµÐ¼Ñ Ð·Ð°Ð¿Ð¾Ñ Ð¿Ñ€Ð¾Ð¹Ð´ÐµÑ‚, Ð° Ñ‚Ñ‹ Ñ‚Ð°Ðº Ð¸ Ð½Ðµ Ð¿Ð¾ÑÐ²Ð¸ÑˆÑŒÑÑ, Ñ‚Ð¾ Ñ‚Ñ‹ Ð±ÑƒÐ´ÐµÑˆÑŒ Ð² Ð·Ð°Ð¿Ð¾Ðµ Ð¿Ð¾ÐºÐ° ÑÐ½Ð¾Ð²Ð° Ð½Ðµ Ð·Ð°Ð¹Ð´ÐµÑˆÑŒ Ð² Ð¼Ð¸Ñ€ Ð²Ð¸ÐºÐ¸Ð½Ð³Ð¾Ð².
+#            Ð’ ÑÑ‚Ð¾ Ð²Ñ€ÐµÐ¼Ñ Ð½Ð° Ñ‚ÐµÐ±Ñ Ð½Ðµ ÑÐ¼Ð¾Ð³ÑƒÑ‚ Ð½Ð°Ð¿Ð°Ð´Ð°Ñ‚ÑŒ Ð´Ñ€ÑƒÐ³Ð¸Ðµ Ð²Ð¸ÐºÐ¸Ð½Ð³Ð¸, Ð½Ð¾ Ð¸ Ð´ÐµÐ½ÑŒÐ³Ð¸ Ð½Ðµ Ð±ÑƒÐ´ÑƒÑ‚ Ð·Ð°Ñ€Ð°Ð±Ð°Ñ‚Ñ‹Ð²Ð°Ñ‚ÑŒÑÑ Ð½Ð¸ÐºÐ°ÐºÐ¸Ð¼ Ð¾Ð±Ñ€Ð°Ð·Ð¾Ð¼."
+        end_date: On holliday till
+#        remain: ÐœÐ¸Ð½Ð¸Ð¼Ð°Ð»ÑŒÐ½Ð¾ ÐµÑ‰Ðµ Ð¼Ð¾Ð¶ÐµÑˆÑŒ Ð¿Ð¸Ñ‚ÑŒ
+
+      index:
+        register_title: "Brave Wizard? Register now. It's free."
+        register: "Register"
+        register_required_title: " All fields are required"
+        register_explain: "Username consists of English letters, digits and underscores.
+                          It must be from 3 to 20 characters long and can not begin with a digit.
+                          A password must contain between 4-20 characters, some of these characters
+                          must be numbers. Use only english letters."
+        agreement: "By clicking Play Now button, I agree with
+                    <a href='{{terms_url}}' target='blank'>terms and conditions</a>,
+                    <a href='{{rules_url}}' target='blank'>Rules of Conduct</a>
+                    and confirm that <b>I am older than 13 years</b>."
+        info_7wizards_title: "What is 7Wizards?"
+        info_7wizards_list:  "<ul class='navigate'>
+                                <li class='selected'>HI-END Social Game </li>
+                                <li class='selected'>Magic Social Network</li>
+                                <li class='selected'>True Social Experience</li>
+                              </ul>"
+        info_7wizards_what_can_do_title: "What can I do here?"
+        info_7wizards_what_can_do_list: "<ul class='navigate'>
+                                              <li>Dress up multiple avatars</li>
+                                              <li>Chat and make friends  </li>
+                                              <li>Fight and rob your enemies </li>
+                                              <li>Send gifts and curses</li>
+                                              <li>Adopt and train your pet </li>
+                                              <li>Create or join a clan </li>
+                                              <li>Start clan wars </li>
+                                              <li>Multiplayer quests </li>
+                                              <li>Meet the DRAGON! </li>
+                                              <li>Trade, buy, and collect </li>
+                                              <li>Have outstanding fun! :) </li>
+                                            </ul>"
+      restore:
+        restore_pass: "To restore password enter your login and email address"
+      change_password:
+        type_new_message: "New password"
+      profile:
+        register_as_friend_title: REGISTER AS MY FRIEND 
+        register_as_friend: Register Now
+        back_to_home: "Back to register page"
+      _preview:
+        preview_dressup: Dress up your avatars
+        preview_chat: Chat and make friends
+        preview_fight: Fight and rob your enemies
+        preview_pet: Take care about battle pets 
+        preview_clan: Create a clan and start clan wars
+        preview_gift: Hundreds of items. Send gifts and curses
+        preview_dragon: Meet the DRAGON! Register now
+    navigation:
+      globals:
+        quick_links: "Quick Links"
+        home: "Home"
+        avatar: "Avatar"
+        friends: "Friends"
+        mail: "Mail"
+        blog: "Blog"
+        buy_gold: "Buy gold"
+      _quick_links:
+        tutorial: "The Elder"
+        dayli_bonus: "Daily bonus"
+        meditation: "Meditation"
+        arena: "Arena"
+        pets: "Pets"
+        clans: "Clans"
+        shop: "Shop"
+        wall: "Wall"
+      _user_info:
+        account: "Account"
+        logout: "Log Out"
+        change_password: "Change Password"
+        delete_account: "Delete My Account"
+        delete_confirm_description: "Are you sure you want to delete your account? Please think twice, you won't be able to restore it"
+        activate_account: "Activate my Account"
+        help: "Help/FAQ"
+        wizards_timer: "7wizards current time"
+
+        timer_description: "Time left before the next event"
+        health_description: "Your current health: <br/> {{health}} / {{max_health}} "
+        money_description: "Your mana amount"
+        pet_health_description: "Your pet's current health: <br/> {{health}} / {{max_health}}"
+        staff_description: "Your gold amount"
+        staff2_description: "Crystals. Coming soon"
+        fights_description: "Number of fights available"
+      user_chat:
+        chat_click_to_begin: "Click here to chat"
+        chat_filters: "Filters:"
+        filter_all_in_chat: "Who's in chat"
+        filter_same_room_in_chat: "Who's in the same room"
+        filter_boys_in_chat: "Boys in chat"
+        filter_girls_in_chat: "Girls in chat"
+        chat_rooms: "Chat rooms"
+        chat_rooms_public: "Public chat"
+        chat_rooms_private: "Private chat"
+        chat_autoscroll: "Autoscroll"
+        chat_clear: "Clear"
+        chat_invite_to_my_room: "Invite to My room"
+        chat_kick_from_room: "Kick from My room"
+        chat_private_room: "Invite to Private room"
+        chat_remove_private_room: "Remove private room"
+        chat_block_user: "Block user in chat"
+        chat_report_user: "Report User in chat"
+        chat_online_users: "Now in chat"
+        chat_filters: Filters
+        chat_public: "Public chat"
+        chat_user_rooms: User rooms
+        chat_private_room: Private chats
+      user_menu:
+        menu_arena: "Arena"
+        menu_hall_of_glory: "Hall of glory"
+        menu_clans: "Your Clan"
+        menu_pets: "Your Pet"
+        menu_shop: "Shop"
+        menu_dressup: "Dress up"
+        menu_train: "Train"
+        menu_equipment: "Equipment"
+        menu_friends: "Friends"
+        menu_requests: "Requests"
+        menu_flagged: "Flagged"
+        menu_blocked: "Blocked"
+        menu_games: "Play games"
+        menu_incoming: "Incoming"
+        menu_sent: "Sent"
+        menu_events: "Events"
+        menu_fight_log: "Fight log"
+        menu_clan_messages: "Clan messages "
+        menu_new_clan_messages: "New clan message"
+      footer:
+	copyrights: ""
+        privacy_policy: "Privacy Policy"
+        therms_and_conditions: "Terms and Conditions"
+        rules_of_conduct: "Rules of Conduct"
+    notifier:
+      confirm_registration:
+        confirm: "Confirmation Request"
+        confirm_description: "Click to confirm e-mail address"
+    wizards:
+      _confirm_dialog:
+        yes_btn: "Yes"
+        no_btn: "No"
+      _change_email:
+        description: "The email address you have entered {{email}} is invalid, please edit it - so we can verify you"
+      _achivement_notify:
+        description: You've reached level {{level}} of {{name}} achievement and get {{bonus}} bonus gold. Check all your achievements at the avatar page of your wizard.
+      _change_name:
+        description: Welcome to 7wizards brave adventurer! Enter the chosen name of your wizard and begin your journey to fame and glory within our realm.
+      home:
+        _index:
+          tutorial: The Elder
+
+          meditation: Meditation
+          daily_bonus: Daily bonus
+
+          arena: Arena
+          arena_description: "Go forth and let battle commence! Find an opponent by level or name and show them your bewitching skills in the arena."
+          home_fight: "Fight!"
+
+          clans: Your Clan
+          clans_description: "Join a clan and share your strength with others or set up and lead your own,
+                              then seek others to join you in becoming an unstoppable force. Start wars with other
+                              clans, pillage their riches and make your way to the top."
+          home_your_clan: "Collaborate"
+          war_has_started: "War has been started!"
+
+          half_of_gory: Hall of Glory
+          half_of_gory_description: "Ahhh, the Hall Of Glory! Where only the most famous wizards and their clans reside. Dare you challenge them? Know them well and seek to make your place amongst their glory."
+          home_best_of_best: "Best of the best!"
+
+          port: Port
+          port_description: "Port description"
+
+          shop: Shop
+          shop_description: "Take a moment to visit our wizards shop!
+                             There you will find a wide variety of items that can help you on your way to success.
+                             Maybe you seek something that has a use to “hobble”
+                             your opponents. Well then, this is the right place for you. Visit now and view our magical merchandise."
+          home_buy_stuff: "Visit"
+          home_buy_pet: "Take Care"
+
+          zoo: "Your Pet"
+          zoo_description: "A best friend, will a wizards pet be! Loyal at all times, they will stand strong at your side in battle, inflicting damage to any pet or wizard that dares to attack their master.
+                            Train and care for them well to realise their full potential.
+                            Do not hesitate to buy one of these faithful companions now."
+
+          games: "Play Games"
+          games_description: "Relax and enjoy some of these great games. They're the best way to while away the time between battles or when you are meditating."
+
+          crystals: "Crystals Mine"
+          crystals_description: "Here you can find crystals"
+
+          dragon: "Dragons Den"
+          dragon_description: "Dragons come to 7wizards when they are hungry and their quantity can never be foretold.
+                               A wise wizard will fight with his pet as even the toughest dragons cannot attack your pet.
+                               If you are lucky enough to defeat the level 1 dragon the level 2 dragon will soon appear and so on.
+                               Doing battle with dragons can bring you wealth, be it a lesser weaker dragon or a high level beast.
+                               Depending on their level, the more you wound the dragon the richer in mana you will become.
+                               Dragons feast for just one hour, so prepare well and let all your wizardly friends know when they are in our realm,
+                               for only with team spirit can we hope to defeat these beasts. "
+          home_dragon_beat: "Attack the Dragon"
+          home_last_dragon: "Battle Report"
+
+
+          exchange: "Exchange"
+          exchange_description: "Do you have a lot of gold? Give it to me and I will fill your body with mana"
+
+          zombie: "Zombie"
+          zombie_description: "Kill the zombies! Get reward"
+
+          hammersmith: "Smith"
+          hammersmith_description: " I can upgrade your weapon"
+
+          marriage: "Marriage"
+          marriage_description: "Will you marry me?"
+
+          parties: "Parties"
+          parties_description: "All you need to know about our parties"
+
+          quests: "Quests"
+          quests_description: "Practice magic and earn mana by passing our quests"
+
+          trade: "Trade"
+          trade_description: "here you can buy the necessary stuff from the other young magicians or sell your belongings"
+
+          tournament: "Tournament"
+          tournament_description: "It is a Player VS Player competition between clans. The results will be placed in a table 'Best Clans'"
+
+          dragon_active_description: "You may attack the dragons now! Time left: <span id='dragon_timer'>59:00</span>"
+
+        _meditation:
+          description: "Choose a time to meditate, take as long or as little as you require, bear in mind that a wizard cannot battle whilst the body is at peace."
+          meditating: "Have patience young wizard! It takes time to relax the mind body and soul. When meditation has finished you will be richer by {{money}} mana or maybe more.
+                      The higher your level is, the more mana you will get.<br/><b> You are meditating, remaining time <span id='meditation_timer'>{{remain}}</span>.</b>"
+          select_time: "Select time"
+
+        _dailybonus:
+            daily_bonus_description: "Visit 7Wizards every day and get your daily bonus of gold!
+                                      You never know how much gold you will get, because it depends on your luck, but it is worth to try!
+                                      Daily bonus is given once per 24 hours.<br/><b>Receive your bonus right now!</b>"
+            home_get_bonus: "Get daily bonus"
+
+        _tutorial:
+          tutorial_description: "Young Wizard!! Welcome to 7Wizards!
+                                 May your journey here be a long and fulfilling one.
+                                 Don't be afraid, with my knowledge and guidance
+                                 I will set you on the right path to become a powerful, wealthy wizard."
+
+          home_get_task: "Continue Journey"
+          home_get_gift: "Accept Gift"
+      profile:
+        globals:
+          item_from_max: "Level: {{level}} out of {{max}}"
+          in_progress: "In progress: {{level}}"
+        _menu:
+          dressup: "Dress up"
+          train: "Train"
+          equipment: "Equipment"
+        _train:
+          fight_skills: Fighting talents
+          secondary_skills: Additional talents
+          current_level: "Current level: {{level}}"
+        _equipment:
+          group_used: In use
+          group_available: Inventory
+          group_used_gifts: Received Gifts
+          group_gift: Inventory Gifts
+          group_curse: Inventory Curses
+          group_powerup: Power Ups
+          group_required_level: "Required level: {{level}}"
+        _dressup:
+          avatar_header: "Your avatars"
+          buy_avatar_header: "Available Avatars"
+        _index:
+          profile_dress_up: "Dress up"
+          profile_train: "Train"
+          profile_equipment: "Equipment"
+          profile_send_gift: "Send a gift"
+          profile_send_curse: "Send a curse"
+          profile_remove_fiends: "Remove from friends"
+          profile_send_friend_request: "Add to friends"
+          profile_remove_from_flag: "Unflag this wizard"
+          profile_remove_from_ignore: "Unblock this wizard"
+          remove_from_friend_confirmation: "Are you sure you want to remove {{user_name}} from friends? "
+          remove_from_flag_confirmation: "Are you sure you want to unflag {{user_name}}? "
+          remove_from_ignore_confirmation: "Are you sure you want to unblock {{user_name}}?"
+          send_message: "Send a message"
+          attack: "Attack"
+          profile_flag_user: "Flag this wizard"
+          profile_ignore_user: "Block this wizard"
+          show_big_avatar: "Show big avatar"
+          hide_big_avatar: "Hide big avatar"
+          user_on_holiday: "On vacation"
+          cancel_curse: "Dissolve"
+          cancel_all_curses: "Dissolve all"
+          
+        _vote:
+          description: "Thank you for voting! You may vote for up to {{max}} stylish wizards a day and help them to get to the Hall of Glory"
+        _user_avatar:
+          voter_title: "I like the style!"
+      shop:
+        globals:
+          categories: "Categories"
+          item: Item
+        _menu:
+          title: "Shop"
+        _game_time_item:
+          during: "Duration: {{time}}"
+        _index:
+          sell_price: "<br/>Price for selling: {{price}}"
+          next_description: "<b>Next level</b>: {{value}}"
+          required_level: "Required Level: {{level}}"
+          requirements: "<b>Purchase terms</b>: {{value}}"
+          level_of: "<b>Level</b>: {{level}} of {{max}}"
+          category_description_weapon: "A wide selection of fire magic is available. Upgrade you fire power as you upgrade your level."
+          category_description_armour: "A water ring will raise your stats well, you will be wise to save mana and purchase this pearl."
+          category_description_helmet: "A boost to your power and defence! For so small a price? Don’t hesitate to buy."
+          category_description_shield: "The power of the earth will add a bonus to your skills but such skill power comes at a price. Think before making this purchase."
+          category_description_potion: "See the array of potions in stock! Be it for your health, your pets or a troublesome curse, you will find something here to aid you."
+          category_description_gift: "There’s no better way to thank a wizardly friend then with a gift from our shop! You may send 5 gifts a day, dependant on your level (max 3 per friend), check first that they don’t already have this gift as they may only have one each of the 12 available active at any one time."
+          category_description_curse: "Do you feel that you have been wronged? Then we have something for you here that will show your displeasure! You may send 5 curses a day, dependant on your level (max 3 per wizard), check first that they don’t already have this curse as they may only have one each of the 12 available active at any one time."
+          category_description_amulet: "Magical stones bring “Magical” bonuses! When purchasing terms are met, buy these gems to gain some extra advantages in battle and more."
+        _power_up:
+          category_description_powerup: "Gold plate your wizard! You'll find everything you need here to give your wizard the best chance to win in the arena. Watch out for those sneaky curses, as some of them can simply disable your activated power ups."
+      fight:
+        _index:
+          fight_title: "Opponent search"
+          fight: "Fight!"
+          back_to_war: "Back to war"
+        _fight_result:
+          result: "Fight result"
+          fight_log: "Fight log"
+          fight_bonuses: "Bonuses"
+          fight_equipment: "Equipment"
+          fight_you_won: "You Win!"
+          fight_you_lost: "You Lose!"
+          fight_result_vs: " VS "
+          fight_result_earn: "You've earned {{money}} mana"
+          fight_result_lost: "You've lost {{money}} mana"
+          fight_your_was_pet_killed: "Your pet was killed"
+          fight_your_pet_killed_opponent: "Your pet has killed his opponent"
+          fight_result_damage: "{{user_name}} made a damage: {{user_damage}}, {{opponent_name}} made a damage: {{opponent_damage}}"
+          fight_result_pet_damage: "{{user_name}} pet made a damage: {{user_pet_damage}}, {{opponent_name}} Pet made a damage: {{opponent_pet_damage}}"
+          fight_health_left: "{{user_name}} health left: {{health}}"
+          fight_health_left_pet: "{{user_name}} pet  health left: {{health}}"
+        _equipment:
+          nothing_used: "{{user}} used nothing"
+          used: "Used by {{user}}"
+          used_gifts: Gifts
+          used_items: Items
+        _bonuses:
+          attribute_items: Items
+          attribute_gifts: Gifts
+          attribute_curses: Curses
+          attribute_power_up: Power ups
+          attribute_fence: Safeguard
+          attribute_clan: Clan
+        _log:
+          log_antimag_triggered: "{{user_name}}'s magic stone ????? came into action"
+          log_diablo_triggered: "{{user_name}}'s magic stone ????? came into action"
+          log_pups_triggered: "{{user_name}}'s magic stone Hessonite came into action"
+          log_antipet_triggered: "{{user_name}} has used Magic bones. {{user_pet_name}} pet didn't make any damage."
+          log_kakdams_triggered: "Amethyst of strength came into action"
+          log_pet_stroke: "{{user_pet_name}} pet struck at {{opponent_pet_name}}, and made damage {{damage}}"
+          log_pet_stroke_with_power: "{{user_pet_name}} pet struck at a pet {{opponent_pet_name}} with power {{power}} and made damage {{damage}}."
+          log_pet_dead: "{{user_pet_name}} pet died from the wounds."
+          log_pet_stroke_blocked: "{{user_pet_name}} pet struck at a {{opponent_pet_name}} pet with power {{power}}, but {{opponent_pet_name}} blocked it"
+          log_pet_stroke_missed: "{{user_pet_name}} pet struck at a pet {{opponent_pet_name}}, but missed"
+          log_user_stroke_with_power: "{{user_name}} struck at {{opponent_name}} with power {{power}} and made damage {{damage}}"
+          log_user_stroke_block: "{{user_name}} struck with power {{power}}, but {{opponent_name}} blocked it"
+          log_user_stroke_missed: "{{user_name}} struck a blow, but missed"
+          log_reanimate_pet: "{{user_name}} Pet has been reanimated by the Pet heart cage power up"
+
+      mail:
+        _fight_logs:
+          user_attacked_opponent_won: "{{user_name}} attacked {{opponent_name}} you won {{mana}} mana"
+          user_attacked_opponent_lost: "{{user_name}} attacked {{opponent_name}} you lost {{mana}} mana"
+          title: "Fight logs"
+        _notifications:
+          title: "Events"
+        _user_messages:
+          title_list_1: "Incoming messages"
+          title_list_2: "Sent messages"
+          title_selected_1: "Message from {{user_name}}"
+          title_selected_2: "Message to {{user_name}}"
+          block_user: "Block"
+          block_user_confirm: "Are you sure want to block him"
+        _menu:
+          menu: "Menu"
+          menu_incoming: "Incoming {{count}}"
+          menu_send_message: "Sent messages"
+          menu_friend_requests: "Friend requests {{count}}"
+          menu_events: "Events {{count}}"
+          menu_fight_logs: "Fight log {{count}}"
+          new_message: "New message"
+          new_clan_message: "New clan message"
+          menu_clan_messages: "Clan messages {{count}}"
+
+        _sent_messages:
+          title: "Sent messages"
+        _clan_messages:
+          title: "Clan history"
+      pet:
+        globals:
+          pet_resurrect: "Reanimate"
+          buy_pet: "Buy a pet"
+        _partial_navigate:
+          information: "Information"
+          description: "Every wizard should have a pet.
+            A pet will help you in battle by damaging your opponent with a strength that's equal to it's power.
+            This damage cannot be blocked nor evaded, which will give a cunning edge to your battles! If both opponents have a pet, they'll fight each other and could be killed!
+            If your pet is killed you can resurrect it for an additional fee. To activate your pet just let it out of a cage.
+            The more your pet kills other pets, the more skilful it becomes. It gets +{{amount}} points to skills for each 10 kills."
+          description_active: "Your pet's alive and kicking! It's free and ready for action! Its health is {{health}} points. If health level hits 0 a pet will die, but you'll be able to raise it from the dead for {{price}}! All pet's characteristics will be recovered after a resurrection."
+          description_not_active: "Your pet  alive and kicking! It's caged but wants you to let it out! Its health is {{health}} points. If health level hits 0 a pet will die, but you'll be able to raise it from the dead for {{price}}! All pet's characteristics will be recovered after a resurrection."
+          description_dead: "Your pet  is dead. But you can raise it from the dead, price: {{price}}"
+
+          pet_put_in_cage: "Cage"
+          pet_status_title: "Pet status"
+          pet_put_out_of_cage: "Let out of cage"
+          pet_skill_bonus: "skills bonus: {{bonus}}"
+          pet_used_pet_power: "Your pet uses Golden figurine and has +{{power}}"
+        _train:
+          pet_status: "Pet status"
+          pet_train_title: "Pet's fighting talents"
+          next_level_price:  "Level up price: {{price}}"
+          pet_dead_description: "Your pet is dead! Pet resurrection will cost you {{gold}} Gold"
+          current_level: "Current level: {{level}}"
+          pet_power_ups: Pet Power Ups
+        _pet_potions:
+          pet_potions: Pet Potions
+      clan:
+        globals:
+          clan_information: "Information"
+        _partial_navigate:
+          clan_profile: "Clan Profile"
+          clan_upgrades: "Clan Upgrades"
+          clan_members: "Clan Members"
+          clan_donate: "Donate to clan"
+          clan_edit: "Edit clan (price: {{price}})"
+          clan_join_requests: "Join requests {{count}}"
+          clan_leave: "Leave clan"
+          clan_no_active: "Not active"
+          leave_creator_confirmation: "You are a clan's founder. If you leave a clan your authorities will be delegated to your successor. Do you really want to leave?"
+          leave_confirmation: "Do you really want to leave?"
+          destroy_confirmation: "You are a clan's founder. Do you really want to dissolve the clan?"
+          wars: "Clan War"
+          wars_history: "Clan War history"
+          get_ownership: "Get Ownership"
+          clan_destroy: "Dissolve the clan"
+          join_clan: "Join this clan"
+          prepare_war: "Prepare war"
+          menu_new_clan_messages: "New clan message"
+        _index:
+          by_leader: "By leader"
+          clan_list: "Clans"
+          clan_search: "Clan search"
+          clan_my: "My Clan"
+          clan_create: "Create a Clan"
+        _join:
+          clan_join_request: "Send join request to a clan"
+        _details:
+          clan_no_active: "Not active"
+          details: Information
+        _improvements:
+          clan_title: "Upgrades"
+          improve: "Upgrade"
+          value_from: "Level: <strong>{{value}} out of {{from}}</strong>"
+          price_improve: "{{price}}"
+        _donate:
+          clan_title: "Donate to clan"
+          clan_donation_history: "Donation history"
+          clan_donate: "Donate"
+          clan_donation: "Donation"
+          clan_donate_description: You can donate crystals and mana to treasury.<br />
+            Crystals may be donated even during a war!
+            They can be used for casting spells and providing installations which will help your clan to win the war.
+        _create:
+          title: Create new clan
+        _users_list:
+          by_money: "by mana"
+          by_staff2: "by crystals"
+          clan_donate_mana: "Donated mana"
+          clan_donate_crystals: "Donated crystals"
+
+          kick_user_title: "Kick out a wizard"
+          kick_user_description: "Do you want to kick wizard {{user_name}} out?"
+
+          change_leader_title: "Change leader"
+          change_leader_description: "Do you want to assign a new clan leader: {{user_name}} ?"
+        _navigate:
+          clan_navigate: "Clan Management"
+          clan_dismiss: "Dismiss Your Clan"
+          clan_leave: "Leave clan"
+        _join_requests:
+          clan_title: "Join requests"
+          description: "You can accept no more than {{max}} requests per month. You already accepted {{amount}} request(s) during current month."
+        _partial_edit_fields:
+          clan_choise_logo_front: "CHOOSE LOGO FOR CLAN"
+          clan_choise_logo_back: "CHOOSE BACKGROUND FOR LOGO "
+          
+        _prepare_war:
+          start_war: Yes, Attack
+          can_not_start: "You can't attack this clan"
+          start_conformation: "Do you want to attack this clan?"
+        _wars:
+          title: Battle
+          battle_declared_header: The battle has been declared
+          battle_started_header: The battle has been started
+          war_results_title: Battle results
+          war_info_title: Battle info
+          battle_stats_title: Clan {{name}} stats
+          clan_members_title: Clan {{name}} members
+          description: "
+            The one who destroys opponents defence or has higher defence in the end, will win!
+            You'll lose if every warrior of your clan receives fatal injury.
+            Winner receives half of the opponent's treasury and altars value!
+            You destroy defence by fighting opponent clan's warriors and inflicting damage on the enemy.
+            War lasts up to {{duration_hours}} hours + {{duration_rest_hours}} hours for the rest.
+            You can fight any opponent warrior without damaging your fame. 
+            After war declaration clan has {{preparation_minutes}} minutes for preparation and mobilization."
+          start_war_description: "Gather warriors and get ready for the battle. <br/>War breaks out in: {{remain}}. "
+          your_clan_won_war_reason: "Reason: {{reason}}<br/> Your clan won {{money}} and {{staff2}}."
+          your_clan_lose_war_reason: "Reason: {{reason}}<br/> Your clan lost {{money}} and {{staff2}}. "
+
+          protection: Protection
+          protection_remain: Remains
+          damage: Inflicted damage
+          opponent_protection: Protection
+          opponent_protection_remain: Remains
+          opponent_damage: Inflicted damage
+
+          attack: Attack
+          clan_war_won: "Victory!"
+          clan_war_lost: "Failure!"
+
+      relation:
+        _menu:
+          links: "Contacts"
+          menu_friends: "Friends ({{count}})"
+          menu_requests: "Requests {{count}}"
+          menu_flagged: "Flagged {{count}}"
+          menu_blocked: "Blocked"
+        _add:
+          request_desription_f: "Request has been sent!"
+          request_desription_b: "The wizard has been flagged. Check your friend folders"
+          request_desription_i: "The wizard has been blocked."
+          request_are_you_sure: "Are you sure you want to block {{name}}?  If you do it, you will not receive any messages from this user"
+        _index:
+          title_f: "Friends"
+          title_b: "Bookmark list"
+          title_i: "Blocked"
+          remove_from_blocked: "Remove from blocked"
+        _details:
+          title_f: "Friends"
+          title_b: "Flagged"
+          title_i: "Blocked"
+        _invite:
+          no_new_friends: "No new friends /your friends list is empty/"
+        _requests:
+          title: "Friend requests"
+#        _presents:
+#          has_no_presents: "You don't have any gift/curse to send. Visit a shop to buy some"
+      respect:
+        globals:
+          top_wizards: "Top wizards"
+          top_clans: "Top clans"
+          top_vote: "Stylish wizards"
+        _menu:
+          title: "Hall of glory"
+          menu: "Menu"
+      account:
+        _change_password:
+          change_password: "Change"
+          old_password: "Type your old password"
+          description: "Your new password will be sent to your e-mail address."
+        _activate_account:
+          activate_account_description: "You need to activate your account to use chat and other 7Wizards' features. Activation e-mail was sent to {{email}}.
+                                         In case you didn't receive our e-mail, check your SPAM folders or re-send an activation e-mail again using the form below.
+                                         If you entered wrong e-mail during registration, please register new account and delete this one."
+          activate_captcha_title: "Enter these words"
+          resent_activation: "Resend"
+      chat:
+        _block:
+          user_has_blocked: "User {{user_name}} has blocked"
+          block_reason: "Reason"
+          block_time: "Time"
+          select_time: "Select time"
+        _report_user:
+          report_user_saved: "Report has sent"
+      buygold:
+        globals:
+          buy_gold_g1_title: "Buy 600 Gold"
+          buy_gold_g2_title: "Buy 2400 Gold"
+          buy_gold_g3_title: "Buy 5400 Gold"
+
+        _membership:
+          buy: "Buy"
+          
+        _index:
+          success: "Thank you! Your payment has been processed. It may take a couple of minutes before you receive your gold. Don't forget to refresh your page. If you have any issues with payments, please write to support@7wizards.com"
+          title: Buy gold
+        _menu:
+          statistics: "Purchases Log"
+          certificates: Certificates
+          certificate_title: "Click to Verify - This site chose Thawte SSL for secure e-commerce and confidential communications."
+        _buy_warning:
+          buy_warning: "Your email is not activated, so you can't buy a gold"
+
+      dragon:
+        _index:
+          fight_title: "Dragons Den"
+        _dragon_history:
+          description_killed_dragons: Victory is yours, rejoice in the glory and bask in the praise, but keep focused as who knows what the future may bring?
+                                      Keep strong and alert and ready to do battle at any given time!!
+                                      <br/> Dragons were last seen in our realm on <strong>{{arrived_at}}</strong>. The wizards slew <strong>{{count}}</strong>
+                                      dragons and won <strong>{{money}}</strong>
+            
+        _fight_result:
+          result: "Fight result"
+          fight_log: "Fight log"
+          fight_bonuses: "Your bonuses"
+          fight_equipment: "Your equipment"
+          fight_you_won: "You Win!"
+          fight_you_lost: "You Lose!"
+          fight_result_vs: " VS "
+          fight_health_left: "{{user_name}} health left: {{health}}"
+          fight_result_damage: "{{user_name}} made a damage: {{user_damage}}, {{opponent_name}} made a damage: {{opponent_damage}}"
+
+      games:
+        _index:
+          current_rating: "Currently {{current}}/5 Stars."
+          play_games: Play games
+        _categories:
+          all_games: "All games"
+      _welcom:
+        description: "Greetings,Young Wizard! May your journey here be a long and fulfilling one. Don't be afraid,
+                      with my knowledge and guidance I will set you on the right path to become a powerful, wealthy wizard.
+                      <br/><br/>To start 7wizards tutorial click on 'Accept' or 'Cancel' to do it later."
+    bigpoint:
+      _bigpoint_confirm:
+        description: Welcome to 7wizards brave adventurer! Enter the chosen name of your wizard and begin your journey to fame and glory within our realm.
+      index:
+        remember: Remember me
+
+#VIEWS END
+
+
+  other:
+    game_items:
+      current_level: "Current level: {{value}}"
+      next_level: "Next level: {{value}}"
+
+      price: "{{price}}"
+      price_staff: "Price: {{price_staff}}"
+
+      fence:
+        title: Safeguard
+        description: Defines your house protection
+        description_protection: "{{protection}} protection"
+        description_protection_percent: "{{protection}} + {{protection_percent}}% protection"
+      places:
+        title: Capacity
+        description: Defines the quantity of items you can buy in a shop
+        description_places: "{{places}} items"
+      plantation:
+        title: Mind
+        description: Defines the sum of mana you earn per hour
+        description_money_per_hour: "{{money}} per hour"
+      safe:
+        title: Safety amulet
+        description: "Preserves {{amount}} of your mana from plunder. The higher level you are, the bigger sum it preserves!"
+        description_next: "<br />{{amount}} mana will be preserved at the {{level}} level."
+      clairvoyance:
+        title: Vision
+        description: "Helps you to find opponents hidden with Cloak. You are able to find opponent with Cloak's level that is equal or less than your Vision level."
+      cloaking:
+        title: Cloak
+        description: "Makes your finding more difficult. Your opponent needs to have Vision of higher level to find you."
+      power:
+        title: Power crystal
+        description: Increases your wizard's power by {{percent}}%.
+      protection:
+        title: Defence powder
+        description: Increases your wizard's defence by {{percent}}%.
+      endurance:
+        title: Endurance candy
+        description: Makes it possible to attack every {{times}} minutes up to {{amount}}times in a row.
+      pet_power:
+        title: Pet golden figurine
+        description: Increases pet's power by {{percent}}%
+      voodoo:
+        title: Voodoo doll
+        description: You cannot be attacked in the arena. If you use it, you may be attacked only during clan wars by wizards of an opponent's clan. You may use it up to {{times}} times per month
+      antipet:
+        title: "Magic bones"
+        description: "Opponent's pet cannot attack you"
+      pet_antikiller:
+        title: "Pet heart cage"
+        description: "If your pet was killed, his health will be restored. You may use it up to 10 times per month"
+      clan_protection:
+        title: Defence training
+        description: Group defence training. Gives defence bonus to each clan member; amount depends on total clan's defence.
+        level_description: "{{value}}%"
+      clan_power:
+        title: Attack training
+        description: Group attack training. Gives power bonus to each clan member; amount depends on total power of clan members who are online.
+        level_description: "{{value}}%"
+      clan_places:
+        title: Fortress
+        description: Makes it possible to accept more wizards in a clan.
+        level_description: "{{value}} member(s)"
+      clan_altar:
+        title: Altar
+        description: Gives blessing to a war. Will be lost if you lose.
+        level_description:
+            zero: Is not built
+            one: "{{count}} war per month"
+            other: "{{count}} wars per month"
+
+      elders:
+        title: The Elder's Apprentice
+        description: Achieved by completing 7wizards tutorial
+      meditation:
+        title: Meditation Wiz
+        description: Achieved by meditating for {{count}} hours
+      stealer:
+        title: Mana Stealer
+        description: Achieved by earning {{count}} mana in battles
+      champion:
+        title: Arena Champion
+        description: Achieved by winning {{count}} fights in the Arena
+      damage:
+        title: Wizards Wrath
+        description: Achieved by dealing {{count}} damage to opponents
+      hero:
+        title: 7wizards Hero
+        description: Achieved by earning {{count}} fame
+      pet_kills:
+        title: Pet Master
+        description:
+          one: "Achieved by killing 1 pet"
+          other: "Achieved by killing {{count}} pets"
+      won_wars:
+        title: God of War
+        description:
+          one: "Achieved by winning 1 clan war"
+          other: "Achieved by winning {{count}} clan wars"
+      dragons:
+        title: Dragon Slayer
+        description: Achieved by dealing {{count}} damage to dragons
+      gifts:
+        title: Good Soul
+        description:
+          one: "Achieved by gifting 1 different friend"
+          other: "Achieved by gifting {{count}} different friends"
+
+#CONTROLLERS BEGIN
+  controllers:
+    visitor:
+      problems_with_login: "Your login and password were not recognized. Please check and try again."
+      confirmation_not_valid: "Activation url in not valid, try resend your activation code"
+      your_accout_activated: "Your account activated!"
+      check_you_email: "Check your email"
+      incorrect_url_data: "Incorrect url data"
+      unsubscribed: "You unsubscribed"
+    admin:
+      problems_with_login: "Your login and password were not recognized. Please check and try again."
+    wizards:
+      welcom_title: "Welcome to 7wizards!"
+      email_title: "Change Email"
+      login_is_needed: "Enter your login and password"
+      achivement_title: "Achievements"
+      achivement_publish_reached_new_level: "You've reached level {{level}} of {{title}} achievement"
+      confirmation_title: "Confirmation Request"
+
+      shop:
+        buy_notice: "You've bought {{name}}"
+        extend_notice: "You've extended {{name}}"
+        sell_notice: "You've sold {{name}}."
+        you_extended_item: "You've extended {{name}}"
+      profile:
+        you_extended_item: "You've extended {{name}}"
+        you_used_item: "You've used {{name}}"
+        you_takeoff_item: "You've taken off {{name}}"
+        vote_title: "I like the style!"
+      fight:
+        fight_locked: Wait a minute
+        no_body_found_with_name: "There isn't a wizard with the name {{name}}"
+        no_body_found_with_level: "There are now available wizards of that level"
+        cant_find_opponent_by_id: "Can't find opponent"
+#        reputation_will_decreased: "The level of your opponent is very low, your fame will be reduced to by {{repuatation}}, continue?"
+        kill_pet_bonus: Attacking opponents with pets at more than {{level}} levels below your own, will not gain you any bonus to skills or to the Pet Master achievement if the pet is killed.
+        
+      clan:
+        joined_request: "You've sent a join request to clan {{name}}"
+        join_requests_on_war: Your clan is fighting. Nobody can join it.
+        joined_clan: "{{user}} has joined clan {{name}}"
+        user_kicked: "You've kicked {{user}} out of clan {{name}}"
+        leave_clan: "You've left clan {{name}}"
+        donate_clan: "You've donated {{money}} mana and {{staff2}} crystals to your clan's treasury"
+
+        improve_notice: "You've upgraded your clan."
+        opponent_clan_has_not_altar: Clan {{name}} doesn't have an altar. Each member of your clan will get -{{reputation}} point to fame.
+        prepare_war_dialog_title: Declare war
+        kill_clan: Clan {{name}} dissolved
+
+        owner_with_name_empty: "There isn't a clan with a leader called {{name}}"
+        clan_with_name_empty: "There isn't a clan with the name {{name}}"
+      home:
+        you_receive_money_bonus: "You receive bonus {{count}} mana"
+        you_receive_staff_bonus: "You receive bonus {{count}} gold"
+        daily_bonus: "Daily bonus"
+        daily_bonus_reason: "From the daily bonus"
+        cancel_tutorial_description: "Young wizard! The forces tell me that you have not taken part in the tutorial yet!
+                                      Do you feel that my guidance is not needed? A wise wizard would accept this help.
+                                      You may accept my guidance at any time! Click 'Continue Journey' to proceed."
+      account:
+        change_passwotd_title: "Change password"
+        activate_account_title: "Activate account"
+      relation:
+        add_user_f: "Add {{name}} to friends?"
+        add_user_b: "Are you sure you want to flag {{name}}"
+        add_user_i: "Blocking a wizards"
+        destroy_description_i: "The user has been unblocked"
+        destroy_description_b: "The user has been unflagged"
+        destroy_description_f: "The user has been removed from friends"
+      mail:
+        new_message: "Send a message"
+      chat:
+        block_user: Block user {{name}}
+        warning_min_level: "You need to reach level {{level}} to chat "
+      buygold:
+        incorrect_gold_value: "Incorrect gold value"
+        not_enought_coins: "Not enought coins"
+      respect:
+        user_with_name_empty: "There isn't a wizard with the name {{name}}"
+        clan_with_name_empty: "There isn't a clan with the name {{name}}"
+      pet:
+        you_used_item: "You've used {{name}}"
+
+  activerecord:
+    errors:
+      models:
+        user:
+          attacker_message: "ddd"
+        clan:
+          invalid: " should contain only letters and digists, min 3 characters"
+          taken: " with such name was already created"
+      template:
+        header:
+          one:    "1 error. Can't save."
+          other:  "{{count}} errors."
+        # The variable :count is also available
+
+      # The values :model, :attribute and :value are always available for interpolation
+      # The value :count is available when applicable. Can be used for pluralization.
+      messages:
+        taken: "is already taken"
+        invalid: "is invalid"
+        too_short: " is too short (minimum {{count}} characters) "
+        captcha_error: "Re-type the words shown in the picture"
+        not_present: " is missing"
+        password_format: " must contain between 4-20 characters, some of these characters must be numbers. Use only english letters"
+        invalid_password: "Password is not valid"
+
+    attributes:
+      message:
+        from: "From"
+        to: "To"
+        author: "Author"
+        recipient: "Recipient"
+        title: "Subject"
+      user:
+        id: ID
+        name: Login
+        description: About me
+        default_description: Join me at 7Wizards, my friend! Together we will become stronger.
+        password: "Password"
+        confirm_password: "Confirm password"
+        active: Active
+        is_admin: Is Admin
+        is_moderator: Is Moderator
+        comments: Comments
+        gender: Gender
+        gender_male: Male
+        gender_female: Female
+        email: E-Mail
+        confirmed_email: "Confirmed email"
+        clan: Clan
+        attacker_message: "Message to enemy"
+        your_clan_mark: " (yours)"
+        union_clan_mark: " <span class=\"green\">(union)</span>"
+        a_level: "Level"
+        a_reputation: "Fame"
+        a_power: Power
+        a_power_description: Defines damage you make to an opponent
+        a_protection: Defence
+        a_protection_description: Defines damage you can block
+        a_dexterity: Dexterity
+        a_dexterity_description: Defines possibility to evade a strike
+        a_skill: Skills
+        a_skill_description: Defines possibility to strike a fatal blow
+        a_weight: Vitality
+        a_weight_description: Defines your max. health and its renewal rate
+        a_experience: "Experience"
+        a_health: Health
+        a_money: "Mana"
+        a_staff: "Gold"
+        a_staff2: "Crystals"
+        max_health: Max. Health
+        health_hour_regeneration: Regenerates per hour
+        rating: Rating
+        pet: Pet
+        pet_health: Pet's Health
+        pet_power: Power
+        max_pet_health: Max. Health
+        pet_health_hour_regeneration: Regenerates per hour
+        pet_protection: Defence
+        pet_dexterity: Dexterity
+        pet_skill: Skills
+        pet_weight: Vitality
+        pet_power_description: Defines damage your pet makes to an opponent
+        pet_protection_description: Defines damage your pet can block
+        pet_dexterity_description: Defines your pet's probability to evade a blow
+        pet_skill_description: Defines your pet's probability to strike a fatal blow
+        pet_weight_description: Defines your pet's max. health and its renewal rate
+        pet_name: Name
+        pet1_name: Grom
+        pet2_name: Pinka
+        pet3_name: Yello
+        e_fights_count: Fights count
+        s_wins_count: Won fights
+        s_loses_count: Lost fights
+        s_loot_money: Stolen mana
+        s_lost_money: Lost mana
+        s_kill_pets: Killed pets
+        s_total_damage: Damage made
+        s_lost_protection: Damage received
+        s_meditation_minutes: Minutes in meditation
+        s_friends_count: Friends
+        s_vote: Style Points
+        status: Status
+        offline: Offline
+        online: Online
+        created_days: Training days
+        g_achivement_dragons: Damage made to dragon
+      user_item:
+        category_potion: Potions
+        category_weapon: Fire Magic
+        category_armour: Water Magic
+        category_helmet: Wind Magic
+        category_shield: Earth Magic
+        category_achivements: Achievements
+        category_gift: Gifts
+        category_curse: "Curses"
+        category_power_up: "Power Ups"
+        category_mana: "Mana"
+        category_amulet: "Magical Stones"
+      user_items/abstract_presents:
+        power: Power
+        power_percent: Power
+        protection: Defence
+        protection_percent: Defence
+        dexterity: Dexterity
+        dexterity_percent: Dexterity
+        skill: Skills
+        skill_percent: Skills
+        weight: Vitality
+        weight_percent: Vitality
+        hours: Active hours
+        hours_left: "Hours left"
+        recipient_level: Required recipient's level
+      clan:
+        name: "Clan name"
+        description: "Clan description"
+        avatar: Avatar
+        owner: Leader
+        creator: Founder
+        users: Members
+        free_places: Free places
+        a_money: Mana
+        a_staff2: Crystals
+        rating: Rating
+        status: Status
+        all_reputation: Fame
+        war_status: "Status"
+        war_status_piece: "Peace"
+        war_status_war: "War"
+      clan_war:
+        created_at: The war declared at
+        will_started_at: The war will be started at
+        started_at: The war was started at
+        finished_at: Finished at
+      clan_war_user:
+        damage: Damage
+        lost_protection: Loss
+        fights: Fights
+        attacks: Attacks
+        wins: Wins
+        union_fights: Fights with ally warriors
+        union_wins: Wins of ally warriors
+        formation_l: Left flank
+        formation_r: Right flank
+        formation_c: Center
+      clan_message:
+        author: User
+        recipients: "To clan"
+
+      relation:
+        message: Comment
+        request_message: Request text
+        kind: Kind
+        relation_friend: Friend
+        relation_vengence: Enemy
+        relation_rob: Weak
+        relation_ignore: Ignore
+        default_request_message: I want to be your friend. Please accept my request.
+        default_bookmark_message: Add your comment here
+      fight_log:
+        fight_user_attributes: "fighting talents"
+        fight_user_information: "STATS"
+      ban_history:
+        ban: Ban
+        banned_by: Banned By
+        public_reason: Reason
+        private_reason: Internal Reason
+        ban_end_date: Ban end date
+        only_messages: Only messages
+      dragon:
+        dragon_name: Dragon
+        arrived_at: Arrived at
+        killed_at: Killed at
+        left_at: Left at
+        leave_at: Leave at
+        damage: Damage
+        money: Gave manna
+        a_level: Dragon's level
+        killed_by: Defeated by
+      external_games:
+        title: Title
+        rating: Rating
+        category: Category
+        description: Description
+        game_plays: Game plays
+      chat:
+        room_public: "Public"
+        room_main: "My room"
+        room_clan: "Clan"
+        created_at: "Date"
+        message: "Message"
+        report: "Reports"
+        last_reporter: "Last Reporter"
+        room: "Chat room"
+      payment_log:
+        amount: Amount
+        item: "Item"
+      user_task:
+#        navigation_description: "First take a moment to familiarise yourself with the menu bar above, this is your 'Map'
+#                     to the 7wizards world. You will notice when holding your cursor over the various headings,
+#                     that each heading has sub menu links, using these links, you can travel to every
+#                     important area within the game! Go ahead and see where they take you, after all,
+#                     every wizard needs to have a bit of adventure in their blood!"
+#        navigation_notification: "You received 60 mana from The Elder for completing the first task."
+#        navigation_done_description: "Well done!! You can now easily get to the required page. Do you wish to continue on this journey?
+#                           <br/><b>Click (Continue Journey) to proceed</b>"
+        train_description: "Let's start with some basic training. You have been provided with ({{mana}} amount) mana,
+                use this wisely to improve your skills, go to the training grounds
+                (link above the heading Avatar) and make your choices."
+        train_notification: "You received 60 mana from The Elder for training the fighting talents of your wizard."
+        train_done_description: "Well done!! You are a little bit stronger now. Do you wish to continue on this journey?
+                           <br/><b>Click (Continue Journey) to proceed</b>"
+
+        mana_description: "Mana is your 'Money' it is used within the game to upgrade your
+                various skills in training and to buy some items from the shops.
+                Mana is gained through meditation and through winning battles;
+                you can also buy a small amount of mana with gold from the shop."
+        mana_done_description: "Do you wish to continue on this journey?<br/><b>Click (Continue Journey) to proceed</b>"
+
+        shop_description: "Wizards will need to accessorise themselves with
+                magical Rings bought from the shop; these rings will give you a significant
+                rise in various skills and should be upgraded for each level you progress.
+                There are 4 elements of ring power Fire, Water, Wind and Earth.
+                Go to the shop now and buy the Flood Ring from the water element category."
+
+        shop_notification: "You received 60 mana from The Elder for buying the Flood Ring "
+        shop_done_description: "Well done!! You’ve successfully purchased your first ring. Do you wish to continue on this journey?
+                           <br/><b>Click (Continue Journey) to proceed</b>"
+        equipment_description: "Now that you have your 1st ring you will need to equip it for it to be in use!
+                Select the 'Equipment' link that’s above the avatar header.
+                You will see that your inventory now contains the flood ring that you just purchased,
+                click on the ring and it will move to the 'In Use' box. Equip yourself with the ring now!"
+        equipment_notification: "You received 60 mana from The Elder for equipping your wizard with the Flood Ring"
+        equipment_done_description: "Well done!! Your ring is now equipped, giving you a Power+2 and Defence+5 boost!
+                           Do you wish to continue on this journey?
+                           <br/><b>Click (Continue Journey) to proceed</b>"
+        fight_description: "Now you are ready for your 1st battle in the Arena! Go to the
+                            Arena and search by level or name for your first fight,
+                            before clicking fight take a second to compare your selected
+                            opponent’s statistics with your own, if you think you stand a
+                            chance of winning, then go ahead and click fight.
+                            The outcome Win or Lose and other statistics will be
+                            displayed beneath the battle screen.
+                            At this time you can fight 3 times, thereafter you will be able
+                            to fight once each 12 minutes. Good Luck"
+        fight_notification: "You received 60 mana from The Elder for fighting an opponent in the Arena "
+        fight_done_description: "Well done!! You’ve fought bravely and shown your skills. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+        meditation_description: "After battle your wizard will be weary and in need of some rest
+                before your next fight. Meditating is the best rest a wizard can have,
+                the body will heal and mana will be gained. The amount of mana received will be
+                dependent on how long you meditate and what level you are, meditating for
+                360 minutes will gain you 1 experience. Meditate now for the length of time you require."
+        meditation_notification: "You received 60 mana from The Elder for meditating for the first time."
+        meditation_done_description: "Well done!! If you meditate for more than 100 hours you will be able to buy a special magic stone. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+        hallofglory_description: "Take a moment to visit the Hall Of Glory, here you will find the best of the best Wizards,
+                displayed at first sighting by their fame level. Fame and experience is gained
+                by defeating wizards in the arena, you can only gain fame or Exp by beating
+                wizards of equal or higher level than your own, 1 exp for same level and 2 for
+                higher but only if they have not fought and lost their fame or exp in the
+                last 2 hours by another wizard."
+        hallofglory_done_description: "Do you wish to continue on this journey? <br/><b>Click (Continue Journey) to proceed</b>"
+
+        dailybonus_description: "Gold will make your wizard extremely powerful, if bought and used
+                well when purchasing the many items available in the shop,
+                have a look at all the different items available to you and what special
+                attributes they will give to your wizard. As a gift to you there
+                is a daily bonus of gold, don’t forget to claim this each day.
+                Claim your daily Bonus Now!"
+        dailybonus_notification: "You received 60 mana from The Elder for receiving your 1st Daily Bonus"
+        dailybonus_done_description: "Well done!! You’ve received your first Daily Bonus. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+        powerups_description: "Go to the shop and activate one of the various power ups
+                available to you, read their descriptions and see which
+                will best suit your needs. For example, if you want to get
+                on with some more battles, then choose the Endurance candy,
+                this will enable you to fight every 6 minutes 6 times in a row!"
+        powerups_notification: "You received 60 mana from The Elder for activating a power up at the shop"
+        powerups_done_description: "Well done!! The more power ups you activate the more chances you have to win the fight. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+
+        friends_description: "Making friends is easy in 7wizards. Find people that you want to add as friends from
+                              the hall of glory. Click on their player card to open their about me page,
+                              from here you will see a List Of Actions on the left, click on add to friends,
+                              a box will open for you to send to them with the message that is there or you may write your own.
+                              Send a friend request now!"
+        friends_notification: "You received 60 mana from The Elder for sending your first friend request"
+        friends_done_description: "Well done!! There is no friend limit in this game, so you can send friend request to each player you like. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+
+        message_description: "Besides chatting using the main chat in the top of the screen, you can send private messages
+                to each player of the game. You can do it by clicking on their player card, this will
+                open up their about me page, you can then select Send a Message from the list of actions
+                on the left. Send a message now!  "
+        message_notification: "You received 60 mana from The Elder for sending a message to another player"
+        message_done_description: "Well done!! Sending private messages is a good way to send somebody important information, while they are offline in the game. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+
+        aboutme_description: "Open up your about me page by clicking Avatar on the menu bar. Fill in the about me part
+                with whatever you like about yourself, underneath this is your battle message,
+                whatever you put in this will appear to everyone who battles you in the arena,
+                make a statement that will show all wizards exactly what to expect when
+                engaging you in battle!"
+        aboutme_notification: "You received 60 mana from The Elder for filling in your About me and Message to enemy textboxes"
+        aboutme_done_description: "Well done!! Your enemies now know, who they are dealing with. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+
+        dressup_description: "Clicking the “Dress Up” link above Avatar on the menu bar
+                              will take you to the dress up page, from here you can decide what you want your
+                              wizard to be dressed in, there are many different styles to choose from and a
+                              color wheel that lets you chose just about any color you like.
+                              You will see more avatar choices at the bottom, these will become available for you to
+                              buy when you reach higher levels. Dress your wizard up now!"
+        dressup_notification: "You received 60 mana from The Elder for dressing up your wizard"
+        dressup_done_description: "Well done!! You can use dress up and change your outfit whenever you wish. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+
+        gifts_description: "Gifts are available for you to send to friends, they range from just tokens
+                of your affection to items that will give their wizard a + boost to certain
+                attributes. Go to the shop now and buy a gift for a friend. To send the
+                gift open a friends about me page and click “Send a gift” from the list of
+                actions on the left, this will open up your inventory and from here you can
+                select the gift to send. Send you first gift to a friend now!  "
+        gifts_notification: "You received 60 mana from The Elder for sending a gift to a friend"
+        gifts_done_description: "Well done!! Send gifts to your friends and maybe you will receive a gift back. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+
+        curses_description: "Maybe you are a little tired of being beaten in the arena by a certain wizard,
+                so If you want to slightly 'hobble' this opponent and show your distaste,
+                you could send them a curse. Like gifts they range from tokens to real curses that
+                will affect their statistics and can only be sent to people who aren’t your friends.
+                Buy a curse from the shop and send it to your enemy now in the same way that you sent a gift!
+                 "
+        curses_notification: "You received 60 mana from The Elder for sending a curse to an enemy"
+        curses_done_description: "Well done!! Sending curses is a good strategy to beat opponents in the arena. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+
+        playgame_description: "Located at the bottom of the Home Page is a 'Play Games' button; here you will find a whole
+                host of different games to play. They have been added so that you have something fun to
+                do whilst waiting for your meditation to finish. Play a game now!
+                 "
+        playgame_notification: "You received 60 mana from The Elder for playing a game at the Play games page"
+        playgame_done_description: "Well done!! Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+
+        blog_description: "On the right of the menu bar you will see a big letter 'B', clicking this will
+                take you to the 7wizards blog, visit this every day for news and updates,
+                here you can make your own comments and suggestions regarding the game. Visit the blog now!
+                 "
+        blog_notification: "You received 60 mana from The Elder for visiting the 7wizards Blog "
+        blog_done_description: "Well done!! You can also send your ideas to support@7wizards.com. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+
+        flagging_description: "Flagging is bookmarking, you may want to flag a wizard for any kind of reason, i.e.
+                to find them easier for battles, send gifts, curses etc. Flagging does no harm and
+                a player does not know they have been flagged, it is just for your own benefit.
+                Flag a user by opening their about me page and clicking 'Flag this wizard'
+                from the list of actions on the left. Flag a wizard now!
+                 "
+        flagging_notification: "You received 60 mana from The Elder for flagging a player"
+        flagging_done_description: "Well done!! Flagged users can be found by clicking 'Friends' in the menu bar and
+                            selecting 'Flagged'. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+
+        additional_talents_description: "Additional talents can be found on the training page, underneath the Fighting Talents.
+                These talents should not be overlooked, for instance, training mind early will pay off
+                when you reach higher levels and need every scrap of mana possible to upgrade an attribute.
+                Read the descriptions carefully and upgrade one of the additional talents now!
+                 "
+        additional_talents_notification: "You received 60 mana from The Elder for training an additional talent "
+        additional_talents_done_description: "Well done!! Upgrading Cloak is a good way to avoid fights in the early stages of the game. Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+
+        clan_description: "You may join a clan when you reach level 3 or set up your own at level 5.
+                Navigate to the top clans from a link on the left in the Hall Of Glory.
+                You can view top clans here and see who has space left in their clan for you
+                by clicking on their clan picture. Send a request to join a clan or wait till
+                level 5 and create your own. You may leave a clan at anytime.
+                 "
+        clan_notification: "You received 60 mana and a Nectar potion from The Elder for finishing 7wizards guidance "
+        clan_done_description: "Do you wish to continue on this journey?
+                          <br/><b>Click (Continue Journey) to proceed</b>"
+
+        receive_gift_description: "Young wizard! You have learnt fast and well.
+                From here on I must leave you and let you find your own unique way in this world,
+                be brave and stand strong, there are many things I have not shown you for this is
+                where your true adventure begins. Please accept this gift to aid you in your journey"
+        receive_gift_done_description: "All tasks completaed"
+      abstract_game_time_item:
+        powerups: "Power Ups"
+
+
+  rules:
+    game_items:
+      pet_health_limitation_reached: "You can use no more than {{limit}} times per month"
+      antipet_limitation_reached: "You can use Magic bones no more than {{limit}} times per month"
+      voodoo_limitation_reached: "You can use voodoo doll no more than {{limit}} times per month"
+      used_this_moth: "Used {{count}} of {{max}} times in this month"
+      cant_extend_not_enought_staff_on_this_item: "You don’t have enough gold to buy this item"
+      cant_extend_not_enought_money_on_this_item: "You don't have enough mana for this Item"
+    user_items:
+      level_too_small: "Your level is lower than required to equip this ring"
+      cant_buy_not_enought_money_on_this_item: "You don't have enough mana for this item"
+      cant_buy_not_enought_staff2_on_this_item: "You don't have enough christals for this item"
+      cant_buy_not_enought_staff_on_this_item: "You don’t have enough gold to buy this item"
+      cant_buy_you_already_have_this_item: "You already have this item"
+      cant_extend_not_enought_money_on_this_item: "You don't have enough mana for this item"
+      cant_extend_not_enought_staff_on_this_item: "You don’t have enough gold to buy this item"
+      cant_extend_not_enought_staff2_on_this_item: "You don't have enough christals for this item"
+      cant_extend_you_dont_have_this_item: "You don't have this item to extend it"
+      cant_extend_reach_max_level: "You already reached max level for this item"
+      already_use_item_from_category: "You already used item ({{item}}) from {{category}} category"
+      e_potion_usage_time_restriction: "You can use this potion once per {{minutes}} minutes, remain: {{remain}}"
+      e_mana_usage_time_restriction: "You can use this potion once per {{minutes}} minutes, remain: {{remain}}"
+      e_potion_usage_max_health_reached: "You have max health"
+      potion_pet_usage_max_health_reached: "You pet have max health"
+      potion_no_used_curses: "You aren’t cursed, you cannot use this potion."
+      potion_curse_cancel_no_curse: "You may use this potion to dissolve only 1 active curse. To do that you need to move to your Avatar page and click on Dissolve Curse in the pop-up window of the curse you want to dissolve."
+      already_used_amulets: "You can only equip any {{max}} magical stones at any given time"
+      potion_pet_usage_time_restriction: "You can use this potion once per {{minutes}} minutes, remain: {{remain}}"
+      potion_no_pet: "Has no pet"
+    profilerules:
+      not_enought_money: "You don’t have the mana required to train this talent"
+      email_already_taken: "Email already taken"
+      email_should_be_new: "Email should be different from current"
+      already_voted_today: You already gave your vote for this wizard. Try again later
+      voting_reached_max: "You may vote for up to {{max}} wizards a day"
+    shoprules:
+      sell_use_item: "Take it off before selling"
+      not_enought_places: "There is no free place, maximum {{places}}"
+    fightrules:
+      meditating: You are meditating.
+      not_enought_health_to_fight_user: "Your health level is too low for a battle (less than {{min}} points)"
+      not_enought_health_to_fight_opponent: "Opponents health level is too low for a battle (less than {{min}} points)"
+      not_enought_money_to_fight_find: "You don't have enough mana for a search. You need {{min}}"
+      opponent_on_holiday: "Wizard {{user}} on a vacation."
+      fight_count_restriction: Wait for {{remain}} minutes.
+      opponent_was_updated: "Your opponent's changed his characteristics. Are you sure?"
+      opponent_is_hidden: "{{user}} сходил к Друиду и купил Невидимость, поэтому напасть на него нельзя."
+      opponent_restriction_to_fight_with_you: "You can attack this wizard no sooner than in {{remain}} minutes (you can't attack the same wizard more than once in {{limit}} minutes)"
+      opponent_restriction_to_fight: "This wizard had been already attacked during the last {{limit}} minutes. Try again in {{remain}} minutes"
+      reputation_restriction: Your fame level is lower than {{min}} points, come to your senses! Find an opponent at higher level!
+      hidden_on_war_because_of_gift: "{{user}} has the gift Ancient Guard in use, so you cannot attack."
+#      min_level_diff_restriction: Opponent is too weak for you!
+      max_fights_with_opponent_reached: You can't attack the same wizard more than {{max}} times per day
+      max_user_fights_reached: This wizard has already been attacked {{max}}  times today and cannot be attacked any more
+      max_user_fights_pet_day_reached: "You've reached the maximum number of fights available per day"
+      fights_limit: "Fights limit reached: You may only attack up to {{count}}  times in a row, your fights limit will restore each {{time}} minutes by 1. Wait {{remain}} minutes to fight again"
+      something_changed: "Opponent might change something. Are you sure you want to attack?"
+      fight_opponent_use_voodoo: "You can not attack Opponent he has Voodoo doll"
+#      fight_on_war_restriction: "На этого противника тебе нельзя напасть раньше, чем через {{remain}} минут (на войне на одного и того же можно нападать не чаще, чем раз в {{limit}} минут)"
+      dragon_dead: Dragon is already dead or dying...
+      dragon_left: Dragon's flown away...
+      dragon_min_user_level: You should be at minimum {{min}} level to fight a Dragon.
+    relationrules:
+      already_send_friend_request_on_create: You already sent friend request to this wizard
+      already_have_relation_on_create_f: You already a friend of this wizard
+      already_have_relation_on_create_v: This wizard is already placed in your enemy list
+      already_have_relation_on_create_r: This wizard is already placed in your fighting list
+      already_have_relation_on_create_b: "This wizard is already placed in your flagged list"
+      already_have_relation_on_accept_f: "Request to {{name}} already exists"
+      already_have_relation_on_create_i: "This wizard is already placed in your block list"
+
+      sent_gift_to_non_friend: You can send gifts only to your friends
+      sent_gift_to_anti_gift_curse: You can't send a gift to {{name}}, because they have been cursed with Bubbling Bile
+      sent_curse_to_friend: You can't send curses to friends
+      sent_day_limit_user_gift: You've already gifted {{name}} {{max}}  times today, you will be able to send him another gift tomorrow
+      sent_day_limit_user_curse: You've already cursed {{name}} {{max}} times today, you will be able to send him another curse tomorrow
+      sent_day_limit_all_gift: You've already sent {{max}} gifts today. Try again tomorrow.
+      sent_day_limit_all_curse: You've already sent {{max}} curses today. Try again tomorrow.
+      received_day_limit_gift: "{{name}} has already received {{max}} gifts today."
+      received_day_limit_curse: "{{name}} has already received {{max}} curses today."
+
+      present_gift: Gift
+      present_curses: Curse
+      sent_present_recipient_required_level: "Recipient's required level {{level}}"
+      cancel_curse_potion_not_exists: "You cannot dissolve this curse since you don't have any Eucalyptus Balm."
+      cancel_all_curses_potion_not_exists: "You cannot dissolve all curses since you don’t have any Amber Juice."
+
+      cant_add_yourself: "You are not able to add yourself"
+      is_not_blocked: "Is not blocked"
+      already_blocked: "Already blocked"
+    bonusrules:
+      nextbonus: "You'll be able to receive bonus in {{time}}"
+    chatrules:
+      chat_required_level: "You have to reach level {{level}} to be able to send messages in the chat"
+      private_room_exists: "Private room already exists"
+      room_already_joined: "You'd already joined this room"
+      choise_a_time: "Time not selected"
+      chat_ban_reason: "Reason can't be empty"
+      chat_blocked: "User {{user_name}} are blocked, Reason: {{reason}}"
+      you_cant_block_moderator: "You cant block moderator"
+      you_are_not_moderator: "You are not moderator"
+      chat_user_not_found: "Wizards not found"
+      report_already_exists: "Report already exists"
+      user_blocked: "The wizard {{name}} cannot reply on your message, because their chat is blocked till {{time}}"
+      user_blocked_permanent: "The wizard {{name}} cannot reply on your message, because their chat is permanently blocked"
+      
+    clanrules:
+      clan_create_min_level: "Required min. level {{min}}"
+      clan_join_restriction: "You will be able to join or set up a clan in {{remain}}"
+      join_message_is_blank: "Please fill in the message field"
+      there_is_no_place_in_clan: "No places in the clan"
+      donate_not_enought_money: "You don't have enough mana to donate to clan"
+      donate_not_enought_staff2: "You don't have enough crystals to donate to clan"
+      donate_zero: "You can't donate 0 Mana and 0 crystals"
+      clan_join_min_level: "You can't join clan min. level {{min}}"
+      not_enought_money_to_edit: "You don't have enough mana to edit your clan"
+      already_has_clan_on_join: "Wizard {{name}} is already in another clan"
+      war_no_altar: You need an Altar to be able to declare a war!
+      war_clan_is_on_war: You are at the war at the moment
+      war_opponent_clan_is_on_war: Clan {{name}} is at a war at the moment. 
+      war_start_places_restriction: There have to be minimum {{min}} warriors in a clan to start a war!
+      war_start_places_restriction_opponent: You can't attack this clan; it has less than {{min}} warriors in it.
+      war_start_started_wars_by_opponent_restriction: This clan was already attacked {{max}} times during the month. You may try to attack it in {{remain}}.
+      war_start_with_the_same_clan_time_restrict: You can't fight more than once in 2 weeks with the same clan. Try attacking again in {{remain}}.
+      war_start_war_protection_restriction: Your clan's defense twice less than your opponent clan's defense. Icrease your clan's defence before fighting clan {{name}}.
+      war_amount_restriction: You can declare a war {{count}} times per month. Upgrade your altar.
+      war_rest_time_restriction: You have to rest for {{remain}} after the last war.
+      war_rest_time_opponent_restriction: Clan {{name}} have to rest for {{remain}} after the last war.
+      kill_on_war: "You can't destroy, clan on war"
+      leave_clan_on_war: "You cannot leave your clan during war!"
+    user_avatar:
+      cant_buy_required_level: "Your min level should be {{level}}, to buy avatar"
+      cant_buy_you_already_have_this_avatar: "You already have this avatar"
+      cant_buy_not_enought_money_on_this_avatar: "You don't have enough gold for this avatar"
+    petrules:
+      not_enought_staff: "You don't have enough gold"
+      not_enought_money: "You don't have enough mana for training"
+      pet_weight_to_low: "Pet Vitality is to low, required value is {{weight}}"
+      cant_activate_pet_because_of_curse: You cannot let your pet out of its cage as the curse Evil Skull is active
+    mailrules:
+      please_choice_yours_friend: "Type username to send a message"
+      please_choice_yours_friend_name: There is no user with name {{name}}. Your message hasn't been delivered.
+      title_cant_be_empty: "Title can't be empty"
+      message_cant_be_empty: "Message can't be empty"
+      you_cant_send_yourself: "You can't send your self"
+      you_not_have_clan: "You do not have a clan"
+      clan_message_cant_empty: "Message can't be empty"
+      you_are_blocked_with_user: "You cannot send messages to wizard you had blocked"
+      you_are_blocked: "You are blocked by moderator"
+    homerules:
+      meditating: "You are meditating, remaining time {{remain}}"
+    accountrules:
+      account_unsubscribed: "Your email is unsubscribed"
+      email_or_login_not_valid: "Email or Login is not correct"
+      
+  user_items:
+    avatar_items:
+      male2: "Male avatar"
+      male3: "Male avatar"
+      male4: "Male avatar"
+      male5: "Male avatar"
+      female2: "Female avatar"
+      female3: "Female avatar"
+      female4: "Female avatar"
+      female5: "Female avatar"
+    item_pet:
+      buy_pet: "Buy pet"
+      reanimate_pet: "Reanimate pet"
+
+
+  time:
+    seconds:
+      one: "{{count}} second"
+      other: "{{count}} seconds"
+    minutes:
+      one: "{{count}} minute"
+      other: "{{count}} minutes"
+    hours:
+      one: "{{count}} hour"
+      other: "{{count}} hours"
+    days:
+      one: "{{count}} day"
+      other: "{{count}} days"
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
+
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%Y-%m-%d"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, January, February, March, April, May, June, July, August, September, October, November, December]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, June, July, Aug, Sep, Oct, Nov, Dec]
+    # Used in date_select and datime_select.
+    order: [ :year, :month, :day ]
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " and "
+      last_word_connector: ", and "
+
+  money:
+    one: "1 mana"
+    other: "{{count}} mana "
+
+  staff:
+    one: "1 gold"
+    other: "{{count}} gold"
+
+  staff2:
+    one: "crystal"
+    other: "{{count}} crystals"
+
+  hours:
+    one: "{{count}} hour"
+    other: "{{count}} hours"
+
+  home: Home
+  exit: Exit
+  show: Show
+  find: Find
+  back: Back
+
+  scroll_top: "Top"
+  ok: "OK"
+  close: Close
+  warning: Warning
+  add: Add
+  send: Send
+  cancel_restore: "Cancel"
+  save: Save
+  cancel: "Cancel"
+  delete: "Delete"
+  reply: "Reply"
+  buy: Buy
+  sell: Sell
+  update: Update
+  upgrade: Upgrade
+  extend: Extend
+  activate: Activate
+  search: "Search"
+  timer: "Timer"
+  action: Action
+  actions: "Actions"
+  by_name: "By name"
+  by_level: "By level"
+  by_fame: "By fame"
+  by_mana_won: "By stolen mana"
+  by_damage: "By damage made"
+  by_girls: Girls
+  by_boys: Boys
+  by_online: Online
+  by_dragon_damage: Damage made to dragon
+  message_title: "Message"
+  date_title: "Date"
+  description: "Description"
+  price: "Price"
+  expire_date: "Expires on: {{date}}"
+
+  deny: "Deny"
+  allow: "Allow"
+  accept: "Accept"
+
+  app_title: 7Wizards
+  login: "Login:"
+  email: "Email:"
+  recapcha_title: "Enter words in the picture"
+
+  registered_wizards: "Wizards: <b>{{count}}</b>"
+  online_users: "Online: <b>{{count}}</b>"
+
+  required_min_level: "You must be at level {{min}}"
+  strange_situation: "Strange situation, something has gone wrong"
+  account_not_activated: "Activate Your Account or Resend Activation E-mail, using top menu Account/Activate my Account"
+
+  wait_locked: "Try again"
+  drid_is_not_confirmed: You did one action several times or trying to play from several places simultaneously.
+
+  invite_a_friend: Invite Friends!
+  invite_a_friend_description: <tr><td><img alt="" src="/images/design/invitation_point.png"/></td><td>Send this link to your friends</td></tr>
+                               <tr><td></td><td><b>{{link}}</b></td></tr>
+                               <tr><td><img alt="" src="/images/design/invitation_point.png"/></td><td>Help them to register</td></tr>
+                               <tr><td><img alt="" src="/images/design/invitation_point.png"/></td><td>Earn 50 gold for each invitee*</td></tr>
+                               <tr><td><img alt="" src="/images/design/invitation_point.png"/></td><td>Earn additional bonuses**</td></tr>
+                               <tr><td><img alt="" src="/images/design/invitation_point.png"/></td><td>Together you are stronger!</td></tr>
+                               <tr><td></td><td><small>Use these buttons for easy sharing</small></td></tr>
+
+  invite_a_friend_bonus_description: "<tr><td valign='top' style='text-align: right'>*</td><td>works for the first 20 invitees who reached level 7</td></tr>
+                                      <tr><td valign='top' style='text-align: right'>**</td><td>if your invitees buy gold you will receive a bonus equal to 20% of that amount</td></tr>"
+  

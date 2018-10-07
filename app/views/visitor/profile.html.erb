@@ -1,0 +1,168 @@
+<div id="columns_narrow_wide" style="width: 1035px;">
+
+  <div id="col_left">
+    <div id="login" class="login_form pre_avatar">
+      <%if bigpoint_host? %>
+        <% form_tag bigpoint_path(:action => :do_login) do %>
+          <h2 class="block_header"><%= tf(User, :name) %></h2>
+          <%#= link_to(tv(:restore), restore_path, :class=>"restor_button")  %>
+          <div class="input_login_page login_input"><%= text_field_tag :login, "", :class => "input_login", :id=>"visitor_login"%></div>
+          <%= submit_tag tv(:log_in), :class => "enter_button" %>
+          <div class="clear"></div>
+
+          <div class="input_login_page pass_input">
+            <%= password_field_tag :password, "", :class => "input_login", :id=>"visitor_password"%></div>
+          <a id="check_box_link" href="javascript: void(0)" class="remember_check" onclick="javascript: wizards.login.remember_click()"></a>
+          <%= check_box_tag(:remember_me, :remember_me)%> <%= tv(:remember) %>
+
+          <span <%if flash[:notice] && !flash[:notice].empty? %> class="login_error" <%end%>>
+            <%= flash[:notice] %>&nbsp;
+          </span>
+
+        <%end%>
+      <%else%>
+        <% form_tag :action => :process_login do %>
+          <h2 class="block_header"><%= tf(User, :name) %></h2>
+          <%= link_to(tv(:restore), restore_path, :class=>"restor_button")  %>
+          <div class="input_login_page login_input"><%= text_field_tag :login, "", :class => "input_login", :id=>"visitor_login"%></div>
+          <%= submit_tag tv(:log_in), :class => "enter_button" %>
+          <div class="clear"></div>
+
+          <div class="input_login_page pass_input">
+            <%= password_field_tag :password, "", :class => "input_login", :id=>"visitor_password"%></div>
+          <a id="check_box_link" href="javascript: void(0)" class="remember_check" onclick="javascript: wizards.login.remember_click()"></a>
+          <%= check_box_tag(:remember_me, :remember_me)%> <%= tv(:remember) %>
+
+          <span <%if flash[:notice] && !flash[:notice].empty? %> class="login_error" <%end%>>
+            <%= flash[:notice] %>&nbsp;
+          </span>
+
+        <%end%>
+      <%end%>
+      <div class="border_top"></div>
+      <div class="border_bottom"></div>
+    </div>
+    <div class="clear"></div>
+
+    <div class="additional_info_block" >
+      <%= render :partial => "wizards/profile/user_avatar", :locals => {:user => @user} %>
+
+      <div class="quick_links" >
+        <h2 class="block_header"><%= t :register_as_friend_title %></h2>
+        <ul class="navigate">
+          <li><%= link_to t(:register_as_friend), :action => :reference_register, :name => @user.name %></li>
+          <li><%= link_to t(:back_to_home), :action => :index %></li>
+        </ul>
+      </div>
+      <div class="clear"></div>
+      <div class="quick_links" >
+        <h2 class="block_header"><%= tf(FightLog, :fight_user_attributes) %></h2>
+        <ul class="information">
+          <li><%= tf(User, :rating) %>: <%= @user.rating %></li>
+          <li><%= tf(User, :a_reputation) %>: <%= @user.a_reputation %></li>
+          <li><%= tf(User, :a_power) %>: <%= @user.a_power %>+?</li>
+          <li><%= tf(User, :a_dexterity) %>: <%= @user.a_dexterity%>+?</li>
+          <li><%= tf(User, :a_protection) %>: <%= @user.a_protection %>+?</li>
+          <li><%= tf(User, :a_skill) %>: <%= @user.a_skill %>+?</li>
+          <li><%= tf(User, :a_weight) %>: <%= @user.a_weight %>+?</li>
+        </ul>
+      </div>
+      <div class="clear"></div>
+      <div class="quick_links">
+        <h2 class="block_header"><%= tf(FightLog, :fight_user_information) %></h2>
+        <ul class="information">
+          <%if @user.clan %>
+            <li><%= tf(User, :clan) %>: <%=@user.clan.name %></li>
+          <%end%>
+          <li><%= tf(User, :e_fights_count) %>: <%= @user.s_wins_count + @user.s_loses_count %> </li>
+          <li><%= tf(User, :s_wins_count) %>: <%= @user.s_wins_count %></li>
+          <li><%= tf(User, :s_loot_money) %>: <%= @user.s_loot_money %></li>
+          <li><%= tf(User, :s_lost_money) %>: <%= @user.s_lost_money %></li>
+          <li><%= tf(User, :s_total_damage) %>: <%= @user.s_total_damage %></li>
+          <li><%= tf(User, :s_lost_protection) %>: <%= @user.s_lost_protection %></li>
+        </ul>
+      </div>
+
+      <div class="clear"></div>
+
+      <div class="additional_info_bg"></div>
+      <div class="additional_info_bottom"></div>
+      <div class="additional_info_top"></div>
+    </div>
+  </div>
+
+  <div id="col_right">
+    <div class="main_col_content">
+      <div class="visibl">
+        <div class="blue_buttons">
+          <h1 class="category_title_shop"><%= tf(User, :description) %></h1>
+          <div class="bes_search">
+            <p style="width: 600px; margin: auto; text-align: center;"><%= @user.description.blank? ? tf(User, :default_description) : @user.description %></p>
+            <div class="clear"></div>
+          </div>
+        </div>
+
+        <div>
+          <h1 class="category_title_shop"><%= (tf UserItem, "category_gift") %></h1>
+          <div class="equipment_slot" style="margin-left: 30px;">
+            <% for gift in @used_gifts %>
+              <ul class="gifts  information_tips_block">
+                <li class="image_block">
+                  <%= user_item_image_tag(gift) %>
+                </li>
+                <li class="tips">
+                  <ul class="no_padding">
+                    <li><b class="hint_titel"><%= gift.title %></b></li>
+                    <li><%= gift.description %></li>
+                    <li><%= tf(Message, :from) %>: <%= link_to user_name(gift.bought_by), :action => :profile, :name => gift.bought_by.name %></li>
+                  </ul>
+                </li>
+              </ul>
+            <% end %>
+            <% blank_count(@used_gifts, 5).times do %>
+              <ul class="gifts  information_tips_block">
+                <li>
+                  <%= image_design_tag("gift_blank.jpg") %>
+                </li>
+              </ul>
+            <% end %>
+          </div>
+          <div class="clear"></div>
+        </div>
+
+        <div class="quick_links" >
+          <h1 class="category_title_shop"><%= (tf UserItem, "category_curse") %></h1>
+          <div class="equipment_slot" style="margin-left: 30px;">
+            <% for curses in @used_curses %>
+              <ul class="gifts  information_tips_block">
+                <li class="image_block">
+                  <%= user_item_image_tag(curses) %>
+                </li>
+                <li class="tips">
+                  <ul class="no_padding">
+                    <li><b class="hint_titel"><%= curses.title %></b></li>
+                    <li><%= curses.description %></li>
+                    <li><%= tf(Message, :from) %>: <%= link_to user_name(curses.bought_by), :action => :profile, :name => curses.bought_by.name %></li>
+                  </ul>
+                </li>
+              </ul>
+            <% end %>
+            <% blank_count(@used_curses, 5).times do %>
+              <ul class="gifts  information_tips_block">
+                <li>
+                  <%= image_design_tag("curse_blank.jpg") %>
+                </li>
+              </ul>
+            <% end %>
+          </div>
+          <div class="clear"></div>
+        </div>
+        <%= link_to  tg(:scroll_top), "#visitor_page", :class => "more" %>
+      </div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

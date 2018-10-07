@@ -1,0 +1,94 @@
+<div id="fight_logs">
+  <ul>
+
+    <% if log.amulet_antimag_user? %>
+      <li>
+        <%= t(:log_antimag_triggered, :user_name => log.user_a.name) %>
+      </li>
+    <% end %>
+    <% if log.amulet_antimag_opponent? %>
+      <li>
+        <%= t(:log_antimag_triggered, :user_name => log.opponent_a.name) %>
+      </li>
+    <% end %>
+    <% if log.amulet_diablo_user? %>
+      <li>
+        <%= t(:log_diablo_triggered, :user_name => log.user_a.name) %>
+      </li>
+    <% end %>
+    <% if log.amulet_diablo_opponent? %>
+      <li>
+        <%= t(:log_diablo_triggered, :user_name => log.opponent_a.name) %>
+      </li>
+    <% end %>
+
+    <% log.rounds.each do |r| %>
+      <% if r.pet_damage? %>
+        <li>
+          <%= t(:log_pet_stroke, :user_pet_name => r.user_name(log), :opponent_pet_name => r.opponent_name(log), :damage => r.pet_damage) %>
+        </li>
+      <% end %>
+      <% if r.amulet_pups_opponent? %>
+        <li>
+          <%= t(:log_pups_triggered, :user_name => r.opponent_name(log)) %>
+        </li>
+      <% end %>
+      <% if r.anti_pet_opponent? %>
+        <li class="green">
+          <%= t(:log_antipet_triggered, :user_name => r.opponent_name(log), :user_pet_name => r.user_name(log)) %>
+        </li>
+      <% end %>
+
+      <% if r.stroke %>
+        <li <% if r.critical %> class="critical_stroke" <% end %> >
+          <% if r.pet_fight? %>
+            <% if r.damage > 0 %>
+          
+                
+                  <%= t(:log_pet_stroke_with_power, :user_pet_name => r.user_name(log), :opponent_pet_name => r.opponent_name(log),
+                    :power => r.real_damage, :damage => r.only_user_damage) %>
+                
+                <% if r.pet_killed? %>
+                  <span class="red"><%= t(:log_pet_dead, :user_pet_name => r.opponent_name(log)) %></span>
+                <% end %>
+             
+            <% else %>
+              <%= t(:log_pet_stroke_blocked, :user_pet_name => r.user_name(log), :opponent_pet_name => r.opponent_name(log), :power => r.real_damage) %>
+            <% end %>
+          <% else %>
+            <% if r.only_user_damage > 0 %>
+              <%= t(:log_user_stroke_with_power, :user_name => r.user_name(log), :opponent_name => r.opponent_name(log),
+                :power => r.real_damage, :damage => r.only_user_damage) %>
+
+            <% else %>
+              <%= t(:log_user_stroke_block, :user_name => r.user_name(log), :opponent_name => r.opponent_name(log),
+                :power => r.real_damage) %>
+            <% end %>
+          <% end %>
+          <% if r.amulet_kakdams_user? %>
+            <%= t(:log_kakdams_triggered) %>
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          <% if r.pet_fight? %>
+            <%= t(:log_pet_stroke_missed, :user_pet_name => r.user_name(log), :opponent_pet_name => r.opponent_name(log)) %>
+          <% else %>
+            <%= t(:log_user_stroke_missed, :user_name => r.user_name(log)) %>
+          <% end %>
+        </li>
+      <% end %>
+    <% end %>
+
+    <% if log.user_pet_reanimate %>
+      <li>
+        <%= t(:log_reanimate_pet, :user_name => user_name(log.user)) %>
+      </li>
+    <% end %>
+    <% if log.opponent_pet_reanimate %>
+      <li>
+        <%= t(:log_reanimate_pet, :user_name => user_name(log.opponent)) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

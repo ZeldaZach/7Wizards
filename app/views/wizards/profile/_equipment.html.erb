@@ -1,0 +1,88 @@
+<%
+blank_count = proc do |items|
+  per_line = 5
+  count = per_line - (items.size % per_line)
+  if per_line == count && items.size > 0
+    count = 0
+  end
+  count
+end
+%>
+
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "menu" %>
+  </div>
+
+  <div id="col_right" >
+    <div class="main_col_content">
+      <div style="position: relative; z-index: 2;">
+        <% @groups.each do |group| %>
+          <div>
+            <h1 class="category_title_shop"><%= t("group_#{group[:name]}") %></h1>
+            <div class="equipment_slot profile_main">
+              <% for item in group[:items] %>
+                <ul class="information_tips_block equipment_block clean">
+                  <li class="image_block">
+                    <% if group[:name] == :used %>
+                      <%= link_to_ajax user_item_image_tag(item), profile_path(:action => :takeoff, :item => item.key) %>
+                    <% elsif group[:name] == :available %>
+                      <%= link_to_ajax user_item_image_tag(item), profile_path(:action => :use, :item => item.key) %>
+                    <% elsif group[:name] == :powerup%>
+                      <%if item.is_active? @user %>
+                      <li class="image_block">
+                        <%= game_item_image_tag(item) %>
+                      </li>
+                    <%else%>
+                      <li class="image_block grey_img">
+                        <%= game_item_image_tag(item) %>
+                      </li>
+                    <%end%>
+                  <% else %>
+                    <%= user_item_image_tag(item) %>
+                  <% end %>
+                  </li>
+                  <li class="tips no_quick_links">
+                    <ul>
+                      <li><b class="hint_titel"><%= item.category_title %></b></li>
+                      <% if item.respond_to?(:required_level) && item.required_level > 1 %>
+                        <li>
+                          <%= t :group_required_level, :level => item.required_level %>
+                        </li>
+                      <% end %>
+                      <% if item.description(@user) %>
+                        <li>
+                          <%= item.description(@user) %>
+                        </li>
+                      <%end%>
+                      <% if group[:name] == :powerup && item.is_active?(@user) %>
+                        <li><%= tg :expire_date, :date => d(item.get_expire_date(@user)) %></li>
+                      <%end%>
+                    </ul>
+                  </li>
+                </ul>
+              <% end %>
+              <%if group[:name] == :gift || group[:name] == :curse%>
+                <% blank_count.call(group[:items]).times do %>
+                  <ul class="gifts  information_tips_block">
+                    <li>
+                      <%= image_design_tag("#{group[:name]}_blank.jpg") %>
+                    </li>
+                  </ul>
+                <% end %>
+              <%end%>
+              <div class="clear"></div>
+            </div>
+          </div>
+        <% end %>
+
+        <%= link_to_top tg(:scroll_top)%>
+
+      </div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+</div>
+<div class="clear"></div>

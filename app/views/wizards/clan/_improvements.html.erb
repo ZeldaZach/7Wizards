@@ -1,0 +1,53 @@
+<div id="columns_narrow_wide">
+
+  <div id="col_left">
+    <%= render :partial => "partial_navigate" %>
+  </div>
+
+  <div id="col_right" >
+    <div class="main_col_content" id="clan_upgr">
+        <div class="visibl">
+      <h1 class="category_title_shop"><%= t(:clan_title) %> </h1>
+      <table class="content_up table">
+        <tr>
+          <th></th>
+          <th>Description</th>
+          <th>Price</th>
+          <th></th>
+        </tr>
+        <% @items.each do |item| %>
+          <%
+          item_level = item.get_level(@clan)
+          item_max_level = item.get_max_level
+          reached_max_level = item_level >= item_max_level
+        %>
+          <tr>
+            <td style="width: 100px;"><%= clan_item_image_tag(item) %></td>
+            <td class="col_desc"><b><%= item.title %></b><br/>
+              <%= item.description(@clan) %><br/>
+              <%= t :value_from, :value => item_level, :from => item_max_level %><br/>
+              <%= item.current_level_description(@clan) %><br/>
+              <% if !reached_max_level %>
+                <%= item.next_level_description(@clan) %>
+
+              </td>
+              <td class="price"><b> <%= t :price_improve, :price => item.get_price(@clan).price %></b> <img alt="" src="/images/design/menu_mana.png"/></td>
+            <% end %>
+            <td class="little_button">
+              
+              <% if !@on_war && @clan_owner && !reached_max_level %>
+                <%= link_to_ajax t(:improve), :url => clan_path(:action => :improve, :item => item.key) %>
+              <% end %></td>
+          </tr>
+        <% end %>
+      </table>
+    
+    </div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+
+</div>
+<div class="clear"></div>

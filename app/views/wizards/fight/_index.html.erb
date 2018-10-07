@@ -1,0 +1,285 @@
+<%if @opponent %>
+  <%=  swf_object(rewrite_asset_path('/flash/Fight.swf'), 'flash_content', :width => 930, :height => 326,
+    :params => {:allowScriptAccess => "always"},
+    :callback => "flash_callback",
+    :flash_vars => {:version => rails_asset_id('/flash/Fight.swf'), :base_url => "/", :user_id => @opponent.id, :attacker_message => @opponent.attacker_message, :debug => !GameProperties::PROD}) %>
+<%end%>
+<div class="additional_info_block" id="fight_flash">
+  <div class="quick_links fight_search blue_buttons search_left">
+    <h1 class="category_title_fight"><%= t(:fight_title) %></h1>
+    <div class="bes_search">
+      <% form_ajax_tag :url => fight_path(:action => :find_level) do %>
+        <label><%= tg(:by_level) %></label>
+        <%= text_field_tag :level, @find_by_level, :class => "text login_pass_input level_search", :maxlength=>"3", :onkeypress => "return validateNumber(event)"%>
+        <%= submit_tag tg(:search), :class => "small_submit to_mana", :name => nil %>
+        <%= @price %>
+        <%= image_design_tag("menu_mana.png") %>
+      <%end%>
+
+      <% form_ajax_tag :url => fight_path(:action => :find_name) do %>
+        <label><%= tg(:by_name) %></label>
+        <%= text_field_tag :name, "", :class => "text login_pass_input"%>
+        <%= submit_tag tg(:search), :class=>"small_submit to_mana", :name => nil %>
+        <%= @price %>
+        <%= image_design_tag("menu_mana.png") %>
+      <%end%>
+      <span class="fight_button_do">
+        <%if @opponent %>
+          <% form_ajax_tag :url => fight_path(:action => :fight) do %>
+            <%= hidden_field_tag :u_md5, @user.user_attributes.md5 %>
+            <%= hidden_field_tag :o_md5, @opponent.user_attributes.md5 %>
+            <%= hidden_field_tag :id, @opponent.id %>
+            <span class="join_submitt fight_button">
+              <%= submit_tag "", :name => nil %>
+            </span>
+          <%end%>
+        </span>
+        <%if @on_war%>
+          <span class="back_to_clan"> <%= link_to_ajax t(:back_to_war), :url => clan_path(:action => :wars) %></span>
+        <%end%>
+      <%end%>
+    </div>
+    <div class="clear"></div>
+  </div>
+
+  <div id="flash_content" style=" text-align: center; display: none">
+    <p>
+      <%= link_to image_tag("http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif", :alt=>"Get Adobe Flash player"), "http://www.adobe.com/go/getflashplayer" %>
+    </p>
+  </div>
+  <div class="full_info_bg"></div>
+  <div class="full_info_bottom"></div>
+  <div class="full_info_top"></div>
+</div>
+<div class="additional_info_block">
+
+  <div id="results_without_flash">
+
+    <div id="fight_results">
+      <div>
+        <h1 class="category_title_fight"><%= tf(FightLog, :fight_user_attributes) %></h1>
+        <div class="quick_links identic_left identic">
+          <div class="bes_search">
+            <table class="content_up table statistic statistic_short" cellpadding="0" cellspacing="0">
+              <tr>
+                <th scope="col" class="user_name_fight"><%= is_online_image_tag(@user, :style => "margin-bottom: 2px") %> <%= @user.name %></th>
+                <th scope="col"></th>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_power) %></td>
+                <td><%= @user_a.full_power_label %></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_protection) %></td>
+                <td><%= @user_a.full_protection_label %></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_dexterity) %></td>
+                <td><%= @user_a.full_dexterity_label %></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_skill) %></td>
+                <td><%= @user_a.full_skill_label %></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_weight) %></td>
+                <td><%= @user_a.full_weight_label %></td>
+              </tr>
+
+            </table>
+          </div>
+        </div>
+
+        <div class="quick_links identic">
+          <div class="bes_search">
+            <table class="content_up table" cellpadding="0" cellspacing="0">
+              <tr>
+                <th scope="col" class="user_name_fight statistic statistic_short"><%= is_online_image_tag(@opponent, :style => "margin-bottom: 2px") %> <%=value_or_blank(@opponent, :name) %></th>
+                <th scope="col"></th>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_power) %></td>
+                <td><%= value_or_blank(@opponent, :a_power) %>+?</td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_protection) %></td>
+                <td><%= value_or_blank(@opponent, :a_protection) %>+?</td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_dexterity) %></td>
+                <td><%= value_or_blank(@opponent, :a_dexterity) %>+?</td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_skill) %></td>
+                <td><%= value_or_blank(@opponent, :a_skill) %>+?</td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_weight) %></td>
+                <td><%= value_or_blank(@opponent, :a_weight) %>+?</td>
+              </tr>
+
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="clear"></div>
+      <div>
+        <%if @user.pet_active? %>
+          <h1 class="category_title_fight"> <%= tf(User, :pet) %> <%= tf(FightLog, :fight_user_attributes) %></h1>
+          <div class="quick_links identic_left identic" style="width: 481px">
+            <div class="bes_search">
+              <table class="content_up table statistic statistic_short short_tabl" cellpadding="0" cellspacing="0">
+                <tr>
+                  <th><%= @user.name %> <%= tf(User, :pet) %> </th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_power) %></td>
+                  <td><%= @user_a.full_pet_power_label %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_protection) %></td>
+                  <td><%= @user_a.pet_protection%></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_dexterity) %></td>
+                  <td><%= @user_a.pet_dexterity%></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_skill) %></td>
+                  <td><%= @user_a.full_pet_skill_label(false)%></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_weight) %></td>
+                  <td><%= @user_a.pet_weight%></td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+
+          <div class="clear"></div>
+        <%end%>
+        <div>
+          <h1 class="category_title_fight"> <%= tf(FightLog, :fight_user_information) %></h1>
+          <div class="quick_links identic identic_left">
+
+            <div class="bes_search">
+
+              <table class="content_up table statistic statistic_short" cellpadding="0" cellspacing="0">
+                <tr>
+                  <th><%= @user.name %></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_level) %></td>
+                  <td><%= @user.a_level %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_experience) %></td>
+                  <td><%= @user.a_experience %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :e_fights_count) %></td>
+                  <td><%= @user.s_wins_count + @user.s_loses_count %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :s_wins_count) %></td>
+                  <td><%= @user.s_wins_count  %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :s_loot_money) %></td>
+                  <td><%= @user.s_loot_money %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :s_lost_money) %></td>
+                  <td><%= @user.s_lost_money %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :s_total_damage) %></td>
+                  <td><%= @user.s_total_damage %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :s_lost_protection) %></td>
+                  <td><%= @user.s_lost_protection %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_reputation) %></td>
+                  <td><%= @user.a_reputation%></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :clan) %></td>
+                  <td class="clan_color">
+                    <%if @user.clan%>
+                      <%= link_to_ajax @user.clan_name, :url => clan_path(:action => :details, :id => @user.clan.id) %>
+                    <%end%>
+                  </td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="quick_links identic">
+
+          <div class="bes_search">
+            <table class="content_up table statistic statistic_short" cellpadding="0" cellspacing="0">
+              <tr>
+                <th><%= value_or_blank(@opponent, :name) %></th>
+                <th></th>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_level) %></td>
+                <td><%= value_or_blank(@opponent, :a_level) %></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_experience) %></td>
+                <td><%= value_or_blank(@opponent, :a_experience) %></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :e_fights_count) %></td>
+                <td><%= value_or_blank(@opponent, :s_wins_count) + value_or_blank(@opponent, :s_loses_count)%></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :s_wins_count) %></td>
+                <td><%= value_or_blank(@opponent, :s_wins_count)  %></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :s_loot_money) %></td>
+                <td><%= value_or_blank(@opponent, :s_loot_money)%></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :s_lost_money) %></td>
+                <td><%= value_or_blank(@opponent, :s_lost_money) %></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :s_total_damage) %></td>
+                <td><%= value_or_blank(@opponent, :s_total_damage) %></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :s_lost_protection) %></td>
+                <td><%= value_or_blank(@opponent, :s_lost_protection) %></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :a_reputation) %></td>
+                <td><%= value_or_blank(@opponent, :a_reputation)%></td>
+              </tr>
+              <tr>
+                <td><%= tf(User, :clan) %></td>
+                <td class="clan_color"><%if @opponent && @opponent.clan%><%= link_to_ajax @opponent.clan_name, :url => clan_path(:action => :details, :id => @opponent.clan.id) %><%end%></td>
+              </tr>
+
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="full_info_bg"></div>
+  <div class="full_info_bottom"></div>
+  <div class="full_info_top"></div>
+</div>
+<div class="clear"></div>
+

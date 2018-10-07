@@ -1,0 +1,77 @@
+<h1><%= t :title%></h1>
+
+<p>
+  <%= tf(User, :name) + " : " + link_to(@user.name, :action => :show, :id => @user.id) %>
+</p>
+
+<%
+  header = %w(active a_level)
+%>
+
+<p>
+  <% header.each do |a| %>
+    <b><%= tf @user, a %></b>: <%=h @user[a] %><br />
+  <% end %>
+</p>
+
+<% if !@user.bans.blank? %>
+  <strong><%= t :ban_history %>:</strong><br />
+  <table border="1">
+    <tr>
+      <th><%= tf BanHistory, :ban %></th>
+      <th><%= tf BanHistory, :only_messages %></th>
+      <th><%= tf BanHistory, :banned_by %></th>
+      <th><%= tf BanHistory, :public_reason %></th>
+      <th><%= tf BanHistory, :private_reason %></th>
+      <th><%= tf BanHistory, :ban_end_date %></th>
+    </tr>
+    <% @user.bans.each do |ban| %>
+      <tr>
+        <td><span style="color:<%= ban.ban ? 'red' : 'green' %>"><%= ban.ban ? 'banned' : 'active' %></span></td>
+        <td><span style="color:<%= ban.only_messages ? 'red' : 'green' %>"><%= ban.only_messages ? 'banned' : 'active' %></span></td>
+        <td><%= ban.banned_by ? h(ban.banned_by.name) : 'admin' %> (<small><%= d ban.created_at %></small>)</td>
+        <td><%= ban.public_reason %></td>
+        <td><%= ban.private_reason %></td>
+        <td><%= ban.ban_end_date ? d(ban.ban_end_date) : '' %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<% form_for @ban, :url => {:action => 'ban_process'} do |f| %>
+  <%= f.hidden_field :user_id %>
+  <%= f.error_messages %>
+  <p>
+    <%= tf @ban, :ban %><br />
+    <%= f.check_box :ban %>
+  </p>
+  <p>
+    <%= tf @ban, :only_messages %><br />
+    <%= f.check_box :only_messages %>
+  </p>
+  <p>
+    <%= tf @ban, :public_reason %><br />
+    <%= f.text_area :public_reason, :rows => 5 %>
+  </p>
+  <p>
+    <%= tf @ban, :private_reason %><br />
+    <%= f.text_area :private_reason, :rows => 5 %>
+  </p>
+  <p>
+    <%= tf @ban, :ban_end_date %><br />
+    <%
+      ban_times = [nil, 1.day, 2.days, 5.days, 10.days, 20.days, 30.days]
+      ban_time_labels = %w(never 1.day 2.days 5.days 10.days 20.days 30.days)
+      ban_options = '';
+      ban_times.each_with_index do |t, i|
+        ban_options += "<option value=\"#{t}\">#{ban_time_labels[i]}</option>"
+      end
+    %>
+
+    <%= select_custom_tag :ban_end_date, ban_options %>
+
+  </p>
+  <p>
+    <%= f.submit tg(:save) %>
+  </p>
+<% end %>

@@ -1,0 +1,21 @@
+<div class="additional_info_block" >
+  <div class="quick_links">
+    <h2 class="block_header special"><%= t(:title) %></h2>
+
+    <div class="image_design_pages" >
+      <%= image_design_tag("home_shop.jpg") %>
+    </div>
+  </div>
+  <div class="quick_links">
+    <h2 class="block_header"><%= tv(:categories)%> </h2>
+    <% navigation_links do %>
+      <%= navigation_link (tf UserItem, :category_power_up), :url => shop_path(:action => :power_up) %>
+      <% AllUserItems.categories.each do |category| %>
+        <%= navigation_link (tf UserItem, "category_#{category}"), :url => shop_path(:action => :index, :category => category) %>
+      <% end %>
+    <%end%>
+  </div>
+  <div class="additional_info_bg"></div>
+  <div class="additional_info_bottom"></div>
+  <div class="additional_info_top"></div>
+</div>

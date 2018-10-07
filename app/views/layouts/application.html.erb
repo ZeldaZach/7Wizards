@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+  <head>
+    <link rel="icon"  type="image/png" href="/favicon.png" />
+    <meta http-equiv="Content-Type" content="charset=utf-8" />
+
+    <%= stylesheet_link_tag 'style'  %>
+
+    <%if hi5_host? %>
+      <% if session[:_hi5_ref_host] == "www" %>
+        <script type="text/javascript">
+          top.location.href = 'http://hi5.com/friend/apps/entry/7wizards/'
+        </script>
+      <%end%>
+
+      <%= javascript_include_tag "http://images.hi5.com/Assets/Bundles/hi5.b95ec1b7afc29f47a9e1623480eef222.js"%>
+      <%= javascript_include_tag "http://apps.hi5.com/Assets/Api.js"%>
+      <%= javascript_tag "hi5.Api.init();"%>
+      <%= stylesheet_link_tag 'hi5'  %>
+    <%else%>
+      <%= stylesheet_link_tag 'default'  %>
+    <%end%>
+
+    <%= javascript_tag("document.domain = document.domain")%>
+
+    <%= javascript_include_tag "http://api.recaptcha.net/js/recaptcha_ajax.js"  %>
+
+    <%= javascript_include_tag "yahoo-dom-event", "yahoo_history", "utils", :defaults, "prototype_ext", "swfobject",
+      "timer", "ape-jsf/Build/uncompressed/apeClientJS", "ape", "chat", :cache => true %>
+
+    <%= analithic_javascript(@callback_url) %>
+    
+    <!-- Start Quantcast tag -->
+    <script type="text/javascript">
+      _qoptions={
+        qacct:"p-944Exg1PEDztg"
+      };
+    </script>
+    <script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+    <noscript>
+      <img src="http://pixel.quantserve.com/pixel/p-944Exg1PEDztg.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+    </noscript>
+    <!-- End Quantcast tag -->
+
+    <title><%= tg(:app_title) %></title>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <%if frame_url %>
+      <iframe src="<%= frame_url %>" frameborder="0" width="100%" height="206" scrolling="no" style="background-color: #0066CC;"></iframe>
+    <%end%>
+
+    <!-- Frame for IE7 Ajax history    -->
+    <iframe id="yui-history-iframe" frameborder="0" src="/blank.html" style="position:absolute;top: -1000px;"></iframe>
+    <!-- CHAT FOR IE7-->
+    <iframe id="ape_wizards_ie" frameborder="0" style="position:absolute; top: -1000px;display:none"></iframe>
+
+    <input id="yui-history-field" type="hidden">
+
+      <div id="background_loader" style="display: block; "></div>
+
+      <!-- For ajax preloader-->
+      <div id="loader_overlay" style="display: block">
+        <div id="loader_content">
+          <%= link_to " ", home_path, :style => "display: block; height: 60px" %>
+        </div>
+      </div>
+
+      <!-- For popup dialog-->
+      <div id="dialog_content" style="display: none; "></div>
+      <div class="background_main">
+        <div id="user_info" class="info_bar">
+          <%= render :partial => "navigation/user_info.html.erb" %>
+        </div>
+        <% if logged_in_as? %>
+          <div class="login_as_bar">
+            <%= t(:admin_logged_in_as) %>: <%= link_to t(:logout_as), :action => :logout_as %>
+            <%= link_to t(:adjust), :action => :adjust %>
+          </div>
+        <% end %>
+
+        <%= render :file => "navigation/user_menu.html.erb" %>
+
+        <div class="all corners">
+          <!--
+          Menu and user statistict should be separate templates
+          user_info will be reloaded by ajax
+          -->
+          <% if current_user %>
+            <%= render :file => "navigation/user_chat.html.erb" %>
+          <% end %>
+
+          <div id="notification"><%= render :partial => "navigation/notice" %><!-- NOTIFICATION HERE --></div>
+
+          <div id="content">
+            <%=  yield %>
+          </div>
+
+        </div>
+
+        <%= render :file => "navigation/footer.html.erb" %>
+      </div>
+
+      <%= chat_javascript %>
+
+  </body>
+</html>
+

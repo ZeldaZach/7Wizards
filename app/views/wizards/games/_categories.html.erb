@@ -1,0 +1,8 @@
+<div class="bes_search game_categories quick_links">
+  <%style = 'font-weight: bold' if active_category.blank? %>
+  <%= link_to_ajax t(:all_games), {:url => games_path(:action => :index, :id => nil)}, :style => style %>
+  <%categories.each do |key, value|%>
+    <%style = active_category == key ? 'font-weight: bold' : ""%>
+    <%= link_to_ajax(key, {:url => games_path(:action => :index, :category => key, :id => nil)}, :style => style)%>
+  <%end%>
+</div>

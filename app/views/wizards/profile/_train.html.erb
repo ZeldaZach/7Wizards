@@ -1,0 +1,75 @@
+<div id="columns_narrow_wide" >
+
+  <div id="col_left">
+    <%= render :partial => "menu" %>
+  </div>
+
+  <div id="col_right">
+    <div class="main_col_content">
+      <div class="quick_links" id="primary_talents">
+        <h1 class="category_title_shop"><%=  t(:fight_skills)%></h1>
+        <table class="table">
+          <tr>
+            <th></th>
+            <th><%= tg(:description) %></th>
+            <th style="text-align: center"><%= tg(:price) %></th>
+            <th></th>
+          </tr>
+          <% %w(power protection dexterity skill weight).each do |item| %>
+
+            <tr>
+              <td> <%= user_attribute_image_tag item %></td>
+              <td>
+                <table class="table_little_buttons">
+                  <tr>
+                    <td>
+                      <div class="progressbar">
+                        <%= image_design_tag("progress_bar_l.png") %>
+                        <%= image_design_tag("progress_bar_middle.png", {:class => "progress",:height=>"11px", :width => (@user["a_#{item}"].to_f / @max_value * 245).to_i}) %>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="train_desc">
+                     <br/> <b><%= tf User, "a_#{item}" %></b>:
+                      <%= tf User, "a_#{item}_description" %><br/>
+                      <b><%= t(:current_level, :level => @user["a_#{item}"]) %></b>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+              <td class="price">
+                <%= price_tag(:price => @prices["a_#{item}"]) %>
+              </td>
+              <td class="little_button">
+                <%= link_to_ajax tg(:upgrade), profile_path(:action => "train", :a => item) %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <div class="quick_links" id="secondary_talents">
+        <h1 class="category_title_shop"><%= t(:secondary_skills) %></h1>
+
+        <table class="table">
+          <tr>
+            <th></th>
+            <th><%= tg(:description) %></th>
+            <th style="text-align: center"><%= tg(:price) %></th>
+            <th></th>
+          </tr>
+
+          <% AllGameItems.profile.each do |item| %>
+            <%= render :partial => item.renderer, :locals => { :user => @user, :item => item } %>
+          <% end %>
+        </table>
+        <%= link_to_top tg(:scroll_top)%>
+      </div>
+      
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

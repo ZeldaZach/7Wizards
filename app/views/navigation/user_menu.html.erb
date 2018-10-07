@@ -1,0 +1,79 @@
+<div class="logo">
+  <span class="user_statistic_data"><%= tg(:registered_wizards, :count => User.count) %></span>
+  <span><%= link_to_ajax( hi5_host? ? image_design_tag("logo_small.png") : image_design_tag("logo_new_copy.png"), {:url => home_path(:action => "index_ajax")}, :id =>"wizards_logo")%></span>
+
+  <span class="user_statistic_data"> <%= tg(:online_users, :count => User.active_users_count) %></span>
+</div>
+<div id="main_menu">
+  <!-- <div class="punkt_menu back_new"> <%= link_to_ajax "", :url => wizards_path(:action => :history_back) %></div> -->
+  <div class="punkt_menu home_new"> <%= link_to_ajax "" , :url => home_path(:action => :index_ajax)%>
+    <span class="menu_drop_up home">
+      <ul>
+        <span><%= tv(:quick_links) %></span>
+        <li><%= link_to_ajax t(:menu_arena), :url => fight_path %></li>
+        <li><%= link_to_ajax t(:menu_hall_of_glory), :url => respect_path %></li>
+
+        <% clan_url = current_user.on_war? ?  clan_path(:action => :wars) : clan_path(:action => :details)%>
+        <li><%= link_to_ajax t(:menu_clans), :url => clan_url %></li>
+        <li><%= link_to_ajax t(:menu_pets),  :url => pet_path %></li>
+        <li><%= link_to_ajax t(:menu_shop),  :url => shop_path(:action => :index) %></li>
+        <!--
+          <li><%= link_to_ajax t(:menu_games), :url => games_path(:action => :index) %></li>
+        -->
+      </ul>
+    </span>
+  </div>
+  <div class="punkt_menu avatar_new"><%= link_to_ajax "",  {:url => profile_path(:action => :index, :id => nil)} %>
+    <span class="menu_drop_up avatar">
+      <ul>
+        <span><%= tv(:quick_links) %></span>
+        <li><%= link_to_ajax t(:menu_dressup),  :url => profile_path(:action => :dressup) %></li>
+        <li><%= link_to_ajax t(:menu_train),    :url => profile_path(:action => :train) %></li>
+        <li><%= link_to_ajax t(:menu_equipment),:url => profile_path(:action => :equipment) %></li>
+      </ul>
+    </span>
+  </div>
+  <div class="punkt_menu friends_new"><%= link_to_ajax "",  {:url => relation_path} %>
+    <span class="menu_drop_up friends">
+      <ul>
+        <span><%= tv(:quick_links) %></span>
+        <li><%= link_to_ajax t(:menu_friends), :url => relation_path(:action => :index, :kind => Relation::KIND_FRIEND) %></li>
+        <li><%= link_to_ajax t(:menu_requests),:url => relation_path(:action => :friend_requests) %></li>
+        <li><%= link_to_ajax t(:menu_flagged), :url => relation_path(:action => :index, :kind => Relation::KIND_BOOKMARK) %></li>
+        <li><%= link_to_ajax t(:menu_blocked), :url => relation_path(:action => :index, :kind => Relation::KIND_IGNORE) %></li>
+      </ul>
+    </span>
+  </div>
+  <div class="punkt_menu mail_new"> 
+    <%= image_design_tag("got_mail_icon.png", :id => "go_new_mail", :style => "display: none") %>
+    <%= link_to_ajax "",  {:url => mail_path(:action => :user_messages, :id => nil)} %>
+    <span class="menu_drop_up mail">
+      <ul>
+        <span><%= tv(:quick_links) %></span>
+        <li><%= link_to_ajax t(:menu_incoming), :url => mail_path(:action => :user_messages, :id => nil) %></li>
+        <li><%= link_to_ajax t(:menu_sent), :url => mail_path(:action => :user_messages, :kind => Message::MESSAGE_TO, :id => nil) %></li>
+        <li><%= link_to_ajax t(:menu_events), :url => mail_path(:action => :notifications, :id => nil) %></li>
+        <li><%= link_to_ajax t(:menu_requests), :url => mail_path(:action => :friend_requests, :id => nil) %></li>
+        <li><%= link_to_ajax t(:menu_fight_log), :url => mail_path(:action => :fight_logs) %></li>
+        <%if current_user.clan%>
+          <li><%= link_to_ajax t(:menu_clan_messages), :url => mail_path(:action => :clan_messages) %></li>
+        <%end%>
+      </ul>
+    </span>
+  </div>
+  <div class="punkt_menu gold_new"><%= link_to_ajax "",  {:url => buygold_path} %></div>
+</div>
+<script type="text/javascript">
+  function init() {
+    $$("div#main_menu a").each(function(item){
+      item.observe('click', function(){
+          if(chat.expanded) {
+            wizards.onNoticeScroll();
+          }
+        })
+    });
+  }
+  Element.observe(window, 'load', function() {
+    init();
+  })
+</script>

@@ -1,0 +1,16 @@
+<div class="additional_info_block" >
+  <%= render :partial => "wizards/profile/user_avatar", :locals => {:user => @user} %>
+
+  <div class="quick_links">
+    <h2 class="block_header"><%= tg(:actions) %></h2>
+
+    <ul class="navigate">
+      <li><%= link_to_ajax t(:dressup), :url => profile_path(:action => "dressup") %></li>
+      <li><%= link_to_ajax t(:train), :url => profile_path(:action => "train") %></li>
+      <li><%= link_to_ajax t(:equipment), :url => profile_path(:action => "equipment") %></li>
+    </ul>
+  </div>
+  <div class="additional_info_bg"></div>
+  <div class="additional_info_bottom"></div>
+  <div class="additional_info_top"></div>
+</div>

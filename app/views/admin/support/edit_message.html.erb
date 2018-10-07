@@ -1,0 +1,13 @@
+<h1><%= t :title%></h1>
+
+<% form_for @message, :url => { :action => :process_edit_message, :id => @message.id } do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :message, tf(@message, :message) %><br />
+    <%= f.text_area :message, :rows => 5, :cols => 85 %>
+  </p>
+  <p>
+    <%= f.submit tg(:save) %>
+  </p>
+<% end %>
+<%= link_to tg(:cancel), :action => :history %>

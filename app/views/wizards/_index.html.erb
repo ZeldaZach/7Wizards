@@ -1,0 +1,46 @@
+<div id="dialog_content" ><div id="lightbox" class="shadow_popap" style="margin-top: 247px; margin-left: 437.5px; ">
+    <div class="header_type"></div>
+    <div class="presents_row" >
+      <div class="guru_popap">
+        <img src="/images/design/home_magician.jpg?1282578190" alt="Home_magician"/>
+
+        Welcome to 7wizards brave adventurer! Enter the chosen name of your wizard and begin your journey to fame and glory within our realm.
+
+
+        <div class="bottom_popap bigpoint_bottom">
+          <form action="/bigpoint/do_bigpoint_confirm" class="edit_user" id="edit_user_20492" method="post" onsubmit="new Ajax.Request('/bigpoint/do_bigpoint_confirm', {asynchronous:true, evalScripts:true, onLoaded:function(request){onLoaded('/bigpoint/do_bigpoint_confirm');}, onLoading:function(request){onLoading('/bigpoint/do_bigpoint_confirm')}, parameters:Form.serialize(this)}); return false;"><div style="margin:0;padding:0;display:inline"><input name="_method" type="hidden" value="put"/></div>
+            <table class="bigpoint_konfirm">
+              <tbody>
+                <tr>
+                  <td><label>Login</label></td>
+                  <td> <input id="name" name="name" type="text" value="SanboxTestUser"/></td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="height: 10px;"></td>
+                </tr>
+                <tr>
+                  <td>
+                    <label for="user_gender">Gender</label>
+                  </td>
+                  <td style="display:block;margin-left:2px;text-align:left;">
+                    <input checked="checked" class="radio" id="user_gender_m" name="user[gender]" type="radio" value="m"/> Male
+                    <input class="radio" id="user_gender_f" name="user[gender]" type="radio" value="f"/> Female
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <input id="user_submit" name="commit" type="submit" value="OK"/>
+                  </td>
+                </tr>
+              </tbody></table>
+          </form>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</div>

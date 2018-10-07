@@ -1,0 +1,5 @@
+UserAttributesGrowthTable.reset
+ExperienceGrowthTable.reset
+HealthGrowthTable.reset
+AllUserItems.reset
+AllUserAvatars.reset

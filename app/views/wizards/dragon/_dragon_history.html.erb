@@ -1,0 +1,28 @@
+
+<div id="dragon_history_id" class="guru_popap dragon_result_content">
+  <%= image_design_tag("dragons_figth_end.jpg", :height => 200, :width => 600) %>
+  <p>
+    <% dragon = @dragons.is_a?(Array) ? @dragons[0] : @dragons%>
+    <%if @dragons.is_a?(Array)
+      dragon = @dragons[0]
+      count  = @dragons.size 
+    else
+      dragon = @dragons
+      count  = 0
+    end%>
+
+    <%= t :description_killed_dragons, :arrived_at => d(dragon.arrived_at), :count => count,
+      :money => tp(@dragons_money)
+  %>
+  </p>
+  <div class="bottom_popap clear">
+    <div class="rozmezhuvach popap_rozmezuvach"></div>
+    <%= link_to tg(:close), "javascript: dialog.close()",  :class => "close_button" %>
+  </div>
+</div>
+
+<%= javascript_tag("dialog.init_close({preview_dialog: 'dragon_history_id'});")%>
+
+
+
+

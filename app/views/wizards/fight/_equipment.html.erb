@@ -1,0 +1,64 @@
+<%
+  user_used_items = user_a.respond_to?(:user_items) ? AllUserItems.find_by_keys(user_a.user_items) : []
+%>
+
+<div class="fight_equipment  bes_search">
+  <% user_used_items.each do |item| %>
+    <ul class="information_tips_block equipment_block clean tips_fight">
+      <li>
+        <%= user_item_image_tag(item) %>
+      </li>
+      <li class="tips">
+        <ul>
+          <li><b class="hint_titel"><%= item.category_title %></b></li>
+          <li><%= item.description user %></li>
+        </ul>
+      </li>
+    </ul>
+  <% end %>
+
+  <% AllGameItems.power_up.each do |item| %>
+    <% if user_a.respond_to?("game_#{item.key}") && !user_a.send("game_#{item.key}").nil? && user_a.send("game_#{item.key}") %>
+      <ul class="information_tips_block equipment_block clean no_scroll">
+        <li class="image_block">
+          <%= game_item_image_tag item %>
+        </li>
+        <li class="tips">
+          <ul>
+            <li><b class="hint_titel"><%= item.title user %></b></li>
+            <li><%= item.description user %></li>
+          </ul>
+        </li>
+      </ul>
+    <% end %>
+  <% end %>
+</div>
+
+<%# if user.house_pet_power || user.house_pet_health || user.house_anti_pet ||
+user.house_power || user.house_protection || user.house_safe || user.house_safe_staff2 %>
+<%#*<li>%>
+<%#*<strong><%= t :used_artifacts, { :user => user.name } %>
+<%#*</strong><br />%>
+<%# if user.house_pet_power %>
+<%#= image_tag 'house_pet_power.gif' %>
+<%# end %>
+<%# if user.house_pet_health %>
+<%#= image_tag 'house_pet_health.gif' %>
+<%# end %>
+<%# if user.house_anti_pet %>
+<%#= image_tag 'house_anti_pet.gif' %>
+<%# end %>
+<%# if user.house_power %>
+<%#= image_tag 'house_power.gif' %>
+<%# end %>
+<%# if user.house_protection %>
+<%#= image_tag 'house_protection.gif' %>
+<%# end %>
+<%# if user.house_safe %>
+<%#= image_tag 'house_safe.gif' %>
+<%# end %>
+<%# if user.house_safe_staff2 %>
+<%#= image_tag 'house_safe_staff2.gif' %>
+<%# end %>
+<%#*</li>%>
+<%# end %>

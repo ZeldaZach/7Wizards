@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
+
+  <head>
+    <link rel="icon" type="image/png"  href="http://www.7wizards.com/favicon.png" />
+    <meta http-equiv="Content-Type" content="charset=utf-8" />
+    <meta http-equiv="Content-language" content="en"/>
+    <meta name="description" content="Love Magic? Join the biggest wizards community at 7Wizards"/>
+    <meta name="keywords" content="Wizards, game, magic, pets, clans, fight" />
+
+    <%= javascript_tag("document.domain = document.domain")%>
+
+    <%= stylesheet_link_tag 'default'  %>
+    <%= stylesheet_link_tag 'style'  %>
+
+    <%= javascript_include_tag "yahoo-dom-event" %>
+    <%= javascript_include_tag "yahoo_history" %>
+    <%= javascript_include_tag :defaults %>
+    <%= javascript_include_tag "prototype_ext" %>
+    <%= javascript_include_tag "ape-jsf/Build/uncompressed/apeClientJS" %>
+
+    <!-- Start Quantcast tag -->
+    <script type="text/javascript">
+      _qoptions={
+        qacct:"p-944Exg1PEDztg"
+      };
+    </script>
+    <script type="text/javascript" src="http://edge.quantserve.com/quant.js"></script>
+    <noscript>
+      <img src="http://pixel.quantserve.com/pixel/p-944Exg1PEDztg.gif" style="display: none;" border="0" height="1" width="1" alt="Quantcast"/>
+    </noscript>
+    <!-- End Quantcast tag -->
+
+    <%= analithic_javascript %>
+    <title><%= tg(:app_title) %></title>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <%if frame_url %>
+      <iframe src="<%= frame_url %>" frameborder="0" width="100%" height="206" scrolling="no" style="background-color: #0066CC;border:0"></iframe>
+    <%end%>
+    <!-- Frame for IE7 Ajax history
+    -->
+    <iframe id="yui-history-iframe" src="/blank.html" style="position:absolute;top: -1000px "></iframe>
+    <input id="yui-history-field" type="hidden" />
+
+    <!-- For popup dialog-->
+    <div id="dialog_content" style="display: none"></div>
+
+    <div id="visitor_page">
+      <div id="header" class="logo">
+        <span class="user_statistic_data"><%= tg(:registered_wizards, :count => User.count) %></span>
+        <span><%= link_to(image_design_tag("logo_new_copy.png"), login_url, {:id =>"wizards_logo"})%></span>
+        <span class="user_statistic_data"> <%= tg(:online_users, :count => User.active_users_count) %></span>
+      </div>
+
+      <div id="content">
+        <%=  yield %>
+      </div>
+      <div id="vis-footer-wrapper">
+        <%= render :file => "navigation/footer.html.erb" %>
+      </div>
+    </div>
+    <script type="text/javascript">
+      wizards.init({partner_url:"<%= partner_url %>"});
+      wizards.tracking.track();
+    </script>
+
+  </body>
+</html>
+

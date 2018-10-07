@@ -1,0 +1,63 @@
+server {
+  listen 80;
+  server_name www.7wizards.com www.primarygames.7wizards.com primarygames.7wizards.com www.test.7wizards.com;
+  root /var/www/7wizards/current/public;
+  passenger_enabled on;
+  rails_env production;
+  
+  
+  if ($host !~* www\.(.*)) {
+        rewrite ^(.*)$ http://www.$host permanent; 
+  }
+
+  location = /favicon.ico {
+      root   /var/www/7wizards/current/public;
+ }
+	   
+ ## cache
+#  location ~* (\.jpg|\.png|\.css|\.gif|\.swf|\.js)$ {
+    location / {
+    default_type       text/html;
+    
+    
+    access_log   off;
+    expires      max;
+    set $memcached_key $uri;
+    memcached_pass     127.0.0.1:11211;
+    error_page         404 502 405 = @fallback;
+								
+ }
+ 
+ location @fallback {
+  root /var/www/7wizards/current/public;
+   passenger_enabled on;
+}
+  
+			       
+  if (-f $document_root/system/maintenance.html) {
+      set $maintenance 1;
+  }
+  if ($request_uri ~* (jpg|png|jpeg|gif|js|css|favicon\.ico|robots\.txt)$) {
+      set $maintenance 0;
+    }
+  if ($maintenance) {
+      rewrite  ^(.*)$  /errors/error.html last;		          
+      break;
+  }
+  error_page   500 502 503 504;
+  location = /errors/error.html {
+      root   /var/www/7wizards/current/public;
+  }
+	  
+ # location /admin {
+#    satisfy  any;
+#    allow 127.0.0.1/32;
+#    allow 193.107.176.14;
+#    allow 75.101.138.103;
+#     auth_basic            "Restricted";
+#       auth_basic_user_file  /usr/local/nginx/conf/htpasswd;
+#    deny all;
+
+ # }
+  
+}

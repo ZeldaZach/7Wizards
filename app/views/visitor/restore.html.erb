@@ -1,0 +1,67 @@
+<!--
+<div id="login">
+  <div class="rounded corners">
+<% form_tag :action => :process_login do %>
+        <table cellspacing="0" cellpadding="0">
+          <tr class="input_filds_info">
+            <td>Login</td>
+            <td colspan="2">Password</td>
+          </tr>
+          <tr class="login_input_filds">
+            <td><%= text_field_tag :login, "", :class => "text login_pass_input", :id=>"visitor_login"%></td>
+            <td><%= password_field_tag :password, "", :class => "text login_pass_input", :id=>"visitor_password"%></td>
+            <td><%= submit_tag tv(:log_in), :class => "small_submit" %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td colspan="2"><%= link_to(tv(:restore), restore_path, :class=>"restor_button")  %></td>
+          </tr>
+          <tr>
+            <td colspan="3" <%if flash[:notice] && !flash[:notice].empty? %> id="login_error" <%end%>><%= flash[:notice] %>&nbsp;</td>
+          </tr>
+        </table>
+<%end%>
+    <div>
+<%= link_to_ajax(image_design_tag("fb_register.png"), :url => "#") %>
+<%= tv(:register_facebook) %>
+    </div>
+
+    <div>
+<%= link_to_ajax(image_design_tag("fb_connect.png"), :url => "#") %>
+<%= tv(:connect_facebook)%>
+    </div>
+  </div>
+  <div id="blog">
+<%= link_to(image_design_tag("blog_icon.png"), game_url(:blog)) %>
+    <p> <%= tv(:blog)%></p>
+  </div>
+</div>
+<div class="clear"></div>
+-->
+<div id="restore_form" class="rounded corners">
+  <h1><%= t(:restore_pass)%> </h1>
+  <% form_tag(:action => 'restore_do') do  %>
+    <span <%if flash[:notice] && !flash[:notice].empty? %> id="global_error"<%end%>><%= flash[:notice] %></span>
+    <table>
+      <tr class="pidklad_html">
+        <td class="label">
+          <%= label_tag :name, tg(:login) %>
+        </td>
+        <td><%= text_field_tag :name, "", {:class => "text" ,:size=>"35"} %></td>
+      </tr>
+      <tr class="pidklad_html">
+        <td class="label"><%= label_tag :email, tg(:email) %></td>
+        <td>
+          <%= text_field_tag :email, "", {:class => "text" ,:size=>"35"}%>
+        </td>
+        <td id="email_icon"></td>
+      </tr>
+      <tr>
+        <td id="submit" colspan="2">
+          <%= submit_tag(tg(:send), :class=>"small_submit", :name => nil) %>
+          <%= link_to(tg(:cancel_restore), {:action => "index"},:class=>"close_button")%>
+        </td>
+      </tr>
+    </table>
+  <%end%>
+</div>

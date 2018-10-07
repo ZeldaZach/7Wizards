@@ -1,0 +1,58 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "menu" %>
+  </div>
+
+  <div id="col_right" >
+    <div class="main_col_content">
+      <div id="messages_list" class="quick_links">
+        <h1 class="category_title_shop"><%= t(:title) %></h1>
+
+        <div class="bes_search">
+          <% if @selected_message %>
+            <div style="width: 660px; margin: auto;">
+              <%= @selected_message.message %>
+            </div>
+            <div style="width: 100%;display: block; border-bottom: 1px #C1BFC4 solid; height: 10px;"></div>
+          <%else%>
+            <table class="content_up table" cellpadding="0" cellspacing="0">
+
+              <tr class="tableWidth">
+                <th scope="col" class="index_cell"></th>
+                <th style="width: 450px" scope="col" ><%= tf(Message, :title) %></th>
+                <th scope="col"><%= tg(:date_title) %></th>
+              </tr>
+              <% @notificatons.each_with_index do |msg, index|%>
+
+                <%if !msg.title.nil?%>
+                  <tr>
+                    <td class="index_cell"><%= paginate_index(@page, index) %></td>
+                    <td>
+                      <%#= link_to_ajax msg.title, :url => mail_path(:action => :notifications, :id => msg.id) %>
+                      <% if msg.message.blank? %>
+                        <%= msg.title %>
+                      <%else%>
+                        <%= msg.message %>
+                      <%end%>
+                    </td>
+                    <td><%= d msg.created_at %></td>
+                  </tr>
+                <%end%>
+              <%end%>
+
+            </table>
+            <%=paginate(@notificatons)%>
+          <%end%>
+        </div>
+        <div class="clear"></div>
+
+        <%= link_to_top tg(:scroll_top)%>
+      </div>
+
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

@@ -1,0 +1,102 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "menu" %>
+  </div>
+  <div id="col_right" >
+    <div class="main_col_content buy_gold" id="shop">
+
+      <div class="visibl">
+        <h1 class="category_title_shop"><%= t :title %></h1>
+        <%if @success%>
+          <div class="bes_search" style="color:#444444;font-size:20px;font-weight:normal;line-height:1.3em;margin:15px 0;text-align:center;">
+            <%= t(:success) %>
+
+            <script type="text/javascript">
+              _gaq.push(['_setAccount', 'UA-17359215-1']);
+              _gaq.push(['_trackPageview', "/buygold/success"]);
+            </script>
+          </div>
+        <%end%>
+        <table class="content_up table">
+          <tr>
+            <th></th>
+            <th></th>
+            <th style="text-align: left;"><%= tg(:price) %></th>
+            <th></th>
+          </tr>
+          <%if @user.bigpoint? %>
+            <% @products.each do |value| %>
+              <tr>
+                <td> <%= image_design_tag("gold_#{value[:key]}.png") %></td>
+                <td class="col_desc"><b><%= tv("buy_gold_#{value[:key]}_title") %></b><br/>  </td>
+
+                <td class="price">
+                  <%= value[:description] %>
+                </td>
+                <td class="little_button">
+                  <table class="table_little_buttons" >
+                    <tr>
+                      <td>
+
+                          <%= link_to "Buy #{value[:gold]}","javascript: void(0)", :onclick => "openExternalScroll('#{Services::BigpointService::Payment.buy_url(@user, Time.now)}')" %>
+
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            <%end%>
+
+          <%elsif hi5_host?%>
+            <%= render :partial => "hi5" %>
+          <%else%>
+            <% AdyenConfig.products.each do |value|  %>
+              <tr>
+                <td> <%= image_design_tag("gold_#{value[:key]}.png") %></td>
+                <td class="col_desc"><b><%= tv("buy_gold_#{value[:key]}_title") %></b><br/>  </td>
+
+                <td class="price">
+                  <%= value["description"] %>
+                </td>
+                <td class="little_button">
+                  <table class="table_little_buttons" >
+                    <tr>
+                      <td>
+                        <%= render :partial=>'membership', :locals => {:gold => value["gold"],
+                          :payment_amount => value["cost"],
+                          :formid => "adform#{value[:key]}",
+                          :merchanreference => value[:key],
+                          :product => value["description"],
+                          :skin => user_image(@user),
+                          :name_level => "#{user_name(@user)} (Level: #{@user.a_level})"}%>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            <%end%>
+          <%end%>
+        </table>
+        <div class="clear"></div>
+        <%= link_to_top tg(:scroll_top)%>
+      </div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+
+
+<%if !@user.confirmed_email%>
+  <script type="text/javascript">
+    new Ajax.Request('/buygold/buy_warning',
+    {
+      asynchronous:true,
+      evalScripts:true,
+      onLoaded:function(request){javascript: onLoaded('/buygold/buy_warning')},
+      onLoading:function(request){javascript: onLoading('/buygold/buy_warning');}
+    });
+  </script>
+<%end%>

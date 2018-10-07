@@ -1,0 +1,48 @@
+<div id="preview_dialog" class="screenshots_popap">
+  <div style="float:right;height:35px;margin-top:5px;"> <%= link_to "", "javascript: dialog.close()", :class=>"close_button_1"%></div>
+  <div class="clear"></div>
+  <div id="left_scroll">
+    <%= link_to "", "javascript:void(0)", :onclick=>"javascript: visitor.scroll_left(); return false", :class => "arrow_left_popap" %>
+  </div>
+  <div id="scrolled_content">
+    <div id="inner_scoll">
+      <div style="padding-top: 0px">
+        <%= image_design_tag("dress_up_your_avatars.jpg") %><br/>
+        <span class="name_screenshot">1 / 7 <%= t(:preview_dressup) %></span>
+      </div>
+      <div style="padding-top: 0px">
+        <%= image_design_tag("chat_and_make_friends.jpg") %><br/>
+        <span class="name_screenshot">2 / 7 <%= t(:preview_chat) %></span>
+      </div>
+      <div style="padding-top: 50px">
+        <%= image_design_tag("fight_and_rob_your_enemies.jpg") %><br/>
+        <span class="name_screenshot">3 / 7 <%= t(:preview_fight) %></span>
+      </div>
+      <div style="padding-top: 52px">
+        <%= image_design_tag("take_care_about_battle_pets.jpg") %><br/>
+        <span class="name_screenshot">4 / 7 <%= t(:preview_pet) %></span>
+      </div>
+      <div style="padding-top: 80px">
+        <%= image_design_tag("create_a_clan_and_start_clan_wars.jpg") %><br/>
+        <span class="name_screenshot">5 / 7 <%= t(:preview_clan) %></span>
+      </div>
+      <div style="padding-top: 46px">
+        <%= image_design_tag("send_gifts_and_curses.jpg") %><br/>
+        <span class="name_screenshot">6 / 7 <%= t(:preview_gift) %></span>
+      </div>
+      <div style="padding-top: 88px">
+        <%= image_design_tag("meet_the_dragon_register_now.jpg") %><br/>
+        <span class="name_screenshot">7 / 7 <%= t(:preview_dragon) %></span>
+      </div>
+    </div>
+  </div>
+  <div id="right_scroll">
+    <%= link_to "", "javascript:void(0)", :onclick=>"javascript: visitor.scroll_right(); return false", :class => "arrow_right_popap" %>
+  </div>
+  <div class="clear"></div>
+  <%= link_to "", "javascript: dialog.close()", :class=>"screenshots_close"%>
+</div>
+
+<script type="text/javascript">
+  visitor.init({inner_scroll:$('inner_scoll'), preview_dialog: $('preview_dialog')});
+</script>

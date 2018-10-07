@@ -1,0 +1,18 @@
+<div id="lightbox" class="shadow_popap">
+  <div class="header_type"><%= @dialog_title || title %></div>
+  <div class="presents_row" style="padding-bottom: 10px;">
+    <%unless flash[:notice].blank?%>
+      <div class="dialog_error">
+        <%= flash[:notice] %>
+      </div>
+    <%end%>
+    <%= yield %>
+  </div>
+
+</div>
+
+<script type="text/javascript">
+<%if @dialog_callback_url %>
+    navigate('<%= @dialog_callback_url %>', function() {}, false);
+<%end%>
+</script>

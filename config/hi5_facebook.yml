@@ -1,0 +1,23 @@
+development:
+    key: xxx
+    secret: xxx
+    app_id: xxx
+    canvas_path: /7wizards/
+    callback_path: "http://www.hi5.7wizards.com/"
+    host: http://www.hi5.7wizards.com
+
+test:
+    key: xxx
+    secret: xxx
+    app_id: xxx
+    canvas_path: /7wizards/
+    callback_path: xxx
+    host: xxx
+
+production:
+    key: xxx
+    secret: xxx
+    app_id: xxx
+    canvas_path: /7wizards/
+    callback_path: xxx
+    host: xxx

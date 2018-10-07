@@ -1,0 +1,31 @@
+<% link_title = @button_name.nil? ? tg(:cancel) : @button_name %>
+<% ban = @ban_user.active_ban %>
+<%unless ban.nil? %>
+  <%= t(:user_has_blocked, :user_name => @ban_user.name) %>
+  <div class="bottom_popap" style="clear: both;"> 
+    <%= link_to link_title, "javascript:void(0)", :id => "close_btn",:class=>"close_button", :onclick => "javascript: dialog.close()"%>
+  </div>
+<%else%>
+  <% form_ajax_tag(:url => chat_path(:action => :do_block)) do%>
+    <%= hidden_field_tag :id, @ban_user.id %>
+    <table class="popap_form">
+      <tr>
+        <td class="label_type" ><%= t(:block_reason) %>: </td>
+        <td><%= text_field_tag :reason, "" %></td>
+      </tr>
+      <tr>
+        <td class="label_type"><%= t(:block_time) %>: </td>
+        <td class="select"><%= select_custom_tag "time",
+            options_for_select( proc { o = [[t(:select_time), 0]]; @ban_times.each { |t| o << [t[:display], t[:time]]}; o }.call()) %></td>
+      </tr>
+    </table>
+
+    <div class="bottom_popap" style="clear: both;">    <%= submit_tag(tg(:ok),:class =>"small_submit") %>
+      <%= link_to link_title, "javascript:void(0)", :id => "close_btn",:class=>"close_button", :onclick => "javascript: dialog.close()"%>
+    </div>
+  <%end%>
+<%end%>
+
+<script type="text/javascript">
+  wizards.controls.init();
+</script>

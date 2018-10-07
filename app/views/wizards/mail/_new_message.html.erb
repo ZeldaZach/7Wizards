@@ -1,0 +1,51 @@
+<% link_title = @button_name.nil? ? tg(:cancel) : @button_name %>
+<% form_ajax_tag :url => mail_path(:action => :new_message_process) do %>
+  <table style="width: 100%" class="popap_type">
+    <tr>
+      <td style="text-align: left"><label ><%= tf(Message, :to)%>:</label></td>
+      <td style="text-align: left; display: block; margin-left: 40px;">
+        <%= hidden_field_tag  :recipient_id, @id, :id => "user_message_recipient_id"%>
+        <%if !@id.blank? %>
+          <%= @name %>
+        <%else%>
+          <%= text_field_tag :autocompleate_user_name, "", :class => "text", :style=>"width:335px;margin-right:3px; float:right"%>
+          <div style="position: relative; margin-top: 22px">
+            <%if @relations%>
+              <%= select_tag "select_recipient_id",
+                options_for_select( proc { o = []; @relations.each { |r| o << [r.relative.name, r.relative.id]}; o }.call()),
+                :style => "height: 120px; width:368px; float:right; position: absolute; top: 0px; display: none", :size=>"10",
+                :id => "autocompleate_user_values"%>
+            <%end%>
+          </div>
+        <%end%>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align: left;"><label><%= tf(Message, :title)%>:</label></td>
+      <td><%= text_field_tag :title, @title, {:style =>"width:335px;margin-right:3px; float:right", :class => "text", :onkeypress=>"return wizards.imposeMaxLength(event, this, 140);"} %></td>
+    </tr>
+    <tr>
+      <td colspan="2"><%= text_area_tag :message, @message, {:style =>"width:426px;margin-top:10px;", :cols => 40, :rows => 4, :onkeypress=>"return wizards.imposeMaxLength(event, this, 1000);"} %></td>
+    </tr>
+  </table>
+  <div class="bottom_popap"><%= submit_tag tg(:send), :class =>"small_submit", :name => nil%><%= link_to link_title, "javascript:void(0)", :id => "close_btn",:class=>"close_button", :onclick => "javascript: dialog.close()"%></div>
+<%end%>
+
+<%if @id.blank? && !@relations.nil? %>
+  <script type="text/javascript">
+
+    if(Object.isElement($("autocompleate_user_name"))) {
+      createEvents();
+    } else {
+      setTimeout(createEvents, 2000);
+    }
+    function createEvents() {
+      var auto_compleate = new SelectAutoCompleate({input_id:"autocompleate_user_name", select_id:"autocompleate_user_values"});
+      auto_compleate.onSelect = function(option){
+        $('user_message_recipient_id').value = option.value;
+      }
+    }
+
+    </script>
+<%end%>
+<%=  javascript_tag("$('message').focus();")%>

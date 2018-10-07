@@ -1,0 +1,67 @@
+<div id="games_screen" class="additional_info_block">
+  <div class="quick_links">
+    <h1 class="category_title_fight"><%= t(:play_games) %></h1>
+    <%= render :partial => "categories", :locals => {:categories => @categories, :active_category => @category} %>
+    <div class="clear" ></div>
+  </div>
+
+  <%if @game%>
+    <%=  swf_object(rewrite_asset_path(@game.flash_file), 'flash_content', :width => @game.width, :height => @game.height) %>
+
+    <div id="flash_content"></div>
+    <div class="quick_links game_description">
+       <h1 class="category_title_fight"><%= @game.title %></h1>
+       <ul class="game_full_desc">
+        <li><h3><%=tf ExternalGames, :title%>:</h3> <%= @game.title %></li>
+        <li><h3><%=tf ExternalGames, :rating%>:</h3>
+          <ul class="star-rating" style="padding-left: 0px!important;">
+            <li style="width: <%= (@game.rating.to_f*10).to_i %>px;" class="current-rating"><%= t(:current_rating, :current => @game.rating) %></li>
+          </ul>
+        </li>
+        <li><h3><%=tf ExternalGames, :category%>:</h3> <%= @game.category%></li>
+        <li><h3><%=tf ExternalGames, :description%>:</h3> <%= @game.description%></li>
+        <li><h3><%=tf ExternalGames, :game_plays%>:</h3> <%= @game.gameplays %></li>
+
+      </ul>
+        <h1 class="category_title_fight">More games</h1>
+    </div>
+
+  <%end%>
+  <div class="game_block_all">
+    <% @kongregate_games.each do |game| %>
+      <div class="rounded quick_links games_all">
+        <div class="bes_search games_one">
+          <%url = games_path(:action => :index, :category => @category,:id => game.id, :page => @page || 1) %>
+          <div class="game_list_item" onclick="javascript: navigate('<%=url%>'); wizards.onNoticeScroll();">
+            <dl class="pic_game">
+              <dt><%= link_to_ajax image_tag(game.thumbnail), :url => url%></dt>
+              <dd>
+                <%= link_to_ajax  game.gameplays, :url => url%>
+              </dd>
+            </dl>
+            <dl class="description">
+              <h3><%= game.title %></h3>
+
+              <dd class="rating">
+                <ul class="star-rating">
+                  <li style="width: <%= (game.rating.to_f*10).to_i %>px;" class="current-rating"><%= t(:current_rating, :current => game.rating) %></li>
+                </ul></dd>
+              <dd class="summary">
+                <%= truncate_words(game.description, :length => 65, :omission => "...")%>
+              </dd>
+
+            </dl>
+          </div>
+        </div>
+      </div>
+    <% end%>
+  </div>
+  <div class="clear"></div>
+  <%= render :partial => "categories", :locals => {:categories => @categories, :active_category => @category} %>
+  <div class="clear"></div>
+  <%= paginate(@kongregate_games, {:params =>{:category=>@category, :id => nil}}) %>
+  <div class="clear"></div>
+  <div class="full_info_bg"></div>
+  <div class="full_info_bottom"></div>
+  <div class="full_info_top"></div>
+</div>

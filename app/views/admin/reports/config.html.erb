@@ -1,0 +1,27 @@
+<h1>Content of file : <%= @config_path %></h1>
+
+<% form_tag :action => 'config' do %>
+  <%= select_tag :config_path,
+      "<option value=\"\">Select</option>" +
+      "<option>lib/game_properties.rb</option>" +
+      "<option>config/locales/en.yml</option>" +
+      "<option>config/game/tables/attribute_growth_table.txt</option>" +
+      "<option>config/game/tables/experience_growth_table.txt</option>" +
+      "<option>config/game/tables/health_growth_table.txt</option>" +
+      "<option>config/game/tables/meditation_growth_table.txt</option>" +
+      "<option>config/game/other/farm.yml</option>" +
+      "<option>config/game/other/tutorial.yml</option>" +
+      "<option>config/game/user_items/shop_gift.yml</option>" +
+      "<option>config/game/user_items/shop_curses.yml</option>" +
+      "<option>config/game/user_items/shop_armour.yml</option>" +
+      "<option>config/game/user_items/shop_helmet.yml</option>" +
+      "<option>config/game/user_items/shop_potion.yml</option>" +
+      "<option>config/game/user_items/shop_shield.yml</option>" +
+      "<option>config/game/user_items/shop_weapon.yml</option>" %>
+
+  <%= submit_tag :open %>
+<% end %>
+
+<pre>
+<%= h @content %>
+</pre>

@@ -1,0 +1,36 @@
+<h1><%= t :title%></h1>
+
+<ol>
+  <li>
+    <%= link_to t(:users), admin_users_path %>
+  </li>
+  <li>
+    <%= link_to t(:public_chat), admin_chat_path %>
+  </li>
+  <!--
+  <li>
+    <%= link_to t(:news), admin_news_path %>
+  </li>
+  <li>
+    <%= link_to t(:support_bugs), admin_support_path(:mode => 'bugs') %>
+  </li>
+  <li>
+    <%= link_to t(:support_top_paid), admin_support_path(:mode => 'paid') %>
+  </li>
+  <li>
+    <%= link_to t(:support_moder), admin_support_path(:mode => 'moder') %>
+  </li>
+  <li>
+    <%= link_to t(:support), admin_support_path %>
+  </li>
+  <li>
+    <%= link_to t(:history), admin_support_path(:action => :history) %>
+  </li>
+  -->
+  <li>
+    <%= link_to t(:config_files), admin_reports_path(:action => :config) %>
+  </li>
+  <li>
+    <%= link_to t(:reports), admin_reports_path(:action => :reports) %>
+  </li>
+</ol>

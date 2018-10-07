@@ -1,0 +1,36 @@
+<%
+price = item.get_price(user)
+active = item.is_active? @user
+%>
+
+<li>
+  <div class="train_info" >
+    <%= game_item_image_tag item %>
+    <ul class="clean">
+      <li>
+        <strong><%= item.title user %>:</strong> <%= item.description user %>.
+      </li>
+      <li>
+        <%= tg :hours, :count => item.time.seconds_to_hours %>
+      </li>
+      <li>
+        <% if price.has_money_price? %>
+          <%= item.price_title(user) %>
+        <% end %>
+        <% if price.has_staff_price? %>
+          <%= item.price_staff_title(user) %>
+        <% end %>
+      </li>
+      <% if active %>
+        <li>
+          <%= tg :expire_date, :date => d(item.get_expire_date(@user)) %>
+        </li>
+      <% end %>
+    </ul>
+    <div class="clear"></div>
+  </div>
+  <%= link_to_ajax active ? tg(:extend) : tg(:activate), :url => profile_path(:action => "extend", :g => item.key) %>
+
+
+  <div class="clear"></div>
+</li>

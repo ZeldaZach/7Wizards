@@ -1,0 +1,24 @@
+<div class="clear" style="height: 15px;"></div>
+<div class="visibl">
+  <h1 class="category_title_shop"><%= t :pet_potions %></h1>
+  <div class="equipment_slot profile_main">
+
+    <% for item in potions %>
+      <ul class="information_tips_block equipment_block clean no_scroll">
+
+        <li class="image_block">
+          <%= link_to_ajax user_item_image_tag(item), pet_path(:action => :use, :item => item.key) %>
+        </li>
+
+        <li class="tips">
+          <ul>
+            <li><b class="hint_titel"><%= item.category_title %></b></li>
+            <li><%= item.description(@user) %></li>
+          </ul>
+        </li>
+      </ul>
+    <% end %>
+
+  </div>
+  <div class="clear"></div>
+</div>

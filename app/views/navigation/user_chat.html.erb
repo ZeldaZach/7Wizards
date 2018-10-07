@@ -1,0 +1,175 @@
+<table class="chat_main"  cellspacing="0" >
+
+  <tr id="collapsed_chat_mode" style="display: block">
+    <td class="chat_left_border"></td>
+    <td>
+      <div id="chat_content_slide" class="chat_header_content" style="height: 54px; display: none" onclick="javascript: chat.expand();">
+        <div class="left_chat_header" style="display: none">
+          <span class="text"><%= t(:chat_online_users) %>:</span> <span class="chat_activity">0</span>
+        </div>
+
+        <div class="right_chat_header">
+          <span id="chat_click_description">
+            <%= link_to t(:chat_click_to_begin), "javascript: void(0)", :style => "color: #a00330; text-decoration: underline;" %>
+          </span>
+          <%= link_to image_design_tag("chat_collapsed_button.png"), "javascript: void(0)", :onclick => "javascript: chat.expand()", :class => "active_always" %>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </td>
+    <td class="chat_right_border"></td>
+  </tr>
+
+  <tr id="expanded_chat_mode" style="display: none">
+    <td class="chat_left_border"></td>  
+    <td>
+      <div class="chat_header_content">
+        <form>
+          <div class="left_chat_header" style="display: none">
+            <%= t(:chat_filters) %>: <%= select_custom_tag "filter",
+              options_for_select( proc { o = [[t(:filter_all_in_chat), Chat::FILTER_PUBLIC], [t(:filter_boys_in_chat), Chat::FILTER_BOYS], [t(:filter_girls_in_chat), Chat::FILTER_GIRLS]]; o }.call()), :class => "text" %>
+          </div>
+          <div  class="left_chat_header" style="display: none">
+            <span class="text"><%= t(:chat_online_users) %>:</span> <span class="chat_activity">0</span>
+          </div>
+          <div class="right_chat_header">
+            <%= text_field_custom_tag(:chat_user_name, "", {:class => "text"}, chat_path(:action => :users, :act => "replace"))%>
+            <%= submit_tag tg(:search), :class=>"small_submit", :name => nil, :id => "submit_filter"%>
+            <%= link_to image_design_tag("chat_expanded_button.png"), "javascript: void(0)", :onclick => "javascript: chat.collapse()", :class => "active_always"%>
+          </div>
+        </form>
+        <div class="clear"></div>
+      </div>
+
+      <div id="chat_users_list">
+        <div class="rozmezhuvach rozmezhuvach_chat"></div>
+        <div id="scroll_left_block">
+          <%= link_to "", "javascript: void(0)", :id => "scroll_left", :onclick => "javascript: chat.scroll_left()", :class => "active_always" %>
+        </div>
+        <div id="scroll_content_block">
+
+          <!-- width will be changed by javascript-->
+          <div id="inner_scrolled_content" style="width: 2400px">
+            <!-- contain user avatars -->
+          </div>
+        </div>
+        <div id="scroll_right_block">
+          <%= link_to "", "javascript: void(0)", :id => "scroll_right", :onclick => "javascript: chat.scroll_right()", :class => "active_always" %>
+        </div>
+       
+        <div class="clear"></div>
+         <div class="rozmezhuvach rozmezhuvach_chat rozmezhuvach_chat2"></div>
+      </div>
+
+      <div id="chat_bottom_content">
+        <div id="chat_rooms">
+
+          <div id="inner_rooms">
+<!--
+            <div id="chat_rooms_block_public">
+              <h3>
+                <%#= link_to image_design_tag("chat_room_open.png", :id => "img_public_room"), "javascript: void(0)", :onclick => "javascript: chat.showHideRoom('#{chat_group_room_name(Chat::GROUP_ROOM_PUBLIC)}', 'img_public_room')", :class => "active_always" %>
+                <%#= t(:chat_public) %>
+              </h3>
+              <%#= chat_rooms_tag(current_user, Chat::GROUP_ROOM_PUBLIC) %>
+            </div>
+
+            <div id="chat_rooms_block_main" style="display: none">
+              <h3>
+                <%#= link_to image_design_tag("chat_room_open.png", :id => "img_main_room"), "javascript: void(0)", :onclick => "javascript: chat.showHideRoom('#{chat_group_room_name(Chat::GROUP_ROOM_MAIN)}', 'img_main_room')", :class => "active_always" %>
+                <%#= t(:chat_user_rooms) %>
+              </h3>
+            </div>
+
+            <div id="chat_rooms_block_personal" style="display: none">
+              <h3>
+                <%#= link_to image_design_tag("chat_room_open.png", :id => "img_private_room"), "javascript: void(0)", :onclick => "javascript: chat.showHideRoom('#{chat_group_room_name(Chat::GROUP_PERSONAL)}', 'img_private_room')", :class => "active_always" %>
+                <%#= t(:chat_private_room) %>
+              </h3>
+            </div>
+-->
+          </div>
+        </div>
+        <div id="chat_messages_content" style="position: relative">
+          <div id="chat_messages_header_panel">
+            <%= link_to "Clear", "javascript: void(0)", :onclick =>  "javascript: chat.cleanView()" %>
+            <span>
+              <%= check_box_tag :autoscroll, "", true, :onclick => "javascript: chat.changeAutoscroll()" %> <%= t(:chat_autoscroll) %>
+            </span>
+            <div class="clear"></div>
+          </div>
+          <div id="chat_error_block" style="display: none; height: 40px"><span>Error message here</span></div>
+          <div id="chat_messages_content_panel">
+            <!--<ul id="chat_message_content">
+              <li></li>
+            </ul>-->
+          </div>
+          <div id="chat_smiles" style="display: none">
+            <%if  GameProperties.is_enabled_mode?(:chat)%>
+              <% smiles_list.each do |smile|%>
+                <%= link_to image_tag("smiles/#{smile[:img]}.gif", :alt => smile[:alt]), "javascript: void(0)",
+                  :onclick => "chat.addSmile('#{smile[:alt]}')", :class => "active_always" %>
+              <%end%>
+            <%end%>
+          </div>
+          <div id="chat_messages_bottom_panel">
+            <%# form_remote_tag(:url => chat_path(:action => :send_data), :loading => "chat.sendMessage($('chat_input').value)", :html => {:class => "active_always"}) do %>
+              <%#= text_field_tag( 'chat_input', '', {:class => "text", :maxlength=>"255", :id => 'chat_input', :onkeyup => "javascript: chat.saytext(this)"} ) %>
+              <%#= hidden_field_tag :say_to, "",  :id => 'chat_say_to' %>
+              <%#= submit_tag tg(:send), :class => "small_submit", :name => nil %>
+              <%#= link_to image_design_tag("smiles_chat_open.png"), "javascript: void(0)", :onclick => "javascript: chat.showHideSmiles()", :class => "active_always" %>
+            <%#end%>
+          </div>
+        </div>
+
+        <div id="chat_user_avatar" style="display: none">
+          <!--
+          <ul>
+            <li class="chat_user_info_bar">
+              <span id="select_user_info">
+                <%= image_design_tag("online_chat_pointer.png") %>
+                <%= user_name(current_user) + " (#{tf(User, :a_level)} #{current_user.a_level})" %>
+              </span>
+              <span>
+                <%= link_to image_design_tag("cross_chat_button.png"), "javascript: void(0)", :onclick => "javascript: chat.hideSelectedAvatar()", :class => "active_always", :style => "float: right" %>
+              </span>
+              <span class="clear"></span>
+            </li>
+            <li id="selected">
+              <%= link_to image_tag(user_image_url(current_user, false), :height=>"200", :id => "selected_big_avatar"), "javascript: void(0)",
+                :id => "selected_big_avatar_link", :class => "active_always" %>
+            </li>
+            <li style="width: 195px;">
+              <div id="functions">
+                <%= link_to image_design_tag("chat_invite.png"), "javascript: chat.mainRoomRequest()", :style => "display: none",
+                  :title => t(:chat_invite_to_my_room), :id => "chat_invite_user"%>
+
+                <%= link_to image_design_tag("chat_kick.png"), "javascript: chat.leaveMainRoom()", :style => "display: none",
+                  :title => t(:chat_kick_from_room), :id => "chat_kick_user"%>
+
+                <%= link_to image_design_tag("chat_unlock.png"), "javascript: chat.mainRoomRequest()", :style => "display: none",
+                  :title => t(:chat_private_room), :id => "chat_private_message"%>
+
+                <%= link_to image_design_tag("chat_lock.png"), "javascript: chat.leavePersonalRoom()", :style => "display: none",
+                  :title => t(:chat_remove_private_room), :id => "chat_private_message_kill"%>
+
+                <%= link_to image_design_tag("chat_block.png"), "javascript: void(0)", :onclick =>"javascript: chat.block(0)", :style => "display: none",
+                  :title => t(:chat_block_user), :id => "chat_block_user"%>
+
+                <%= link_to image_design_tag("chat_info.png"), "javascript: void(0)", :onclick =>"javascript: chat.report(0)", :style => "display: none",
+                  :title => t(:chat_report_user), :id => "chat_report_user"%>
+              </div>
+            </li>
+          </ul>
+          -->
+        </div>
+        <div class="clear"></div>
+      </div>
+    </td>
+    <td class="chat_right_border"></td>
+  </tr>
+  <tr>
+    <td colspan="3"><div id="chat_bottom_border"></div></td>
+  </tr>
+</table>
+

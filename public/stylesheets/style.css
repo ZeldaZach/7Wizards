@@ -1,0 +1,2317 @@
+/*Base styles START*/
+/*html, body {background-color:#EEEEEE;font-family: Helvetica;font-size: 15px;padding: 0px; margin:0px;}*/
+html, body {
+    font-family: Tahoma,Geneva,sans-serif;
+    font-size: 13px;
+    padding: 0px;
+    color:#490C17;
+    margin:0px;
+
+    background-position:top;
+}
+body{ }
+
+ul { margin:0px; padding:0px; list-style-image:none; list-style-position:outside; list-style-type:none;}
+li { margin:0px; padding:0px; line-height:normal;}
+a  { color:#490C17; text-decoration: underline;outline:medium none;}
+a:hover{text-decoration: none !important;}
+
+a.delete {background-image: url(/images/design/remove.jpg); display: block; width: 17px; height: 17px}
+a:hover.delete {background-image: url(/images/design/remove_hover.jpg);display: block; width: 17px; height: 17px}
+/*h1, h2, h3, h4 {color:#3671A1; font-family:Helvetica, sans-serif; line-height:1.2em; margin:0 0 2px;  padding:0px; font-weight: normal; }
+h1 {font-size:120%;}
+h2 {font-size:100%; font-weight: bold}
+h3 {font-size:80%;}
+h4 {font-size:100%;
+    background-image: url(/images/design/star_bar_info.png);
+    background-repeat: no-repeat;
+    height: 22px;
+    color:#44086e;
+    font-weight: bold;
+    padding: 4px 0 10px 30px;
+
+}*/
+h2 {
+    color:#81041E;
+    margin:0;
+    padding:0;
+    text-transform:uppercase;
+}
+
+iframe {
+    border: none;
+    margin-bottom: -5px;
+}
+
+label {font-size:90%;margin-right:4px;}
+
+input { margin:0;  font-family:helvetica; font-size:12px;font-weight: bold; vertical-align:middle; background:#FFF; border: 0px;}
+img {border:0 none; vertical-align:middle;margin-right: 3px; }
+p, p.middle_text {font-size:12px;line-height:1.3em;margin:0 0 25px; overflow-x:hidden; }
+
+/*input.text, input.title, textarea, select { border:1px solid #8D82C9;  padding: 0px 0px 0px 2px; font-size:90%;color:#8B48B9; }*/
+input.text, select, table.bigpoint_konfirm input { background-color:#FFF6E7;height:19px; border:1px solid #CF6D7F;}
+.right_aligment{text-align: right; padding-top: 0px !important; padding-bottom: 0px !important; padding-right: 0px !important;}
+.display_block{display: block;}
+
+p.middle_text{ margin-bottom: 0px !important; padding-bottom:7px;padding-left:10px;}
+.information{padding-left:18px !important;text-align:justify !important;width:230px;margin-bottom:30px;}
+/*input.text:focus, input.title:focus, textarea:focus, select { border:1px solid #A9A4F8;}*/
+
+
+input.small_submit, a.small_submit{background-image: url(/images/design/small_submit.gif); text-align: center; cursor: pointer; color: #EDD6A1; border: medium none; height: 23px; width: 80px;}
+a.small_submit {
+    display:inline-block;
+    font-family:helvetica;
+    font-size:12px;
+    font-weight:bold;
+    line-height:23px;
+    padding-bottom:1px;
+    text-decoration:none;}
+
+input.small_submit {background-image: url(/images/design/small_submit.gif); text-align: center; cursor: pointer; color: #EDD6A1; border: medium none; height: 23px; width: 80px;}
+span.select {
+    background:url("/images/design/drop_down.png") no-repeat scroll 0 0 transparent;
+    color:#490C17;
+    font:12px/21px arial,sans-serif;
+    height:23px;
+    overflow:hidden;
+    padding:0 24px 0 8px;
+    position:absolute;
+    width:158px;
+}
+
+span.input {position:relative; display: inline-block; margin-right:0px}
+span.input img.clear {margin: 3px 1px 1px 2px !important}
+
+
+select.styled {
+    opacity:0;
+    filter:alpha(opacity=0);
+    position:relative;
+    width:170px;
+    z-index:5;
+    height: 23px;
+}
+input.styled {position:relative;padding-right: 20px}
+a.styled_close {
+    position:absolute;
+    right: 2px;
+    //top: -24px;
+}
+
+.invisible {
+    opacity:0;
+    filter:alpha(opacity=0);
+}
+
+.clear { clear:both;}
+.red {color: red;}
+.green, .critical_stroke {color: #a00330;}
+.critical_stroke{color: #ff0000;}
+.blue {color: #81041E;}
+.green_win {color: #006600;}
+/*Base styles END*/
+
+/*Content START*/
+div.all {
+    color:#490C17;
+    height:auto;
+    margin:0 auto;
+    min-height:100%;
+    padding:0;
+    width:950px;
+}
+ul.home_bubles h2 {//margin-top: -15px;}
+div.all div#content{margin:auto;width:950px;}
+div.info_bar{
+    background-image:url("/images/design/top_menu_bg_new.png");
+    background-repeat:repeat-x;
+    /*border-bottom:1px solid #888888;*/
+    display:block;
+    height:35px;
+    width:100%; }
+div.login_as_bar{background-color:#FF0000;display: block;height:29px;font-size: 11px;margin:auto;line-height: 24px;text-align: center; font-family: tahoma !important; }
+div.solid_form form {
+    margin:auto;
+    padding:10px 10px 20px;
+    width:550px;
+}
+
+table.menu_block tr td {width: 139px; display: inline-block; height: 35px;}
+table.menu_block tr td a {color: #ffffff; text-decoration: none;display: block;padding-top:6px;}
+table.menu_block tr td a:hover{background-image: url(/images/design/hover_menu.png); width: 139px !important;display: block; color: #FFD861;  }
+table.menu_block tr td:hover div{background-image: url(/images/design/hover_menu.png); width: 139px !important;display: block;   }
+table.menu_block tr td:hover div a{color: #FFD861;}
+table.menu_block tr td img {margin-right: 10px;}
+div#info_wraper{width: 950px;font-size: 11px;margin:auto;line-height: 24px;color: #7D560C; text-align: center; font-family: tahoma !important;  }
+div.rounded, ul.rounded li, ul.rounded_single {
+    margin: 0px 0px 10px 0px;
+    padding: 10px;
+    border:1px solid #E7E8E0;
+
+}
+div.quick_links{padding: 0px !important; position: relative; z-index: 3;}
+div.search_left form { float: none !important; //float: left !important;}
+div.quick_links div.bes_search form{float: right;}
+div.quick_links label{font-size: 11px; font-weight: bold; margin-left:30px;}
+.input_text label{font-size: 11px; font-weight: bold;}
+div.quick_links input.login_pass_input{width: 120px; margin-right: -5px;padding-left: 3px;}
+span.info_text {color:#3671A1;  font-weight: normal;}
+td.label_type{font-size: 11px; font-weight: bold; margin-left:30px;}
+div#columns_narrow_wide div#col_left, div#content div#columns_narrow_wide div#col_right {float: left}
+div#columns_narrow_wide div#col_left {width: 285px; margin-right: 8px; }
+div#columns_narrow_wide div#col_right {width: 655px}
+
+div#columns_wide_narrow div#col_left, div#content div#columns_wide_narrow div#col_right {float: left}
+div#columns_wide_narrow div#col_left {width: 642px; margin-right: 10px}
+div#columns_wide_narrow div#col_right {width: 300px;}
+
+div#notification div {
+    color:#FFFFFF;
+    display:block;
+
+    margin:auto auto 10px;
+    padding-bottom:2px;
+    padding-top:2px;
+    text-align:center;
+    width:750px;
+}
+/*Content END*/
+
+/*User menu START*/
+
+
+span.user_statistic_data{display: inline-block; margin-bottom: 10px;}
+
+
+span.header_name {float:left;line-height:28px;padding-right:0px;padding-top:1px;}
+span.header_name b{margin-right: 5px;color: #7D560C;}
+span.header_name img {margin-top:0px; height: 29px;}
+span.header_dropdawn {text-align: right}
+span.header_dropdawn ul li a {width: 100%; display: block;}
+span.header_dropdawn div{color: #ffffff;display: inline-block;height: 26px;text-decoration: none;}
+span.header_icons{display:inline-block;text-align:center;}
+span.header_icons img {height:29px;margin-right:0 !important;margin-top:-3px;}
+span.header_icons span{display:inline-block;margin-right: 5px; padding-top: 2px;}
+span#top_timer,span.top_timer{margin-right: 0px !important;}
+div#main_menu{width: 930px;margin: auto; height: 88px; background-image: url(/images/design/menu_new_bg.png)}
+div#main_menu table tr td.big_buttons img{margin-right: 0px !important;margin-bottom: 10px;}
+span.user_menu_stats span{color: aqua !important;}
+/*User menu END*/
+
+/*Home page START*/
+ul.home_bubles li p{height:170px;padding-right:5px; padding-top: 5px; margin-bottom: 0px; }
+div#col_right ul li img {float: left;margin-right:10px;border: 1px solid #ccc;}
+div#col_left ul li ul li {padding: 0px; margin: 0px 0px 2px 10px}
+div#col_left ul li h2 {margin-left: 0px;}
+ul.blue_buttons a, div.blue_buttons a, #clan_submit, .clan_submit, .save_button, span.join_submitt input,div#meditation_content input.small_submit, ul.payments_big form.payment_form input, table.table form.payment_form input {
+    background:url("/images/design/un_button.png") no-repeat scroll 50% 0 transparent;
+    color:#ffffff;
+    cursor:pointer;
+    display:inline-block;
+    font-family:Helvetica;
+    font-size:12px;
+    font-weight:bold;
+    height:32px;
+    padding-top:9px;
+    text-align:center;
+    text-decoration:none;
+    width:154px;
+}
+
+ul.payments_big form.payment_form input{height:34px!important; padding-bottom: 10px !important;}
+div#meditation_content input.small_submit, table.table form.payment_form input{
+    height: 32px !important;
+    padding-top: 1px !important;
+}
+.buy_gold .table .col_desc {width: 150px !important;}
+.fight_button input {
+    background: url(/images/design/button_fight_red.png) no-repeat 50% 0 !important;
+    /*background: url(/images/design/button_fight_grey.png) no-repeat 50% 0 !important;*/
+}
+
+ul.navigate {
+    margin-bottom: 10px;
+
+}
+ul.navigate li {
+    background-image:url("/images/design/left_menu_bg.png");
+    height:26px;
+    line-height:26px;
+    list-style:none outside none;
+    margin-bottom:0;
+    margin-left:-9px;
+    padding-left:42px;
+    width:233px;
+}
+ul.navigate li.selected {
+    background-image:url("/images/design/left_menu_selected_bg.png");
+    height:26px;
+    list-style:none;
+    line-height:28px;
+    padding-left:42px;
+}
+ul.navigate li a, ul.navigate li.selected a{color:#8E4630;display:block;text-decoration:none !important;width:100%;}
+ul.navigate li a:hover, ul.navigate li.selected a:hover {color: #a00330;}
+
+ul li.empty {
+    border: 0px;
+    -moz-border-radius: 0px;
+    -webkit-border-radius:0px;
+    border-radius:0px;
+    background: none;
+    margin: 0px ;
+    padding-bottom: 0px;
+    padding-left: 0px;
+}
+ul.clean, ul.clean_long {width: 120px; float: left; text-align: left;}
+ul.clean_long { width: 400px !important;}
+ul.clean:li, ul.clean_long:li {margin: 0px; padding:0px;font-family:helvetica; border: none;width:250px;}
+ul.no_scroll:li {width: 50px!important;}
+ul.clean_long li {width: 400px !important; display: block;}
+ul.clean li a, ul.clean_long li a{float: none;}
+img.avatar_img{margin-bottom: 10px;width: 253px; border: 1px solid #cccccc;}
+div#main_menu table {text-align: center; width: 100%; }
+table.menu_block{
+    background-image: url(/images/design/main_menu_back.png);
+    width: 1100px !important;
+    height: 45px;
+    font-family: helvetica;
+    font-size: 12px;
+    color: #ffffff;
+    margin:17px auto auto;
+    //padding-right: 10px;
+}
+li.tips ul li {min-width: 200px;}
+
+/*Home page END*/
+
+/*Profile page START*/
+div#col_right  ul#user_info {padding-left:20px;}
+div.inline {text-align: center; margin-bottom: 10px}
+div.inline img{margin: 0px 10px 0px 11px}
+input#opponent_message {width: 670px}
+div.avatar_slot span{
+    display:block;
+    float:left;
+    height:102px;
+    margin:5px 1px 5px 7px;
+    text-align:center;
+    width:100px;}
+div.equipment_slot ul.gifts { float:left;margin-bottom:5px;margin-right:7px;margin-top:5px;width:104px;padding: 0px;}
+
+#friends_main div.avatars_list, #hall_glory div.avatars_list{padding-left:41px !important;}
+#friends_main div.avatal_imag_list form, #hall_glory div.avatal_imag_list form {padding-left:41px;width:550px;}
+
+
+/*Profile page END*/
+
+/*train start*/
+ul.train_blocks li div img {margin: 4px 0px 0px 0px!important; border: 0px !important}
+ul.train_blocks li div span {margin-left: 5px}
+ul.train_blocks li div img.progress {height:10px;}
+ul.train_blocks li.inline {min-width:510px;float: right}
+li.inline a{position: relative;}
+/*train end*/
+
+/*Equipment START*/
+div#col_right div.equipment_slot {min-height: 115px; padding-left: 9px;}
+div#col_right div.equipment_slot span {
+    /* background: url(/images/design/empty_slot_items.jpg) no-repeat; display: inline-block;*/
+    display:block;
+    float: left;
+    height: 102px;
+    width: 101px;
+    padding:3px 3px 3px 2px;
+}
+div#col_right div.equipment_slot span img {border: 1px solid #cccccc;}
+ul.no_padding{padding: 0px!important}
+/*div#col_right div.equipment_slot ul { margin-left: 18px;}*/
+div#col_right div.equipment_slot ul.equipment_block {float:left;margin-bottom:2px;margin-right:7px;margin-top:5px;width:103px;}
+/*Equipment END*/
+
+/*Register VISITOR page START*/
+
+/*div#visitor_page{
+    background:url(/images/design/body.jpg) no-repeat scroll 50% 0 #F2F5DF;
+}*/
+
+div#visitor_page div#header {
+    color:#D2B4DE;
+    margin:0 auto;
+    padding-bottom:20px;
+    padding-top:26px;
+    width:990px;
+}
+/*div#visitor_page div#header ul {padding-top: 18px;margin-bottom: 10px;}
+div#visitor_page div#header ul li {font-size:12px;text-align:center;width:900px;}
+div#visitor_page div#header ul li span {margin-right: 10px;margin-left:10px;}
+div#visitor_page div#header ul li span b {color: #FFF; font-weight: normal;}*/
+
+div#content div#login {margin: 0 auto;width:246px;margin-bottom: 35px;}
+/*div#content div#login div {float: left;}*/
+div#content div#login div a, div#content div#login div {color: #8b48b9;text-decoration:none;}
+div#content div#login div.rounded {
+    background:none repeat scroll 0 0 #C0C0FF;
+    height:71px;
+    margin:auto 10px 20px 242px;
+    padding:0 10px 15px;
+    width:482px;}
+div#content div#login div#blog img{margin-top: 8px;}
+div#content div#login div#blog p{color:#FFFFFF;font-family:helvetica;margin-bottom:0;margin-top:3px;text-align:center;}
+a.restor_button{
+    left:164px;
+    position:absolute;
+    top:17px;
+    font-size: 11px;
+    color: #8E4630;
+    z-index: 5;}
+#chat_messages_header_panel, #chat_messages_header_panel a, #chat_rooms_block_public a{
+    font-size: 11px;
+    color: #8E4630;}
+
+a.restor_button:hover, #chat_messages_header_panel a:hover,  #chat_rooms_block_public a:hover{color:#8E4630; text-decoration: none!important; cursor: pointer; }
+div#content div#login table tr.login_input_filds td input.text {margin-top:0;}
+div#content div#login table tr.login_input_filds td input.login_pass_input{width: 193px;}
+input#visitor_login{margin-right: 8px; font-weight: normal;}
+/*input#visitor_password{border-right: 0px;}*/
+tr.input_filds_info td{font-size: 12px;margin-left: 3px;padding-left:3px;}
+div#content div#login form {width:250px;}
+div#content div#login table {
+    background:none repeat scroll 0 0 #FFEBE8;
+    border:1px solid #DD3C10;
+    color:#333333;
+    line-height:15px;
+    font-size: 9px;
+    padding:2px;
+    text-align:center;
+}
+div.left_chat_header input{height:23px !important;//height:24px !important;}
+div.left_chat_header input.small_submit{//margin-top: -1px;//line-height: 25px;}
+div.left_chat_header input.text {height:22px !important;width:590px;border-right:0 none;float:left;padding-left: 10px;color:#490C17;}
+div.left_chat_header span.text {margin-left: 45px; }
+div#content div#login div.rounded div {float:left;font-size:11px;margin:17px 0 0 20px;width:128px;}
+div#content div#login div.rounded div a img{margin-bottom:4px;}
+table td.input_registr input{width: 215px; margin-right: 5px;}
+
+/*div#registr_form {background-color: #eaebff;  width: 448px; margin:auto; color: #8b48b9;}
+div#registr_form table{width: 440px;}
+div#registr_form h1, div#restore_form h1{color:#8B48B9;font-size:130%;margin-bottom:13px;padding-top:6px;text-align:center; }
+div#registr_form table td.label {text-align: right; width: 150px !important;}
+
+div#registr_form table td.radio {padding-left:1px;height:28px; }
+div#registr_form table td.radio input {margin-bottom:3px;}
+div#registr_form table span.agrements_login{display:block;font-size:11px;margin-left:23px;width:390px;}
+div#registr_form table td#submit {text-align: center; }
+div#registr_form table td#submit input{margin-right: 44px;}
+div#registr_form td#name_error, div#registr_form td#email_error, div#registr_form td#global_error, span#login_error, td#password_error{color: red; font-size: 70%}*/
+span.valid { display: block; background: url(/images/design/registr_sign_true.png) no-repeat; width: 19px; height: 19px;margin-right:40px;}
+span.invalid {display: block; background: url(/images/design/registr_sign_wrong.png) no-repeat; width: 58px; height: 19px; //width: 83px;}
+ul.chat_message_content li span img {vertical-align: text-bottom !important;}
+div#footer_wrapper{width: 440px;margin: auto;padding:35px 20px;color: #999999; font-family: helvetica;text-align:left;}
+div#footer_wrapper p{margin-bottom:0px;}
+div#footer_wrapper a{color:#999999;font-size:10px;margin-left:10px;text-decoration:underline;}
+/*Restore form */
+div#restore_form {padding:0 0 45px;background-image: url(/images/design/error_restor_bg.jpg);width: 701px;height: 173px; margin: 0 auto;margin-top: 20px; color: #81041E;font-size: 12px;text-align: center; }
+div#restore_form table td.label {text-align: right; width: 80px}
+div#restore_form table td#submit {text-align: center; padding-top: 10px}
+div#restore_form form{width: 500px; margin:45px auto auto;}
+div#restore_form h1 {font-size: 16px;}
+#recaptcha_response_field{width: 100px;margin-right: 20px;}
+#restore_form table{margin-left: 75px;}
+#recaptcha_widget{line-height:20px;padding-top:17px;text-align:center;width:448px;}
+#recaptcha_image{margin-right:10px;width: 217px !important; float: left;}
+#recaptcha_image img {height:45px;position:relative;top:5px;width:217px !important;}
+#recaptcha_widget div.recaptcha_fild {
+    display:block;
+    float:left;
+    font-size:9px;
+    margin-left:21px;
+    margin-right:10px;
+    margin-top:-2px;
+    padding-top:0;
+    text-align:left;
+    width:123px;}
+#restore_form a.close_button{height:11px !important;padding:5px 6px!important;}
+#recaptcha_widget div.recaptcha_fild{//margin-left: 0px; //margin-right:5px; }
+#recaptcha_widget div.recaptcha_fild input{width: 110px;}
+#recaptcha_widget span.capcha_reload {float:right;line-height:53px;margin-right:35px;margin-top:-2px;vertical-align:middle;width:20px;}
+.capcha_reload img {border: none !important;}
+.pidklad_html{background:url("/images/design/field.png") no-repeat scroll 50% 0 transparent;}
+#registr_error, #global_error, .dialog_error{
+    background-color:red;
+    color:#FFFFFF;
+    display:block;
+    padding-bottom:2px;
+    padding-top:2px;
+    text-align:center;
+    width:509px;
+    position: relative;
+    margin-bottom: 10px;
+}
+#global_error {width: 320px;line-height:17px;}
+#restore_form #global_error, .dialog_error {width: 360px;margin:auto auto 10px;}
+.fieldWithErrors{margin-right: 0px!important;}
+.login_tips ul.navigate li{width: 209px;}
+div#preview_dialog div#left_scroll, div#preview_dialog div#scrolled_content,div#preview_dialog div#right_scroll {float: left}
+div#preview_dialog div#left_scroll, div#preview_dialog div#right_scroll {padding-top: 212px}
+div#preview_dialog div#scrolled_content {width: 778px; overflow-x: hidden;}
+div#preview_dialog div#inner_scoll {width: 5446px; float: left;white-space: nowrap}
+div#preview_dialog div#inner_scoll div {float: left;}
+/*Register VISITOR page END*/
+
+/*MEditation*/
+li.meditation input{float: left; margin-top: 0px; padding-top:1px;}
+li.meditation select{width: 170px; padding: 1px; border-color: #ddddff; color: #000;}
+/*Meditation end*/
+
+
+/*Message screen begin*/
+div#messages_list, .message_height{min-height: 192px; display: block;position:relative;z-index:2;}
+div.message_content{height: 92%; margin-bottom: 0px;}
+input.message_title_input{width: 543px;}
+span.middle_button{margin-bottom: 35px; display: block;}
+.middle_button a, .middle_button input{
+    background: url(/images/design/small_submit.gif) no-repeat 50% 0;
+    color: #fff;
+    text-align:center;
+    height: 26px;
+    width: 120px;
+    display: inline-block;
+    text-decoration: none;
+    padding-top: 5px;
+    /*margin-top: 24px;*/
+    float: left;
+    font-family: Helvetica;
+    margin-right: 10px;
+    border:medium none;
+    font-size: 12px;
+    font-weight: bold;
+
+
+}
+ul.history_messages {border-top: 1px solid #C1BFC4;background-color: #f0f0f0; padding-left: 10px!important;}
+span.middle_button{margin-left: 25px;}
+span.middle_button a {margin-left:0px;width: 79px;}
+input.registr_button{
+    background:url("/images/design/registr_button.png") no-repeat scroll 50% 0 transparent;
+    border:medium none;
+    color:#FFFFFF;
+    cursor:pointer;
+    font-weight:bold;
+    height:38px;
+    margin-left:57px;
+    padding-bottom:1px !important;
+    width:148px;
+    margin-top:5px;}
+div.message_content ul li{ margin: 0px 10px 6px 15px; font-family: Georgia,serif;}
+.message_titles{width: 580x; margin: auto;}
+/*.top_border{border-top: 1px solid #c1bfc4;padding-top: 10px;border-bottom:1px solid #C1BFC4;}*/
+span.send_submit input{padding-top: 0px;}
+td.list_table{width: 150px; overflow:hidden; }
+/*Message screen end*/
+
+/*Friends begin*/
+
+div.friends_grid{width: 605px; height: 100%;}
+div.friends_grid_row{margin:4px 0 0; margin:10px 0 0;}
+div.no_margin  {margin: 0px !important;}
+div.user_image_block{width:176px; float: left; margin-right: 25px; padding-bottom: 5px; padding-top: 5px;}
+
+div.user_image_block img{border: none !important;float: none;}
+div.user_image_block div.dismiss_request{width:14px;float: right;}
+div.user_image_block div.dismiss_request input{
+    background:url(/images/design/close_pic.jpg) no-repeat transparent;
+    border-width:0;
+    font-size:0;
+    height:14px;
+    margin-top:0;
+    padding:0;
+    cursor: pointer;
+    width:14px;
+    margin-left: 10px;
+}
+li.right_aligment input.modern_submit{margin-left:10px; margin-bottom: 2px; }
+div.user_image_block div.user_block_small_cont{display:table-cell;vertical-align:top;width: 100px;line-height:20px;}
+h4.star_bar_inline{float: left; text-align: left;width:250px;position: relative;}
+div.ie_h4_spacer{//height: 10px;}
+/*Friends end*/
+
+/*hall of fame begin*/
+div#statistic select{height:28px;padding:2px; float: right;margin-right:10px;}
+div#statistic input{float: right;margin-right:10px;}
+/*table.statistic_short{width: 100%}
+table.statistic_smal{width:100%;}*/
+/*hall of fame end*/
+
+
+/*fight screen begin*/
+ul.text_list li{padding: 0px;-moz-border-radius:0px; margin:0 0 3px 11px;}
+div#fight_result_base ul {text-align: center; color: #A00330; font-size: 110%}
+div#fight_result_base h2.green,div#fight_result_base h2.red,div#fight_result_base h2.blue, #fight_result_base span.green, #fight_result_base span.red{font-size: 20px;}
+#big_fight_res div#fight_logs {margin-left:10px;padding:5px;width:900px;}
+div#fight_logs ul {background-color: #F7F9E8;margin:0;padding:5px 0 5px 12px; }
+div#fight_logs ul:li{padding-left: 10px;}
+
+div#fight_no_flefh{border:2px solid #CCCCCC;height:296px;padding:5px;position:relative;width:937px;}
+div#fight_no_flefh span{display: inline-block !important;}
+div#fight_no_flefh span.fight_button{position:absolute;top:3px; width:936px; text-align: center; right: 0%; left: 0%;}
+span.message_fight{display: block; width:308px;margin-left: 11px; height: 103px; background-image: url("/images/design/message_babl.png"); background-repeat: no-repeat; overflow: hidden;padding: 10px;}
+span.message_fight p {height:50px;margin:0 !important;overflow:hidden;text-align:left;width:310px;}
+div#fight_no_flefh span.fight_button a{background-image: url("/images/design/attack_city.png"); background-repeat: no-repeat; height: 129px; width: 128px; display: block; margin:auto auto 20px;}
+div#fight_no_flefh span#user_me{height:295px;width:473px;}
+div#fight_no_flefh span#user_opponent{height:295px;width:279px; margin-left: 180px;}
+/*table.statistic{padding-bottom:10px;margin-left:23px;}*/
+table.statistic_long{width: 875px;}
+/*table.statistic th {
+    border-bottom:2px solid #6678B1;
+    color:#003399;
+    font-size:14px;
+    font-weight:normal;
+    padding:10px 8px;
+    font-family: helvetica;
+    text-align: left;
+}*/
+/*table.statistic td {
+    color:#000000;
+    padding:9px 8px 0;
+    font-family: helvetica;
+    font-size: 12px;
+}*/
+div.fight_equipment{float: left; display: block; padding: 4px!important;min-height:55px;}
+div.fight_equipment img {padding:2px 0 3px 2px; margin-right: 0px !important;}
+div.fight_equipment span {
+    background: url(/images/design/slot_item.png) no-repeat; display: inline-block;
+    display:block;
+    float: left;
+    height: 54px;
+    width: 54px;
+    margin-bottom:10px;
+    margin-right: 10px !important;
+}
+div#fight_results{margin-top: 8px;}
+table td.log_lost a {color: red}
+div.fight_equipment ul {width: 50px; padding:1px 4px 5px;}
+div.fight_equipment ul li img{ padding: 0px !important; height: 50px; width: 50px;}
+div.smal_icons li.tips {top: 47px!important;}
+/*fight screen end*/
+
+table.avatar_grid img{padding-left:5px;padding-right:2px;}
+
+
+/*clans create\join begin*/
+span#clan_icon{background: url(/images/design/CLANS_EMBLEM_10.jpg) no-repeat;margin-top: 4px;height: 200px; width: 200px; display: block; float: left;margin-right:20px;}
+/*div.clan_create input.text,div#col_right div.clan_create textarea.top_border{width: 378px;}*/
+div.clan_create div.clan_icon_small{width: 650px;}
+div.clan_create div.clan_icon_small span {
+    background: url(/images/design/CLANS_EMBLEM_10_smal.jpg) no-repeat;
+    cursor:pointer;
+    display:block;
+    float:left;
+    height:80px;
+    margin-left:4px;
+    margin-right:5px;
+    margin-top:5px;
+    width:80px;
+    margin-bottom: 5px;}
+li.find_clan form{text-align: center}
+li.find_clan input {margin-right: 15px;}
+li.find_clan input.modern_submit{margin-right: 0px; }
+textarea#clan_description{background-color:#FFF6E7;border:1px solid #CF6D7F;height:100px;}
+/*clans create\join end*/
+
+/*clans begin*/
+span.clear_donation{display:block;margin-left:40px;margin-top:10px;}
+#clan_emblem{text-align: center; background-image: url("/images/clan/gerb_fon.jpg");height:275px;width: 263px;padding-bottom:40px;margin-bottom: 15px;}
+table.clan_table{width: 96%; margin-left: 10px; border-collapse: collapse;}
+table.clan_table td {border-bottom: 1px solid #cccccc; width: 50%}
+span.join_message textarea{width: 602px! important;}
+
+
+div.logo_block_200 {position: relative; margin:10px auto 40px;}
+/*div.logo img{margin-left:-43px;}*/
+img.front_logo {position: absolute; left: 0px; top:0px}
+
+/*clans end*/
+/*pet screen begin*/
+div.full_size_bubl {height: 260px; display: block}
+div.pet_ava img{display:block;margin-left: 5px;}
+div.pet_ava {padding-bottom:20px !important; z-index: 2; position: relative;}
+div.pet_ava ul.progress_blok{padding-left: 5px;}
+/*pet screen end*/
+
+/*drop down begin*/
+
+
+/*.dropdown li,
+.dropdown ul,
+.dropdown span{list-style: none;margin: 0;padding: 0;}
+.dropdown {position: relative;width:139px;}
+.dropdown li,.dropdown span {
+    line-height: 1.1em;
+    vertical-align: middle;
+    zoom: 1;
+}
+.drop_down_down ul{margin-left:-63px;top: 120% !important;background-color: #fff;display: block; height:  40px; text-align: left;font-family: tahoma; font-size: 13px;text-decoration: none;}
+.drop_down_down ul li a {text-decoration: none; font-family: tahoma; font-size: 11px;}
+.drop_down_down{float: right;height:25px;line-height:27px;width: 77px; text-align: right;}
+.dropdown ul {
+    visibility: hidden;
+    position: absolute;
+    bottom:  100%;
+    z-index: 598;
+    width: 135px;
+    background-color: #fff;
+    padding:2px 2px 0;
+
+}*/
+
+/*Seems it will be deleted*/
+span.img_drop_dow {position: relative;}
+span.img_drop_dow:hover p {display: block; position: absolute; z-index: 99}
+span.img_drop_dow p {
+    background-color:#FFFFFF;
+    display:none;
+    min-height:15px;
+    margin-top:4px;
+    padding:6px 8px 6px;
+    position:absolute;
+    width:160px;
+    text-align: left;
+    //margin-left: -50px;
+    //margin-top: 28px;
+
+}
+span.delete, div.delete{margin-left: 0px; margin-top: 10px;}
+ul.information_tips_block, li.information_tips_block {position: relative; //position: inherit}
+ul.information_tips_block:hover li.tips, li.information_tips_block:hover li.tips {display: block; z-index: 99}
+ul.information_tips_block li.tips, li.information_tips_block li.tips {
+    background-color:#F8F8FD;
+    border:1px solid #A00330;
+    display:none;
+    min-height:20px;
+    margin-top:4px;
+    padding:2px 8px 6px;
+    position:absolute;
+    text-align: left;
+    top: 50px;
+    min-width: 200px;
+    z-index: 1000;
+    //margin-left: -250px;
+    //margin-top: -5px;
+
+}
+
+ul.information_tips_block li.image_block span {position: absolute; color: #ffce80; font-weight: bold; margin-left: 2px}
+
+/*span.timer p{margin-left:-19px;}*/
+/*span.health p{margin-left:64px;}
+span.mana p{margin-left:143px;}
+span.pet p{margin-left:223px;}
+span.kristal p{margin-left:290px;}
+span.gold p{margin-left:360px;}
+span.fights p{margin-left:390px;}*/
+input.long{width: 135px;}
+div.drop_dawn,span.drop_dawn{position: relative; }
+div.drop_dawn ul{
+    background-color:#FFFFFF;
+    display:none;
+    bottom:100%;
+    padding:2px 2px 0;
+    position:absolute;
+    width:135px;
+    /bottom: 102% !important;*/
+    //margin-left:-69px;
+
+}
+span.drop_dawn ul.account_menu {
+    background-color:#FBFDEF;
+    background-image:url("/images/design/poup_pidklad.png");
+    display:none;
+    padding:3px 3px 5px;
+    position:absolute;
+    right:5%;
+    top:93%;
+    width:120px;
+    //right:0px;}
+span.drop_dawn{float: right;//margin-top: -28px;}
+
+div.drop_dawn span:hover ul, span.drop_dawn span:hover ul{display: block;}
+div.drop_dawn ul li a, span.drop_dawn ul.account_menu a:hover{text-decoration: none!important;}
+div.drop_dawn ul li a, span.drop_dawn ul.account_menu a {color:#490C17;text-decoration: underline !important; height:15px;padding-top:2px !important;text-align:left;width:120px;margin-left:  5px;text-decoration: none;display: block}
+span.pet_cage img{bottom:3px;margin-left:36px;position:absolute; //bottom: 23px;}
+span.delete_chat img {//margin-top: -20px}
+/*ul.dropdawn_spacer{padding: 0px !important;width: 139px !important;}
+ul.dropdawn_spacer li{background-image: url(/images/design/drop_down_spacer.png); display: block;width: 139px !important;height: 10px;}
+
+.dropdown ul li {float: none;padding-left: 5px;}
+.dropdown ul li a{color: #386688 !important; text-align: left;height: 15px; width: 120px;padding-top: 2px !important;}
+.dropdown ul li a:hover{z-index: 600;background-image: none !important; text-align: left;height: 15px;color: #386688; text-decoration: underline;width: 120px;}
+.dropdown span:hover > ul {visibility: visible;}*/
+span.header_type_down{background-color: #8496ef;display: block; width: 135px; height: 15px;}
+
+
+div#dialog_content{position:absolute;width: 100%;height:100%;z-index:1000;left:0px;top:0px;}
+
+div#footer-wrapper, div#vis-footer-wrapper  {
+    background-image:url("/images/design/footer.jpg");
+    clear:both;
+    color:#490C17;
+    display:block;
+    font-family:helvetica;
+    height:174px;
+    margin:20px auto auto;
+    text-align:center;
+    width:960px;
+}
+div#footer-wrapper div {padding-top:120px;}
+div#vis-footer-wrapper {
+    padding: 0px;
+}
+div#footer-wrapper p  {
+    margin-bottom:0;
+}
+div#footer-wrapper a  {
+    color:#490C17;
+    font-size:10px;
+    margin-left:10px;
+    text-decoration:underline;
+}
+div.quick_links p{padding-left: 0px; padding-right: 10px; margin-bottom: 5px;text-align: left;}
+div.quick_links textarea {border:1px solid #c9adb4;margin-left:8px; //margin-left: 18px;}
+div.quick_links ul {padding:3px 3px 3px;}
+#clans_details div.quick_links p, #clan_donate div.quick_links p, #clan_requests div.quick_links p{width: 610px;text-align: center;margin:auto;padding-bottom:20px;padding-left:20px;padding-top:10px;}
+#clans_details div.quick_links ul {padding-bottom:20px;padding-left:20px;padding-top:10px;}
+li.no_quick_links ul {padding: 0px;}
+.buttons_shop_style{float: right;width: 150px;}
+.progressbar img{float: left; margin: 0px !important; border: none !important;}
+.progressbar{background: url(/images/design/progress_bg.png) no-repeat; width: 255px; display: block;float:left; margin-top: 5px; font-size: 11px; }
+.progress_blok {text-align: center; width: 255px;}
+.progress_blok span, .font11 {font-size: 11px;color: #490C17;}
+
+/*.corners{
+    -moz-border-radius-bottomleft:12px;
+    -moz-border-radius-bottomright:12px;
+    -moz-border-radius-topleft:12px;
+    -moz-border-radius-topright:12px;
+    -webkit-border-radius:12px;
+    -webkit-border-top-right-radius:12px;
+    -webkit-border-top-left-radius:12px;
+    -webkit-border-bottom-right-radius:12px;
+    -webkit-border-bottom-left-radius:12px;
+    border-radius:12px;
+    border-top-right-radius:12px;
+    border-top-left-radius:12px;
+    border-bottom-right-radius:12px;
+    border-bottom-left-radius:12px;
+    background-color: #ffffff;
+    border: none !important;
+}*/
+.save_button, #clan_submit,.clan_submit, span.join_submitt input{border:medium none;float:right !important;height:32px;margin-bottom:10px;margin-right:14px;margin-top:10px;padding-top:1px;position: relative; z-index: 2;}
+h2.header_alone{margin-bottom: 10px;}
+ul.nopading{padding: 0px !important}
+ul.nopading form {margin-top: 10px;}
+li.clan_edit_form {}
+li.clan_edit_form label{margin-top:4px;width: 101px; display: inline-block;text-align: right;vertical-align: top; margin-left: 0px!important;}
+li.clan_edit_form textarea{margin-left: 0px; width: 500px;}
+li.clan_edit_form input.edit_clan_name{margin-bottom: 10px;width: 500px;padding-left: 2px;}
+/*li.clan_edit_form textarea {width: 611px; margin-bottom: 0px;}*/
+img.logo{margin-bottom:7px;margin-left:4px;margin-right:3px !important;}
+.clan_name_header{text-align: center; padding-top: 10px;}
+select#order{display:inline-block;height:28px;margin-top:0;padding:2px !important; margin-left:150px;margin-right:20px;}
+.fight_search form {width: 360px;display:inline-block; margin-right: -100px;}
+.fight_search span.join_submitt input {margin-right: 49px !important;padding-top: 0px; cursor: pointer;height:31px;//margin-right: 0px!important; //margin-top: 0px;}
+input.level_search{width: 50px !important}
+.identic_left {margin-right:10px !important;}
+.identic {float:left;width:458px;}
+div.train_info{width: 450px; float: left;}
+span.train_level{display:inline-block;text-align:left;width:50px; font-size: 14px;font-weight:bold;}
+div.train_submitt{width: 150px; float: left;}
+
+div.fom_nohight form {height: 100%;}
+/*ul.message_titles li{padding-bottom: 3px; }*/
+li.top_border{margin-top: 20px;margin-bottom: 10px;}
+.message_titles label {display:inline-block;margin-right:5px;text-align:right;margin-left: 0px!important;}
+
+
+/*ul.payment li {font-family: arial; margin-bottom: 10px;}
+ul.payment h2{color: #000000;}
+ul.payment input.send_submit{height: 28px; margin-left: 0px;}
+ul.payment select, ul.payment input{height: 21px; padding: 0px;}
+ul.payment table.card_info tr td{padding-bottom:6px;padding-right:20px;}*/
+
+span.fight_button_do form {display:inline;width:216px;//margin-left: 60px;}
+span.font11 {padding-top:5px; display: block;}
+.image_design_pages{margin-bottom: 40px; margin-top: 10px;margin-left: 29px;}
+.image_design_pages img {border:1px solid #CCCCCC;}
+span.fight_cost{font-size: 11px}
+span.fight_cost img {margin-top: -2px;}
+span.message_button {margin-left: 3px !important;}
+span.message_button input, span.message_button a {margin-right: 10px !important; margin-top: 5px !important;margin-bottom:-6px;}
+
+div.bes_search { padding: 10px}
+span.back_to_clan{float:right;height:24px;left:16px;line-height:7px;margin-bottom:0;margin-top:1px;position:relative;width: 127px;text-align: center;}
+span.back_to_clan a{background-image:url("/images/design/small_submit.gif");color: #EDD6A1}
+div.bes_search span.fight_button input{margin-bottom: 5px !important;margin-top:-4px;//margin-top:-2px; }
+div.fight_search div.bes_search{//margin-bottom: 11px}
+/*form{float: right; margin-top:5px!important;margin-right:3px;}*/
+
+form#new_relation{margin-top: 4px;}
+/*div.resizebl_log {min-width: 200px;}
+div.resizebl_log_block {width: 49%; float: left}
+div.resizebl_log_block_right{width: 49%; float: left}
+*/
+img.down_flag{margin-top: -3px;}
+span.account_tag{
+    /*display:block;*/
+    color:#63290A;
+    float:right;
+    font-weight:bold;
+    height:34px;
+    padding-top:3px;
+    text-align:right;
+    //padding-top:0px;
+
+}
+#restore_form .small_submit{height: 23px!important;margin-left:5px;}
+.popap_submitt{
+    background:url("/images/design/button_do.png") no-repeat scroll 50% 0 transparent;
+    border:medium none;
+    color:#FFFFFF !important;
+    height:31px;
+    margin-left:55px;
+    margin-top:9px;
+    width:151px;}
+.recapcha_popap_submitt{margin-left: 20px;}
+span.recapcha_text{
+    color:#777777;
+    font-size:9px;
+    margin-bottom:0 !important;
+    margin-left:3px !important;
+    width:109px !important;}
+.items_popap_shop p{margin-top: 106px !important; z-index: 1000;}
+.items_popap_profile p{ z-index: 1000;}
+b.hint_titel{color:#81041E;font-family:Helvetica,sans-serif;}
+
+body div#background_loader, body div#loader_overlay {opacity:.10; filter:alpha(opacity=10);position: fixed;left: 0px;top: 0px;width:100%;height:100%;z-index: 1999; background:url(/images/design/background_loader.gif) center}
+body div#loader_overlay {display: none; opacity:1; filter:alpha(opacity=100); background: none}
+body div#loader_content { width: 126px; margin: 100px auto; padding:32px;background:url(/images/design/ajax_loader.gif) no-repeat center; text-align: center}
+
+table.chat_main {margin:-6px 0 5px -20px;}
+table.chat_main td {padding: 0; margin: 0px;}
+table.chat_main input.text, table.bigpoint_konfirm input {height: 19px; font-size: 11px;color:#490C17; }
+table.chat_main select {height: 20px; padding: 0px;border: 0px;color: #490C17; cursor: pointer;}
+/*table.chat_main tr#chat_top_border {background-image:url("/images/design/prozr_chat_top.png");height:12px;width:872px;}*/
+table.chat_main div#chat_bottom_border {
+    background-image:url("/images/design/chat_bg_bottom_new.png");
+    background-repeat:no-repeat;
+    display:block;
+    height:20px;
+    margin-left:36px;
+    position:relative;
+    top:3px;
+    width:907px;
+    //margin-top: -3px;
+    //position: relative;
+    //left: 0px!important;
+}
+.guru_popap img{float: left;margin-right:15px;}
+.guru_popap{text-align: justify;}
+.guru_popap .bottom_popap{height:33px;margin-top:23px;padding-bottom:0;width:443px;}
+div.guru_popap_cont {padding-bottom:15px !important;padding-left:15px !important;padding-top:14px !important;width:441px !important;}
+/*table.chat_main td.chat_left_border {background-image: url(/images/design/chat_tin_left.png); background-repeat: repeat-y; width: 24px;  }
+table.chat_main td.chat_right_border {background-image: url(/images/design/chat_right_border_new.png); background-repeat: repeat-y; width: 5px;  }
+*/
+table.chat_main div.chat_header_content {
+    background-image:url("/images/design/chat_main_bg_old.png");
+    background-repeat:repeat;
+    /*    height:54px;*/
+    margin-left:23px;
+    position:relative;
+    top:3px;
+    width:915px;
+    //margin-left: 35px;
+    //top:0px;}
+
+table.chat_main div.chat_header_content div.left_chat_header {
+    color:#4F2A02;
+    float:left;
+    font-size:13px;
+    margin-left:24px;
+    margin-top:16px;
+}
+#visitor_page{background:  url("/images/design/avatars_bg_2.jpg") no-repeat center top #6ad2de; background-color: #ffffff;}
+
+/*table.chat_main div.chat_header_content div.left_chat_header input{margin-bottom: 4px;}*/
+table.chat_main div.chat_header_content div.left_chat_header input#filter_type_custom{margin-left: 10px;}
+table.chat_main div.chat_header_content div.right_chat_header {float:right;margin-right:39px; //margin-right:39px;}
+table.chat_main div.chat_header_content div.right_chat_header span#chat_click_description {margin-right: 10px;}
+/*table.chat_main div.chat_header_content div.right_chat_header span.input {margin-right: 0px;}*/
+table.chat_main div.chat_header_content div.right_chat_header img{margin:0 25px 4px -4px; //margin-top: 5px}
+table.chat_main div.chat_header_content div.right_chat_header input#name{padding-left: 5px;border-right: none; //margin-top: 1px!important;}
+#expanded_chat_mode .left_chat_header{margin-left:69px;margin-top:13px;//margin-left: 76px}
+#expanded_chat_mode .right_chat_header{margin-top: 7px; //margin-right: 20px; }
+#expanded_chat_mode .right_chat_header a.active_always img{margin-top: -7px; }
+/*
+#expanded_chat_mode .right_chat_header input {
+    margin-top: -6px;
+    //margin-top: 0px;
+}*/
+div.right_chat_header #submit_filter {margin-right:16px; margin-left: -5px;}
+li.new_message{margin-bottom: 5px;}
+li.new_message a {color: #a00330; !important;}
+/*chat user list*/
+table.chat_main div#chat_users_list {
+    background:url("/images/design/chat_main_bg_old.png") repeat scroll 0 0 transparent;
+    margin-left:23px;
+    padding-left:59px;
+    padding-right:70px;
+    padding-top:6px;
+    position:relative;
+    top:3px;
+
+    //width: 920px;
+    //padding-left:100px;
+
+}
+#expanded_chat_mode .chat_header_content, #expanded_chat_mode div#chat_users_list{//margin-left: 35px; //margin-top:3px}
+#expanded_chat_mode div#chat_users_list{//padding: 0px;//width: 915px;//margin-top:-3px;//}
+#expanded_chat_mode div#scroll_content_block{//margin-left: 65px}
+#scroll_left_block a#scroll_left{//position: relative; //margin-left: 75px !important;}
+#scroll_right_block a#scroll_right{//position: relative; //margin-left: -75px !important;}
+table.chat_main div#chat_users_list div#scroll_left_block, table.chat_main div#chat_users_list div#scroll_content_block {float: left; height:139px;width:49px;}
+table.chat_main div#chat_users_list div#scroll_content_block {margin-top:3px;overflow:hidden;width:700px;}
+table.chat_main div#chat_users_list div#inner_scrolled_content {height: 145px; overflow-x: hidden;}
+
+table.chat_main div#chat_users_list div#scroll_right_block {float:right;height:144px;width:37px;}
+table.chat_main div#chat_users_list div a#scroll_left, table.chat_main div#chat_users_list div a#scroll_right {background-repeat: no-repeat;width: 47px; height: 171px; display: block; margin-left: 0px; margin-right: 4px}
+table.chat_main div#chat_users_list div a#scroll_left, a.arrow_left_popap {background-image: url(/images/design/chat_ava_back.png);}
+table.chat_main div#chat_users_list div a#scroll_left:hover, a.arrow_left_popap:hover{background-image: url(/images/design/chat_ava_back_hover.png); }
+table.chat_main div#chat_users_list div a#scroll_right, a.arrow_right_popap {background-image: url(/images/design/chat_ava_forward.png);}
+table.chat_main div#chat_users_list div a#scroll_right:hover, a.arrow_right_popap:hover{background-image: url(/images/design/chat_ava_forward_hover.png);}
+table.chat_main div#chat_users_list ul.chat_user_info li {white-space: nowrap;background-color:#FFF6E7; }
+table.chat_main div#chat_users_list ul.chat_user_info {overflow: hidden; border: 1px solid #e5e5e5; height: 125px; width: 102px; float: left; margin: 6px}
+a.arrow_left_popap, a.arrow_right_popap{display:inline-block;height:142px;margin-left:10px;margin-right:10px;width:44px;cursor: pointer;vertical-align: middle;}
+a.arrow_right_popap {margin-left: 7px;}
+span.name_screenshot{display:inline-block;font-size:26px;margin-top:10px; font-family: helvetica;color: #818284;}
+span.pagination_screenshots a {cursor: pointer; margin-right: 3px;color: #818284; font-size: 18px;}
+span.pagination_screenshots {float: right; margin-right: 67px; }
+table.chat_main div#chat_bottom_content {
+    background:url("/images/design/chat_main_bg_old.png") repeat scroll 0 0 transparent;
+    margin-bottom:0;
+    margin-left:23px;
+    padding:20px 17px 10px 33px;
+    position:relative;
+    top:3px;
+    padding-right:17px;
+    //margin-top: 0px;
+    //margin-left: 35px;
+    //top:0px;
+    //padding: 0px;
+    //padding-bottom: 10px;
+    //padding-top: 10px;
+    //width: 900px;}
+table.chat_main div#chat_messages_content, table.chat_main div#chat_rooms {float: left}
+table.chat_main div#chat_rooms div#inner_rooms {height: 239px; width: 99%; border: 1px solid #e5e5e5; overflow-y: auto; overflow-x: hidden;background: #FFF6E7;}
+table.chat_main div#chat_messages {width: 232px}
+table.chat_main div#chat_user_avatar {float: right}
+ul.confirm_dialog li {padding: 5px;}
+ul.confirm_dialog li a{padding: 5px;}
+table.chat_main div#chat_rooms {width: 200px;border: 1px solid #E5E5E5;padding:25px 10px 13px;background:url("/images/design/chat_bg_text.png") repeat scroll 0 0 transparent;//margin-left: 30px; //width: 18%;}
+table.chat_main div#chat_rooms ul, table.chat_main div#chat_rooms h3 {
+    margin:2px; font-size: 11px;
+    width: 180px;
+    //width: 140px;
+
+}
+table.chat_main div#chat_rooms ul li {height: 16px;  font-size: 12px; margin-left: 24px; margin-top: 2px; }
+table.chat_main div#chat_rooms h2 {
+    height:43px;
+    line-height:41px;
+    margin:0;
+    padding-left:54px;}
+table.chat_main div#chat_rooms h3 {  color:#A00330; height: 14px;}
+table.chat_main div#chat_rooms h3 a {width: 15px; display: inline-block;margin-left: 3px;}
+
+table.chat_main div#chat_rooms ul li a {display:inline-block;height:15px;overflow:hidden;white-space:nowrap;width:80%;}
+table.chat_main div#chat_rooms ul li span.right {float: right}
+table.chat_main div#chat_rooms ul li span.right a {width: 11px;display: inline-block; margin-right: 2px;}
+table.chat_main div#chat_rooms ul li a.selected {color: #8E4630; font-weight: bold;}
+
+table.chat_main div#chat_messages_content, table.chat_main div#chat_user_avatar, table.chat_main div#chat_messages_content_panel { border: solid 1px #e5e5e5;}
+table.chat_main div#chat_messages_content {background:url("/images/design/chat_bg_text.png") repeat scroll 0 0 transparent; height: 264px; width: 596px; margin-left: 10px; margin-right: 7px; padding: 10px;padding-top: 5px;padding-right: 11px; position: relative; }
+
+table.chat_main div#chat_user_avatar {width: 201px;  margin-right: 11px; height: 279px;background:url("/images/design/chat_bg_text.png") repeat scroll 0 0 transparent;}
+table.chat_main div#chat_user_avatar ul li {padding: 5px 5px 5px 5px; padding-top: 0px;}
+table.chat_main div#chat_user_avatar ul li#selected img{border: solid 1px #e5e5e5;}
+table.chat_main div#chat_user_avatar ul li div#functions {width: 100%; text-align: center;}
+table.chat_main div#chat_user_avatar ul li div#functions a {display: inline-block;}
+table.chat_main div#chat_messages_content_panel {background-color: #FFF6E7; height: 200px; padding: 2px; overflow-y: auto; }
+table.chat_main div#chat_messages_header_panel {padding-bottom: 5px;}
+table.chat_main div#chat_messages_header_panel a {float: left}
+table.chat_main div#chat_messages_header_panel span {float: right}
+table.chat_main div#chat_messages_bottom_panel form {margin-top: 11px; height: 30px;  //margin-top: 4px; //padding-right: 1px; }
+table.chat_main div#chat_messages_bottom_panel input.text {min-width: 275px; border-right: none; width: 485px}
+table.chat_main div#chat_messages_bottom_panel form input, table.chat_main div#chat_messages_bottom_panel form a {float: left;}
+table.chat_main div#chat_error_block{background-color: #FF9999; z-index: 1;  position: absolute;  border: solid 1px white; font-weight: bold; color: white; text-align: center; margin: 0px auto;}
+table.chat_main div#chat_error_block span{background-color: #FF9999;}
+
+table.chat_main div#chat_messages_bottom_panel form a {margin:2px 0 0 5px;}
+table.chat_main div#chat_messages_bottom_panel form {height: 30px; display: block; width: 100%;//padding-right: 1px;}
+table.chat_main ul.chat_message_content {padding-left: 2px; color: #595959; font-weight: normal; font-size: 12px;word-wrap:break-word;}
+table.chat_main ul.chat_message_content a {color: #595959; text-decoration:none; font-weight: bold; font-size: 12px}
+table.chat_main ul.chat_message_content li:hover {background-color: #F8EFE0; }
+table.chat_main div#chat_smiles {background-color: white; position: absolute; width: 280px; height: 275px; right: 26px; bottom: 45px; border: solid 1px #A00330}
+li.chat_user_info_bar {//padding-right: 1px;}
+li.selected_avatar_controls {width: 195px}
+li.chat_user_info_bar span {font-size: 11px; color: #8E4630;//float: left; }
+
+.pagination {color:#490C17;font-family:helvetica;font-size:14px;word-spacing:3px;font-weight:normal;text-align:right; display: inline;padding-right: 50px; float: right; position:relative;z-index:2; //margin-top: -9px;}
+.pagination a {color: #8E4630 !important; text-decoration: underline;}
+.pagination a:hover{text-decoration: none!important;}
+li.chat_user_info_bar span img{vertical-align: baseline !important; margin-top: 2px;}
+
+div#inner_scrolled_content ul.chat_user_info li.chat_user_info_name{
+    font-size:11px;
+    line-height:13px;
+    margin-left:0;
+    padding-bottom:2px;
+    padding-left:3px;
+    padding-top:1px;
+}
+div#inner_scrolled_content ul.chat_user_info li.chat_user_info_name img {margin-top: -1px;}
+
+div.chat_hint_time {min-width:50px;height:16px; padding: 2px; position:absolute;color: #490C17; background-color:#F9F0CD;border: 1px solid #CF6D7F}
+
+/* chat end new*/
+
+
+/*payment begin*/
+table.payment_table {font-size: 12px;margin-top: 5px;}
+table.payment_table select {padding: 2px !important;}
+td.purhase_left_aligment{padding-right:10px;text-align:right;width:120px;}
+table.payment_table input.pay_long {width: 278px;}
+table.payment_table input.payment_checkbox{margin-right: 5px}
+table.payment_table input.send_submit {margin-left: 0px; }
+form.payment_form input {background-image: url(/images/design/payment_input_bg.png);color:#8E4630 ;width: 87px;font-size: 12px; margin-left:-3px; border: 0px; font-family:Helvetica;cursor: pointer;font-weight: normal;}
+form.payment_form input:hover {color: #a00330;}
+/*payment end*/
+
+/* DIALOG CONTENT HERE */
+div#lightbox{max-height:484px; width:476px; text-align:left; background-image: url(/images/design/popap_header_bg.png)}
+div#lightbox form.edit_user {width: 438px;}
+div#lightbox div.presents_row{
+    background:none repeat scroll 0 0 #F2E9D1;
+    border-bottom:1px solid #CCCCCC;
+    border-left:1px solid #CCCCCC;
+    border-right:1px solid #CCCCCC;
+    padding:17px 18px 19px 19px;
+}
+div.botom_bar_presents a{float: right; margin-top: 13px;margin-right: 10px;}
+div#lightbox div.header_type{
+    /*background-color: #8496ef;*/
+
+    padding:5px 5px 6px;
+    color: #A00330;
+    font-family: tahoma;
+    font-size: 13px;
+    position: relative;
+    width: 467px;
+    font-weight: bold;
+    text-align: center;
+    height: 22px;
+    line-height:25px
+}
+div.header_type img {margin-top: -4px;}
+div.presents_row{
+    /*font-family:georgia;*/
+    max-height:400px;
+    overflow-x:hidden;
+    overflow-y:auto;
+    overflow-y:hiden;
+    padding:20px;
+    padding-bottom: 20px;
+    text-align:center;
+    width:437px;
+    min-height: 54px;
+
+}
+div.presents_row span{
+    width: 100px;
+    float: left;
+    margin: 5px;
+    display: block;
+    text-align: center;
+}
+div.presents_row ul li a:hover{text-decoration: underline;}
+div.presents_row ul li a{ text-decoration: none;}
+div.presents_row img {border: 1px #cccccc solid;}
+div.botom_bar_presents{
+    background-color:#F2F2F2;
+    border-top:1px solid #C9C9C9;
+    display:block;
+    height:50px;
+    width:475px;}
+.index_cell{width: 20px !important;text-align: center;  }
+td.index_cell {border-left: 1px solid #DDDED4 !important}
+
+div#lightbox a#close_btn {right: 0px; text-decoration: none;}
+
+.no_margin{margin-left: 0px;}
+table.popap_form label{font-size:11px;font-weight:bold;width: 160px; display: block;color: #a00330;}
+table.popap_form input{width: 254px;border:1px solid #490C17;color:#a00330;font-size:90%;padding:5px; height: 12px;}
+table.popap_form td.select span {text-align: left; width: 140px; margin:0px}
+div.bottom_popap{display: block; padding-bottom: 8px; padding-top: 12px; text-align:right; height: 18px; }
+
+a.close_button, .confirm_dialog a, input.close_button {
+    -moz-box-shadow:0 1px 0 rgba(0, 0, 0, 0.1);
+    background-color: #EDD6A1;
+    border-color:#999999 #999999 #888888;
+    border-style:solid;
+    border-width:1px;
+    color:#333333;
+    cursor:pointer;
+    display:inline-block;
+    font-size:12px;
+    font-weight:bold;
+    line-height:12px; !important;
+    padding:4px 6px;
+    text-align:center;
+    text-decoration:none;
+    vertical-align:middle;
+    white-space:nowrap;
+    margin-right: 5px;
+    width: 60px;
+    height: 13px;
+    font-family: helvetica;}
+input.close_button {height:24px;padding-top:2px;width:75px;}
+div.block_user{padding-top:24px;text-align:center;}
+/* DIALOG CONTENT HERE END*/
+
+/*.shadow_popap {
+    -moz-border-radius:5px 5px 5px 5px;
+    background:none repeat scroll 0 0 rgba(82, 82, 82, 0.7);
+    padding:7px;
+}*/
+table.popap_type label{
+    font-size: 11px;
+    color: #a00330;
+    font-weight: bold;
+}
+div.bottom_popap input.small_submit {margin-right: 5px;}
+td.remember_me_tag {font-size:12px;vertical-align:middle;}
+td.remember_me_tag input{margin-top:1px;margin-left:3px;vertical-align:top;}
+div.avatars_list li.li_avas{border: 1px solid #CCCCCC; display: block; height: 127px; width: 104px;}
+div.avatars_list li.li_avas img.avatar_smal_list{margin-bottom: 0px;width: 104px;}
+div.avatars_list li.li_avas img{border: 0px !important;}
+div.avatars_list li.li_avas span.user_name {height: 10px !important;width: 84px !important; line-height: 9px; font-size: 11px; overflow: hidden;}
+div.avatars_list li.li_avas span.clan_name{width: 100px !important;height: 10px !important;line-height: 9px; font-size: 11px; overflow: hidden; text-align: center;}
+div.avatal_imag_list form{
+    float:none !important;
+    height:40px;
+    padding-left:40px;
+    padding-right:41px;
+    width:550px; //margin-top: -25px;//margin-right: 5px;}
+div.avatars_list{padding-left:40px !important;margin-top:-15px; padding-right:20px;width:585px;}
+li.tips_clanz{margin-left:-1px;top:123px !important; min-width:110px !important; //left: 260px; //top:40px!important;}
+li.tips_avatar{margin-left:-1px;top:129px !important; min-width:110px !important; //left: 260px; //top:40px!important;}
+ul.avatar_litt_block{height: 128px;}
+ul.clan_litt_block{height: 122px; padding:5px 9px 10px 10px;}
+li.li_clan{height: 121px !important;}
+li.tips_clanz b.hint_titel,li.tips_avatar b.hint_titel {margin-bottom: 4px;display: block;}
+div.avatal_imag_list input{float: right; margin-right: 0px; //margin-top: -23px;}
+div.avatal_imag_list {padding-left: 12px;}
+li.li_clan div.logo_block_200 {margin: 0px;}
+li.tips_clanz ul li span {height: 15px !important; padding-left: 0px !important;}
+div.avatars_list ul {padding:5px 9px 10px 7px;}
+
+li.linc_partners{font-size: 11px;}
+li.linc_partners strong{font-size: 10px}
+ul.game_full_desc {width: 600px;}
+div.adds_buttons{margin-left:5px;padding-bottom:10px;width:270px;}
+
+/* clan battles begin*/
+.information_tip {text-align: center !important;}
+div.logo_clan_battle{color: #f83d1e;text-align: center; width: 641px;line-height:5em;font-size:41px;margin-bottom: 4px; padding-right: 1px;//text-align: left; }
+div.logo_clan_battle img{float: left; display: inline; margin:0 0 0 58px; }
+div.logo_clan_battle img.my_clan_battle{//margin-right: 35px;}
+div.logo_clan_battle_opponent{float: right; //margin-top: -205px;}
+div.logo_clan_battle_opponent img{margin-left: 0px;margin-right:58px;}
+div.clan_battle_stats{width: 297px; background-color: #ffffff;margin-left: 20px;margin-bottom: 20px; }
+div.clan_battle_stats ul{padding-left: 10px;}
+div.clan_war_name{background-image:url("/images/design/table_header_bg2.jpg");height:25px;line-height:25px;padding-left:10px;}
+span.clan_fight_notification {display:block;font-size:24px;text-align:center;width:100%;margin-bottom: 10px; margin-top: 10px;}
+div.strategy_block{width: 490px; display: block;padding:10px 75px 18px;}
+div.strategy_block ul {display: inline; padding: 0px;}
+div.strategy_block ul li a img {margin-left: 10px;}
+/*div.strategy_block ul li.information_tips_block {width:100px; display: inline; position:relative;}*/
+img#active_flank{border: 1px solid #20a505 !important;}
+div.strategy_block ul.information_tips_block li.tips ul li{width: 90px;text-align: center;}
+div.strategy_block ul.information_tips_block li.tips
+{
+    left:10px;
+    margin:0;
+    min-width:10px;
+    padding:2px 2px 2px 5px;
+    top:102px;
+    width:93px !important;
+}
+a.addthis_button_facebook_like, a.addthis_button_facebook_like iframe{width: 100px!important;}
+div.winner_title{
+    color:green;
+    font-size:24px;
+    padding:10px 116px 10px 114px;
+    text-align:right;}
+/* clan battles end*/
+
+
+/* new design begin */
+div.additional_info_block{
+    margin:0 0 0 3px;
+    min-height:100px;
+    padding:0 10px;
+    position:relative;
+    top:11px;
+}
+div.additional_info_bg{
+    background:url("/images/design/left_info_bg.png") repeat-y scroll 0 0 transparent;
+    height:100%;
+    left:0;
+    position:absolute;
+    top:0;
+    width:315px;
+    z-index:1;
+    opacity:0.95;
+}
+div.visitor_block_bg{
+    background:url("/images/design/visitor_blok_bg.png") repeat-y scroll 0 0 transparent;
+    width:260px;
+    opacity:0.95;
+}
+div.full_info_bg{
+    background:url("/images/design/full_block_main.png") repeat-y scroll 0 0 transparent;
+    height:100%;
+    left:0;
+    position:absolute;
+    top:0;
+    width:950px;
+    z-index:1;
+    opacity:0.95;
+}
+div.additional_info_bottom{
+    background:url("/images/design/left_info_bg_bottom.png") no-repeat scroll 0 0 transparent;
+    bottom:-20px;
+    height:74px;
+    left:-10px;
+    position:absolute;
+    width:335px;
+    z-index:1;
+}
+div.visitor_block_bottom{
+    background:url("/images/design/visitor_blok_bg_bottom.png") no-repeat scroll 0 0 transparent;
+    width:282px;
+    opacity:0.95;
+}
+div.full_info_bottom{
+    background:url("/images/design/full_block_bottom.png") no-repeat scroll 0 0 transparent;
+    bottom:-20px;
+    height:74px;
+    left:-10px;
+    position:absolute;
+    width:970px;
+    z-index:1;
+    opacity:0.95;
+}
+div.additional_info_top{
+    background:url("/images/design/additional_info_block_top.png") no-repeat scroll 0 0 transparent;
+    height:11px;
+    left:0;
+    position:absolute;
+    top:-11px;
+    width:282px;
+    z-index:1;
+    opacity:0.95;
+}
+div.visitor_block_top{background:url("/images/design/visitor_blok_bg_top.png") no-repeat scroll 0 0 transparent;width:260px;}
+div.full_info_top{
+    background:url("/images/design/full_block_top.png") no-repeat scroll 0 0 transparent;
+    height:11px;
+    left:0;
+    position:absolute;
+    top:-11px;
+    width:950px;
+    z-index:1;
+    opacity:0.95;
+}
+div.avatar_info{z-index: 2; position: relative;padding-left: 4px;}
+div.avatar_info div#user_avatar_image {position: relative}
+div.avatar_info div#user_avatar_image span {position: absolute; bottom: 14px; left:216px}
+div.main_col_content {
+    padding:20px 0px 0 0px;
+    position:relative;
+    z-index:2;
+    width: 655px;}
+div.main_col_bg {
+    background:url("/images/design/content.png") repeat-y scroll 0 0 transparent;
+    bottom:40px;
+    position:absolute;
+    top:11px;
+    width:655px;
+    z-index:1;
+    opacity:0.95;}
+div.main_col_bg_visitor{background:url("/images/design/content_visitor.png") repeat-y scroll 0 0 transparent;width:716px;}
+div.main_col_border_bottom {
+    background:url("/images/design/content_bottom.png") no-repeat scroll 0 0 transparent;
+    bottom:-34px;
+    height:74px;
+    position:absolute;
+    left:-10px;
+    width:672px;
+    z-index:1;
+    opacity:0.95;
+}
+div.main_col_border_bottom_visitor{ background:url("/images/design/content_bottom_visitor.png") no-repeat scroll 0 0 transparent;width:725px;margin-left: 1px;}
+div.main_col_border_top {
+    background:url("/images/design/content_top.png") no-repeat scroll 0 0 transparent;
+    height:11px;
+    position:absolute;
+    top:0;
+    width:655px;
+    z-index:1;
+    opacity:0.95;
+}
+div.main_col_border_top_visitor{ background:url("/images/design/content_top_visitor.png") no-repeat scroll 0 0 transparent; width:716px;}
+.content_up{margin-left: 10px;}
+div#col_right .thin h2 {
+    background-position:0 -77px;
+    width:556px;
+}
+div#col_right h2, h2.block_header {
+    /*background:url("/images/design/titles.png") no-repeat scroll 0 -79px transparent;*/
+    height:33px;
+    line-height:33px;
+    /*margin:0 0 14px;*/
+    padding:0 25px;
+    position:relative;
+    text-align:center;
+    width:656px;
+}
+#login h2.block_header {
+    background:url("/images/design/wing_ready_login.png");
+    height:43px;
+}
+
+h2.block_header{
+    background:url("/images/design/wing_ready.png") repeat scroll 0 0 transparent;
+    font-size:14px;
+    font-weight:bold;
+    height:62px;
+    line-height:46px;
+    margin-left:-18px;
+    padding-left:44px;
+    padding-right:53px;
+    text-align:center;
+    width:187px;
+
+}
+h2.special{
+    background:url("/images/design/wings_spesial.png") repeat scroll 0 0 transparent;
+    height:59px;
+    left:-3px;
+    padding-left:56px;
+    text-align:center;
+    width:190px;
+    padding-right: 45px;
+}
+.login_tips h2.block_header{
+    background:url("/images/design/wing_ready_small.png") repeat scroll 0 0 transparent;
+    font-size:13px;
+    line-height:40px;
+    padding-left:31px;
+    text-align:center;
+    width:181px;
+}
+.icon_standart {
+    background:url("/images/design/forum.png") no-repeat scroll 0 0 transparent;
+    height:45px;
+    left:-23px;
+    position:absolute;
+    top:-2px;
+    width:60px;
+}
+li.thin{margin-bottom: 35px;}
+li.thin h2{
+    font:2.5em/2.5em Tahoma,Geneva,sans-serif;
+}
+.thin .more {
+    background-position:0 -55px;
+    width:628px;
+
+}
+.more {
+    background:url("/images/design/bar_bott.png") no-repeat scroll 0 6px transparent!important;
+    clear:left!important;
+    display:block!important;
+    height:25px!important;
+    line-height:28px!important;
+    margin:10px auto auto !important;
+    text-align:center!important;
+    font-size: 0.91em!important;
+    width: 635px!important;
+    padding-top:0 !important;
+    font-weight:normal!important;
+
+
+    color:#F6E4C2;
+
+}
+#results_without_flash {position: relative; z-index: 2;}
+div.pagination span.current{font-weight: bold;}
+
+div.home_content{height: 200px;width:625px; margin-bottom: 15px; padding-bottom: 12px; //width: 400px;}
+
+ul.progress_blok h2, li.thin h2, div.clan_name_header h2  {font-weight: bold;font-size: 14px;}
+.more a {
+    background:none repeat scroll 0 0 transparent !important;
+    display:inline !important;
+    font-size:11px !important;
+    font-weight:normal !important;
+    padding-left:0 !important;
+    padding-right:0 !important;
+    padding-top:0 !important;
+    text-decoration:underline !important;
+}
+a.more:hover{color: #F6E4C2}
+li.thin img{margin:5px 10px 0 16px;}
+.home_bubles h1.category_title_shop{margin:auto auto auto 0px;}
+#clan_edit h1.category_title_shop {margin-left: -6px;}
+
+.home_bubles{position: relative; z-index: 2;}
+.visibl {position: relative; z-index: 2;}
+h1.category_title_shop, #fight_result_scale h1.category_title_fight{
+    background:url("/images/design/store_title_short.png") no-repeat scroll 0 0 transparent;
+    height:44px;
+    line-height:43px;
+    margin: auto;
+    padding:0;
+    width:636px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #81041E;
+}
+b.clan_name_in_stats a{font-weight: normal; color: #a00330;}
+h1.category_title_visitor{background:url("/images/design/visitor_title_short.png") no-repeat scroll 0 0 transparent;width:660px;margin-bottom: 20px;}
+div.visitor_bg{padding-right:0;padding-top:0;width:698px;}
+.visitor_profile{margin-bottom: 30px!important;}
+div.rozmezhuvach{background-image: url(/images/design/rozmezhuvach_thin.png); width: 487px; height: 9px; margin:10px auto 10px 75px;}
+div.rozmezhuvach_fight{margin:7px auto auto;}
+div.rozmezhuvach_chat{margin-bottom:0;margin-left:152px;margin-top:0;//margin-left: 217px}
+div.rozmezhuvach_chat2 {//padding-bottom: 4px}
+div.previews{margin: auto; width: 624px;}
+div.previews img {border: 1px solid #6d3300;}
+#meditation_content span.select,#meditation_content select  {margin-top: 10px;}
+#fight_flash {margin-bottom: 30px;}
+h1.category_title_fight {
+    background:url("/images/design/store_title.png") no-repeat scroll 0 0 transparent;
+    height:39px;
+    line-height:40px;
+    margin: auto;
+    margin-bottom: 10px;
+    padding:0;
+    width: 928px;
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #81041E;
+}
+div.screenshots{padding:10px 10px 10px 20px;}
+div.screenshots_popap{
+    /*background-image:url("/images/design/screenshots_popap_bg.png");*/
+    background-color:#F2E9D1;
+    background-repeat:repeat;
+    height:700px;
+    margin-left:397.5px;
+    margin-top:400.5px;
+    width:914px;
+    border: 1px solid #cccccc;}
+div.screenshots_popap img{margin-right: 0px!important}
+.screenshots_close {margin-left: 357px;margin-top: 10px; background-image: url(/images/design/close-button_1.png); height: 37px; width: 148px;display: block;}
+/*#big_fight_res h1.category_title_fight{margin-left: -45px;}*/
+#fight_flash div.additional_info_block{padding:0 0 0 14px;}
+table.navigate_invitation{width: 263px; word-break: break-word;}
+.navigate_invitation img{margin-right: 5px;}
+
+.navigate_invitation strong{display:block;margin-bottom:15px;margin-top:15px;}
+.navigate_invitation small {font-size:11px;display: block; margin-bottom: 3px; margin-top: 10px;margin-left: -14px;}
+a.close_button_1{background-image:url( /images/design/close-button_2.png); width: 32px; height: 31px; display: block; margin-right: 5px;}
+.table{
+    border-collapse:separate;
+    margin:0 0 15px;
+    padding:0;
+    font-size: 12px;
+    width:100%;}
+#shop .table,#payment_log .table, #train .table, #buy_pet_screen .table, #clans .table, #clan_upgr .table, #clan_donate .table, #clan_requests .table, #primary_talents .table, #secondary_talents .table, #friends_request .table, #messages_list .table{
+    background:url("/images/design/table_bg.png") no-repeat scroll 0 6px transparent;
+    margin:5px auto auto;
+    width:615px;
+}
+.clan_color a, .clan_color{color: #a00330;}
+#buy_pet_screen {position: relative; z-index: 2;}
+#clan_upgr .little_button a {float: right;}
+#clan_upgr td.col_desc {width: 280px;}
+/*#clans .table, #friends_request .table{margin:10px 0 0 34px;}*/
+
+#clans div.quick_links label {  margin-left:3px;}
+#clans input.search_otstup{margin-right: 10px!important;}
+
+.table .col_desc{
+    color:#A00330;
+    width: 270px;
+    vertical-align: top;
+}
+.table .price{
+    color: #DB003D;
+}
+#shop .table th,#train .table th,#buy_pet_screen .table th,#clans .table th, #fight_results .table th,#clan_upgr .table th, #clan_donate .table th,#clan_requests .table th, #primary_talents .table th,#messages_list .table th, #secondary_talents .table th,#friends_request .table th, #payment_log .table th,table.dragon_result_table th{
+    border:0 none;
+    height:39px;
+    padding:0 10px;
+    text-align:left;
+    vertical-align:middle;
+    font-weight:inherit;
+}
+#fight_results .table th, .resizebl_log .table th, .table_header .table th{height:25px; font-weight: bold;}
+#fight_results .table td{padding:3px 11px 4px;}
+#shop .table td, #train .table td, #buy_pet_screen .table td, #clans .table td, #clan_upgr .table td, #clan_donate .table td, #clan_requests .table td, #primary_talents .table td, #secondary_talents .table td, #friends_request .table td, #messages_list .table td {
+    border-color: -moz-use-text-color -moz-use-text-color #D6C2AA;
+    border-style:none none dotted;
+    border-width:0 0 1px;
+    padding:6px 10px;
+    vertical-align:middle;
+
+}
+#clans .table td, #clan_donate .table td, #clan_requests .table td, #friends_request .table td, #messages_list .table td{border-right:1px solid #DDDED4;padding: 3px 5px 4px 10px;}
+th.number_table{width: 20px;}
+.table td:first-child {
+    background:url("/images/design/table_td.png") repeat-y scroll 0 0 transparent;
+    width: 100px;
+}
+.table td, .table_wide td {
+    background-color:#FBFDEF;
+    border-bottom:1px dotted #D5C0A9;
+    border-right:1px solid #DDDED4;
+    border-top:1px solid #F2F4DE;
+    padding:3px 5px 4px 10px;
+    vertical-align:middle;
+}
+.table_header .table td {padding: 0px;}
+.table td:last-child {
+    background:url("/images/design/table_td.png") repeat-y scroll 100% 0 transparent;
+    border-right:0 none;
+}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+
+}
+
+.little_button a{
+    background:url("/images/design/small_submit.gif") no-repeat scroll 0 0 transparent;
+    color:#ffffff;
+    display:inline-block;
+    font-size:11px;
+    font-weight:bold;
+    height:23px;
+    line-height:22px;
+    overflow:hidden;
+    text-align:center;
+    text-decoration:none !important;
+    width:80px;
+    margin-bottom: 2px;
+}
+table.table_little_buttons {float: right;}
+#train table.table_little_buttons, #primary_talents table.table_little_buttons,#secondary_talents table.table_little_buttons  {float: none;}
+table.table_little_buttons td{border: none !important; border-style: none;background:none repeat scroll 0 0 transparent !important;padding:0 !important;}
+table.table_little_buttons td.train_desc{width: 200px;color: #A00330;}
+/*login new begin*/
+.pre_avatar form{margin-left: 28px;}
+.pre_avatar a.restor_button {margin-left:21px;top:8px;}
+.pre_avatar {
+    background:url("/images/design/login_block_avatar.png") repeat-y scroll 0 0 transparent!important;
+    margin:0 0 30px;
+    padding:40px 5px 0 10px;
+    position:relative;
+    top:10px;
+    width:304px!important;
+    color: #490C17;
+    font-size: 11px;
+}
+.pre_avatar .border_top{
+    background:url("/images/design/login_block_top_avatar.png") no-repeat scroll 0 0 transparent!important;
+    height:10px;
+    left:0;
+    position:absolute;
+    top:-10px;
+    width:319px!important;
+    z-index:1;
+}
+.pre_avatar .border_bottom {
+    background:url("/images/design/login_block_bottom_avatar.png") no-repeat scroll 0 0 transparent!important;
+    bottom:-10px;
+    height:10px;
+    left:0;
+    position:absolute;
+    width:319px!important;
+    z-index:1;
+}
+.login_form {
+    background:url("/images/design/login_block.png") repeat-y scroll 0 0 transparent;
+    margin:0 0 30px;
+    padding:40px 5px 0 10px;
+    position:relative;
+    top:10px;
+    width:247px;
+    color: #490C17;
+    font-size: 11px;
+}
+.login_form .border_top{
+    background:url("/images/design/login_block_top.png") no-repeat scroll 0 0 transparent;
+    height:10px;
+    left:0;
+    position:absolute;
+    top:-10px;
+    width:262px;
+    z-index:1;
+}
+.login_form .border_bottom {
+    background:url("/images/design/login_block_bottom.png") no-repeat scroll 0 0 transparent;
+    bottom:-10px;
+    height:10px;
+    left:0;
+    position:absolute;
+    width:262px;
+    z-index:1;
+}
+.login_form h2{
+    font-size:17px;
+    height:41px;
+    left:12px;
+    line-height:43px;
+    padding:0 0 0 33px;
+    position:absolute;
+    top:-14px;
+    width:179px;
+    z-index:2;
+}
+
+.login_form .input_login_page input{
+    background-position:0 0;
+    height:19px;
+    margin:0 3px 5px 0;
+    padding-left:2px;
+    padding-right:4px;
+    vertical-align:middle;
+    width:131px;}
+.login_form .input_login_page {width: 137px;}
+.login_form .login_input, .login_form .pass_input{
+
+    display: inline-block;
+    height: 20px;
+    margin:0 3px 5px 0;
+    vertical-align: top;
+    background-position:100% -21px;}
+
+input.input_login{
+    background:url("/images/design/input_fild_login.png") no-repeat scroll 100% -150px transparent;
+    display:inline-block;
+    height:21px;
+    margin:0 0 5px;
+    overflow:hidden;
+    padding:0;
+    width:250px;
+    background-color: #ffffff;
+}
+.enter_button {
+    background:url("/images/design/buttons.png") no-repeat scroll 0 0 transparent;
+    border:0 none;
+    cursor:pointer;
+    display:inline-block;
+    height:21px;
+    overflow:hidden;
+    text-indent:-2000px;
+    vertical-align:top;
+    width:97px;
+    //margin-top: -23px;
+    // margin-left: 150px;
+    //display:block;
+}
+.login_form .remember_check{
+    background:url("/images/design/form_elements.png") no-repeat scroll 0 -40px transparent;
+    display:inline-block;
+    height:16px;
+    margin:0 3px 0 0;
+    position:relative;
+    top:2px;
+    width:16px;
+}
+#remember_me{
+    position:relative;
+    right:21px;
+    top:-2px;
+    display: none;
+}
+.login_form .checked{background-position:-16px -40px;}
+#login{font-family: helvetica}
+div.registration_block{width: 752px!important;}
+.registration_form{
+    background:url("/images/design/old_paper.jpg") no-repeat scroll 0 0 transparent;
+    padding:75px 50px 0 94px;
+    height:525px;
+    left:310px;
+    top:3px;
+    width:582px!important;
+}
+.registration_form h1{
+    background:none repeat scroll 0 0 transparent;
+    margin:0 0 13px;
+    padding:0;
+    text-align:center;
+    width:512px;
+    font-size: 17px;
+
+}
+#registration_form{width: 535px!important;}
+#registration_form p{margin:0 0 10px; line-height:1.3em;font-size: 12px;}
+fieldset.inline{padding:0 0 0 50px}
+fieldset, div.select_birth_data, div.select_country {
+    background:url("/images/design/field.png") no-repeat scroll 50% 0 transparent;
+    border:0 none;
+    margin:0 -13px 0px -80px;
+    padding:5px 0 0 85px;
+    width: 632px;
+}
+fieldset.inline .field {
+    clear:none;
+    float:left;
+    margin:0 45px 0 0;
+    padding:0;
+    height: 80px;
+}
+fieldset.inline .field dt {
+    float:none;
+    left:0;
+    margin:0;
+    padding:0 0 0 75px;
+    text-align:left;
+    width:auto;
+
+}
+fieldset.inline .field dt label{padding-top: 5px;}
+.field dt, div.select_birth_data label, div.select_country label{
+    color:#A00330;
+}
+/*form#new_user{margin-top: 30px;}*/
+.small_login{display:inline-block;font-size:10px;width:150px;}
+fieldset.inline .field dd {
+    float:none;
+    margin: 0px;
+    position: relative;
+}
+div.registration_block .inline .input_data {
+    width:241px;
+    height: 31px;
+    margin-left:30px;
+}
+div.registration_block .input_data {
+    background-position:100% 0;
+}
+div.registration_block .input_data input{
+    background:url("/images/design/data_input_registr.png") no-repeat scroll 0 0 transparent;
+    color:#490C17 !important;
+    height:18px;
+    padding-left:43px;
+    width:177px;
+    vertical-align:middle;
+    border: none;
+    background-color: #ffffff;
+}
+
+div.registration_block .input_data {
+    display:inline-block;
+    height:21px;
+    margin:8px 0 0;
+    overflow:hidden;
+    padding:0;
+    width:250px;
+}
+
+div.registration_block .password_ico{
+    background:url("/images/design/pswd.png") no-repeat scroll 0 0 transparent;
+    display:inline-block;
+
+}
+div.registration_block .email_ico{
+    background:url("/images/design/mail.png") no-repeat scroll 0 0 transparent;
+    display:inline-block;
+
+}
+div.registration_block .login_ico {
+    background:url("/images/design/name.png") no-repeat scroll 0 0 transparent;
+    display:inline-block;
+
+}
+div.registration_block .retype_password_ico{
+    background:url("/images/design/check_pswd.png") no-repeat scroll 0 0 transparent;
+    display:inline-block;
+
+}
+div.registration_block .question_ico {
+    background:url("/images/design/question.png") no-repeat scroll 0 0 transparent;
+    display:inline-block;
+    top:-15px !important;
+}
+div.registration_block .ico {
+    left:-25px;
+    position:absolute;
+    top:-12px;
+    height:66px;
+    width:95px;
+}
+div.registration_block .login_ico {
+    background:url("/images/design/name.png") no-repeat scroll 0 0 transparent;
+    display:inline-block;
+    top: -13px;
+}
+dd.sex{height: 22px;position: relative;}
+dl.gender_select {margin: 0px;padding: 0px;}
+dl.gender_select dt{width: 50px;}
+fieldset.gender{width: 560px; margin-bottom: 30px;}
+div.gender_bar{color:#490C17 !important;}
+div.gender_bar input{margin-left:6px;margin-right:0px;margin-bottom:1px;}
+div.gender_bar span {margin-right: 40px;color:#A00330;}
+dd.captcha{width: 300px;display:inline-block;}
+#registr_form a{
+    color:#8E4630;
+    font-size:11px;
+}
+#registr_form a:hover{
+    text-decoration: none!important;
+}
+.ok_button {
+    background:url("/images/design/play_now.png") no-repeat scroll 0 0 transparent;
+    border:0 none;
+    cursor:pointer;
+    display:inline-block;
+    height:57px;
+    overflow:hidden;
+    text-indent:-2000px;
+    width:244px;
+    float: right;
+    margin-right:33px;
+}
+.ok_button:hover{
+    background:url("/images/design/play_now_hover.png") no-repeat scroll 0 0 transparent;
+
+}
+.i_agree{
+    display:block;
+    font-size:10px;
+    padding:20px 0 0;
+}
+#visitor_page #columns_narrow_wide {margin:20px auto auto;width:990px;}
+#visitor_page #content {margin: auto;}
+#recaptcha_widget dl.field{margin: 0px;}
+#visitor_page div#col_left {width: 327px;}
+#visitor_page div#col_right {width: 705px!important;}
+/*login new end*/
+
+#collapsed_chat_mode, #expanded_chat_mode {display:block;margin-left:13px;width:915px;}
+#main_menu div.punkt_menu{float: left; display: inline;top: 13px;display: block;position: relative;left:57px;}
+#main_menu div.punkt_menu a{display:block; outline:medium none; height: 60px;width: 127px}
+.home_new a{margin-left:9px;}
+.avatar_new a{margin-left:40px;}
+.friends_new a{margin-left:37px;}
+.mail_new a{margin-left:41px;}
+.mail_new img#go_new_mail {position: absolute; right: 0px; top: 13px;}
+.gold_new a{margin-left:47px;}
+
+.back_new a{
+
+    height:108px !important;
+    position:relative;
+    top:-22px;
+    width:142px !important;}
+.blog_new a{
+
+    height:108px !important;
+    position:relative;
+    top:-22px;
+    width:142px !important;
+}
+.back_new a:hover{
+    background-image:url("/images/design/back_hover.png");
+    height:108px !important;
+    position:relative;
+    top:-22px;
+    width:142px !important;}
+.blog_new a:hover{
+    background-image: url(/images/design/blog_hover.png);
+    height:108px !important;
+    position:relative;
+    top:-22px;
+    width:142px !important;
+    margin-left: 6px;}
+
+.home_new a:hover{margin-left:9px;background-image: url(/images/design/menu_home_new_hover.jpg); }
+.avatar_new a:hover{margin-left:40px;background-image: url(/images/design/menu_avatar_new_hover.jpg); }
+.friends_new a:hover{margin-left:37px;background-image: url(/images/design/menu_friends_new_hover.jpg);}
+.mail_new a:hover{margin-left:41px;background-image: url(/images/design/menu-mail_new_hover.jpg);}
+.gold_new a:hover{margin-left:47px;background-image: url(/images/design/menu_gold_new_hover.jpg); }
+span.menu_drop_up{
+    background-color:#FBFDEF;
+    background-image: url(/images/design/poup_pidklad.png);
+    bottom:60px;
+    display:none;
+    position:absolute;
+    padding: 2px;
+
+}
+span.home{left:-3px;}
+span.avatar{left:28px;}
+span.friends{left:26px;}
+span.mail{left:28px;}
+
+span.menu_drop_up ul span{background-color:#E2C895;color:#7D560C;display:block;font-weight:bold;padding:3px;text-align:center;width:153px;}
+span.menu_drop_up ul {padding-bottom: 5px;}
+span.menu_drop_up ul li {padding-right:5px;}
+span.menu_drop_up ul li a{
+    border-bottom:1px dotted;
+    color:#490C17;
+    height:24px !important;
+    line-height:21px;
+    margin-left:10px;
+    text-align:left;
+    background-image: none;}
+span.menu_drop_up ul li a:hover{text-decoration: none!important; background-image: none;margin-left: 10px;height: 24px;}
+div.punkt_menu:hover span{display: block;}
+#flash_content{margin-bottom:8px;margin-top:8px;position:relative;z-index:2;}
+.long_block_spser{padding-left: 70px!important;}
+
+th.user_name_fight{text-align: left;}
+table.short_tabl{width: 450px;}
+.table td.full_td{background: none; border: none;}
+.table td.min_height{min-height: 20px;display:block;}
+ul.tips_fight li.tips {top: 50px;}
+#clans .table td:last-child{border-right: 0px!important;}
+.visitor_rating{
+    margin:20px 0 0 -5px;
+    position:relative;
+    z-index:2;
+}
+.visitor_rating dt{
+    background:url("/images/design/visitor_rating_top.png") no-repeat scroll 0 0 transparent;
+    font-size:16px;
+    font-weight:inherit;
+    height:32px;
+    line-height:31px;
+    overflow:hidden;
+    text-align:center;
+    font-weight: bold;
+}
+.visitor_rating dd{margin: 0px;}
+.visitor_rating .table{width: 243px; font-size: 11px;text-align: center;border-left:1px solid #D1BDA0;border-right:1px solid #D1BDA0;}
+.visitor_rating .table td.level{color: #A00330; font-weight: bold;}
+.visitor_rating .table th{
+    background-image:url("/images/design/table_header_bg2.jpg");
+    background-repeat:repeat-x;
+    border-bottom:1px solid #D1BDA0;
+    border-right:1px solid #D1BDA0;
+}
+.visitor_rating .table div.name_char{width: 77px; display: block; overflow: hidden;text-align: left;}
+table.screenshots img{border: 1px solid #000000;}
+div.more_short{
+    background-image:url("/images/design/more_short.png");
+    height:27px;
+    margin-top:10px;
+    width:234px;
+}
+span.login_error{
+    background-color:red;
+    color:#FFFFFF;
+    display:block;
+    height:19px;
+    margin-bottom:10px;
+    padding-bottom:11px;
+    padding-top:2px;
+    text-align:center;
+    width:241px;
+}
+form.edit_clan{margin-left:15px;width:630px;}
+#clan_edit div.quick_links {margin-bottom: 10px;}
+#clan_edit h1{margin-bottom: 10px;}
+.banner{border: 1px solid #000000; background-color: #000000; color: #ffffff; font-size: 11px;}
+#col_right .banner{margin-bottom:20px;margin-left:6px;}
+#col_left .banner{width: 300px;margin-left: -7px;}
+.banner_long {width:728px; margin: auto;}
+textarea#user_description, textarea#user_attacker_message{width: 616px;}
+form.edit_user input{margin-right: 10px;//margin-right: 20px;}
+form.edit_user {margin-left: 7px;}
+.profile_main{padding-left: 54px!important;}
+.profile_main ul.equipment_block {
+    float:left;
+    margin-bottom:5px;
+    margin-right:7px;
+    margin-top:4px;
+    padding:0;
+    width:103px;}
+
+/*fight new*/
+#big_fight_res .fight_res_avas{float: left; width: 400px;}
+#big_fight_res .fight_res_avas_couple {width: 800px; margin: auto;}
+
+table.dragon_result_table, #big_fight_res .table_wide, #big_fight_res .table, #fight_results .table, .war_table .table{background-image:url(/images/design/table_header_bg2.jpg); background-repeat: repeat-x; float: left;  border-left: 1px solid #EFDBB6; border-right: 1px solid #EFDBB6;}
+#big_fight_res .table_wide{min-width: 469px}
+table.dragon_result_table, #big_fight_res .table, #fight_results .table, .war_table .table{width:441px}
+
+.war_table .table {float: none;margin-left:10px;width:615px;}
+#big_fight_res .table_wide th, #big_fight_res .table th,  #fight_results .table th, .war_table .table th {height: 24px; font-weight: inherit;}
+
+.war_table .table th {padding-left: 10px; text-align: left;}
+#big_fight_res .tables_big_result {width: 930px; margin: auto;}
+#big_fight_res .left_table{margin-right: 20px; margin-left: 15px;}
+/*#big_fight_res div.fight_equipment {padding:17px 17px 17px 21px !important;}*/
+#fight_flash div.quick_links label{margin-left:50px;}
+input.to_mana {margin-right: 5px;}
+
+#fight_result_scale .table {background-position:0 0;margin-left:17px;margin-right:0;width:300px;}
+#fight_result_scale div#fight_logs {margin-left:15px;padding:5px;width:613px;}
+#fight_result_scale .identic_left {margin-left: 0px;}
+#fight_result_scale .tables_big_result {width:650px;}
+#fight_result_scale .fight_res_avas{margin-left:38px;width:263px;}
+#fight_result_scale .fight_res_avas_couple{width:650px;}
+/*fight new end*/
+#select_user_info{display:inline-block;margin-top:3px;position:relative;}
+div.avatar_slot{padding-left: 43px;}
+form.new_clan{width: 634px;margin: auto;}
+#join_request form{margin: auto; width: 620px;}
+/* new design end */
+
+/*GAMES*/
+
+.star-rating {
+    background:url("/images/design/star_rating.gif") repeat-x scroll left top transparent;
+    height:12px;
+    list-style:none outside none;
+    margin:0;
+    padding:0;
+    position:relative;
+    width:65px;
+}
+
+li.current-rating {
+    background:url("/images/design/star_rating.gif") repeat scroll left bottom transparent;
+    display:block;
+    height:12px;
+    left:0;
+    position:absolute;
+    text-indent:-9000px;
+    z-index:1;
+}
+/* games integrate  begin */
+.game_categories a{padding-left: 12px; padding-right:11px;display:inline-block; height: 25px;}
+.game_categories{text-align: center;margin-bottom: 15px;}
+#games_screen #flash_content{border:5px solid #d1d1d1;display:block;margin:auto;max-width:952px;margin-bottom: 10px;position:relative;z-index:2;}
+ul.star-rating{padding: 0px!important; display: inline-block;}
+div.game_description {margin: auto;}
+.game_description ul{padding-left: 20px!important;}
+div.game_description h3{
+    display:inline-block;
+    font-size:15px;
+    font-weight:bold;
+    margin-bottom:0;
+    margin-top:0;
+    //width: 100px;
+    //display:inline;}
+.game_list_item{
+    background-color:#FFFFFF;
+    cursor:pointer;
+    height:96px;
+    margin:0 0 0;
+    padding:0 0 5px;
+    position:relative;}
+.game_list_item .pic_game{
+    -moz-border-radius-bottomleft:4px;
+    -moz-border-radius-bottomright:4px;
+    background-color:#222222;
+    float:left;
+    padding:3px 0 6px;
+    text-align:center;
+    width:99px;
+    margin: 0px;
+}
+.game_list_item .pic_game dt{margin:0 auto;width:93px;}
+.game_list_item .pic_game dd{padding: 0px; margin: 0px;}
+.game_list_item .pic_game dd a {
+    color:#FFFFFF;
+    font:bold;
+    font-size: 10px;
+    text-decoration:underline;}
+dl.description{margin:0 0 0 110px;}
+dl.description dt {
+    height:17px;
+    overflow:hidden;
+    width:176px;}
+dl.description h3{
+    height:21px;
+    margin:0;
+    overflow:hidden;
+    width:175px;
+    //margin-top: -100px;
+}
+dl.description dt a{font-size: 14px;}
+dd.rating, dd.summary{padding: 0px;margin: 0px;}
+dd.summary{height:67px;overflow:hidden;width:175px;}
+.games_one{width: 281px;}
+.games_all {
+    float:left;
+    margin-right:10px !important;
+    width:298px;
+    background-color: #ffffff;
+}
+div.games_all:hover, div.games_all:hover div.game_list_item{background-color: #ffffc9;}
+div.game_block_all{width: 966px;margin-left: 5px;}
+#no_battle p{margin:auto;padding-right:0;text-align:justify;width:610px;}
+.clan_war_logos {float: left;margin-left: 90px;text-align: center;margin-top:10px;width: 200px;}
+.clan_war_logos_left {margin-left: 76px;width: 200px;}
+.clan_war_logos .bes_search{padding: 0px;}
+.clan_war_logos .logo_block_200 {margin-top: 5px;}
+fieldset.top_set {//padding-left: 0px;//position: relative;//margin-left: 0px;//right: 30px;}
+
+/* games integrate  end */
+div.dragon_popup{
+    background-image:url("/images/design/dragon_popup_header.png")!important;
+    max-height:484px;
+    text-align:left;
+    width:640px !important;}
+div.dragon_popup div.presents_row {width: 601px;overflow:hidden;max-height:100%;}
+div.dragon_popup div.header_type {width: 640px !important;}
+table.dragon_result_table{width: 601px;margin-top: 14px;margin-bottom:0;}
+table.dragon_result_table th {border-right:1px solid #CFCC7C; height: 24px;}
+table.dragon_result_table th:last-child {border: none;}
+.popap_rozmezuvach{margin:0 auto 11px 52px !important;}
+.dragon_result_content p{margin: 0px; padding:14px 4px 0; clear: both}
+.dragon_result_content div.bottom_popap{width:597px;text-align: center;}
+.dragon_result_content a.close_button {margin-top: 3px;}
+.grey_img img{opacity:0.4; filter: alpha(opacity=40);}
+
+.grey_img div {
+    background-color:#CCCCCC;
+    display:block;
+    height:103px;
+    opacity:0.6;
+    position:absolute;
+    width:103px;
+
+    //display:none;
+
+}
+#dailybonus_content {margin-top: 0px;}
+
+#new_relation #close_btn {height:14px;padding-bottom:3px;padding-top:5px;}
+#messages_list .middle_button a {padding-top:4px;}
+.profile_main li.tips{margin-top: 53px !important;}
+li.tips li.little_button a {margin-top: 10px;}
+.disolve_all{margin-right:44px;margin-top:5px;text-align:right;}
+div.dragon_fight_big #fight_logs{margin-left:35px!important;}
+div.dragon_fight_big table.table_wide {background-image: none!important; border-right: none !important; border-left: none !important;width:100%;background-color: #F7F9E8;}
+div.dragon_fight_big table.table_wide td {border-bottom: none;border-right: none;}
+div.dragon_fight_big table.table_wide td p{margin:0 0 1px;}
+div.dragon_fight_big table.table_wide td#dragon_equipment div.fight_equipment{padding:17px 17px 10px!important;}
+#fight_result_scale div.dragon_fight_big #fight_logs {margin-left: -4px!important;width:706px;}
+#fight_result_scale div.dragon_fight_big .table_wide{margin-left:0;width: 708px;}
+.presents_sending{
+    display:block;
+    height:208px;
+    overflow-y:auto;
+    padding-left:46px;
+    padding-right:52px;
+    text-align:center;
+    width:350px;
+}
+.presents_bottom{margin-right: 175px;padding-top:22px!important;}
+#shop div.pagination {margin-top: 10px;}
+td.price {text-align: right;}
+div.under_title_text{
+    margin-bottom:10px;
+    padding-left:50px;
+    padding-right:50px;
+    text-align:center;
+    width:550px;
+    color:#81041E;
+}
+
+div#fight_logs ul.no_spaser_log {padding: 0px;}
+ul.presents_tips{display: none;}
+div.popup_presents {display: inline-block;}
+div.popup_presents:hover ul.presents_tips {padding: 5px;display: block; position: absolute;background-color:#F8F8FD;border:1px solid #A00330; text-align: left;}
+.buy_gold td.price {text-align: left;}
+.presents_sending ul.equipment_block{display:inline-block;float:none;height:108px;width:108px;}
+#presents_tips{min-height:20px;min-width:135px;margin-top:46px; }
+#presents_tips ul li{min-width:140px;}
+table.restore_confirmation td.label {width: 100px!important;}
+span.restor_confirm_notification {width: 485px;}
+.restor_confirm_form form {margin-top: 30px;}
+div.presents_sending {overflow-y: auto; }
+span.chat_new_message{height: 11px;vertical-align:top;}
+span.right {//margin-top:-12px}
+span.delete_chat img{//display:block;//margin-top: 1px; }
+div.select_birth_data, div.select_country{
+    height:25px;
+    margin-bottom:10px;
+    padding-left:125px;
+}
+div.select_birth_data label, div.select_country label {
+    display:inline-block;
+    width:88px;
+}
+div.select_birth_data select, div.select_country select{font-size:11px;padding:1px 0;}
+
+p.hint{width: 545px;}
+table.privacy_bigpoint td.check_box{width: 20px;}
+div.registration_form_bigpoint fieldset.gender{ margin-bottom: 20px;}
+div.registration_form_bigpoint p.hint{margin-bottom: 13px;}
+table.bigpoint_konfirm {width: 430px !important}
+table.bigpoint_konfirm #user_gender_f {margin-left: 5px}
+table.bigpoint_konfirm #user_submit {height:23px;margin-left:165px;margin-top:15px;padding-top:3px;width:78px;}
+table.bigpoint_konfirm {display: block;margin-left: 0px;text-align: left;width: 195px;}
+table.bigpoint_konfirm label{width: 60px;display: inline-block;}
+
+table.bigpoint_konfirm input {height: 13px;}
+table.navigate_invitation b{word-wrap: break-word;}
+#fight_result_scale div.fight_equipment {margin-left: 16px;}
+td.min_height_result {min-height: 20px;}
+
+.hi5_buy_gold form {float: right;margin-top:43px;}
+.hi5_buy_gold form input.save_button{margin-top:0;margin-right:0;float:none !important;margin-bottom:0;}
+.hi5_buy_gold form input#gold {
+    background-color:#FFF6E7;
+    border:1px solid #CF6D7F;
+    color:#490C17;
+    font-size:11px;
+    height:19px;
+    margin-right:20px;
+    padding-left:3px;
+    width:100px;
+}
+
+table.bigpoint_konfirm input#name {width: 153px;}
+.bigpoint_bottom {margin-top:6px !important;}
+
+div.bes_search form span.input {float: right; margin-right: 0px}
+

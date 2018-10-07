@@ -1,0 +1,18 @@
+<% form_ajax_tag :url => {:action => :new_clan_message_process} do %>
+
+  <table style="width: 100%" class="popap_type">
+    <tr>
+      <td style="text-align: left; width: 120px"><label ><%= tf(ClanMessage, :recipients)%>:</label></td>
+      <td style="text-align: left"><%= @user.clan_name %></td>
+    </tr>
+    <tr>
+      <td colspan="2"><%= text_area_tag :message, @message, {:style =>"width:426px;margin-top:10px;", :cols => 40, :rows => 4, :onkeypress=>"return wizards.imposeMaxLength(event, this, 1000);"} %></td>
+    </tr>
+  </table>
+
+  <div class="bottom_popap">
+    <%= submit_tag tg(:send), :class =>"small_submit", :name => nil%>
+    <%= link_to tg(:close), "javascript:void(0)", :id => "close_btn", :class=>"close_button", :onclick => "javascript: dialog.close()"%>
+  </div>
+<%end%>
+<%=  javascript_tag("$('message').focus();")%>

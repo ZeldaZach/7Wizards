@@ -1,0 +1,22 @@
+<% form_for message, :url => { :action => action } do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :position, tf(message, :position) %><br />
+    <%= f.text_field :position %>
+  </p>
+  <p>
+    <%= f.label :title, tf(message, :title) %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body, tf(message, :body) %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.label :published, tf(message, :published) %>
+    <%= f.check_box :published %>
+  </p>
+  <p>
+    <%= f.submit tg(:save) %>
+  </p>
+<% end %>

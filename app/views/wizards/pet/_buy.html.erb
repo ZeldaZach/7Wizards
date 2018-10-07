@@ -1,0 +1,22 @@
+<div id="buy_pet_screen">
+<h1 class="category_title_shop">Chose your pet</h1>
+<table class="table">
+  <tr>
+    <th></th>
+    <th><%= tf(User, :pet_name) %></th>
+    <th><%= tg(:price) %></th>
+    <th></th>
+  </tr>
+   <% User.pet_kinds.each do |kind| %>
+  <tr>
+    <td> <%= pet_image(kind, true) %></td>
+
+    <td class="col_desc"><b><%= pet_name(kind) %></b></td>
+    <td class="price">
+      <%= price_tag(:price_staff => GameProperties::PET_BUY_PRICE_STAFF) %>
+    </td>
+    <td class="little_button"><%= link_to_ajax tg(:buy), :url => pet_path(:action => :process_buy, :pet_kind => kind) %></td>
+  </tr>
+   <%end%>
+</table>
+</div>

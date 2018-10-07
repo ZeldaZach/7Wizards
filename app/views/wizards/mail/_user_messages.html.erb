@@ -1,0 +1,125 @@
+<%
+author_or_recipient = proc {
+  |message|
+
+  options = {}
+  if message.kind == Message::MESSAGE_TO
+    options[:from_name] = h(message.user.name)
+    options[:to_name]   = h(message.user2_name)
+    options[:from_id]   = message.user.id
+    options[:to_id]     = message.user2_id
+  else
+    options[:from_name] = h(message.user2_name)
+    options[:to_name]   = h(message.user.name)
+    options[:from_id]   = message.user2_id
+    options[:to_id]     = message.user.id
+  end
+  options[:from_link]   = link_to_ajax options[:from_name], {:url => profile_path(:id => options[:from_id])}
+  options[:to_link]     = link_to_ajax options[:to_name], {:url => profile_path(:id => options[:to_id])}
+  options
+}
+%>
+
+<% message_from = @kind.to_i == Message::MESSAGE_FROM%>
+
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "menu" %>
+  </div>
+
+  <div id="col_right" >
+    <div class="main_col_content">
+      <div id="messages_list" class="quick_links">
+
+        <% if @selected_message %>
+          <%options = author_or_recipient.call(@selected_message)%>
+          <%user_name = @user.id == options[:to_id] ? options[:from_name] : options[:to_name]%>
+          <h1 class="category_title_shop"><%= t("title_selected_#{@kind}", :user_name => user_name) %></h1>
+        <%else%>
+          <h1 class="category_title_shop"><%= t("title_list_#{@kind}") %></h1>
+        <%end%>
+
+        <div class="bes_search">
+          <% if @selected_message %>
+            <ul class="message_titles ">
+              <li style="font-size: 16px; font-weight: bold; "><%= @selected_message.title %></li>
+              <li><%= tf(Message, :from)%>: <%= options[:from_link]%></li>
+              <li class="top_border"><p><%= @selected_message.message %></p></li>
+            </ul>
+            <span class="middle_button">
+              <%if message_from && @user.id != options[:from_id]%>
+                <%= link_to_ajax(tg(:reply), :url => mail_path(:action => :reply, :message_id => @selected_message.id))%>
+                <%= confirm_link t(:block_user), t(:block_user_confirm) , :url => relation_path(:action => :block, :id => options[:from_id])%>
+              <%end%>
+
+
+              <%= link_to_ajax tg(:delete), :url => mail_path(:action =>:remove, :id => @selected_message.id, :callback => :user_messages, :kind => @selected_message.kind) %>
+            </span>
+            <div class="clear"></div>
+            <% @history.each do |message|  %>
+              <% o = author_or_recipient.call(message)%>
+              <ul class="message_titles history_messages">
+                <li>From: <b><%= o[:from_link]%></b></li>
+                <li>Date: <%= d message.created_at%></li>
+                <li><%= tf(Message, :title)%> : <%= message.title %></li>
+                <li class="top_border"><%= message.message %></li>
+              </ul>
+
+            <%end%>
+
+            <div class="clear"></div>
+          <%else%>
+            <table class="content_up table" cellpadding="0" cellspacing="0"  >
+              <tr class="tableWidth">
+                <th scope="col" class="index_cell" >#</th>
+                <th scope="col" ><%= tf(Message, :title)%></th>
+                <%if message_from%>
+                  <th scope="col" ><%= tf(Message, :from)%></th>
+                <%else%>
+                  <th scope="col" ><%= tf(Message, :recipient)%></th>
+                <%end%>
+                <th scope="col" style="text-align: left" ><%= tg(:date_title)%></th>
+                <th scope="col"></th>
+              </tr>
+
+              <% @user_messages.each_with_index do |msg, index|%>
+
+                <%options = author_or_recipient.call(msg)%>
+                <tr>
+                  <td class="index_cell"><%= paginate_index(@page, index) %></td>
+                  <td><div style="overflow: hidden; height: 15px; max-width: 300px;"><%= link_to_ajax msg.title, :url => mail_path(:action => :user_messages, :kind => @kind, :id => msg.id) %></div></td>
+                  <%if message_from%>
+                    <td class="list_table">
+                      <%= link_to_ajax options[:from_name], :url => mail_path(:action => :user_messages, :kind => @kind, :id => msg) %>
+                    </td>
+                  <%else%>
+                    <td class="list_table">
+                      <%= link_to_ajax options[:to_name], :url => mail_path(:action => :user_messages, :kind => @kind, :id => msg) %>
+                    </td>
+                  <%end%>
+                  <td style="text-align: left"><%= d msg.created_at %></td>
+                  <td align="center"><%= link_to_ajax("", {:url => mail_path(:action =>  :remove, :id => msg, :kind => @kind)}, :title => "Delete", :class => "delete") %></td>
+                </tr>
+              <%end%>
+            </table>
+          <%end%>
+        </div>
+      </div>
+      <div class="clear"></div>
+      <% if @selected_message %>
+        <%=  paginate(@history)%>
+      <%else%>
+        <%=  paginate(@user_messages, :params => {:kind => @kind})%>
+      <%end%>
+      <div class="clear"></div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>
+
+
+

@@ -1,0 +1,92 @@
+p1:
+  name: Nectar
+  level: 1
+  price: 100
+  sell_price: 10
+  health: 100
+  minutes: 60
+  description: Restores <strong>100</strong> points of your health </br> Can be used once per 60 minutes 
+p2:
+  name: Dragon Tears
+  level: 1
+  price: 200
+  sell_price: 30
+  health: 200
+  minutes: 60
+  description: Restores <strong>200</strong> points of your health </br> Can be used once per 60 minutes
+p3:
+  name: Aqua Vitae
+  level: 1
+  price_staff: 70
+  sell_price: 90
+  minutes: 20
+  health_percent: 100
+  description: Restores 100% of your health </br> Can be used once per 20 minutes
+p4:
+  class: ShopPotionCurse
+  name: Eucalyptus Balm
+  level: 1
+  price: 500
+  sell_price: 90
+  minutes: 60
+  description: Only 1 received curse will be disabled
+p5:
+  class: ShopPotionCurseAll
+  name: Amber Juice
+  level: 1
+  price_staff: 100
+  sell_price: 100
+  minutes: 60
+  description: All received curses will be disabled
+
+p11:
+  name: Nectar for Pet
+  level: 1
+  price: 500
+  sell_price: 100
+  health: 100
+  pet: true
+  minutes: 30
+  description: Restores <strong>100</strong> points of your Pet health </br> Can be used once per 30 minutes
+p22:
+  name: Dragon Tears for Pet
+  level: 1
+  price: 1000
+  sell_price: 300
+  health: 200
+  pet: true
+  minutes: 30
+  description: Restores <strong>200</strong> points of your Pet health </br> Can be used once per 30 minutes
+p33:
+  name: Aqua Vitae for Pet
+  level: 1
+  price_staff: 70
+  sell_price: 90
+  pet: true
+  minutes: 15
+  health_percent: 100
+  description: Restores 100% of your Pet health </br> Can be used once per 15 minutes
+p441:
+  name: Mana plant
+  level: 1
+  price_staff: 10
+  sell_price: 0
+  mana: 100
+  minutes: 60
+  description: Adds 100 mana when used. Acts once. May be used 1 time per 60 minutes.
+p442:
+  name: Mana mature plant
+  level: 1
+  price_staff: 50
+  sell_price: 0
+  mana: 500
+  minutes: 60
+  description: Adds 500 mana when used. Acts once. May be used 1 time per 60 minutes.
+p443:
+  name: Mana flowering plant
+  level: 1
+  price_staff: 100
+  sell_price: 0
+  mana: 1000
+  minutes: 60
+  description: Adds 1000 mana when used. Acts once. May be used 1 time per 60 minutes.

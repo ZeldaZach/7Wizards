@@ -1,0 +1,191 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "partial_navigate" %>
+  </div>
+  <div id="col_right" >
+    <div class="main_col_content">
+      <div id="no_battle" class="quick_links">
+         <h1 class="category_title_shop"><%= tv(:clan_information) %></h1>
+        <p>
+          <%= t :description,
+            :duration_hours => GameProperties::CLAN_MAX_WAR_DURATION_TIME.seconds_to_hours,
+            :duration_rest_hours => GameProperties::CLAN_REST_TIME_AFTER_WAR.seconds_to_hours,
+            :preparation_minutes => GameProperties::CLAN_WAR_PREPARATION_TIME.seconds_to_minutes
+        %>
+        </p>
+      </div>
+      <% if @war %>
+        <!-- battle result -->
+        <div id="fight_result_base" class="quick_links">
+          <h1 class="category_title_shop"><%= @war.finished? ? t(:war_results_title) : t(:war_info_title)%></h1>
+          <ul>
+            <li>
+              <% if @war.finished? %>
+                <% if @war.winner?(@clan) %>
+                  <h2 class="green"><%= t(:clan_war_won) %></h2>
+                  <span class="green">
+                    <%= t :your_clan_won_war_reason, :reason => @war.finish_reason_string(@clan),
+                      :money => tp(@war.winner_money),
+                      :staff2 => tps2(@war.winner_staff2) %>
+                  </span>
+                <% else %>
+                  <h2 class="red"><%= t(:clan_war_lost) %></h2>
+                  <span class="red">
+                    <%= t :your_clan_lose_war_reason, :reason => @war.finish_reason_string(@clan),
+                      :money => tp(@war.winner_money),
+                      :staff2 => tps2(@war.winner_staff2) %>
+                  </span>
+                <% end %>
+              <% else %>
+                <% if @war.started? %>
+                  <h2 class="blue"><%= t :battle_started_header %></h2>
+                <% else %>
+                  <h2 class="blue"><%= t :battle_declared_header %></h2>
+                  <span class="green"><%= t :start_war_description, :remain => (@war.started_at - Time.now).seconds_to_full_time(true) %></span>
+                <% end %>
+              <% end %>
+            </li>
+            <li style="padding: 5px">
+              <%= clan_link @war.clan %> VS <%= clan_link @war.opponent_clan %>
+            </li>
+            <li>
+              <%= tf @war, :created_at %>: <%= d(@war.created_at) %>
+            </li>
+            <li>
+              <% if @war.started? %>
+                <%= tf @war, :started_at %>: <%= d(@war.started_at)%>
+              <%else%>
+                <%= tf @war, :will_started_at %>: <%= d(@war.started_at)%>
+              <%end%>
+            </li>
+            <% if @war.finished? %>
+              <li>
+                <%= tf @war, :finished_at %>: <%= d(@war.finished_at) %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <!-- clan in battle -->
+        <div class="quick_links clan_war_logos">
+          <%= clan_name(@clan) %>
+          <div class="bes_search" style="text-align: center">
+            <%= clan_image @clan %>
+          </div>
+        </div>
+
+        <div class="quick_links clan_war_logos clan_war_logos_left ">
+          <%= clan_name(@opponent_clan) %>
+          <div class="bes_search" style="text-align: center">
+            <%= clan_image @opponent_clan %>
+          </div>
+        </div>
+        <div class="quick_links clan_battle_stats" style="float: left">
+          <div class="clan_war_name"><%= t :battle_stats_title, :name => clan_name(@clan) %></div>
+          <ul>
+            <li><%= t :protection %>: <%= @clan_protection %></li>
+            <li><%= t :protection_remain %>: <%= @clan_protection - @clan_lost_protection %></li>
+            <li><%= t :damage %>: <%= @opponent_clan_lost_protection %></li>
+          </ul>
+        </div>
+        <div class="quick_links clan_battle_stats" style="float: left">
+          <div class="clan_war_name"><%= t :battle_stats_title, :name => clan_name(@opponent_clan) %></div>
+          <ul>
+            <li><%= t :opponent_protection %>: <%= @opponent_clan_protection %></li>
+            <li><%= t :opponent_protection_remain %>: <%= @opponent_clan_protection - @opponent_clan_lost_protection %></li>
+            <li><%= t :opponent_damage %>: <%= @clan_lost_protection %></li>
+          </ul>
+        </div>
+        <div class="clear"></div>
+        <div class="quick_links war_table">
+          <h1 class="category_title_shop"> <%= t :clan_members_title, :name => clan_name(@opponent_clan) %></h1>
+          <div class="bes_search">
+            <table class="content_up table" cellpadding="0" cellspacing="0">
+              <tr>
+                <th style="width: 500px; "><%= tf User, :name %></th>
+                <th><%= tf User, :a_level %></th>
+                <th><%= tg :action %></th>
+              </tr>
+              <% for war_user in @opponent_clan_users %>
+                <% user = war_user.user %>
+                <% if user %>
+                  <tr>
+                    <td style="width: 500px">
+                      <%= is_online_image_tag user %>
+                      <%= user_link user %>
+                    </td>
+                    <td style="width: 75px;"><%= user.a_level %></td>
+                    <td>
+                      <%= link_to_ajax t(:attack), :url => fight_path(:action => :find_id, :id => user) %>
+                    </td>
+                  </tr>
+                <% end %>
+              <% end %>
+            </table>
+          </div>
+        </div>
+        <div class="quick_links war_table">
+          <h1 class="category_title_shop"> <%= t :clan_members_title, :name => clan_name(@clan) %></h1>
+          <div class="bes_search">
+            <table class="content_up table" cellpadding="0" cellspacing="0">
+              <tr>
+                <th><%= tf User, :name %></th>
+                <th><%= tf User, :a_level %></th>
+                <th><%= link_to_ajax tf(ClanWarUser, :damage), clan_path(:action => :wars, :order => :damage, :current_order => @order, :asc => @order_asc) %></th>
+                <th><%= link_to_ajax tf(ClanWarUser, :lost_protection), clan_path(:action => :wars, :order => :lost_protection, :current_order => @order, :asc => @order_asc) %></th>
+                <th><%= link_to_ajax tf(ClanWarUser, :fights), clan_path(:action => :wars, :order => :fights, :current_order => @order, :asc => @order_asc) %></th>
+                <th><%= link_to_ajax tf(ClanWarUser, :attacks), clan_path(:action => :wars, :order => :attacks, :current_order => @order, :asc => @order_asc) %></th>
+                <th><%= link_to_ajax tf(ClanWarUser, :wins), clan_path(:action => :wars, :order => :wins, :current_order => @order, :asc => @order_asc) %></th>
+  <%#*<th>%>
+  <%#= link_to tf(ClanWarUser, :union_fights), clan_path(:action => :wars, :order => :union_fights, :current_order => @order, :asc => @order_asc) %>
+  <%#*</th>%>
+  <%#*<th>%>
+  <%#= link_to tf(ClanWarUser, :union_wins), clan_path(:action => :wars, :order => :union_wins, :current_order => @order, :asc => @order_asc) %>
+  <%#*</th>%>
+              </tr>
+              <% for war_user in @clan_users %>
+                <% user = war_user.user %>
+                <tr>
+                  <% if user %>
+                    <td>
+                      <%= is_online_image_tag user %>
+                      <%= user_link user %>
+                    </td>
+                    <td>
+                      <%= user.a_level %>
+                    </td>
+                  <% else %>
+                    <td>
+                      <%= user_link war_user %> <!-- support of towers and dragons ... -->
+                    </td>
+                    <td></td>
+                  <% end %>
+                  <td><%= war_user.damage %></td>
+                  <td><%= war_user.lost_protection %></td>
+                  <td><%= war_user.fights %></td>
+                  <td><%= war_user.attacks %></td>
+                  <td><%= war_user.wins %></td>
+    <%#*<td>%>
+    <%#= war_user.union_fights %>
+    <%#*</td>%>
+    <%#*<td>%>
+    <%#= war_user.union_wins %>
+    <%#*</td>%>
+                </tr>
+              <% end %>
+            </table>
+          </div>
+        </div>
+      <% end %>
+
+
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+</div>
+
+<div class="clear"></div>
+
+<%#= t :unions_damage %>
+<%#= @war.clan_unions_damage(@clan) %>

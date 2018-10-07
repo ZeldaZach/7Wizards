@@ -1,0 +1,82 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "partial_navigate" %>
+  </div>
+  <div id="col_right" >
+    <div class="main_col_content" id="clan_upgr">
+      <div class="quick_links">
+        <h1 class="category_title_shop"><%= tf(Clan, :users) %></h1>
+
+        <div class="bes_search avatal_imag_list">
+          <% form_ajax_tag(:url => clan_path(:action => :users_list)) do %>
+            <%= select_custom_tag(:order_users, options_for_select([[tg(:by_name), "n"], [tg(:by_level), "l"], [t(:by_money), "p"], [t(:by_staff2), "s2"]], @order)) %>
+            <%= submit_tag tg(:search), :name => nil, :class => "small_submit", :id => "order_submit" %>
+            <%= hidden_field_tag :id, @clan.id %>
+            <%= text_field_tag :user_name, @user_name, :class => "text login_pass_input" %>
+          <%end%>
+
+          <div class="equipment_slot avatars_list">
+
+            <% for user in @users %>
+              <% payments = @clan.s_get_user_payment(user) %>
+
+              <ul class="gifts  information_tips_block avatar_litt_block">
+                <li class="li_avas" style="z-index: 2; ">
+                  <%= user_image(user, false, :height => 111, :width => 104, :link => true) %>
+                  <span  style="width: 10px; height: 10px;padding-top:4px;">
+                    <%= is_online_image_tag(user) %>
+                  </span>
+                  <span class="user_name"><%= user_name(user, {:short_name => true}) %></span>
+                  <ul class="no_padding">
+                    <li class="tips tips_avatar" style="min-width:200px !important;" >
+                      <ul class="no_padding">
+                        <li><b class="hint_titel"><%= user_link(user) %></b></li>
+                        <li><%= tf(User, :rating) %>: <%= user.rating %></li>
+                        <li><%= tf(User, :a_level) %>: <%= user.a_level %></li>
+                        <li><%= tf(User, :a_reputation) %>: <%= user.a_reputation %></li>
+                        <li><%= t(:clan_donate_mana) %>: <%= payments[:money] %></li>
+                        <li><%= t(:clan_donate_crystals) %>: <%= payments[:staff2] %></li>
+                        <% if @clan_owner && !@on_war && user != @user && @user.in_clan?(@clan)%>
+                          <% if !user.is_clan_creator? %>
+                            <li>
+                              <%= confirm_link t(:kick_user_title), t(:kick_user_description, :user_name => user.name),
+                                :url => clan_path(:action => 'process_kick', :id => user.id) %>
+                            <% end %>
+                          </li>
+                          <li>
+                            <%= confirm_link t(:change_leader_title), t(:change_leader_description, :user_name => user.name),
+                              :url => clan_path(:action => 'change_owner', :id => user.id) %>
+                          </li>
+                        <% end %>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            <%end%>
+
+            <div class="clear"></div>
+          </div>
+
+          <span class="clear_donation">
+            <% if @clan_owner && @user.in_clan?(@clan)%>
+              <%= link_to_ajax "Reset donates statistic", :url => {:action => :reset_donates} %>
+            <% end %>
+          </span>
+        </div>
+      </div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+
+  </div>
+</div>
+<div class="clear"></div>
+
+<script type="text/javascript">
+  Element.observe('order_users', 'change', function(){
+    $('order_submit').click();
+  });
+  wizards.controls.init();
+</script>

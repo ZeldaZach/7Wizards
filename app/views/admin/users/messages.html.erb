@@ -1,0 +1,14 @@
+<h1><%= t :title%></h1>
+
+<p>
+  <%= tf(User, :name) + " : " + link_to(@user.name, :action => :show, :id => @user.id) %>
+</p>
+
+<% for message in @messages %>
+  <small><%= d message.created_at %></small> <%= message.g_title(self) %><br />
+  <%= message.g_message(self) %><br /><br />
+<% end %>
+
+<p>
+  <%= paginate @messages, :params => {:simple_link => true} %>
+</p>

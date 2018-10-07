@@ -1,0 +1,46 @@
+s1:
+  name: Soil Ring
+  level: 11
+  price: 1800
+  sell_price: 500
+  skill: 15
+  dexterity: -5
+s2:
+  name: Ore Ring
+  level: 15
+  price: 2650
+  sell_price: 800
+  skill: 18
+  dexterity: -10
+s3:
+  name: Sand Ring
+  level: 19
+  price: 4100
+  sell_price: 1020
+  protection: 6
+  skill: 25
+  dexterity: -15
+s4:
+  name: Rock Ring
+  level: 24
+  price: 6000
+  sell_price: 1500
+  protection: 6
+  skill: 30
+  dexterity: -20
+#s5:
+#  name: Скутум
+#  level: 28
+#  price: 9000
+#  sell_price: 2500
+#  protection: 8
+#  skill: 37
+#  dexterity: -25
+#s6:
+#  name: Баклер
+#  level: 31
+#  price: 14000
+#  sell_price: 3500
+#  protection: 15
+#  skill: 43
+#  dexterity: -30

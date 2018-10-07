@@ -1,0 +1,155 @@
+<%
+user_won = user_won(log.user, log)
+r = defined?(refresh || nil).nil? ? false : refresh
+l = defined?(level || nil).nil? ? false : level
+d = defined?(drid  || nil).nil? ? false : drid
+desc = defined?(description  || nil).nil? ? false : description
+%>
+
+<script type="text/javascript">
+<%if r || d %>
+    html_callback('flash_content', <%= r %>, <%= d %> );
+<%end%>
+<%if d %>$('drid').setAttribute("value", <%= d %>);<%end%>
+<%if l %> $('dragon_level').setAttribute("value", <%= l %>);<%end%>
+<%if desc %> setDescription("<%= desc %>");<%end%>
+
+</script>
+
+
+<div id="fight_result_base">
+  <h1 class="category_title_fight"> <%= t(:result) %></h1>
+  <ul>
+    <li>
+      <%if user_won %>
+        <span class="green"><%= t(:fight_you_won) %></span>
+      <%else%>
+        <span class="red"><%= t(:fight_you_lost) %></span>
+      <%end%>
+    </li>
+    <li style="padding: 5px">
+      <%= user_link(log.user) %>
+      <%= t(:fight_result_vs) %>
+      <%= user_link(log.dragon) %>
+    </li>
+
+    <li><%= t(:fight_result_damage, :user_name => user_name(log.winner), :user_damage => log.loser_health_diff, :opponent_name => user_name(log.loser), :opponent_damage => log.winner_health_diff) %></li>
+    <li>
+      <%= t(:fight_health_left, :user_name => user_name(log.winner), :health => log.winner_health_after_fight) %>,
+      <%= t(:fight_health_left, :user_name => user_name(log.loser), :health => log.loser_health_after_fight) %>
+    </li>
+  </ul>
+</div>
+<%if log.has_detail_log? %>
+  <div id="big_fight_res" class="dragon_fight_big" >
+    <div class="tables_big_result">
+      <h1 class="category_title_fight"> <%= tf(FightLog, :fight_user_attributes) %></h1>
+      <div>
+        <table class="content_up table left_table" cellpadding="0" cellspacing="0">
+          <tr>
+            <th colspan="2"><%= user_name(log.user_a) %></th>
+
+          </tr>
+          <tr>
+            <td><%= tf(User, :a_health) %></td>
+            <td><%= log.user_health_after_fight %></td>
+          </tr>
+          <tr>
+            <td><%= tf(User, :a_power) %></td>
+            <td><%= log.user_a.get_value(:full_power) %></td>
+          </tr>
+          <tr>
+            <td><%= tf(User, :a_protection) %></td>
+            <td><%= log.user_a.get_value(:full_protection) %></td>
+          </tr>
+          <tr>
+            <td><%= tf(User, :a_dexterity) %></td>
+            <td><%= log.user_a.get_value(:full_dexterity) %></td>
+
+          </tr>
+          <tr>
+            <td><%= tf(User, :a_skill) %></td>
+            <td><%= log.user_a.get_value(:full_skill)%></td>
+
+          </tr>
+          <tr>
+            <td><%= tf(User, :a_weight) %></td>
+            <td><%= log.user_a.get_value(:full_weight)%></td>
+          </tr>
+
+        </table>
+      </div>
+
+      <div>
+        <table class="content_up table" cellpadding="0" cellspacing="0">
+          <tr>
+            <th colspan="2"><%= tf Dragon, :dragon_name %></th>
+          </tr>
+          <tr>
+            <td><%= tf(User, :a_health) %></td>
+            <td><%= log.opponent_health_after_fight %></td>
+          </tr>
+          <tr>
+            <td><%= tf(User, :a_power) %></td>
+
+            <td><%= log.opponent_a.get_value(:full_power)%></td>
+          </tr>
+          <tr>
+            <td><%= tf(User, :a_protection) %></td>
+
+            <td><%= log.opponent_a.get_value(:full_protection)%></td>
+          </tr>
+          <tr>
+            <td><%= tf(User, :a_dexterity) %></td>
+
+            <td><%= log.opponent_a.get_value(:full_dexterity) %></td>
+          </tr>
+          <tr>
+            <td><%= tf(User, :a_skill) %></td>
+
+            <td><%= log.opponent_a.get_value(:full_skill)%></td>
+          </tr>
+          <tr>
+            <td><%= tf(User, :a_weight) %></td>
+
+            <td><%= log.opponent_a.get_value(:full_weight) %></td>
+          </tr>
+
+        </table>
+      </div>
+      <div class="clear"></div>
+      <div >
+        <h1 class="category_title_fight"><%= t(:fight_log) %></h1>
+        <%= render :partial => "wizards/fight/log", :locals => {:user => user, :log => log} %>
+      </div>
+    </div>
+    <div class="tables_big_result">
+      <h1 class="category_title_fight"> <%= t(:fight_bonuses) %></h1>
+
+      <div style='padding-right: 80px'>
+        <table class="content_up table_wide left_table" cellpadding="0" cellspacing="0">
+          <tr>
+            <td><%= render :partial => "wizards/fight/bonuses", :locals => {:user_a => log.user_a} %></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+    <div class="tables_big_result">
+      <h1 class="category_title_fight"> <%= t(:fight_equipment) %></h1>
+
+      <div style='padding-right: 80px'>
+        <table class="content_up table_wide left_table" cellpadding="0" cellspacing="0">
+          <tr>
+            <td id="dragon_equipment"><%= render :partial => "wizards/fight/equipment", :locals => {:user => log.user, :user_a => log.user_a} %></td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="clear"></div>
+    </div>
+
+  </div>
+<%end%>

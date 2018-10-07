@@ -1,0 +1,15 @@
+<div>
+  <% form_tag :action => :process_login do %>
+    <div>
+      <%= label_tag :user_name, tf(User, :name) %>
+      <%= text_field_tag :user_name, @user_name %>
+    </div>
+    <div>
+      <%= label_tag :user_password, tf(User, :password) %>
+      <%= text_field_tag :user_password, @user_password %>
+    </div>
+    <div>
+      <%= submit_tag 'Login' %>
+    </div>
+  <% end %>
+</div>

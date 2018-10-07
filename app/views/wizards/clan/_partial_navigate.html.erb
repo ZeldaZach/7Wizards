@@ -1,0 +1,59 @@
+<% new_count = proc { |count| count && count > 0 ? "(#{count})" : "" } %>
+<div class="additional_info_block" >
+  <div id="clan_emblem" class="quick_links">
+    <div class="clan_name_header"><h2><%= clan_name @clan %></h2></div>
+    <%= clan_image @clan, {:id => "clan_front_logo"}, {:id => "clan_back_logo"} %>
+  </div>
+
+  <%
+    lis = @user.in_clan?(@clan) ? ["<b><li>#{link_to_ajax(t(:menu_new_clan_messages), :url => mail_path(:action => :new_clan_message))}</b></li>"] : []
+
+    lis << "<li>#{link_to_ajax t(:clan_profile), :url => clan_path(:action => :details, :id => @clan)}</li>"
+    lis << "<li>#{link_to_ajax t(:clan_members), :url => clan_path(:action => :users_list, :id => @clan)}</li>"
+    
+    if @user.in_clan? @clan
+      lis << "<li>#{link_to_ajax t(:clan_upgrades),:url => clan_path(:action => :improvements)}</li>"
+      lis << "<li>#{link_to_ajax t(:clan_donate),  :url => clan_path(:action => :donate)}</li>"
+      lis << "<li>#{link_to_ajax t(:wars), :url => clan_path(:action => :wars)}</li>"
+      lis << "<li>#{link_to_ajax t(:wars_history), :url => clan_path(:action => :war_history)}</li>"
+
+      if @user.is_clan_creator(@clan) && !@user.is_clan_owner(@clan)
+         lis << "<li>#{link_to_ajax t(:get_ownership), :url => clan_path(:action => :get_ownership)}</li>"
+      end
+      
+    elsif !@user.on_war? && @user.is_clan_owner?
+      lis << "<li>#{link_to_ajax t(:prepare_war), :url => clan_path(:action => :prepare_war, :opponent_clan_id => @clan)}</li>"
+    end
+
+
+    if @user.is_clan_owner(@clan)
+      lis << "<li>#{link_to_ajax t(:clan_edit, :price => tp(GameProperties::CLAN_CHANGE_PRICE)), :url => clan_path(:action => :edit)}</li>"
+      lis << "<li>#{link_to_ajax t(:clan_join_requests, :count => new_count.call(@new_requests)), :url => clan_path(:action => :join_requests)}</li>"
+    end
+
+    if @user.is_clan_owner(@clan) && @user.is_clan_creator(@clan)
+      lis << "<li>#{confirm_link t(:clan_destroy), t(:destroy_confirmation), :url => clan_path(:action => :kill)}</li>"
+    elsif @user.in_clan? @clan
+      lis << "<li>#{confirm_link t(:clan_leave), @user.is_clan_creator(@clan) ? t(:leave_creator_confirmation) : t(:leave_confirmation) , :url => clan_path(:action => :leave)}</li>"
+    end
+    
+    if !@user.clan
+      lis << "<li>#{link_to_ajax t(:join_clan), :url => clan_path(:action => :join, :id => @clan)}</li>"
+    end
+
+  %>
+  
+  <% if lis.size > 0 %>
+    <div class="quick_links">
+      <h2 class="block_header"><%= tg(:actions) %></h2>
+      <ul class="navigate">
+        <%= lis.join("") %>
+      </ul>
+    </div>
+  <%end%>
+
+  <div class="additional_info_bg"></div>
+  <div class="additional_info_bottom"></div>
+  <div class="additional_info_top"></div>
+</div>
+

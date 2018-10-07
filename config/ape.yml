@@ -1,0 +1,11 @@
+development:
+  host: www.7wizards.com
+  port: 1024
+
+test:
+  host: xxx
+  port: 
+
+production:
+  host: www.7wizards.com
+  port: 

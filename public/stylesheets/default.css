@@ -1,0 +1,18 @@
+div.background_main {background:  url("/images/design/avatars_bg_2.jpg") no-repeat center top #6ad2de; background-color: #ffffff;}
+
+div.logo {
+    color:#5F5F94;
+    font-family:Arial;
+    font-size:12px;
+    height:183px;
+    margin:auto auto 10px;
+    padding-top:17px;
+    text-align:center;
+    width:960px;}
+div.logo span{
+    color:#A00330;
+    font-weight:bold;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:31px;
+    vertical-align:middle;}

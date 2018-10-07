@@ -1,0 +1,30 @@
+<div class="rounded corners" id="restore_form">
+  <h2 style="margin-top: 50px;"><%= t :title %></h2>
+
+  <div>
+    <strong><%= t :reason %></strong>:
+    <% if @ban && !@ban.public_reason.blank? %>
+      <%= @ban.public_reason %>
+    <% else %>
+      <%= t :default_reason %>
+    <% end %>
+  </div>
+
+  <div>
+    <% if @ban && @ban.banned_by %>
+      <strong><%= t :banned_by_moderator %></strong>: <%= @ban.banned_by.name %>
+    <% else %>
+      <strong><%= t :banned_by_admin %></strong>
+    <% end %>
+  </div>
+
+  <div>
+    <strong><%= t :end_date %></strong>:
+    <% if @ban && @ban.ban_end_date %>
+      <%= d @ban.ban_end_date %>
+    <% else %>
+      <%= t :end_date_never %>
+    <% end %>
+  </div>
+
+</div>

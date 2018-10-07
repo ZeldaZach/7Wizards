@@ -1,0 +1,9 @@
+<div id="lightbox" class="shadow_popap dragon_popup">
+  <div class="header_type"><%= @dialog_title %></div>
+  <div class="presents_row">
+    <%unless flash[:notice].blank?%>
+      <div class="dialog_error"><%= flash[:notice] %></div>
+    <%end%>
+    <%= yield %>
+  </div>
+</div>

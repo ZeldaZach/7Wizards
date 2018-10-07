@@ -1,0 +1,30 @@
+<h1><%= t :title%></h1>
+
+<p>
+  <%= tf(User, :name) + " : " + link_to(@user.name, :action => :show, :id => @user.id) %> <br />
+  <%= user_image @user %> <br />
+  <%= link_to t(:reset_avatar), :action => :reset_avatar, :id => @user.id %>
+</p>
+
+<!--
+<% if @user.has_pet? %>
+  <hr />
+  <p>
+    Pet: <br />
+    <%#= pet_image @user %> 
+    <%#= pet_image @user, true %> <br />
+    <%#= link_to t(:reset_avatar), :action => :reset_avatar, :type => CustomAvatarService::PET, :id => @user.id %>
+  </p>
+<% end %>
+
+<% if @user.clan %>
+  <hr />
+  <p>
+    Clan: <br />
+    <%= tf(Clan, :name) + " : " + @user.clan.name %> <br />
+    <%#= clan_logo_image_tag @user.clan %> 
+    <%#= clan_logo_image_tag @user.clan, true %> <br />
+    <%#= link_to t(:reset_avatar), :action => :reset_avatar, :type => CustomAvatarService::CLAN, :id => @user.id %>
+  </p>
+<% end %>
+-->

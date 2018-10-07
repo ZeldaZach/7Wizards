@@ -1,0 +1,9 @@
+<div class="guru_popap">
+  <%= image_design_tag("home_magician.jpg") %>
+  <%= t :description %>
+  <div class="bottom_popap">
+    <%= link_to_ajax tg(:accept), {:url => wizards_path(:action => :accept_welcom)},  :class => "close_button" %>
+    <%= link_to_ajax tg(:cancel), {:url => wizards_path(:action => :cancel_welcom)},  :class => "close_button" %>
+  </div>
+</div>
+

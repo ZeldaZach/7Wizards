@@ -1,0 +1,12 @@
+<ul class="confirm_dialog">
+  <li><%= @confirmation %></li>
+  <%if flash[:notice].blank? && !@dialog_callback_url%>
+    <li>
+      <%= link_to_ajax(t(:yes_btn), {:url => @confirm_url}, :onclick => "dialog.close()")%>
+      <%= link_to t(:no_btn), "javascript:void(0)", :onclick => "dialog.close()" %>
+    </li>
+  <%else%>
+    <li><%= link_to tg(:ok), "javascript:void(0)", :onclick => "dialog.close()" %></li>
+  <%end%>
+</ul>
+

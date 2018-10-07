@@ -1,0 +1,9 @@
+<% if @bonus_description %>
+<p> <%= @bonus_description %></p>
+<%else%>
+  <p>
+    <%= t :daily_bonus_description %>
+  </p>
+  <% loading = current_user.has_task?(TutorialDailybonus::NAME) ? "" : "javascript: navigate('#{home_path(:action => :refresh)}'); "  %>
+  <%= link_to_ajax t(:home_get_bonus), :url => home_path(:action => :get_bonus, :force_ajax => true), :loading => loading %>
+<%end%>

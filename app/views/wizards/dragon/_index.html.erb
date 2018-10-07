@@ -1,0 +1,166 @@
+<%  drid = double_request_id%>
+
+<%if @current && @active %>
+  <%=  swf_object(rewrite_asset_path('/flash/Fight.swf'), 'flash_content', :width => 930, :height => 326,
+    :params => {:allowScriptAccess => "always"},
+    :callback => "flash_callback",
+    :flash_vars => {:version => rails_asset_id('/flash/Fight.swf'), :base_url => "/", :is_dragon => @current.active?, :drid => drid, :debug => !GameProperties::PROD}) %>
+  <div class="additional_info_block" id="fight_flash">
+    <div class="quick_links fight_search blue_buttons search_left">
+      <h1 class="category_title_fight"><%= t(:fight_title) %></h1>
+      <div class="bes_search">
+        
+        <span class="fight_button_do">
+          <span id="new_dragon_desc" style="display:inline-block;margin-left:20px;width:640px;">
+            <%= @description %>
+          </span>
+          <% form_ajax_tag :url => dragon_path(:action => :fight) do %>
+            <%= hidden_field_tag :drid, drid %>
+            <%= hidden_field_tag :dragon_level, @current.a_level %>
+            <span class="join_submitt fight_button dragon_fight_button">
+              <%= submit_tag "", :name => nil %>
+            </span>
+          <%end%>
+        </span>
+      </div>
+      <div class="clear"></div>
+    </div>
+
+    <div id="flash_content" style=" text-align: center; display: none">
+      <p>
+        <%= link_to image_tag("http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif", :alt=>"Get Adobe Flash player"), "http://www.adobe.com/go/getflashplayer" %>
+      </p>
+    </div>
+    <div class="full_info_bg"></div>
+    <div class="full_info_bottom"></div>
+    <div class="full_info_top"></div>
+  </div>
+  <div class="additional_info_block">
+
+    <div id="results_without_flash">
+
+      <div id="fight_results">
+        <div>
+          <h1 class="category_title_fight"><%= tf(FightLog, :fight_user_attributes) %></h1>
+          <div class="quick_links identic_left identic">
+            <div class="bes_search">
+              <table class="content_up table statistic statistic_short" cellpadding="0" cellspacing="0">
+                <tr>
+                  <th scope="col" class="user_name_fight"><%= @user.name %></th>
+                  <th scope="col"></th>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_health) %></td>
+                  <td><%= @user.a_health %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_power) %></td>
+                  <td><%= @user_a.full_power_label %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_protection) %></td>
+                  <td><%= @user_a.full_protection_label %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_dexterity) %></td>
+                  <td><%= @user_a.full_dexterity_label %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_skill) %></td>
+                  <td><%= @user_a.full_skill_label %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_weight) %></td>
+                  <td><%= @user_a.full_weight_label %></td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+
+          <div class="quick_links identic">
+            <div class="bes_search">
+              <table class="content_up table" cellpadding="0" cellspacing="0">
+                <tr>
+                  <th scope="col" class="user_name_fight statistic statistic_short"><%= tf Dragon, :dragon_name %></th>
+                  <th scope="col"></th>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_health) %></td>
+                  <td><%= @current.a_health %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_power) %></td>
+                  <td><%= @current.a_power %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_protection) %></td>
+                  <td><%= @current.a_protection %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_dexterity) %></td>
+                  <td><%= @current.a_dexterity %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_skill) %></td>
+                  <td><%= @current.a_skill %></td>
+                </tr>
+                <tr>
+                  <td><%= tf(User, :a_weight) %></td>
+                  <td><%= @current.a_weight %></td>
+                </tr>
+
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div>
+          <%if @user.pet_active? %>
+            <h1 class="category_title_fight"> <%= tf(User, :pet) %> <%= tf(FightLog, :fight_user_attributes) %></h1>
+            <div class="quick_links identic_left identic" style="width: 481px">
+              <div class="bes_search">
+                <table class="content_up table statistic statistic_short short_tabl" cellpadding="0" cellspacing="0">
+                  <tr>
+                    <th><%= @user.name %> <%= tf(User, :pet) %> </th>
+                    <th></th>
+                  </tr>
+                  <tr>
+                    <td><%= tf(User, :a_power) %></td>
+                    <td><%= @user_a.full_pet_power_label %></td>
+                  </tr>
+                  <tr>
+                    <td><%= tf(User, :a_protection) %></td>
+                    <td><%= @user_a.pet_protection%></td>
+                  </tr>
+                  <tr>
+                    <td><%= tf(User, :a_dexterity) %></td>
+                    <td><%= @user_a.pet_dexterity%></td>
+                  </tr>
+                  <tr>
+                    <td><%= tf(User, :a_skill) %></td>
+                    <td><%= @user_a.full_pet_skill_label(false)%></td>
+                  </tr>
+                  <tr>
+                    <td><%= tf(User, :a_weight) %></td>
+                    <td><%= @user_a.pet_weight%></td>
+                  </tr>
+
+                </table>
+              </div>
+            </div>
+
+            <div class="clear"></div>
+          <%end%>
+        </div>
+        <div class="clear"></div>
+      </div>
+    </div>
+    <div class="full_info_bg"></div>
+    <div class="full_info_bottom"></div>
+    <div class="full_info_top"></div>
+  </div>
+  <div class="clear"></div>
+<%end%>

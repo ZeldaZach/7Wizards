@@ -1,0 +1,8 @@
+<%if @warning%>
+  <%= @warning%>
+<%else%>
+  <%= t(:report_user_saved) %>
+<%end%>
+<div class="bottom_popap" style="clear: both;">
+  <%= link_to tg(:close), "javascript:void(0)", :id => "close_btn",:class=>"close_button", :onclick => "javascript: dialog.close()"%>
+</div>

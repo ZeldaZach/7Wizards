@@ -1,0 +1,84 @@
+ /* --------------------- Default --------------------- */
+html, body { margin:0; padding:0;}
+body { background:#EECF98;}
+a { color:#fff; text-decoration:underline; outline:none;}
+a:hover { color:orange; text-decoration:underline;}
+input { margin:0; padding:0; font-family:tahoma; font-size:11px; vertical-align:middle;}
+div { margin:0; padding:0; font:11px tahoma; color:#A55B2F; line-height:13px;}
+em { font-style:normal;}
+img { border:0;}
+p { margin:0; padding:12px 0;}
+ul { margin:0; padding:0; list-style:none;}
+li { margin:0; padding:0; line-height:normal;}
+h1 { color:#EECF98; font:bold 18px tahoma; margin:0; padding:0 2px 5px;}
+h2 { color:#EECF98; font:bold 17px tahoma; margin:0; padding:0 2px 5px;}
+h3 { color:#EECF98; font:bold 16px tahoma; margin:0; padding:0 2px 5px;}
+
+#container { padding:0 3px;}
+/* ********************* Header ********************* */
+#header { width:144px;}
+#header img { padding-top:8px; display:block;}
+#header span { color:#fff; padding:5px 5px 4px; margin:1px 7px 0; display:block; border-bottom:1px solid #CB080D; background:#ED2A0C; text-align:center;}
+#header ul { padding:7px 0;}
+#header ul li { padding:1px 10px; color:#A55B2F;}
+#header ul li a { color:#F07D39;}
+/* ******************** Content ********************* */
+#content { padding:21px 5px 11px; background:url(images/px_content.gif) repeat-x #C15B2A;}
+#content li, #content div { font-size:12px; color:#fff; line-height:15px;}
+#content .line { height:5px; margin:10px 0 4px; overflow:hidden; background:url(images/line.gif) repeat-x;}
+/* Warrior */
+.warrior { width:134px;}
+.warrior .img { border:1px solid #EECF98; display:block;}
+.warrior .team { padding:5px 4px 8px; display:block; color:#EECF98;}
+.warrior .team strong { padding-left:5px;}
+.warrior .attack { padding:10px 4px; display:block;}
+.warrior .attack1 { padding:10px 4px 0; display:block;}
+.warrior .list { padding:2px 0 0;}
+.warrior .list li { padding:2px 4px;}
+.warrior .list li img { margin-right:5px; vertical-align:middle;}
+.warrior .list li.empty { padding:2px 4px 2px 25px;}
+/* Profile */
+.profile { width:128px; padding:5px 3px 2px;}
+.profile p { padding:12px 0 0;}
+.profile textarea { width:129px; height:55px; padding:2px; font:11px tahoma; color:#000; display:block; margin:2px 0 10px; background:#EECF98; border:1px solid #DEA85B;}
+.profile label { padding-left:1px;}
+.profile .img { margin:5px 0 0; border:1px solid #EECF98; display:block;}
+.profile .button { width:127px; height:22px; margin-left:3px; color:#fff; font:12px tahoma; background:url(images/button_save.gif) no-repeat red; text-align:center; cursor:pointer; border:none;}
+/* Login */
+.login { width:134px; padding:3px 0 0;}
+.login li { padding:7px 0 0; overflow:hidden; zoom:1;}
+.login input { width:129px; padding:1px; font:11px tahoma; color:#000; display:block; margin:2px 0 0; background:#EECF98; border:1px solid #DEA85B;}
+.login .button { padding:9px 3px 0;}
+.login .button input { width:77px; height:22px; color:#fff; font:12px tahoma; background:url(images/button_login.gif) no-repeat red; text-align:center; cursor:pointer; border:none;}
+.login .menu { padding:7px 5px 0;}
+.login .menu a { padding:3px 0 0; display:block;}
+/* Shop */
+.shop { width:134px;}
+.shop li { padding:17px 0 0; overflow:hidden;}
+.shop li img { margin-right:7px; float:left; border:1px solid #EECF98;}
+.shop li strong a { margin-right:8px; font-size:11px;}
+.shop li.home { padding:0;}
+.shop ul { padding:5px 0 4px; clear:left;}
+.shop ul li { padding:1px 0;}
+.shop .title { padding:0 2px 10px; display:block;}
+/* Register */
+.register { width:134px;}
+.register h3 { padding:0 2px;}
+.register li { padding:10px 0 0;}
+.register li input { margin-right:2px;}
+.register li textarea { width:129px; height:55px; padding:2px; font:11px tahoma; color:#000; display:block; margin:2px 0; background:#EECF98; border:1px solid #DEA85B;}
+.register li label { padding:0 3px;}
+.register li .inp { width:129px; padding:1px; font:11px tahoma; color:#000; display:block; margin:2px 0 0; background:#EECF98; border:1px solid #DEA85B;}
+.register li p { padding:7px 0;}
+.register li.home { padding:5px 0 0;}
+.register li.indent { padding:15px 0 0;}
+.register li.button { padding:15px 0 0;}
+.register li.button input { width:127px; height:22px; color:#fff; font:12px tahoma; background:url(images/button_save.gif) no-repeat red; text-align:center; cursor:pointer; border:none;}
+.register ul li { padding:7px 0 0 12px; color:#EECF98; background:url(images/arrow.gif) 0 14px no-repeat;}
+.register ul li span { color:#EECF98;}
+
+
+/* ********************* Footer *********************** */
+#footer { height:45px; clear:left; background:url(images/px_footer.gif) repeat-x;}
+#footer p { width:144px; padding:23px 0 0; text-align:center;}
+/* ---------------------------------------------------- */

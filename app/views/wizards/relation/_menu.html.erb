@@ -1,0 +1,61 @@
+<% new_count = proc { |count| count > 0 ? "(#{count})" : "" } %>
+
+<div class="additional_info_block" >
+  <%= render :partial => "wizards/profile/user_avatar", :locals => {:user => @user} %>
+  <div class="quick_links">
+    <h2 class="block_header"><%= t(:links)%></h2>
+    <ul class="navigate">
+      <li><%= link_to_ajax t(:menu_friends, :count => @friends_count), :url => relation_path(:action => :index, :kind => Relation::KIND_FRIEND) %></li>
+      <li><%= link_to_ajax t(:menu_requests, :count => new_count.call(@requests_count)), :url => relation_path(:action => :friend_requests) %></li>
+      <li><%= link_to_ajax t(:menu_flagged, :count => new_count.call(@bookmark_count)), :url => relation_path(:action => :index, :kind => Relation::KIND_BOOKMARK) %></li>
+      <li><%= link_to_ajax t(:menu_blocked), :url => relation_path(:action => :index, :kind => Relation::KIND_IGNORE) %></li>
+    </ul>
+    <div class="clear"></div>
+    <%if @user.hi5?%>
+      <div class="quick_links">
+        <h2 class="block_header"><%= tg :invite_a_friend %></h2>
+        <ul class="navigate">
+          <li><%= link_to "Invite friends", "javascript: void(0)", :onclick => "hi5.Api.inviteFriends();" %></li>
+
+        </ul>
+      </div>
+    <%elsif !@user.bigpoint? %>
+
+      <div class="quick_links">
+        <h2 class="block_header"><%= tg :invite_a_friend %></h2>
+        <table class="navigate_invitation">
+
+          <%= tg :invite_a_friend_description,
+            :link => "http://#{current_host}/p/#{@user.name}",
+            :percent => GameProperties::REFERENCE_BONUS_PAYMENTS_PERCENT,
+            :staff => GameProperties::REFERENCE_BONUS_STAFF,
+            :level => GameProperties::REFERENCE_BONUS_LEVEL %>
+
+        </table>
+
+        <div class="addthis_toolbox addthis_default_style adds_buttons">
+          <%= link_to "Share", "http://www.addthis.com/bookmark.php?v=250&amp;username=7wizards", :class => "addthis_button_compact" %>
+          <span class="addthis_separator">|</span>
+          <%= link_to "", "", :class => "addthis_button_facebook" %>
+          <%= link_to "", "", :class => "addthis_button_twitter" %>
+          <%= link_to "", "", :class => "addthis_button_googlebuzz" %>
+          <%= link_to "", "", :class => "addthis_button_email" %>
+          <span class="addthis_separator"> </span>
+          <%= link_to "", "", :class => "addthis_button_facebook_like" %>
+        </div>
+        <script type="text/javascript">var addthis_config = {"data_track_clickback":true};</script>
+        <table style="font-size:11px;margin-left:10px;width:270px;">
+          <%= tg :invite_a_friend_bonus_description %>
+        </table>
+
+      </div>
+    <%end%>
+  </div>
+
+  <div class="additional_info_bg"></div>
+  <div class="additional_info_bottom"></div>
+  <div class="additional_info_top"></div>
+</div>
+<script type="text/javascript">
+  wizards.addThisInit();
+</script>

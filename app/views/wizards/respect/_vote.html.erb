@@ -1,0 +1,50 @@
+<div id="columns_narrow_wide">
+
+  <div id="col_left">
+    <%= render :partial => "menu" %>
+  </div>
+
+  <div id="col_right" >
+    <div class="main_col_content" id="hall_glory">
+      <div class="visibl">
+        <h1 class="category_title_shop"><%= tv(:top_vote) %> </h1>
+        <div class="bes_search avatal_imag_list">
+
+          <div class="equipment_slot avatars_list">
+            <% @users.each do |user| %>
+              <ul class="gifts  information_tips_block avatar_litt_block">
+                <li class="li_avas" style="z-index: 2">
+                  <%= user_image(user, false, :link => true, :height => 111, :width => 104) %>
+                  <span  style="width: 10px; height: 10px;padding-top:4px;">
+                    <%= is_online_image_tag(user) %>
+                  </span>
+                  <span class="user_name"> <%= user_name(user)%> </span>
+                  <ul class="no_padding">
+                    <li class="tips tips_avatar" >
+                      <ul class="no_padding">
+                        <li><b class="hint_titel"><%= user_link(user) %></b></li>
+                        <li><%= tf(User, :s_vote) %>: <%= user.s_vote%></li>
+                        <li><%= tf(User, :a_level) %>: <%= user.a_level %></li>
+                        <li><%= tf(User, :a_reputation) %>: <%= user.a_reputation %></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            <%end%>
+            <div class="clear"></div>
+          </div>
+        </div>
+        <div class="clear"></div>
+        <%= paginate(@users, :params=>{}) %>
+        <div class="clear"></div>
+      </div>
+
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+  </div>
+
+</div>
+<div class="clear"></div>

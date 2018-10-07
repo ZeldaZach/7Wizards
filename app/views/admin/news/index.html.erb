@@ -1,0 +1,27 @@
+<h1><%= t :title%></h1>
+
+<table border="1">
+  <tr>
+    <th><%= tf NewsMessage, :position %></th>
+    <th><%= tf NewsMessage, :title %></th>
+    <th><%= tf NewsMessage, :published %></th>
+    <th><%= tf NewsMessage, :created_at %></th>
+    <th><%= tf NewsMessage, :updated_at %></th>
+  </tr>
+<% for message in @messages %>
+  <tr>
+    <td><%= message.position %></td>
+    <td><%= h message.title %></td>
+    <td><%= h message.published %></td>
+    <td><%= d message.created_at %></td>
+    <td><%= d message.updated_at %></td>
+    <td><%= link_to tg(:show), admin_news_path(message) %></td>
+    <td><%= link_to tg(:edit), edit_admin_news_path(message) %></td>
+    <td><%= link_to tg(:destroy), admin_news_path(message), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= paginate @messages %><br />
+
+<%= link_to tg(:add), new_admin_news_path %>

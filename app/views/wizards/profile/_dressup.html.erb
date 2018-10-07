@@ -1,0 +1,41 @@
+<%=  swf_object(rewrite_asset_path('/flash/Dressup.swf'), 'flash_content', :width => 932, :height => 547,
+  :params => {:allowScriptAccess => "always"},
+  :callback => "flash_callback",
+  :flash_vars => {:version => rails_asset_id('/flash/Dressup.swf'), :base_url => "/", :debug => !GameProperties::PROD}) %>
+<div class="additional_info_block" style="margin-bottom: 40px">
+  <div id="flash_content" style=" text-align: center; display: none">
+    <p>
+      <%= link_to image_tag("http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif", :alt=>"Get Adobe Flash player"), "http://www.adobe.com/go/getflashplayer" %>
+    </p>
+  </div>
+  <div class="full_info_bg"></div>
+  <div class="full_info_bottom"></div>
+  <div class="full_info_top"></div>
+</div>
+<div class="additional_info_block">
+  <div class="quick_links">
+    <h1 class="category_title_fight"><%= t :avatar_header %></h1>
+
+    <div class="avatar_slot">
+      <% for ava in @user_avatars %>
+        <span><%=  link_flash_avatar(ava) %></span>
+      <% end %>
+      <div class="clear"></div>
+    </div>
+  </div>
+
+  <div class="quick_links">
+    <h1 class="category_title_fight"><%= t :buy_avatar_header %></h1>
+    <div class="avatar_slot">
+      <% for ava in @available_avatars %>
+        <span>
+          <%=  link_flash_avatar(ava) %>
+        </span>
+      <% end %>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="full_info_bg"></div>
+  <div class="full_info_bottom"></div>
+  <div class="full_info_top"></div>
+</div>

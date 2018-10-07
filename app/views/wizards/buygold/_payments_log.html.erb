@@ -1,0 +1,40 @@
+<div id="columns_narrow_wide">
+  <div id="col_left">
+    <%= render :partial => "menu" %>
+  </div>
+  <div id="col_right" >
+    <div class="main_col_content" id="payment_log">
+      <div class="visibl">
+        <h1 class="category_title_shop">Payment history</h1>
+        <div class="bes_search">
+          <table class="content_up table" cellpadding="0" cellspacing="0" >
+            <th scope="col"><%= tg(:date_title) %></th>
+            <th scope="col"><%= tf(PaymentLog, :amount) %></th>
+            <th scope="col"><%= tf(PaymentLog,:item) %></th>
+
+            <% @payments.each do |payment| %>
+              <tr>
+                <td><%= d payment.created_at %></td>
+                <td><%= payment.amount %></td>
+                <td class="col_desc"><%= payment.title %></td>
+              </tr>
+            <%end%>
+          </table>
+        </div>
+        <div class="clear"></div>
+        <%= paginate(@payments) %>
+      </div>
+      <div class="clear"></div>
+      <div class="main_col_bg"></div>
+      <div class="main_col_border_bottom"></div>
+      <div class="main_col_border_top"></div>
+    </div>
+
+
+  </div>
+  <div class="clear"></div>
+</div>
+
+
+
+

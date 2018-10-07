@@ -1,0 +1,27 @@
+<div class="avatar_info">
+  <ul class="progress_blok">
+    <li>
+      <h2><%= user_name(user) + " (#{tf(User, :a_level)}: #{user.a_level})" %></h2>
+    </li>
+    <li>
+      <div class="progressbar">
+        <%= image_design_tag("progress_bar_l.png") %>
+        <%= image_design_tag("progress_bar_middle.png", {:class => "progress", :height => 11, :width => (user.a_experience.to_f / user.next_level_experience * 250).to_i}) %>
+      </div>
+      <span> <%= tf(User, :a_experience) %>: <%= user.a_experience %> / <%=  user.next_level_experience%></span>
+    </li>
+  </ul>
+  <div id="user_avatar_image">
+    <%= user_image(user, false, {:width => 255, :height => 268}) %>
+    <%if @can_vote %>
+      <span>
+        <%= link_to_ajax image_design_tag("vote.png", :title => t(:voter_title)), profile_path(:action => :vote, :id => user), :onclick => "javascript: this.style.display = 'none'" %>
+      </span>
+    <%elsif user.s_vote > 0%>
+      <span style="left: 176px">
+        <%= image_design_tag('vote_total.png') %>
+      </span>
+    <span style="color: white; bottom: 24px; left: 211px"><%= user.s_vote %></span>
+    <%end%>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<h1><%= t :title%></h1>
+
+<p>
+  <%= tf(User, :name) + " : " + link_to(@user.name, :action => :show, :id => @user.id) %>
+</p>
+
+<table border="1">
+  <tr class="tableWidth">
+    <th scope="col"><%= tg(:date_title) %></th>
+    <th scope="col"><%= tf(PaymentLog, :amount) %></th>
+    <th scope="col"><%= tf(PaymentLog,:item) %></th>
+  </tr>
+  <% @payments.each do |payment| %>
+    <tr>
+      <td><%= d payment.created_at %></td>
+      <td><%= payment.amount %></td>
+      <td class="col_desc"><%= payment.title %></td>
+    </tr>
+  <%end%>
+</table>
+
+<p>
+  <%= paginate @payments, :params => {:simple_link => true} %>
+</p>
